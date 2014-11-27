@@ -1,0 +1,13 @@
+<div class="m-hotLabel s-bsdStyle1 f-mt20">
+	<div class="tt clearfix">
+		<h3 class="f-fl f-fs18">热门标签排行</h3>
+	</div>
+	<div class="ct clearfix">
+		<ul>
+		  <!-- 此处宽度公式是【（当前数/当前排行榜最高数）*100%】最小宽度是40%；-->
+		 {loop $hotTag $k $v}
+		 <li><span class="score" style="width: {$v['cnum']}%;"><em>{$v['target_count']}</em></span><span class="name"><a href="{DODOJC}/Sm/Question/search?tag={$v['tag_name']}" target="_blank" title="{$v['tag_name']}">{$v['tag_name']}</a></span></li>
+		 {/loop}                   
+	</ul>
+	</div>
+</div>

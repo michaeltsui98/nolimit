@@ -1,0 +1,21 @@
+<div id="ajaxpage" class="easyui-panel" style="padding:5px;height:auto" data-options="fit:true">
+
+    <table  id="activityStatistics-dg" title="<!--{$title}-->" class="easyui-datagrid" data-options="rownumbers:true,singleSelect:true,pagination:false,url:'<!--{$stat_ajax}-->',method:'get',toolbar:'#activityStatistics-tb',striped:true">
+        <thead>
+            <tr width="100%">
+                <th data-options="field:'name',align: 'center'" rowspan="2"  width="300">市州</th>
+                <th colspan="2" >小学</th>
+                <th colspan="2" >初中</th>
+                <th colspan="2" >高中</th>
+            </tr>
+            <tr>
+                <th data-options="field:'xd001_count',align: 'center'" width="180">评价总数</th>
+                <th data-options="field:'xd001_score',align: 'center'" width="180">平均分</th>
+                <th data-options="field:'xd002_count',align: 'center'" width="180">评价总数</th>
+                <th data-options="field:'xd002_score',align: 'center'" width="180">平均分</th>
+                <th data-options="field:'xd003_count',align: 'center'" width="180">评价总数</th>
+                <th data-options="field:'xd003_score',align: 'center'" width="180">平均分</th>
+            </tr>
+        </thead>
+    </table>
+</div>

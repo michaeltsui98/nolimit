@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>湖北省中小学课程网</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <style>
+        .g-wrap {
+        }
+        .g-bd {
+            width: 1000px;
+            padding-top: 10px;
+            padding-bottom: 20px;
+            margin: 0 auto;
+        }
+        .m-siteIntro{
+          width: 900px;
+          height: 607px;
+          display: block;
+          margin: 0 auto;
+          background: #fff url({STATIC_PATH}/Modules/Xl/static/images/siteIntro_bg.jpg) 0 0 no-repeat;
+          position: relative;
+        }
+        .g-ftc {
+            border-top: 1px solid #D7E7D8;
+            padding: 15px 0;
+            color: #5b9f2c;
+            text-align: center;
+            line-height:1.6em;
+            font-size: 12px;
+        }
+        a.xljk{
+          position: absolute;
+          bottom: 11px;
+          left: 224px;
+          width: 209px;
+          height: 209px;
+          display: block;
+          opacity: 0;
+        }
+        a.smaq{
+          position: absolute;
+          bottom: 11px;
+          right: 188px;
+          width: 168px;
+          height: 168px;
+          display: block;
+          opacity: 0;
+        }
+        a.smaq ,a.xljk{
+          transition: opacity 0.3s;
+          -webkit-transition: opacity 0.3s;
+          -moz-transition: opacity 0.3s;
+          -o-transition: opacity 0.3s;
+          z-index: 90px;
+        }
+        a.xljk:hover{
+          background:url({STATIC_PATH}/Modules/Xl/static/images/btn_xljk.gif) 0 0 no-repeat;
+          opacity: 1;
+        }
+        a.smaq:hover{
+          background:url({STATIC_PATH}/Modules/Xl/static/images/btn_smaq.gif) 0 0 no-repeat;
+          opacity: 1;
+        }
+        .labelNew{
+          background:url({STATIC_PATH}/Modules/Xl/static/images/New.png) 0 0 no-repeat;
+          _background:url({STATIC_PATH}/Modules/Xl/static/images/New.gif) 0 0 no-repeat;
+          position: absolute;
+          width: 51px;
+          height: 51px;
+          display: block;
+          z-index: 100;
+        }
+    </style>
+</head>
+
+<body>
+    <!--内容&底部-->
+    <div class="g-wrap">
+        <div class="g-bd">
+            <div class="m-siteIntro">
+              <i class="labelNew" style="left:650px;bottom:140px"></i>
+              <i class="labelNew" style="left:370px;bottom:170px"></i>
+              <a href="/xl" class="xljk"></a>
+              <a href="/sm" class="smaq"></a>
+            </div>
+        </div>
+        <div class="g-ft">
+            <div class="g-ftc">
+             主管：湖北省教育信息化发展中心、长江出版传媒股份有限公司        主办：湖北博盛数字教育服务有限公司、湖北科学技术出版社
+         <br/>
+            服务邮箱：services@dodoedu.com 客服热线：400-8866-561 鄂ICP备13014028号-1
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<script type="text/javascript" src="{STATIC_PATH}/Modules/{$ucxk}/static/script/activity/act_calander.js" ></script>
+<div class="g-wrap">
+<div class="g-bd">
+    <!-- 导航 -->
+    <div class="m-nav clearfix f-mb10">
+        <div class="m-breakNav f-fl">
+            <i class="icon_tc1"></i>
+            <span>当前位置</span>：<a href="<!--{$teacher_center_url}-->" target="_self">教师</a>&nbsp;&gt;&nbsp;<a href="<!--{$activity_index_url}-->" target="_self">研训
+        </a>&nbsp;&gt;&nbsp;研训日历
+        </div>
+    </div>
+
+    <div class="m-activeCalendar">
+        <!-- 研训日历 -->
+        <div class="m-courseManage s-bsdStyle2" id="courseManage">
+            <div class="tt clearfix">
+                <div class="m-crtDate f-fl">
+                    <a href="javascript:;" title="上月" id="prevmonth" class="u-pre f-tac"><i class="icon-arrL"></i></a><strong class="txt f-ib f-vam f-fs16" id="thismonth" data_year="{$current_year}" data_month="{$current_month}">{$current_year}-{$current_month} </strong><a href="javascript:;" title="下月" id="nextmonth" class="u-next f-tac"><i class="icon-arrR"></i></a>
+                </div>
+
+            </div>
+            <div class="ct">
+                <input type="hidden" name="ajax_activity_calendar_url" value="<!--{$ajax_activity_calendar_url}-->"/>
+                <input type="hidden" name="activity_info_url" value="<!--{$activity_info_url}-->"/>
+                <div class="vsWrap">
+                    <!--<ul class="vsTt clearfix">-->
+                        <!--<li class="everyday f-fs16 f-fl">周日<span class="s-fcLGray f-ml5"></span></li>-->
+                        <!--<li class="everyday f-fs16 f-fl">周一<span class="s-fcLGray f-ml5"></span></li>-->
+                        <!--<li class="everyday f-fs16 f-fl">周二<span class="s-fcLGray f-ml5"></span></li>-->
+                        <!--<li class="everyday f-fs16 f-fl">周三<span class="s-fcLGray f-ml5"></span></li>-->
+                        <!--<li class="everyday f-fs16 f-fl">周四<span class="s-fcLGray f-ml5"></span></li>-->
+                        <!--<li class="everyday f-fs16 f-fl">周五<span class="s-fcLGray f-ml5"></span></li>-->
+                        <!--<li class="everyday f-fs16 f-fl">周六<span class="s-fcLGray f-ml5"></span></li>-->
+                    <!--</ul>-->
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+    <div class="f-cb"></div>
+</div>
+</div>
+
+
+
+ 
+ 

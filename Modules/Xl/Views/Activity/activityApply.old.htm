@@ -1,0 +1,36 @@
+<h4>{$title}呵呵呵呵呵</h4>
+<form action="<!--{$process_activity_apply_url}-->" method="post">
+    活动主题：<input type="text" name="data[activity_apply_title]"  /><br/>
+    教材版本：
+                            <select name="data[activity_apply_publisher]">
+                                {loop $publisher_list $key $val}
+                                    <option value="<!--{$key}-->"><!--{$val}--></option>
+                                {/loop}
+                            </select><br/>
+    活动分类：
+                            <select name="data[activity_apply_type]">
+                                {loop $type_array $key $val}
+                                <option value="<!--{$key}-->"><!--{$val}--></option>
+                                {/loop}
+                            </select><br/>
+    活动形式：
+                            <select name="data[activity_apply_class]">
+                                {loop $class_array $key $val}
+                                <option value="<!--{$key}-->"><!--{$val}--></option>
+                                {/loop}
+                            </select><br/>
+    适应学段：
+                            <select name="data[activity_apply_phase]">
+                                {loop $phase_array $key $val}
+                                <option value="<!--{$key}-->"><!--{$val}--></option>
+                                {/loop}
+                            </select><br/>
+    活动简介：<textarea name="data[activity_apply_description]"  rows="10" cols="100"></textarea><br/>
+    申请理由：<textarea name="data[activity_apply_reason]"  rows="10" cols="100"></textarea><br/>
+    联系电话：<input type="text" name="data[activity_apply_contact]" />
+    <input type="submit" value="提交申请" />
+</form>
+
+
+ 
+ 

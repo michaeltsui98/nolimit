@@ -1,0 +1,101 @@
+<div class="m-quickNav">
+    <a href="#lesson_folder" title="备课夹"  class="item"><i class="icon-folder1"></i></a>
+    <a href="#courseRecord" title="课程记录"  class="item"><i class="icon-record"></i></a>
+    <a href="#courseImpression" title="课堂表现"  class="item"><i class="icon-impress"></i></a>
+    <a href="#evaluationList" title="随堂测评"  class="item"><i class="icon-evaluation"></i></a>
+    <a href="#questionList" title="课程问答"  class="item"><i class="icon-Faqs"></i></a>
+</div>
+<div class="g-wrap" data-course="{$course_id}" data-class="{$course[0]['class_id']}" id="course_wrap">
+    <div class="g-bd">
+        <div class="m-breakNav f-mb10">
+            <i class="icon_tc1"></i>
+            <span>当前位置</span>：
+            <a href="/{$xk}/index">教师</a>
+            &gt;<a href="/{$xk}/course">课程</a>
+            &gt; 课程详情
+        </div>
+        <div class="g-sd width238 f-fl">
+            <div class="m-lessonInfo s-bsdStyle1">
+                <div class="tt s-fcLGray f-fs16 f-fwn">
+                    <strong>{$grade}&nbsp;&nbsp;<a href="{DOMAIN_NAME}/class/{$class[0]}" target="_blank">{$class[1]}</a></strong>
+                </div>
+                <div class="ct">
+                    <!--{eval if($course[0]['course_remark']): echo $course[0]['course_remark']; else: }-->
+                    <span class="f-fs14">课程备注：<span class="s-fcGray">该课程尚未添加课程备注！</span></span>
+                    <!--{eval endif;}-->
+                </div>
+            </div>
+            <div class="m-myClass s-bsdStyle1 f-mt20">
+                <h2 class="tt s-fcLGray f-fs20 f-fwn">
+                     <div class="appraiseStat">
+                    课程评价<em>({$appraise['total']})</em>
+                     </div>
+                </h2>
+                <!--{eval $floor = floor($appraise['score']/2);$ceil = ceil($appraise['score']/2);  }-->
+                <div class="m-markSection clearfix">
+                    <div class="title f-fl">综合评分</div>
+                <div class="docRate f-fr">
+                    <!--{eval for($i=1;$i<=$floor;$i++): }-->
+                    <i class="icon_tc3"></i>
+                    <!--{eval endfor;}-->
+                    <!--{eval for($i=1;$i<=($ceil-$floor);$i++):}-->
+                    <i class="icon_tc4"></i>
+                    <!--{eval endfor;}-->
+                    <!--{eval for($i=1;$i<=(5-$ceil);$i++):}-->
+                    <i class="icon_tc2"></i>
+                    <!--{eval endfor;}-->
+                    <em class="font25">$appraise['score']分</em>
+                </div>
+                 </div>  
+                
+                <div class="ct" id="appraiseList">
+                </div>
+            </div>
+
+        </div>
+        <div class="g-mn width738 f-fr" style="position:relative;">
+            <div class="m-prepareLessons s-bsdStyle2 f-mb20" id="lesson_folder">
+                <h2 class="tt f-fwn f-fs16"><a href="javascript:;" data-course="{$course_id}" class="a-secl f-fs16 f-fr addLessonFolder">+ 编辑备课夹</a><i class="icon-folder"></i><span class="f-fs20 f-ib f-vam">备课夹-</span>（<span class="s-fcGreen f-ib f-vam"><!--{eval if($lesson_folder): }--><a href="{DODOJC}/{$xk}/lesson/detail/id/{$lesson_folder['id']}" target="_blank">{$lesson_folder['title']}</a> <!--{eval else:}--> 尚未设置备课夹<!--{eval endif;}--></span>）</h2>
+                <!--{if !empty($lesson_folder_detail) }-->                
+                <div class="ct">
+                    <div id="record_content">{$lesson_folder_detail}</div>
+                    <div class="f-cb"></div>
+                </div>
+                <!--{else}-->
+                <div class="f-pl20 f-pr20"><div class="m-emptytips"><p>暂无内容</p></div></div>
+                <!--{/if}-->
+
+            </div>
+            <div class='f-cb'></div>
+
+            <div class="m-recordAevaluate s-bsdStyle2 f-mb20" id="course_record">
+                <h2 class="tt f-fwn f-fs20"><a href="javascript:;" data-course="{$course_id}" class="a-secl f-fs16 f-fr addCourseRecord">+ 编辑课程记录</a><i class="icon-record"></i>课程记录</h2>   
+                <div class="ct" id="courseRecord"><!--{if !empty($record) }--><div class="recordText">{$record}</div><!--{else}--><div class="m-emptytips"><p>暂无内容</p></div><!--{/if}--></div>
+            </div>
+
+            <div class="m-addCourseImpress s-bsdStyle2 f-mb20" id="course_impression">
+                <h2 class="tt f-fwn f-fs20"><a href="javascript:;" data-course="{$course_id}" class="a-secl f-fs16 f-fr addImpression">+ 添加课堂表现</a><i class="icon-impress"></i>课堂表现</h2>                                
+
+                <div class="ct" id="courseImpression">           
+                </div>                
+            </div>
+
+            <div class="m-evaluation s-bsdStyle2 f-mb20" id="course_evaluation">
+                <h2 class="tt f-fwn f-fs20 clearfix"><a href="javascript:;" data-course="{$course_id}" class="a-secl f-fs16 f-fr addEvaluation">+ 添加随堂测评</a><i class="icon-evaluation"></i>随堂测评</h2>             
+                <div class="ct f-pt10" id="evaluationList" student_num="{$student_num}"> 
+
+                </div>
+            </div>
+
+            <div class="m-FAQs s-bsdStyle2 f-mb20" id="course_question">
+                <h2 class="tt f-fwn f-fs20 clearfix"><i class="icon-lessonQuestion"></i>课程问答（<span id="questionCount"></span>）</h2>
+
+                <div class="ct f-pt10" id="questionList">
+                </div>
+            </div>
+
+        </div>
+        <div class="f-cb"></div>
+    </div>
+
+</div>

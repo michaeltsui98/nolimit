@@ -1,0 +1,20 @@
+<!--{loop $user['rows'] $key $value}-->
+	<!--{eval $user['rows'][$key]['trindex']=$key;}-->
+	<!--{eval $user['rows'][$key]['trid']=$value['user_id'];}-->
+		
+	<!--{if $value['user_isok']==1 }-->
+		<!--{eval $user['rows'][$key]['user_isok']="<a href=\"javascript:;\" onclick=\"javascript:ui_ajax('{$isOkUrl}?user_id={$value['user_id']}&ok=0',this);\"><span class=\"icon-table icon-isok\"></span>正常</a>";}-->
+	<!--{else}-->
+		<!--{eval $user['rows'][$key]['user_isok']="<a href=\"javascript:;\" onclick=\"javascript:ui_ajax('{$isOkUrl}?user_id={$value['user_id']}&ok=1',this);\"><span class=\"icon-table icon-isjz\"></span>禁用</a>";}-->
+	<!--{/if}-->
+
+<!--{eval $user['rows'][$key]['user_order']="<a href=\"javascript:;\" onclick=\"javascript:ui_order('{$orderUrl}?user_id={$value['user_id']}&type=up',this);\"><span class=\"icon-table icon-up\"></span>升</a>";}-->
+<!--{eval $user['rows'][$key]['user_order'].=" <a href=\"javascript:;\" onclick=\"javascript:ui_order('{$orderUrl}?user_id={$value['user_id']}&type=down',this);\"><span class=\"icon-table icon-down\"></span>降</a>";}-->
+
+<!--{eval $user['rows'][$key]['cz']="<a href=\"javascript:;\"  onclick=\"javascript:ui_dialog('{$editUrl}?user_id={$value['user_id']}',this);\"><span class=\"icon-table icon-isedit\"></span>修改</a>";}-->
+
+	<!--{if $value['user_gd']==0 }-->
+	<!--{eval $user['rows'][$key]['cz'].=" <a href=\"javascript:;\"  onclick=\"javascript:ui_qr('{$delUrl}?user_id={$value['user_id']}',this);\"><span class=\"icon-table icon-isdel\"></span>删除</a>";}-->
+	<!--{/if}-->
+<!--{/loop}-->
+<!--{eval echo json_encode($user)}-->

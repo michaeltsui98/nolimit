@@ -1,0 +1,49 @@
+<script src="<!--{STATIC_WAP_PATH}-->script/zepto.js"></script>
+<div id="normal">
+        <div class="tableViewCon">
+            <a class="btn_back" href="javascript:;" onclick="history.back();"></a>
+            <h3>详情页</h3>
+        </div>
+        <div class="m-p">
+            <div class="w-p">
+                <div class="hd">
+                <h1>{$res['doc_title']}</h1>
+                <p>
+                    <span class="time fl">{date('Y-m-d H:i:s',$res['on_time'])}</span>
+                    <span class="author fr">发布人：{$res['user_name']}</span>
+                </p>
+                <div class="cb"></div>
+            	</div>
+                <div class="bd">
+                    <div class="view_normal">
+                        <input id="previous" type="button" class="btn_set" value="←" onclick="goPrevious();" />
+                        <input id="next" type="button" class="btn_set" value="→" onclick="goNext();" />
+                        <input id="page_num" type="number" class="txt_num" value="1" size="4" min="1" tabindex="15" max="14" style="width:24px;">
+                        <label class="lab_count">/<span id="page_count">0</span></label>
+                        <input id="zoomOut" type="button" class="btn_set" value="-" onclick="setSmall();" />
+                        <input id="zoomIn" type="button" class="btn_set" value="+" onclick="setBig();" />
+                        <input id="fullScreen" type="button" class="btn_page" value="全屏" onclick="fullScreen();" />
+                    </div>
+                    <div style="width:100%; overflow-x:auto;"><canvas id="the-canvas" style="width:100%;"></canvas></div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div id="full" style="display: none;" class="bd">
+        <div class="view_full">
+            <input id="previousFull" type="button" class="btn_set" value="←" onclick="goPrevious();" />
+            <input id="nextFull" type="button" class="btn_set" value="→" onclick="goNext();" />
+            <input id="pageNumFull" type="number" class="txt_num" value="1" size="4" min="1" tabindex="15" max="14">
+            <label class="lab_count">/<span id="labCountFull">0</span></label>
+            <input id="zoomOutFull" type="button" class="btn_set" value="-" onclick="setSmall();" />
+            <input id="zoomInFull" type="button" class="btn_set" value="+" onclick="setBig();" />
+            <input id="exitFullScreen" type="button" class="btn_page" value="退出全屏" onclick="exitFullScreen();" style="width:60px;" />
+        </div>
+        <div style="width:100%; overflow-x:auto;"><canvas id="the-full" style="width:100%;"></canvas></div>
+</div>
+  
+    <script type="text/javascript">
+        var url = '{$file_path}';
+    </script>

@@ -1,0 +1,34 @@
+<div id="ajaxpage" class="easyui-panel" style="padding:5px;" data-options="fit:true">
+	<table id="app-dg" title="<!--{$title}-->" class="easyui-datagrid" data-options="rownumbers:true,fit:true,fitColumns:true,singleSelect:true,pagination:true,url:'<!--{$getJsonDataUrl}-->',method:'get',pageSize:20,toolbar:'#app-tb'">
+	  <thead>
+		<tr>
+          <th field='trindex' width='50'>序号</th>
+          <th field='name' width='80'>应用名称</th>
+          <th field='url' width='80'>应用路经</th>
+          <th field='icon' width='80'>应用图标</th>
+          <th field="target" width="50">方式</th>
+          <th field="is_mobile" width="50">手机应用</th>
+          <th field="is_ok" width="50">状态</th>
+          <th field="cz" width="50">管理</th>
+		</tr>
+	  </thead>
+	</table>
+	<div id="app-tb" style="padding:5px;height:auto">
+		<div>
+		    <a href="javascript:void(0);" onclick="javascript:user(1);" class="easyui-linkbutton" iconCls="icon-search">学生应用</a>
+		    <a href="javascript:void(0);" onclick="javascript:user(2);" class="easyui-linkbutton" iconCls="icon-search">教师应用</a>
+		    <a href="javascript:void(0);" onclick="javascript:user(3);" class="easyui-linkbutton" iconCls="icon-search">家长应用</a>
+			<a href="javascript:;" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="javascript:ui_dialog( '<!--{$addUrl}-->',this );">增加</a>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+		$(function(){
+ 
+
+		});
+		function user(role_code){
+			//var obj = document.getElementById("grouplist");
+			gridload('app',{role_code:role_code});
+		}
+</script>

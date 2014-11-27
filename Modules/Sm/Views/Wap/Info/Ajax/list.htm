@@ -1,0 +1,16 @@
+{loop $blogList['data'] $item}
+<li class="warp-quote">
+    <a href="/Xl/Wap_Info/detail/id/{$item['blog_id']}">
+        <div class="hd">
+            <p class="quote">{$item['blog_title']}</p>
+            <p class="time">日期：{date('Y-m-d',$item['blog_time'])} | 栏目：{$blogElementList[$item['class_id']]['element_name']}</p>
+        </div>
+    </a>
+    <div class="bdc">
+        <p class="repertory">
+            {cutstr($item['blog_explain'], 220)}
+        </p>
+    </div>
+    <div class="ftc"></div>
+</li>
+{/loop}

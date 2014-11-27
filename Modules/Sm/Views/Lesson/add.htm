@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>新增课程夹</title>
+</head>
+<body>
+<form action="/Sm/Lesson/add" method="post">
+	<label>用户ID</label><input type="text" name="user_id" value="" />
+	<label>课程夹标题</label><input type="text" name="title" value="" />
+	<label>课程夹描述</label><input type="text" name="description" value="" />
+	<label>学科</label>
+	<!--{eval echo Models_Subject::subjectSelect()}-->
+	<label>学段</label>
+	<!--{eval echo Models_Stage::stageSelect()}-->
+	<label>年级</label>
+	<!--{eval echo Models_Grade::gradeSelect(Models_Stage::XX, '', array('class' => "test ijih", 'id' => "test"))}-->
+	<label>公开</label>
+	<!--{eval echo Models_Lesson_Folder::statusSelect()}-->
+	<input type="submit" name="name" value="提交">
+</form>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<script> 
+var sid = "{$vars['sid']}";
+var file_type = {$file_type};
+</script>
+ 
+    <form class="formStyle" name="frm1" method="post" action="#" >
+    <div class="W-form">
+        	<input type="hidden" name="data[obj_type]" value="{$vars['obj_type']}"/>
+			<input type="hidden" name="data[obj_id]" value="{$vars['obj_id']}"/>
+			<input type="hidden" name="is_jsonp" value="1" />
+            <fieldset>
+               
+
+                <!-- 选择类型 -->
+                <div class="formStyle-item ">
+                    <label for="" class="formStyle-label">
+                        <span class="formStyle-required">*</span>资源类型：
+                    </label>
+                    <select name="data[cate_id]" id="select_cate" datatype="*">
+                    		{loop $cate_arr $k $v}
+							 <option value="{$k}">{$v}</option>
+							{/loop}
+                    </select>
+                </div>
+                <!-- ==选择类型== -->
+				<div class="formStyle-item">
+					<input type="hidden"  name="data[file]" id="input2" />
+						<input type="hidden"  name="data[file_size]" id="file_size" />
+						<DIV id="demo2"></DIV><div id="tip2"></div>
+				</div>
+				 <!-- 上传/选择文件 -->
+                <div class="formStyle-item">
+                    <label for="" class="formStyle-label">
+                        <span class="formStyle-required">*</span>标题：
+                    </label>
+                   <input type="text" name="data[doc_title]"  class="customForm_inputBoxDefault customForm_txtInput width330" datatype="*" />
+                </div>
+                <!-- ==上传/选择文件== -->
+				<div class="formStyle-item ">
+                    <label for="" class="formStyle-label">
+                        <span class="formStyle-required">*</span>学段选择：
+                    </label>
+                    <select name="data[xd]" id="up_slt_xd">
+                    		<option value="">请选择</option>
+                    		{loop $xd_arr $k $v}
+							 <option id="{$v['id']}" value="{$v['code']}" {if $init_xd==$v['code']} selected="selected"{/if} >{$v['name']}</option>
+							{/loop}
+                    </select>
+                </div> 
+                <!-- 选择类型 -->
+                <div class="formStyle-item">
+                    <label for="" class="formStyle-label">
+                        <span class="formStyle-required">*</span>选择分类：
+                    </label>
+					
+					<input type="hidden" name="data[xk]" id="up_slt_xk" value="{$init_xk}">
+					
+						<select name="data[bb]" id="up_slt_bb">
+                    		<option value="">请选择</option>
+                    		{loop $bb_arr $k $v}
+							 <option id="{$v['id']}" value="{$v['code']}" {if $init_bb==$v['code']} selected="selected"{/if}>{$v['name']}</option>
+							{/loop}
+                    	</select>
+                    	<select name="data[nj]" id="up_slt_nj">
+                    		<option value="">请选择</option>
+							{loop $nj_arr $k $v}
+							 <option id="{$v['id']}" value="{$v['code']}" {if $init_nj==$v['code']} selected="selected"{/if}>{$v['name']}</option>
+							{/loop}
+                    	</select>
+						
+						<select name="data[zs]" id="up_slt_zs">
+                    		 <option value="">请选择</option>
+							{loop $unit_arr $k $v}
+							  {$v['option']}
+							{/loop}
+							 
+                    	</select>
+						 
+                </div>
+                
+
+                <!-- 简介 -->
+                <div class="formStyle-item">
+                    <label for="" class="formStyle-label">
+                        <span class="formStyle-required"></span>简介：
+                    </label>
+                    <textarea class="customForm_textarea customForm_inputBoxDefault width330" name="data[doc_summery]" data-default ="非必填项，最多200字。" placeholder="非必填项，最多200字。" maxLength="200"></textarea>
+                    <p class="formStyle-explain"></p>
+                </div>
+                <!-- ==简介== -->
+
+                <!-- 标签 -->
+                <div class="formStyle-item">
+                    <label for="" class="formStyle-label">
+                        <span class="formStyle-required"></span>标签：
+                    </label>
+                    
+                         <script type="text/javascript" src="{HTTP_UI}tag/tag.public.js"></script>
+						 <div data-target="doc" name="data[doc_tag]" class='input-tags'> </div>
+						 <div name="tag_content"></div>
+                 
+                </div>
+                <!-- ==标签== -->
+
+                <!-- 来源 -->
+                <div class="formStyle-item">
+                    <label for="rdo_1"><input type="radio" id="rdo_1" name="data[doc_source]" value="1">原创</label> 
+                    <label for="rdo_2"><input type="radio" id="rdo_2" name="data[doc_source]" value="2" checked="checked">转载 </label>
+                </div>
+                <!-- ==来源== -->
+            </fieldset>
+        
+    </div>
+  </form>

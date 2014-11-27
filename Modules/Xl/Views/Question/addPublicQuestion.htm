@@ -1,0 +1,28 @@
+<script type="text/javascript" src="{HTTP_UI}tag/tag.public.js"></script>
+<form id='addPublicQuestion' name='addPublicQuestion' method="post">
+<div class="m-addQuetions f-mt10 f-mb10">
+        <div class="ct">
+            <textarea class="customForm_inputBoxDefault" rows="10" cols="116" id="" name="data[question_title]"></textarea>
+            <h3 class="f-mt10">标签：</h3>
+            <div class="selectContact clearfix f-mb20">
+			<div class="recText f-fl f-mr5">
+			<div data-target="question" name="data[tags]" class='input-tags' > </div>
+			<div name="tag_content"></div>
+			</div>
+        </div>
+        <div class="ft clearfix">
+            <span class="f-mr20">
+             <i class="s-fcRed">*</i>
+                选择学段
+				<!--{eval echo Helper_HTML::select('data[stage]', array(''=>'请选择') + Models_Stage::$stage_list,'',array('id'=>'stage')); }-->		
+				<select name="data[grade]" >
+				</select>                   
+            </span>
+            <span class="f-mr20"><input type="checkbox" class="checkbox" id="question_check" name="data[question_check]" value="1">匿名提问</span>  
+            <span><input name="data[help]" type="checkbox" class="checkbox"  id="help" value="1">
+            问题求助（<em>向老师发送求助信</em>）</span>
+        </div>
+
+    </div>
+</div>
+</form>

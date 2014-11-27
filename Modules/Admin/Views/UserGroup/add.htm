@@ -1,0 +1,39 @@
+<div id="tab1" class="tabcontent">
+    <div class="form">
+       <form action="<!--{$addDoUrl}-->" method="post" id="usergroup_form" name="usergroup_form" class="ui-form">
+	
+            <div class="form_row">
+                <label><span class="ui-form-required">*</span>用户组名：</label>
+                <input type="text" class="form_input_200"  id="group_title" name="data[group_title]"  placeholder="用户组名"  ajaxurl="{$checkGroupNameUrl}" datatype="*" />
+				<div class="info"><span class="ui-form-other"></span></div>
+            </div>
+
+            <div class="form_row">
+                <label><span class="ui-form-required"></span>描述：</label>
+                <input type="text" class="form_input_200" id="group_description" name="data[group_description]"  placeholder="描述"    />
+				<div class="info"><span class="ui-form-other"></span></div>
+            </div>
+
+            <div class="form_row">
+                <label>状态：</label>
+
+                <input class="ui-radio" type="radio" name="data[group_isok]" id="group_isok" value="1"  datatype="*" />正常 
+		 <input class="ui-radio" type="radio" name="data[group_isok]" id="group_isok" value="0"  />禁用
+
+				<div class="info"><span class="ui-form-other"></span></div>
+            </div>
+            <div class="ui-form-item">
+                <input type="submit" id="btn_submit" value="保存"/>
+            </div> 
+        </form>
+       <script type="text/javascript">
+				$(function(){
+					syform_val('usergroup_form');
+                    SetValue(usergroup_form["data[group_isok]"],"1");
+
+				});
+		</script>
+    </div>
+</div>
+
+    

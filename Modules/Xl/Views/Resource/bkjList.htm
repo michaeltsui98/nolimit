@@ -1,0 +1,14 @@
+<div class="doclist1" name="reslist">
+    <ul>
+    	{loop $resources  $k $v}
+        <li>
+        	<div class="doc_typeIcon"><a href="/{$xk}/Lesson/detail/id/<!--{eval echo strtr($v['id'],array('folder_'=>''))}-->" target="_blank"><i class="iconL_bkj"></i></a></div>
+            <div class="doc_name"><a href="/{$xk}/Lesson/detail/id/<!--{eval echo strtr($v['id'],array('folder_'=>''))}-->" target="_blank">{$v['title']}</a></div>
+            <div class="doc_desc">上传 <a href="{DOMAIN_NAME}/{$v['user_id']}/Space/Index" target="_blank">{$v['user_name']}</a>  | <!--{eval echo Models_Resource::init()->dateSpan($v['on_time'])}-->创建   
+			                          
+            </div>
+        </li>
+		{/loop}
+        
+    </ul>
+</div>

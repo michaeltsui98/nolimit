@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>编辑我的备课夹</title>
+</head>
+<body>
+	<form action="/Sm/Lesson/edit/id/{$folder_info['id']}" method="post">
+		<label>标题</label><input type="text" name="title" value="{$folder_info['title']}">
+		<label>描述</label><input type="text" name="description" value="{$folder_info['description']}">
+		<label>公开</label>
+		<!--{eval echo Models_Lesson_Folder::statusSelect($folder_info['status'])}-->
+		<input type="submit" name="name" value="提交">
+	</form>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>upload</title>
+    <meta name="description" content="" />
+    <style>
+    .over{color:red;}
+    </style>
+    <script src="{DODOJC}/static/syup/syup.js"></script>
+</head>
+<body>
+demo1:<br>
+    <input type="text" value="" name="input1" id="input1" />
+    <DIV style="position: relative;">
+    <span id="span_id">上传</span>
+    <DIV style="position: absolute;left: 0px;top: 0px">
+    <DIV id="demo1"></DIV>
+    <script>
+    new syup({
+        path: '/static/',
+        div_id:'demo1',//上传flash元素id
+        form_id:'input1',//上传表单元素id
+        tip_id:'tip1',//上传提示元素id
+        botton_id:'span_id',//上传提示元素id
+        botton_class:'over',//上传提示元素id
+        up_text: '上传图片',//上传按钮名称
+        up_max: 5,//允许上传是文件数量 默认1个
+        up_maxsize: 1024*1024*10,//允许文件大小默认10M
+        up_filter: '*.jpg;*.gif;*.png;*.bmp;',//上传类型限制
+        up_imageWidth: 250,//上传图片宽度
+        up_imageHeight: 720,//上传图片高度
+        up_imageMode: 0,
+        up_imageQuelity:100,
+        //上传模式：0:智能缩小(不变形);1:强制改变大小、可能会变形;2:横向缩小;3:纵向缩小;
+        up_url: '{DODOJC}/attachment/flashUpload',//上传保存地址
+        up_slt_array:'{width:80,height:80};{width:200,height:200}',//缩略图数组
+        up_hidden:1,//是否隐藏0:不隐藏;1:隐藏;
+        up_action:0,//是否直接上传0:不是自己上传;1:直接上传;
+        up_gifMode:3, //gif图压缩模式：0:缩略图、原图、缩略图转化为静态图;1:缩略图为静态图、原图直接上传;2:缩略图为动态图、原图直接上传;3:缩略图、原图为动态图;
+        up_bmpMode:0, //bmp图压缩模式0: 为压缩; 1:不压缩32 bit 保存;
+        skin:'{DODOJC}/static/syup/skin/red'//皮肤 red blue green
+        //up_callback:'',//上传回调函数
+    }).show();
+    </script>
+    </DIV>
+    </DIV>
+    <!-- <a href="#" onclick="update('demo1');">上传</a> -->
+    <div id="tip1"></div>
+    <br>
+    <br>
+    <br>
+demo2:<br>
+    <input type="text" value="" name="input2" id="input2" />
+    <br><DIV id="demo2"></DIV><div id="tip2"></div>
+    <script>
+    new syup({
+        path: '/static/',
+        div_id:'demo2',
+        form_id:'input2',
+        tip_id:'tip2',
+        up_text: '上传软件',
+        up_maxsize: 1024*1024*1000,
+        up_image_file: 1, // 不开启压缩，原图上传
+        up_filter: '*.txt;*.rar;*.zip;*.apk;*.rmvb;*.rm;',
+        up_url: '{DODOJC}/attachment/flashUpload',//上传保存地址
+        skin:'{DODOJC}/static/syup/skin/green'
+    }).show();
+    </script>
+<br>
+demo3:<br>
+    <input type="text" value="" name="input3" id="input3" />
+    <br><span id="demo3"></span><span id="tip3"></span>
+    <script>
+    new syup({
+        path: '/static/',
+        div_id:'demo3',
+        form_id:'input3',
+        tip_id:'tip3',
+        up_text: '浏览软件',
+        up_maxsize:1024*1024*1000,
+        up_filter: '*.rar;*.zip;*.jpg;',
+        up_url: '{DODOJC}/attachment/flashUpload',
+        skin:'{DODOJC}/static/syup/skin/blue',
+        up_action:1,
+        up_callback:'demo3_back'
+    },75,24).show();
+    function demo3_back(up_obj,type,str){
+        if(type=='file_select'){
+            document.getElementById(up_obj.form_id).value=str;
+        }
+        if(type=='one_complete'){
+             document.getElementById(up_obj.form_id).value=str;
+             var obj = document.getElementById(up_obj.tip_id);
+              obj.innerHTML="上传成功";
+        }
+        if(type=='progress'){
+                 var obj = document.getElementById(up_obj.tip_id);
+                 obj.innerHTML=str;
+        }
+        if(type=='error'){
+                 var obj = document.getElementById(up_obj.tip_id);
+                 obj.innerHTML=str;
+        }
+        if(type=='start'){
+                 alert(up_obj.div_id+"  "+str);
+        }
+    }
+    </script>
+
+
+</body>
+</html>

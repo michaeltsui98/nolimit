@@ -1,0 +1,76 @@
+<div class="g-bd">
+<div user_id="{$user_id}" name="isLogin"></div>
+        {$breadcrumb}
+		<!-- 导航 -->             
+        <div class="g-sd f-fl">
+            <!-- 创建问答 -->
+			{include Modules/Sm/Views/Question/askAndAnswer} 	
+            <!-- 热门标签排行 -->
+			{include Modules/Sm/Views/Question/tagQuestion}            
+            <!-- 答题榜 -->
+			{include Modules/Sm/Views/Question/listQuestion}   
+            </div>
+        <div class="g-mn f-fr">
+            <!-- 问答分类 此处样式要排重-->
+            <div class="m-selfStudyCount s-bsdStyle1">
+                <div class="tt clearfix">
+                    <h3 class="f-fl f-fs18"><i class="icon-wenda"></i>问答分类</h3>
+                </div>
+                <div class="ct">
+                    <div id="select-all">
+                    <dl>
+                        <dt>按学段查找</dt>
+                        <dd>
+                            <div class="sel-list" name="type">
+                                <ul>
+                                    <li><a href="javascript:;" class="selected" key="type" name="全部">全部</a></li>
+                                    <li><a href="javascript:;" key="type" name="小学">小学</a></li>
+                                    <li><a href="javascript:;" key="type" name="初中">初中</a></li>
+                                    <li><a href="javascript:;" key="type" name="高中">高中</a></li>
+                                </ul>
+                            </div>
+                            <a class="see-select-left see-select-left-un" style="display:none;"> <b class="n-left">&lt;</b>
+                            </a>
+                            <a id="see-select-right" class="see-select-right"> <!--<b class="n-right">&gt;</b> -->
+                            </a>
+                        </dd>
+                    </dl>
+                    </div>
+                </div>                
+            </div>
+            <!-- 问答列表 -->
+            <div class="m-askAndAnswerList f-mt20">
+                <div class="tt">
+                    <div class="tab1Menu">
+					    <div>
+                        <div class="leftInfo f-fs14 f-fl" name="status">
+							<strong class="cur"><a href="javascript:;" key="status" name='allAnswer'>全部</a></strong>
+                            <strong ><a href="javascript:;" key="status" name='haveAnswer'>已解答</a></strong>
+                            <strong><a href="javascript:;" key="status" name='noAnswer'>待解答</a></strong>
+                        </div>
+						</div>
+                        <div class="rightInfo f-fr" name="order" style="border:0px;">
+                            排序：
+                          <strong class="cur" name='timeOrder' key="order">最新<i class="icon-orderdown"></i></strong>
+                        | <a class="whiteA" name='hotOrder' key="order">最热<i class="icon-orderdown-nocur"></i></a> 
+                        </div>
+                        <div class="f-cb">
+                        </div>
+                    </div>
+                </div>
+                <div class="ct" name="qusetionData">
+                    <ul>
+                        <li class="head clearfix">
+                            <span class="f-fl">标题</span>
+                            <div class="f-fr">时间</div>
+                        </li>						
+                    </ul>					
+                </div>  
+				<div class="ft">
+            		<div id='pageNum'></div>
+				</div>
+            </div>
+
+        </div>
+        <div class="f-cb"></div>
+    </div>   

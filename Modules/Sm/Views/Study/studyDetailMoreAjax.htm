@@ -1,0 +1,77 @@
+                 {loop $node $key $value}
+                   {if !empty($value['child'])}
+                      {if empty($start) && empty($key)}
+                          <div class="m-learningUnit z-show" style="Z-INDEX:<!--{eval echo $node_count-$key}-->">
+                        {else}
+                         <div class="m-learningUnit" style="Z-INDEX:<!--{eval echo $node_count-$key}-->">
+                        {/if}
+                       <i class="icon-numberBg"><!--{eval echo $key+=1}--></i>
+                        <dl class="m-LUcell">
+                                   <dt class="uTt clearfix">
+                                    <div class="f-fl">
+                                     <i class="icon-arrLs"></i>{$value['node_title']}
+                                   </div>
+                                  <div class="f-fr">
+                                 {if empty($start) && ($key == 1)}
+                                    <a href="javascript:;" name="close_resource">关闭</a>
+                                 {else}
+                                    <a href="javascript:;" name="open_resource">展开</a>
+                                {/if}
+                                </div>
+                                 </dt>
+                                    <dd class="uCt">
+                            	       <i class="icon-arrL"></i>
+                                         <ul class="lst">
+                                            {loop $value['child'] $key $v}
+                                                <li class="item clearfix" style="Z-INDEX:<!--{eval echo count($value['child'])-$key}-->">
+                                                    <div node_id={$v['id']} name="study_resource_list" class="func f-fr u-r">
+                                                    {if isset($v['study_resource'])}
+                                                      {$v['study_resource']}
+                                                    {else}
+                                                     无学习资源
+                                                    {/if}
+                                                  </div>
+                                                   <i class=""></i>
+                                                   {if isset($v['url'])}
+                                                    <a target="_blank" href="{$v['url']}">
+                                            <strong class="f-fs16 f-ib f-vam">{$v['node_title']}</strong>
+                                                    </a>
+                                                   {else}
+                                                    <a href='javascript:;'><strong class="f-fs16 f-ib f-vam">{$v['node_title']}</strong>
+                                                    </a>
+                                                   {/if}
+                                                </li>
+                                             {/loop}
+                                        </ul>
+                                     </dd>
+                                  </dl>
+                                 </div>
+                                 {else}
+                                    <div class="m-learningUnit" style="Z-INDEX:<!--{eval echo $node_count-$key}-->">
+                                   <i class="icon-numberBg"><!--{eval echo $key+=1}--></i>
+                              <dl class="m-LUcell">
+                                   <dt class="uTtSingle clearfix">
+                                <i class="icon-arrLs"></i>
+                                <div class="func f-fr" node_id={$value['id']} name="study_resource_list">
+                                    {if isset($value['study_resource'])}
+                                      {$value['study_resource']}
+                                    {else}
+                                     无学习资源
+                                    {/if}
+                                </div>
+                                  <i class=""></i>
+                                  {if isset($value['url'])}
+                                    <a href="{$value['url']}" target="_blank">
+                                     <strong class="f-fs16 f-ib f-vam">{$value['node_title']}</strong>
+                                    </a>
+                                  {else}
+                                     <a href="javascript:;">
+                                     <strong class="f-fs16 f-ib f-vam">{$value['node_title']}</strong>
+                                    </a>
+                                  {/if}
+                                </dt>
+                             </dl>
+                             </div> 
+                           {/if}
+                    {/loop}   
+                

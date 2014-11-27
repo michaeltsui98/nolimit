@@ -1,0 +1,53 @@
+                 <!--知识结构-->
+                    <div class="m-sct">
+                        {if empty($start)}
+                            <div class="m-tips f-mb10 clearfix">
+                            <div class="tipsL s-fcBlue f-fl">显示你在线学习的历史轨迹和课程知识掌握情况</div>
+                            <div class="tipsR s-fcGBlue f-fr"><label class="f-vam">我知道了 |</label>
+                              <a href="javascript:;" title=""  name="packDown" class="u-closeBtn">
+                              </a>
+                            </div>
+                        </div>
+                        {/if}
+                      
+                        {if !empty($node)}
+                         {loop $node  $key $value}
+                              <div class="unit f-mb5">
+                                {if isset($value['child'])}
+                            <div class="ttU clearfix">
+                              <strong class="f-fl f-fs16">
+                                {$value['node_title']}
+                              </strong>
+                                   {if empty($start) && empty($key)}
+                                         <a href="javascript:;" title="收起"  name="packUp" class="f-fr u-puBtn"></a>
+                                   {else}
+                                        <a href="javascript:;" title="收起"  name="packUp" class="f-fr u-ufBtn"></a>
+                                   {/if}
+                                 </div>
+                                
+                                  {if empty($start) && empty($key)}
+                                     <div class="lst s-fcGray">
+                                  {else}
+                                    <div class="lst s-fcGray" style="display:none;">
+                                  {/if} 
+                                   {loop $value['child']  $k $v}
+                                  <ul class="item clearfix">
+                                    <li class="name width380 f-fs16 f-fl">{$v['node_title']}</li>
+                                    <li class="rate f-fl"><i class="icon-rate{$v['pic']}"></i></li>
+                                    <li class="state f-fs14 f-fr">{$v['descript']}</li>
+                                </ul>
+                                   {/loop}
+                                 </div>
+                            {else}
+                            <div class="ttU clearfix">
+                              <strong class="f-fl f-fs16">{$value['node_title']}</strong>
+                               <div class="f-fr txt">{$value['descript']}</div>
+                              <div class="stu-progress">
+                                <i class="icon-rate{$value['pic']}"></i>
+                              </div>
+                              </div> 
+                                {/if}
+                        </div>
+                         {/loop}
+                        {/if}
+                    </div>

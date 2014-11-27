@@ -1,0 +1,22 @@
+<!--{loop $data['rows'] $key $value}-->
+	<!--{eval $data['rows'][$key]['trindex']=$key+1;}-->
+
+	<!--{if $value['is_ok']==1 }-->
+		<!--{eval $data['rows'][$key]['is_ok']="<a href=\"javascript:;\" onclick=\"javascript:ui_ajax('{$isOkUrl}?cate_id={$value['cate_id']}&ok=0',this);\"><span class=\"icon-table icon-isok\"></span>正常</a>";}-->
+	<!--{else}-->
+		<!--{eval $data['rows'][$key]['is_ok']="<a href=\"javascript:;\" onclick=\"javascript:ui_ajax('{$isOkUrl}?cate_id={$value['cate_id']}&ok=1',this);\"><span class=\"icon-table icon-isjz\"></span>禁用</a>";}-->
+	<!--{/if}-->
+<!--{eval $data['rows'][$key]['id']= $value['cate_id']}-->
+<!--{eval $data['rows'][$key]['text']= $value['name']}-->
+<!--{eval $data['rows'][$key]['cate_order']="<a href=\"javascript:;\" onclick=\"javascript:ui_order('{$orderUrl}?cate_id={$value['cate_id']}&type=up',this);\"><span class=\"icon-table icon-up\"></span>升</a>";}-->
+<!--{eval $data['rows'][$key]['cate_order'].=" <a href=\"javascript:;\" onclick=\"javascript:ui_order('{$orderUrl}?cate_id={$value['cate_id']}&type=down',this);\"><span class=\"icon-table icon-down\"></span>降</a>";}-->
+
+<!--{eval $data['rows'][$key]['cz']="<a href=\"javascript:;\"  onclick=\"javascript:ui_dialog('{$editUrl}?cate_id={$value['cate_id']}',this);\"><span class=\"icon-table icon-isedit\"></span>修改</a>";}-->
+ 
+<!--{eval $data['rows'][$key]['cz'].=" <a href=\"javascript:;\"  onclick=\"javascript:ui_qr('{$delUrl}?cate_id={$value['cate_id']}',this);\"><span class=\"icon-table icon-isdel\"></span>删除</a>";}-->
+ 
+	
+	
+<!--{/loop}-->
+ 
+<!--{eval echo json_encode($data)}-->

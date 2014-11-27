@@ -1,0 +1,70 @@
+<style type="text/css">
+    html,body{height:100%}
+    #documentViewer h1 {
+        font-size: 36px;
+    }
+    #documentViewer p {
+        font-size: 18px;
+    }
+</style>
+<!-- 此处获取浏览器窗口高度后，在设定，否则为ie下为固定高度700px  chrome 100%-->
+<div class="g-bd1 clearfix" style="height:;">
+    <div class="g-sd1">
+        <ul class="m-lessonList">
+        <!--{eval $i = 1;}-->
+        <!--{eval $current_resource = NULL;}-->
+        <!--{loop $resource_list $resource}-->
+            <!--{if intval($resource['id']) === $resource_id}-->
+            <!--{eval $current = 'cur';}-->
+            <!--{eval $current_resource = $resource;}-->
+            <!--{else}-->
+            <!--{eval $current = '';}-->
+            <!--{/if}-->
+            <li class="l-item {$current}" detail_id="{$resource['id']}" resource_id="{$resource['resource_id']}">
+                <div class="itemWarp">
+                    <strong><!--{eval echo $i++;}--></strong>
+                    <!--{if ($resource['resource_id'] != 0)}-->
+                    <img src="{HTTP_MFS_WENKU}{$resource['resource_preview']}"  width="190px" height="120px"/>
+                    <!--{else}-->
+                    <img src="{STATIC_PATH}/Modules/{$ucxk}/static/images/img-txt-cover.gif"  width="190px" height="120px"/>
+                    <!--{/if}-->
+                    <span>文本</span>
+                </div>
+            </li>
+        <!--{/loop}-->
+        </ul>
+    </div>
+    <div class="g-mn1">
+        <div class="g-mn1c">
+            <div class="preview-bd">
+                <div class="bd-l">
+                    <img class="btn-arrow" src="{STATIC_PATH}/Modules/{$ucxk}/static/images/arrow-left.png" alt="" border="0"/>
+                </div>
+                <div class="bd-t clearfix">
+                    <h2 class="f-fl"><strong>课程夹预览：</strong>
+                    <!--{eval $chapter_info = Models_Resource::init()->getUnitTitleById($folder_info['chapter'])}-->
+                	{$chapter_info['data']}
+                    <!--{eval $node_info = Models_Resource::init()->getUnitTitleById($folder_info['node'])}-->
+                    <!--{if isset($node_info['data']) AND $node_info['data']}-->
+                    >
+                    {$node_info['data']}
+                    <!--{/if}-->
+                    <!--{if $current_resource}-->
+                    >
+                    {$current_resource['title']}
+                    <!--{/if}-->
+                    </h2>
+                    <!-- <span class="f-fr"><a href="" class="btnClose"></a></span> -->
+                </div>
+                <div class="bd-con">
+                    <div class="iframe-w" id="documentViewer">
+                    </div>
+                </div>
+
+                <div class="bd-r">
+                    <img class="btn-arrow" src="{STATIC_PATH}/Modules/{$ucxk}/static/images/arrow-right.png" alt="" border="0"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

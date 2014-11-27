@@ -1,0 +1,88 @@
+ <div class="g-bd">
+<!--         <div class="m-unloginBanner s-bsdStyle1">
+            <img src="images/class-ready-dev.png" alt="" width="1000px;"/>
+        </div> -->
+
+        <div class="m-banner s-bsdStyle1">
+            <ul>
+               <li><img src="{STATIC_PATH}/Modules/{$ucxk}/static/images/role-center-bg.jpg" width="1000">
+                    <div>
+                       <h2>登录</h2>
+                       <span>管理学习课程，了解学习记录</span>
+                   </div>
+                   <a onclick="loginDialog();" href="javascript:;">立即登录</a>
+               </li>
+            </ul>
+        </div>
+
+    <div class="m-logoutlist">
+    <div class="m-recC m-logout-course s-bsdStyle1 f-fl">
+    <div class="tt clearfix">
+    <h2 class="s-fcGray f-fs18 f-fl">学习课程包</h2>
+    <!-- <a href="" title="" target="_self" class="f-fr">更多</a> -->
+  </div>
+  <div class="ct">
+    <dl>
+      <dd class="info clearfix">
+        {if !empty($recommend_study_resource)}
+          <ul>
+            {loop $recommend_study_resource $v}
+          <li class="clearfix">
+            <a href="{DODOJC}/{$xk}/Study/learin/{$v['study_resource_id']}" target="_blank" class="f-fl" title ="{$v['study_resource_title']}">{$v['study_resource_title']}</a> 
+            <em class="f-fr">{date('Y-m',$v['time'])}</em>
+          </li>
+            {/loop}
+        </ul>
+        {/if}
+       
+      </dd>
+    </dl>
+  </div>
+</div>
+
+ <div class="m-recC m-logout-course s-bsdStyle1 f-fl" style="margin-left:17px;">
+  <div class="tt clearfix">
+    <h2 class="s-fcGray f-fs18 f-fl">评测活动</h2>
+    <!-- <a href="" title="" target="_self" class="f-fr">更多</a> -->
+  </div>
+  <div class="ct">
+    <dl>
+      <dd class="info clearfix">
+        {if !empty($recommend_evaluate)}
+           <ul>
+            {loop $recommend_evaluate $v}
+               <li class="clearfix">
+            <a href="{$request_url}?id={$v['evaluate_id']}" target="_blank" class="f-fl" title = "{$v['evaluate_title']}">{$v['evaluate_title']}</a> <em class="f-fr">{date('Y-m',$v['time'])}</em>
+          </li>
+            {/loop}
+        </ul>
+        {/if}
+      </dd>
+    </dl>
+  </div>
+</div>
+   
+  <div class="m-recC m-logout-course s-bsdStyle1 f-fr">
+  <div class="tt clearfix">
+    <h2 class="s-fcGray f-fs18 f-fl">推荐问答</h2>
+    <!-- <a href="{DODOJC}/{$xk}/question" title="" target="_self" class="f-fr">更多</a> -->
+  </div>
+  <div class="ct">
+    <dl>
+      <dd class="info clearfix">
+        {if !empty($recommend_question)}
+         <ul>
+          {loop $recommend_question $v}
+             <li class="clearfix">
+            <a href="{DODOJC}/{$xk}/question" target="_blank" class="f-fl" title = "{$v['FAQ_title']}">{$v['FAQ_title']}</a> <em class="f-fr">{date('Y-m',$v['ask_date'])}</em>
+          </li>
+          {/loop}
+        </ul>
+        {/if}
+      </dd>
+    </dl>
+  </div>
+</div>
+</div>
+    <div class="f-cb"></div>
+  </div>

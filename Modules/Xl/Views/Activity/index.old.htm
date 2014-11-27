@@ -1,0 +1,77 @@
+<h4>{$title}呵呵呵呵呵</h4>
+<div>头部最近活动
+    <table border="1" cellspacing="0">
+        {loop $later_five_activities_list  $key  $val}
+                <tr>
+                    <td><!--{$val['activity_info_id']}--></td>
+                    <td><!--{$val['activity_info_title']}--></td>
+                    <td><!--{$val['activity_info_host']}--></td>
+                    <td><!--{$val['activity_info_start_date']}--></td>
+                </tr>
+        {/loop}
+    </table>
+</div>
+<div>
+    中间最新活动（版本;学段;更多）<br/>
+    版本：<a href="<!--{$activity_index_url}-->?current_publisher=all&current_phase=<!--{$current_phase}-->" target="_self">全部</a> | <a href="<!--{$activity_index_url}-->?current_publisher=v11&current_phase=<!--{$current_phase}-->" target="_self" >鄂科版</a> | <a href="<!--{$activity_index_url}-->?current_publisher=v01&current_phase=<!--{$current_phase}-->" target="_self" >人教版</a> |  <a href="<!--{$activity_index_url}-->?current_publisher=v02&current_phase=<!--{$current_phase}-->" target="_self" >鄂教版</a>
+    <br/>
+    学段：<a href="<!--{$activity_index_url}-->?current_publisher=<!--{$current_publisher}-->&current_phase=all" target="_self">全部</a> | <a href="<!--{$activity_index_url}-->?current_publisher=<!--{$current_publisher}-->&current_phase=xd001" target="_self" >小学</a> |  <a href="<!--{$activity_index_url}-->?current_publisher=<!--{$current_publisher}-->&current_phase=xd002" target="_self" >初中</a> |  <a href="<!--{$activity_index_url}-->?current_publisher=<!--{$current_publisher}-->&current_phase=xd003" target="_self" >高中</a>
+    <table border="1" cellspacing="0">
+        {loop $index_latest_eight_activities_list  $key  $val}
+        <tr>
+            <td><!--{$val['activity_info_id']}--></td>
+            <td><!--{$val['activity_info_title']}--></td>
+            <td><!--{$val['activity_info_host']}--></td>
+            <td><!--{$val['activity_info_start_date']}--></td>
+        </tr>
+        {/loop}
+    </table>
+</div>
+
+<div>
+    中下教研小站：取8到12个，不AJAX<br/>
+    <table border="1" cellspacing="0">
+        {loop $activity_sites_list  $key  $val}
+        <tr>
+            <td><!--{$val['site_id']}--></td>
+            <td><!--{$val['site_name']}--></td>
+            <td><!--{$val['site_logo']}--></td>
+            <td><!--{$val['site_describe']}--></td>
+            <td><!--{$val['site_join']}--></td>
+        </tr>
+        {/loop}
+    </table>
+</div>
+
+<div>
+    中下教研资讯：取10个<br/>
+    <table border="1" cellspacing="0">
+        {loop $activity_news_list  $key  $val}
+        <tr>
+            <td><!--{$val['blog_id']}--></td>
+            <td><!--{$val['blog_title']}--></td>
+            <td><!--{$val['url']}--></td>
+        </tr>
+        {/loop}
+    </table>
+</div>
+
+
+
+<div>
+    底部研训达人：取12到20人，不AJAX<br/>
+    <table border="1" cellspacing="0">
+        {loop $hot_teacher_list  $key  $val}
+        <tr>
+            <td><!--{$val['activity_member_uid']}--></td>
+            <td><!--{$val['activity_member_real_name']}--></td>
+            <td><!--{$val['activity_member_icon']}--></td>
+        </tr>
+        {/loop}
+    </table>
+
+</div>
+
+
+ 
+ 

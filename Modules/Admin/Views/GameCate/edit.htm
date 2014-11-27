@@ -1,0 +1,40 @@
+<form action="<!--{$editDoUrl}-->" method="post" id="edit_cate_form" name="edit_cate_form" class="ui-form">
+	 
+		<input type="hidden" id="cate_id" name="cate_id" value="<!--{$data['cate_id']}-->"  />
+		
+	    <div class="form_row">
+                <label><span class="ui-form-required">*</span>分类名称：</label>
+                <input type="text" class="form_input_200"  id="name" name="data[name]" value="{$data['name']}" placeholder="分类名称"   datatype="*" />
+				<div class="info"><span class="ui-form-other"></span></div>
+            </div>
+            
+            <div class="form_row">
+                <label><span class="ui-form-required"></span>排序：</label>
+				<input type="text" class="form_input_200" name="data[cate_order]" id="cate_order" value="{$data['cate_order']}" style="width:200px;"/>
+				<div class="info"><span class="ui-form-other"></span></div>
+            </div>
+
+            <div class="form_row">
+                <label>状态：</label>
+                <input class="ui-radio" type="radio" name="data[is_ok]" id="is_ok" value="1"  datatype="*" />正常 
+		 		<input class="ui-radio" type="radio" name="data[is_ok]" id="is_ok" value="0"  />禁用
+				<div class="info"><span class="ui-form-other"></span></div>
+            </div>
+	 
+ 
+
+		<div class="ui-form-item">
+		        <input type="submit" id="btn_submit" value="保存"/>
+		</div> 
+</form>
+
+
+<script type="text/javascript">
+	$(function(){
+		syform_val('edit_cate_form');
+        SetValue(edit_cate_form["data[is_ok]"],"<!--{$data['is_ok']}-->");
+	});
+</script>
+ 
+
+  

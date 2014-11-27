@@ -1,0 +1,105 @@
+<link rel="stylesheet" type="text/css" href="{STATIC_PATH}/static/css/lhgcalendar.css">
+<!--内容&底部-->
+<div class="g-wrap">
+    <div class="g-bd">
+        <!-- 导航 -->
+        <div class="m-nav clearfix f-mb10">
+            <div class="m-breakNav f-fl">
+                <i class="icon_tc1"></i>
+                <span>当前位置</span>：<a href="<!--{$teacher_info_url}-->" target="_self">教师</a>&nbsp;&gt;&nbsp;<a href="<!--{$activity_list_more_url}-->" target="_self">研训
+            </a>&nbsp;&gt;&nbsp;我的研训
+            </div>
+        </div>
+        <div class="g-sd f-fl">
+            <div class="m-ulWrap s-bsdStyle1 f-mb10">
+                <div class="m-ui clearfix">
+                    <div class="uf f-fl"><a href="<!--{$user_info['user_dodo_space_url']}-->" title="" target="_blank"><img src="<!--{$user_info['user_avatar_160']}-->" width="72"></a></div>
+                    <ul class="uilst f-fr">
+                        <li class="item"><a href="<!--{$user_info['user_dodo_space_url']}-->" title="" target="_blank"><strong class="f-fs14 f-vam f-mr10"><!--{$user_info['user_realname']}--></strong></a><i class="icon-level" title="目前等级<!--{$user_info['user_level']}-->级"><i class="num<!--{$user_info['user_level']}-->"></i></i></li>
+                        <!--<li class="item"><a href="" title="" target="" class="a-thil">博盛教育班</a></li>-->
+                        <li class="item"><a href="<!--{$user_info['user_dodo_school_url']}-->" title="" target="_blank" class="a-thil"><strong><!--{$user_info['user_dodo_school_name']}--></strong></a></li>
+                    </ul>
+                </div>
+                <ul class="m-ullst s-fcGray">
+                    <li class="item">参加了<strong><!--{$teacher_total_activity_times}-->次</strong>课程研修，上传<strong><!--{$upload_resource_total}-->个</strong>资源 </li>
+                    <li class="item">已经备课<strong><!--{$lesson_folder_total}-->个</strong>（备课夹）</li>
+                    <li class="item">本周在我的课程表中有<strong><!--{$weekly_lesson_total}-->节</strong>课</li>
+                </ul>
+            </div>
+        </div>
+        <div class="g-mn f-fr">
+            <!-- 研修统计 -->
+            <div class="m-selfStudyCount s-bsdStyle1">
+                <div class="tt clearfix">
+                    <h3 class="f-fl f-fs18">研训情况统计</h3>
+                </div>
+                <div class="ct clearfix">
+                    <dl class="data f-fl">
+                        <dt><!--{$teacher_total_activity_times}--></dt>
+                        <dd>研训次数</dd>
+                    </dl>
+                    <dl class="canvasWarp f-fl f-ml20">
+                        <canvas id="canvas_type" width="240" height="124" style="width: 240px; height: 124px;">
+                            <input type="hidden" name="canvas_type_value" value='<!--{$teacher_total_activity_type}-->' />
+                            <div id="flashWarp_type" class="flashWarp">
+                                请插入图标控件...
+                            </div>
+                        </canvas>
+                        <dd>研训类别</dd>
+                    </dl>
+                    <dl class="canvasWarp f-fl f-ml20">
+                        <canvas id="canvas_class" width="240" height="124" style="width: 240px; height: 124px;">
+                            <input type="hidden" name="canvas_class_value" value='<!--{$teacher_total_activity_class}-->' />
+                            <div id="flashWarp_class" class="flashWarp">
+                                请插入图标控件...
+                            </div>
+                        </canvas>
+                        <dd>研训形式</dd>
+                    </dl>
+                </div>
+            </div>
+            <!-- 研修轨迹 -->
+            <div class="m-selfStudyHistory f-mt10 s-bsdStyle2">
+                <div class="tt clearfix">
+                    <h3 class="f-fl f-fs18">我的研训轨迹</h3>
+                    <input type="hidden" name="ajax_teacher_activity_list_url" value="<!--{$ajax_teacher_activity_list_url}-->" />
+                    <input type="hidden" name="ajax_post_experience_blog" value="<!--{$post_activity_experience_url}-->"  />
+                </div>
+                <div class="ct">
+                    <div class="tableSection">
+                        时间：
+                        <!-- 此处示例 看社区的通用日历控件是否可以使用 -->
+                        <input id="start_time" type="text" readonly="readonly" value="" name="start_time">
+                        ~
+                        <input id="end_time" type="text" readonly="readonly" value="" name="end_time">
+                        <!--内容：-->
+                        <!-- 此处示例 看社区的通用日历控件是否可以使用 -->
+                        <a href="javascript:;" id="search_activity"  class="customBtnSmall colourDarkBlue">搜索</a>
+                    </div>
+                    <div class="tableWarp">
+                        <table class="tableSet" id="tableTest">
+                            <thead>
+                            <tr>
+                                <th style="width:15%" class="order">开始时间<i class="icon-tableDown"></i></th>
+                                <th style="width:65%" class="order">研训主题</th>
+                                <th style="width:20%" class="order">研训心得</th>
+                            </tr>
+                            </thead>
+                            <!-- 表头可选 -->
+                            <tbody>
+                            </tbody>
+                        </table>
+                        <div class="ft">
+                            <div class="page"><div id="pageNum"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="f-cb"></div>
+    </div>
+</div>
+
+
+ 
+ 

@@ -1,0 +1,57 @@
+
+<div class="bd">
+    <div class="vsWrap">
+        <ul class="vsTt clearfix">
+            <li class="Lessons f-fl">课节/起始时间</li>
+            <li class="everyday f-fs16 f-fl">周一<span class="s-fcLGray f-ml5">(<!--{eval echo date('m-d',strtotime($date[1]));}-->)</span></li>
+            <li class="everyday f-fs16 f-fl">周二<span class="s-fcLGray f-ml5">(<!--{eval echo date('m-d',strtotime($date[2]));}-->)</span></li>
+            <li class="everyday f-fs16 f-fl">周三<span class="s-fcLGray f-ml5">(<!--{eval echo date('m-d',strtotime($date[3]));}-->)</span></li>
+            <li class="everyday f-fs16 f-fl">周四<span class="s-fcLGray f-ml5">(<!--{eval echo date('m-d',strtotime($date[4]));}-->)</span></li>
+            <li class="everyday f-fs16 f-fl">周五<span class="s-fcLGray f-ml5">(<!--{eval echo date('m-d',strtotime($date[5]));}-->)</span></li>
+        </ul>
+
+        <!--{loop $course $key $value}-->
+
+        <ul class="vsItem clearfix">
+            <li class="Lessons f-fl f-tac"><strong class="f-fs20">第{$key}节</strong></li>
+            <!--{loop $value $s_key $s_value}-->
+            <!--{eval $liStyle= (date('Y-m-d')>$date[$s_key])?"z-overdue":"";}-->
+            <!--{eval $currentStyle= (date('Y-m-d')==$date[$s_key])?"lesson-bg-today":"";}-->
+             <li class="item1 {$liStyle} {$currentStyle} f-fl" data-date="{$date[$s_key]}" data-sort="{$key}">
+                <!--{eval if (!empty($s_value)):}-->
+                <div class="status-ico">
+                    <span class="iconWrap f-ib f-mr10 z-finish lessonfolder" title="课程评价">
+                        <!--{eval if($s_value['course_appraise_status']): }-->
+                        <i class="icon-tickOff"></i>
+                        <!--{eval endif;}-->
+                        <i class="icon-lessonfolder"></i>
+                    </span>
+                    <span class="iconWrap f-ib f-mr10 z-finish courseDes" title="课程问答">
+                        <!--{eval if($s_value['course_question_status']): }-->
+                        <i class="icon-tickOff"></i>
+                        <!--{eval endif;}-->
+                        <i class="icon-courseDes"></i>
+                    </span>
+                    <span class="iconWrap f-ib f-mr10 z-finish prepareLessons" title="备课夹">
+                        <!--{eval if($s_value['course_lesson_folder_status']): }-->
+                        <i class="icon-tickOff"></i>
+                        <!--{eval endif;}-->
+                        <i class="icon-prepareLessons"></i>
+                    </span>
+                </div>
+                <dl class="classItem s-fcWhite s-bgcPurple">
+                    <dt class="name f-fs14">{$s_value['class_name']}</dt>
+                    <dt class="name f-fs14"><a href="/{$xk}/course/courseDetail?course_id={$s_value['id']}" target="_blank" >详情</a></dt>
+                </dl>
+                <!--{eval else:}-->
+                <dl class="classItem blankDl">
+                    <dt class="name f-fs14 "></dt>
+                    <dt class="name f-fs14"></dt>
+                </dl>
+                <!--{eval endif;}-->
+            </li>
+            <!--{/loop}-->
+        </ul>
+        <!--{/loop}-->
+    </div>
+</div>

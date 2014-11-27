@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>我的附件</title>
+</head>
+<body>
+<ul>
+<!--{loop $list['rows'] $file}-->
+	<li>
+		<a href="/Attachment/view?file_path={$file['file_path']}">{$file['file_name']}</a>
+		<a href="/Attachment/download?file_path={$file['file_path']}&file_name={$file['file_name']}">下载</a>
+		<a href="/Attachment/delete/id/{$file['id']}">删除</a>
+	</li>
+<!--{/loop}-->
+</ul>
+<!--{eval echo $this->page->html();}-->
+</body>
+</html>

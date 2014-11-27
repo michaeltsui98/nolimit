@@ -1,0 +1,4 @@
+<!--{loop $this->editionList $item}-->
+<!--{eval $selected=($item['code'] == $currentEdition)?'class="selected"':'';}-->
+    <li><a href="javascript:;" data-id="{$item['id']}" data-edition="{$item['code']}" {$selected}>{$item['name']}</a></li>
+<!--{/loop}-->

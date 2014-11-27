@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>全局-问答-主页</title>
+<link href="css/reset.css" rel="stylesheet" type="text/css" />
+<link href="css/public.css" rel="stylesheet" type="text/css" />
+<link href="css/component.css" rel="stylesheet" type="text/css" />
+<link href="css/tec-layout.css" rel="stylesheet" type="text/css" />
+<script src="script/common/jquery-1.6.min.js"></script>
+<script src="script/common/common.js"></script>
+<script src="script/common/pinyinEngine.js"></script>
+<script src="script/common/search.js"></script>
+</head>
+<body>
+<!--通用顶部-->
+<div class="g-hd">
+<!--hd info-->
+	<div class="g-hdt">
+    	<div class="g-hdc f-fs14">
+        	<div class="m-hdl f-fl"><a href="" title="" target="_blank" class="a-LGrayl f-fl"><i class="icon-home"></i>首页</a><a href="" title="" target="_blank" class="a-LGrayl f-fl">意见反馈</a>
+            	<div class="m-schBox f-fl">
+                    <div class="customForm_searchTxtInput customForm_searchStyle1 customForm_searchInputBoxGetFocus">
+                        <form action="/Search" method="get">
+                        <input name="keyword" id="search" type="text" class="txtInput f-fl" data-default="输入关键字搜索" value="输入关键字搜索" />
+                    <div class="customDropdownWrap customDropdownStyle2 f-fl">
+                        <span class="dropdown_currentValue"><span class="dropdownTxt">博客</span><i class="icon_downArrStyle2"></i></span>
+                        <div class="dropdownItem width90"  style="visibility:hidden;">
+                            <ul class="dropdownItemUl f-fs12 width100">
+                                <li class="dropdownCell"><a href="#" title="" class="f-db curDefault customDropdown_selectedValue">博客</a></li>
+                                <li class="dropdownCell"><a href="#" title="" class="f-db curDefault">图片</a></li>
+                                <li class="dropdownCell"><a href="#" title="" class="f-db curDefault">小站</a></li>
+                                <li class="dropdownCell"><a href="#" title="" class="f-db curDefault">应用</a></li>
+                                <li class="dropdownCell"><a href="#" title="" class="f-db curDefault">话题</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <label class="f-fl searchBtn"><input name="" type="submit" value="" class="icon_magnifier" /></label>
+                        <ul class="associateWrap width154" id="suggest-search" style="display:none;"></ul></form></div>
+                    <!--<ul class="associateWrap f-fs12">
+                        <li class="associateCell"><a href="" title="">这是一个词</a></li>
+                        <li class="associateCell"><a href="" title="">这是一段话</a></li>
+                        <li class="associateCell"><a href="" title="">这是一个词</a></li>
+                        <li class="associateCell"><a href="" title="">这是一段话</a></li>
+                        <li class="associateCell"><a href="" title="">这是一个词</a></li>
+                        <li class="associateCell"><a href="" title="">这是一段话</a></li>
+                    </ul>-->
+                </div>
+    			<div class="f-cb"></div>
+            </div>
+            <div class="m-hdr f-fr f-tar"><a href="" title="" target="_blank" class="loginBtn f-mr15">登录</a><a href="" title="" target="_blank" class="a-LGrayl">注册多多社区账号</a></div>
+            <div class="f-cb"></div>
+        </div>
+    </div>
+<!--logo&nav-->
+    <div class="g-hdb">
+    	<div class="g-hdc">
+        	<h1 class="m-logo f-fl"><a href="" title="心理健康教育" target="_blank" class="u-logo">心理健康教育</a></h1>
+            <div class="m-nav f-tar f-fs14 f-fr">
+                <a href="" title="教师中心" target="" class="item">
+                    <i class="icon-learnC"></i>
+                    <span class="txt">教师中心</span>
+                </a><a href="" title="资源" target="" class="item">
+                    <i class="icon-resource"></i>
+                    <span class="txt">资源</span>
+                </a><a href="" title="研修" target="" class="item">
+                    <i class="icon-tecStudy"></i>
+                    <span class="txt">研修</span>
+                </a><a href="" title="备课" target="" class="item">
+                    <i class="icon-lessonPrepare"></i>
+                    <span class="txt">备课</span>
+                </a><a href="" title="课堂" target="" class="item">
+                    <i class="icon-lessonLecture"></i>
+                    <span class="txt">课堂</span>
+                </a><a href="" title="问答" target="" class="item z-crt">
+                    <i class="icon-FAQs"></i>
+                    <span class="txt">问答</span>
+                </a><a href="" title="资讯" target="" class="item">
+                    <i class="icon-news"></i>
+                    <span class="txt">资讯</span>
+                </a>
+            </div>
+            <div class="f-cb"></div>
+        </div>
+    </div>
+</div>
+<!--内容&底部-->
+<div class="g-wrap">
+    <div class="g-bd">
+        
+    </div>
+    <div class="g-ft">
+        <div class="g-ftc">
+            主管：湖北省教育厅　主办：长江出版传媒股份有限公司 湖北省教育信息化发展中心　承办：湖北博盛数字教育服务有限公司<br>服务邮箱：services@dodoedu.com 客服热线：400-8866-561 鄂ICP备13014028号-1
+        </div>
+    </div>
+</div>
+<!-- 弹框加载 -->
+<div class="m-upload width600" style="display: block; top: 200px; left: 500px;">
+    <h5 class="hd">
+        <a class="icon-close f-fr upload-close" href="javascript:;" title="关闭"></a> <strong>我要提问</strong>
+    </h5>
+
+    <div class="m-addQuetions f-mt10 f-mb10">
+        <div class="ct">
+            <textarea name="" id="" cols="116" rows="10" class="customForm_inputBoxDefault"></textarea>
+            <h3 class="f-mt10">标签：</h3>
+            <div class="selectContact clearfix f-mb20"><div class="recText f-fl f-mr5"><a href="javascript:;" title="" target="" class="item">实验班同学 <em class="del"><em></em></em> </a></div><a href="javascript:;" title="选择学生" class="customBtn colourLightGray">选择学生</a></div>
+        </div>
+
+        <div class="ft clearfix">
+            <span class="f-mr20">
+             <i class="s-fcRed">*</i>
+                选择学段
+                    <select id="province" name="province">
+                        <option value="一年级">
+                        一年级
+                        </option>
+                        <option value="一年级">
+                        一年级
+                        </option>
+                    </select>
+            </span>
+            <span class="f-mr20"><input  type="checkbox" name="" id="" class="checkbox"/>匿名提问</span>  
+            <span><input  type="checkbox" name="" id="" checked="false" class="checkbox"/>问题求助（<em>向老师发送求助信</em>）</span>
+        </div>
+
+    </div>
+
+    <div class="m-ftc">
+        <div class="w-btn">
+            <input type="submit" class="customBtn colourDarkGreen customBtnNormal f-mr10 " value="确定">    
+            <input type="button" class="customBtn colourLightGray customBtnNormal" value="取消">
+        </div>
+    </div>
+</div>
+<div class="pageBg"></div>
+
+<script src="script/xljyHome.js"></script>
+</body>
+</html>

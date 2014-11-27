@@ -1,0 +1,134 @@
+<div id="tab1" class="tabcontent">
+    <div class="form">
+       <form action="<!--{$process_new_activity_url}-->" method="post" id="activity_form" name="activity_form" class="ui-form">
+            <div class="form_row">
+                <label><span class="ui-form-required">*</span>活动标题：</label>
+                <input type="text" class="form_input_200"  id="activity_info_title" name="data[activity_info_title]"  placeholder="活动标题"    datatype="*" />
+                <div class="info"><span class="ui-form-other"></span></div>
+            </div>
+           <div class="form_row">
+               <label>活动图片:</label>
+               <style>
+                   .over{color:red;}
+               </style>
+               <input type="text" value="" name="data[activity_info_icon]" id="activity_info_icon" /> <DIV id="demo2"></DIV><div id="tip2"></div>
+               <script>
+                   new syup({
+                       path: '/static/',
+                       div_id:'demo2',
+                       form_id:'activity_info_icon',
+                       tip_id:'tip2',
+                       up_text: '上传附件',
+                       up_maxsize: 1024*1024*1000,
+//                       upImageFile: 1,//是否文件方式上传
+                       up_image_file: 1,
+                       up_filter: '*.jpg;*.png;*.bmp',
+                       up_url: "<!--{$update_icon_url}-->",//上传保存地址
+                       skin:'http://jc.dodoedu.com/static/syup/skin/green'
+                   }).show();
+               </script>
+               <div class="info"><span class="ui-form-other"></span></div>
+           </div>
+            <div class="form_row">
+                <label><span class="ui-form-required">*</span>活动类别：</label>
+                <select name="data[activity_info_type]" class="form_select_200" id="activity_info_type" datatype="*">
+                    {loop  $activity_type_array   $key  $value}
+                        <option value ="<!--{$key}-->"><!--{$value}--></option>
+                    {/loop}
+                </select>
+                <div class="info"><span class="ui-form-other"></span></div>
+            </div>
+            <div class="form_row">
+                <label><span class="ui-form-required">*</span>活动形式：</label>
+                <select name="data[activity_info_class]" class="form_select_200" id="activity_info_class" datatype="*">
+                    {loop  $activity_class_array   $key  $value}
+                        <option value ="<!--{$key}-->"><!--{$value}--></option>
+                    {/loop}
+                </select>
+                <div class="info"><span class="ui-form-other"></span></div>
+            </div>
+           <div class="form_row">
+               <label>直播链接：</label>
+               <input type="text" class="form_input_200"  id="activity_info_live_url" name="data[activity_info_live_url]"  placeholder="直播链接"    />&nbsp;（互动课堂必填）
+               <div class="info"><span class="ui-form-other"></span></div>
+           </div>
+            <div class="form_row">
+                <label><span class="ui-form-required">*</span>课程同步：</label>
+                <select name="data[activity_info_is_sync]" class="form_select_200" id="activity_info_is_sync" datatype="*">
+                    {loop  $activity_sync_array   $key  $value}
+                    <option value ="<!--{$key}-->"><!--{$value}--></option>
+                    {/loop}
+                </select>
+                <div class="info"><span class="ui-form-other"></span></div>
+            </div>
+           <div class="form_row">
+               <label><span class="ui-form-required">*</span>活动市州：</label>
+               <input class="easyui-combobox"  name="data[activity_info_area]"     style="width: 500px"
+                      data-options="
+                    url:'<!--{$city_url}-->',
+                    method:'get',
+                    valueField:'id',
+                    textField:'text',
+                    multiple:true,
+                    panelHeight:'auto'
+            "/>
+               <div class="info"><span class="ui-form-other"></span></div>
+           </div>
+            <div class="form_row">
+                <label>活动范围：</label>
+                <select name="data[activity_info_phase]" class="form_select_100" id="activity_info_phase" datatype="*">
+                    {loop  $activity_phase_array   $key  $value}
+                    <option value ="<!--{$key}-->"><!--{$value}--></option>
+                    {/loop}
+                </select>
+                <!--<select name="data[activity_info_grade]" class="form_select_100" id="activity_info_grade" datatype="*">-->
+                    <!--{loop  $activity_grade_array   $key  $value}-->
+                    <!--<option value ="&lt;!&ndash;{$key}&ndash;&gt;">&lt;!&ndash;{$value}&ndash;&gt;</option>-->
+                    <!--{/loop}-->
+                <!--</select>-->
+                <select name="data[activity_info_publisher]" class="form_select_100" id="activity_info_publisher" datatype="*">
+                    {loop  $activity_publisher_array   $key  $value}
+                    <option value ="<!--{$key}-->"><!--{$value}--></option>
+                    {/loop}
+                </select>
+                <div class="info"><span class="ui-form-other"></span></div>
+            </div>
+            <div class="form_row">
+                <label><span class="ui-form-required">*</span>开始时间：</label>
+                <input class="easyui-datetimebox"   required   style="width:200px" id="activity_info_start_date" name="data[activity_info_start_date]"   />
+                <div class="info"><span class="ui-form-other"></span></div>
+            </div>
+           <div class="form_row">
+               <label><span class="ui-form-required">*</span>主持人：</label>
+               <input type="text" class="form_input_200"  id="activity_info_host" name="data[activity_info_host]"  placeholder="主持人"    datatype="*" />
+               <div class="info"><span class="ui-form-other"></span></div>
+           </div>
+           <div class="form_row">
+               <label><span class="ui-form-required">*</span>活动简介：</label><br/>
+               <div style="float: left;height:400px;width: 400px">
+                   <!--<script type="text/plain"  id="editor"  style="width:300px;height:300px;"  name="data[activity_info_description]" ></script>-->
+                   <textarea  id="editor"  style="width:300px;height:300px;"  name="data[activity_info_description]" ></textarea>
+               </div>
+               <div class="info"><span class="ui-form-other"></span></div>
+           </div>
+
+            <div class="ui-form-item">
+                <input type="button" id="btn_submit" value="保存"/>
+            </div>
+        </form>
+       <script type="text/javascript">
+                $(function(){
+                    syform_val('activity_form');
+                    SetValue(activity_form["data[activity_info_area]"],"420100");
+                    var editor = new UE.ui.Editor();
+                    editor.render('editor');
+                    $('#btn_submit').unbind().bind('click',function(){
+                        editor.sync();
+                        $('#activity_form').submit();
+                    });
+                });
+        </script>
+    </div>
+</div>
+
+

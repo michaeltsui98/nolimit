@@ -1,0 +1,118 @@
+<!--内容&底部-->
+<script type="text/javascript" src="{STATIC_PATH}/Modules/{$ucxk}/static/script/teacher/tch_index.js" ></script>
+<!--<link href="{STATIC_PATH}/Modules/Xl/static/css/stu-layout.css" rel="stylesheet" type="text/css" />-->
+<div class="g-wrap">
+    <div class="g-bd">
+        <div class="m-nav clearfix f-mb10">
+            <div class="m-breakNav f-fl">
+                <i class="icon_tc1"></i>
+                <span>当前位置</span>：教师中心
+            </div>
+        </div>
+        <div class="g-sd f-fl">
+            <div class="m-ulWrap s-bsdStyle1 f-mb10">
+                <div class="m-ui clearfix">
+                    <div class="uf f-fl"><a href="<!--{$user_info['user_dodo_space_url']}-->" title="" target="_blank"><img src="<!--{$user_info['user_avatar_160']}-->" width="72" /></a></div>
+                    <ul class="uilst f-fr">
+                        <li class="item"><a href="<!--{$user_info['user_dodo_space_url']}-->" title="" target="_blank"><strong class="f-fs14 f-vam f-mr10"><!--{$user_info['user_realname']}--></strong></a><i class="icon-level" title="目前等级<!--{$user_info['user_level']}-->级"><i class="num<!--{$user_info['user_level']}-->"></i></i></li>
+                        <!--<li class="item"><a href="" title="" target="" class="a-thil">博盛教育班</a></li>-->
+                        <li class="item"><a href="<!--{$user_info['user_dodo_school_url']}-->" title="" target="_blank" class="a-thil"><strong><!--{$user_info['user_dodo_school_name']}--></strong></a></li>
+                    </ul>
+                </div>
+                <div class="BVer">
+                    <input type="hidden" name="publisher_json" value='<!--{$publisher_json}-->' />
+                    <input type="hidden" name="publisher_selected_code" value='<!--{$publisher_code}-->' />
+                    <input type="hidden" name="publisher_change_ajax_url" value='<!--{$publisher_change_ajax_url}-->' />
+                    我的教材版本：<strong><!--{$publisher_name}--></strong>『<a href="javascript:;" id='publisher_change'>修改</a>』
+                </div>
+                <ul class="m-ullst s-fcGray">
+                    <li class="item">参加了<strong><!--{$teacher_total_activity_times}-->次</strong>课程研修，上传<strong><!--{$upload_resource_total}-->个</strong>资源 </li>
+                    <li class="item">已经备课<strong><!--{$lesson_folder_total}-->个</strong>（备课夹）</li>
+                    <li class="item">本周在我的课程表中有<strong><!--{$weekly_lesson_total}-->节</strong>课</li>
+                </ul>
+            </div>
+            <div class="m-snavU s-bsdStyle1 f-mb10 clearfix center-sider-resource">
+                <a href="<!--{$my_resource_url}-->" title="我的资源" target="_self" class="item a-Grayl s-bdrcG f-tac f-fl">
+                    <i class="icon-selfResource"></i>
+                    <div class="txt f-tac">我的资源</div>
+                </a>
+                <a href="<!--{$my_activity_url}-->" title="我的研训" target="_self" class="item a-Grayl s-bdrcG f-tac f-fl">
+                    <i class="icon-selfLesssonReady"></i>
+                    <div class="txt f-tac">我的研训</div>
+                </a>
+                <a href="<!--{$my_answer_url}-->" title="我的问答" target="_self" class="item a-Grayl f-tac f-fl">
+                    <i class="icon-FAQsS"></i>
+                    <div class="txt f-tac">我的问答</div>
+                </a>
+            </div>
+            <div class="m-lhis s-bsdStyle1">
+                <div class="tt"><h2 class="s-fcGray f-fs14">课程提醒</h2></div>
+                <div class="ct">
+                    {if empty($lesson_notice_list)}
+                    <dl class="item">
+                        <dt class="stt"><a href="javascript:;" class="a-secl">暂无提醒</a></dt>
+                        <dd class="info s-fcGray clearfix"><div class="f-fl"></div><div class="date f-fr"></div></dd>
+                    </dl>
+                    {else}
+                        {loop $lesson_notice_list $key $val}
+                            {loop $val $key2 $val2}
+                                <dl class="item">
+                                    <!--<dt class="stt"><a href="" title="" target="" class="a-secl">心理健康教育公开课</a></dt>-->
+                                    <dd class="info s-fcGray clearfix">
+                                        <div class="f-fl"><a href="<!--{$lesson_url}?course_id={$val2['id']}-->" target="_blank"><!--{$val2['grade_label']}-->  <!--{$val2['class_name']}--></a></div><div class="date f-fr">本周<!--{$key}-->  第<!--{$key2}-->节</div>
+                                    </dd>
+                                </dl>
+                            {/loop}
+                        {/loop}
+                    {/if}
+
+                </div>
+            </div>
+        </div>
+        <div class="g-mn f-fr">
+            <div class="m-spWrap s-bsdStyle1">
+                <h2 class="tt f-fs18 s-fcGray">快捷面板</h2>
+                <div class="ct">
+                    <div class="m-spLst" id="app_list">
+                        <input type="hidden" name="sys_app_list_url" value="<!--{$sys_app_list_url}-->"  />
+                        <input type="hidden" name="add_app_url" value="<!--{$add_app_url}-->"  />
+                        <input type="hidden" name="del_app_url" value="<!--{$del_app_url}-->"  />
+                        {loop $quick_buttons_list $key $val}
+                            <a href="<!--{$val['button_url']}-->" title="" target="_self" class="item f-tac f-fl">
+                                <i class="icon-<!--{$val['button_icon_class']}-->"></i>
+                                <div class="txt f-tac"><!--{$val['button_name']}--></div>
+                            </a>
+                        {/loop}
+                        {if !empty($my_app_list)}
+                            {loop $my_app_list  $key $val}
+                                {if $val['target'] == 'new'}
+                                    <a href="<!--{eval echo strtr($val['url'],array('{$user_id}'=>$user_id));}-->" title="" target="_blank" class="item f-tac f-fl" app_id="<!--{$val['id']}-->">
+                                {else}
+                                    <a href="<!--{eval echo strtr($val['url'],array('{$user_id}'=>$user_id));}-->" title="" target="_self" class="item f-tac f-fl" app_id="<!--{$val['id']}-->">
+                                {/if}
+                                    <i class="icon-<!--{$val['icon']}-->"></i>
+                                    <div class="txt f-tac"><!--{$val['name']}--></div>
+                                </a>
+                            {/loop}
+                        {/if}
+                        <a href="javascript:;" title="" target="" class="item addSp f-tac f-fl">
+                            <i class="icon-addSp"></i>
+                            <div class="txt f-tac">快捷方式</div>
+                        </a>
+                        <div class="f-cb"></div>
+                    </div>
+                    <div class="m-spLstOpe clearfix">
+                        <div class="tips s-fcLGray f-fl">提示：试着添加更多好玩的应用吧~一键快速访问哦</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="f-cb"></div>
+    </div>
+</div>
+
+
+
+
+ 
+ 

@@ -1,0 +1,58 @@
+<div class="g-bd">
+	<div class="m-nav clearfix">
+            <div class="m-breakNav f-mb10">
+                <i class="icon_tc1"></i>
+                <span>当前位置</span>：<a href="javascript:;">学生 </a>>游戏
+            </div>
+             
+        </div>
+    <div class="g-mn f-fr">
+            <div class="m-newsList s-bsdStyle1 m-playList"> 
+                <div class="ct">
+                	{if $game}
+                    <ul>
+                    	
+	                    	{loop $game $v}
+	                        <li class="u-r">
+	                            <dl>
+	                                <dt>
+	                                <div class="cover"></div>
+	                                   <a href="/{$xk}/game/info/id/{$v['game_id']}" target="_blank"> <img src="{$img_url}{$v['img']}" alt="" width="180" height="140" /></a>
+	                                </dt>
+	                                <dd class="title"><a href="/{$xk}/game/info/id/{$v['game_id']}" target="_blank">{$v['name']}</a></dd>
+									 <dd class="data">评分：<span>{if $v['remark_num']}<!--{eval echo (int)($v['remark']/$v['remark_num'])}-->{else}0{/if}</span>分，<span>{$v['plays']}人</span>玩过</dd>
+                                     <dd class="intro"><strong>简介：</strong>{$v['js']}</dd>
+								 
+	                                 
+	                            </dl>
+	                        </li>
+							 
+							{/loop}
+                    </ul>
+					
+					
+					{else}
+							 
+								暂无游戏 
+							 
+					{/if}
+					{$page_html}
+                    <div class="f-cb"></div>
+                </div>
+            </div>
+        </div>
+        <div class="g-sd f-fl">
+        	<div class="m-sidernav">
+               <ul>
+               	<li><a href="/{$xk}/game" {if !$cate_id} class="sel" {/if}>全部游戏</a></li>
+               	{loop $cate_arr $v}
+					<li><a href="?cate_id={$v['cate_id']}" {if $cate_id == $v['cate_id']} class="sel" {/if}>{$v['name']}</a></li>
+				{/loop}
+               </ul> 
+            </div>  
+        </div>
+
+    	
+        <div class="f-cb"></div>
+    </div>
+	

@@ -1,0 +1,29 @@
+<div id="ajaxpage" class="easyui-panel" style="padding:5px;height:auto" data-options="fit:true">
+    <table id="activityStatistics-dg" title="<!--{$title}-->" class="easyui-datagrid" data-options="rownumbers:true,fit:true,fitColumns:true,singleSelect:true,pagination:false,url:'<!--{$json_acitivty_statistics_url}-->',method:'get',toolbar:'#activityStatistics-tb'">
+    <thead>
+        <tr>
+            <th field='city_name' width='10'>市州</th>
+            <th field='xd001_percent'  width='15'>小学(参与率)</th>
+            <th field='xd001_times'   width='15'>小学(研训次数)</th>
+            <th field="xd002_percent"  width="15">初中(参与率)</th>
+            <th field='xd002_times' width='15'>初中(研训次数)</th>
+            <th field='xd003_percent'  width='15'>高中(参与率)</th>
+            <th field='xd003_times'   width='15'>高中(研训次数)</th>
+        </tr>
+        </thead>
+    </table>
+    <div id="activityStatistics-tb" style="padding:5px;height:auto">
+        <div>
+            从<input class="easyui-datetimebox"   required   style="width:200px" id="start_date" name="start_date"   />&nbsp;
+            到<input class="easyui-datetimebox"   required   style="width:200px" id="end_date" name="end_date"   />&nbsp;
+            <a href="javascript:;" class="easyui-linkbutton" iconCls="icon-search" plain="true" onclick="javascript:searchActivityStatistics();" >搜索</a>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function searchActivityStatistics(){
+        var start_date_val = $("input[name='start_date']").val();
+        var end_date_val = $("input[name='end_date']").val();
+        gridload('activityStatistics',{start_date:start_date_val,end_date:end_date_val});
+    }
+</script>

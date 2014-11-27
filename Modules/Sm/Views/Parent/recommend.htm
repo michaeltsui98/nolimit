@@ -1,0 +1,90 @@
+ <div class="g-bd">
+        <div class="m-banner s-bsdStyle1">
+            <ul>
+               <li><img src="{STATIC_PATH}/Modules/{$ucxk}/static/images/class-ready-dev.png" width="1000">
+                    <div>
+                       <h2>登录</h2>
+                       <span>管理学习课程，了解学习记录</span>
+                   </div>
+                   <a onclick="loginDialog();" href="javascript:;">立即登录</a>
+               </li>
+            </ul>
+        </div>
+
+        <div class="m-logoutlist">
+            <div class="m-recC m-logout-course  s-bsdStyle1 f-fl">
+                    <div class="tt clearfix">
+                        <h2 class="s-fcGray f-fs18 f-fl">学习课程包</h2>
+                        <!-- <a href="" title="" target="" class="f-fr">更多</a> -->
+                    </div>
+                    <div class="ct">
+                        <dl class="item">
+                            <dd class="info clearfix">
+                                 <ul>
+                                    {if !empty($recommend_study_resource)}
+                                        {loop $recommend_study_resource $v}
+                                       <li class="clearfix">
+                                         <span class="f-fl"></span>
+                                        <a href="{DODOJC}/{$xk}/Study/learin/{$v['study_resource_id']}" target="_blank" class="f-fl" title = "{$v['study_resource_title']}">{$v['study_resource_title']}</a>
+                                         <em  class="f-fr">{date('Y-m',$v['time'])}</em>
+                                       </li> 
+                                        {/loop}
+                                    {/if}
+                                 </ul>
+                            </dd>
+                        </dl> 
+                        <div class="f-cb"></div>
+                    </div>
+            </div>
+              <div class="m-recC m-logout-course s-bsdStyle1 f-fl" style="margin-left:17px;">
+                    <div class="tt clearfix">
+                        <h2 class="s-fcGray f-fs18 f-fl">推荐问答</h2>
+                        <!-- <a href="{DODOJC}/{$xk}/question" title="" target="_blank" class="f-fr">更多</a> -->
+                    </div>
+                    <div class="ct">
+                          <dl class="item">
+                            <dd class="info clearfix">
+                                 <ul>
+                                      {if !empty($recommend_question)}
+                                        {loop $recommend_question $v}
+                                        <li class="clearfix">
+                                         <span class="f-fl"></span>
+                                         <a href="{DODOJC}/{$xk}/question" target="_blank" class="f-fl" title = "{$v['FAQ_title']}">{$v['FAQ_title']}</a>
+                                         <em  class="f-fr">{date('Y-m',$v['ask_date'])}</em>
+                                       </li> 
+                                        {/loop}
+                                      {/if}
+                                 </ul>
+                            </dd>
+                        </dl> 
+                    </div>
+                </div>
+              <div class="m-recC m-logout-course s-bsdStyle1 f-fr">
+                    <div class="tt clearfix">
+                        <h2 class="s-fcGray f-fs18 f-fl">资讯</h2>
+                        <!-- <a href="{DODOJC}/{$xk}/info" title="" target="_blank" class="f-fr">更多</a> -->
+                    </div>
+                    <div class="ct">
+                        <dl class="item">
+                            <!-- <dt class="stt f-fs14">
+                                <i class="icon_docx f-mr5" title="word文档"></i>小小同学的《我和小花又成为好朋友了》，被社区设为推荐！
+                           </dt> -->
+                            <dd class="info clearfix">
+                                 <ul>
+                                    {if !empty($blog_list)}
+                                        {loop $blog_list $v}
+                                       <li class="clearfix">
+                                         <span class="f-fl"></span>
+                                        <a href ="{DOMAIN_NAME}/SitePublic/{$site_id}/blog/{$v['class_id']}/article/$v['blog_id']" target="_blank" class="f-fl" title = "{$v['blog_title']}">{$v['blog_title']}</a>
+                                         <em  class="f-fr">{date('Y-m',$val['blog_time'])}</em>
+                                       </li> 
+                                        {/loop}
+                                    {/if}
+                                 </ul>
+                            </dd>
+                        </dl> 
+                    </div>
+            </div>
+            <div class="f-cb"></div>
+        </div>
+    </div>

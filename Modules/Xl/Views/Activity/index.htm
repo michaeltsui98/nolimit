@@ -1,0 +1,241 @@
+<!--内容&底部-->
+<script type="text/javascript" src="{STATIC_PATH}/Modules/{$ucxk}/static/script/activity/act_index.js" ></script>
+<div class="g-wrap">
+<div class="g-bd">
+<div class="m-nav clearfix f-mb10">
+    <div class="m-breakNav f-fl">
+        <i class="icon_tc1"></i>
+        <span>当前位置</span>：<a href="<!--{$teacher_info_url}-->" target="_self">教师</a>&nbsp;&gt;&nbsp;研训
+    </div>
+</div>
+
+<div class="g-mn2 f-fl s-bsdStyle2">
+    <div class="ct" ><a name="container" href="<!--{$activity_info_url}-->?activity_id=<!--{$latest_activity_result['rows'][0]['activity_info_id']}-->" target="_blank" class="activeCover">
+        <img origin-src="<!--{$attachment_base_url}{$latest_activity_result['rows'][0]['activity_info_icon']}-->" src="{STATIC_PATH}/static/images/loading_1.gif"  alt=""/>
+    </a></div>
+    <div class="ft">
+        <h3><a href="<!--{$activity_info_url}-->?activity_id=<!--{$latest_activity_result['rows'][0]['activity_info_id']}-->" target="_blank"><i class="icon-best"></i><!--{$latest_activity_result['rows'][0]['activity_info_title']}--></a></h3>
+        <p>
+
+            <div class="f-fl f-fs14 s-fcLGray"><span class="holder">主持人：<!--{$latest_activity_result['rows'][0]['activity_info_host']}--></span><span class="time">时间：{date('Y-m-d H:i:s',$latest_activity_result['rows'][0]['activity_info_start_date'])}</span></div>
+            <div class="f-fr f-fs14 s-fcLGray">已有 <!--{$latest_activity_result['rows'][0]['member_total']}--> 人参加 </div>
+        </p>
+    </div>
+</div>
+<div class="g-sd2 f-fr f-ml10">
+    <div class="m-ulWrap1 s-bsdStyle1" >
+        {if !empty($user_info)}
+            <div class="m-ui clearfix">
+                <div class="uf f-fl f-mr10"><a href="<!--{$teacher_center_url}-->" title="" target="_blank"><img src="<!--{$user_info['icon']}-->" width="72"></a>
+                </div>
+                <ul class="uilst f-fl">
+                    <li class="item f-mb10">
+                        <a href="<!--{$teacher_center_url}-->" title="" target="_blank"><strong class="f-fs16 f-vam f-mr10"><!--{$user_info['user_realname']}--></strong><em class="s-fcBlue">[教师]</em>
+                        </a>
+                        <a href="<!--{$teacher_activity_url}-->" target="_blank" class="uploadNote">as</a>
+                    </li>
+                    <li class="item"><a href="<!--{$teacher_center_url}-->" title="" target="_blank" class="a-thil">参与了<!--{$teacher_total_activity_times}-->次研训活动</a></li>
+                </ul>
+            </div>
+        {else}
+            <div class="m-ui clearfix">
+                <div class="uf f-fl f-mr10"><a href="" title="" target=""><img src="{STATIC_PATH}/Modules/{$ucxk}/static/images/userFace1.jpg" width="72"></a>
+                </div>
+                <ul class="uilst f-fl">
+                    <li class="item f-mb5">
+                        <p class="f-fs16">马上登录，体验更多的功能吧！</p>
+                    </li>
+                    <li class="item f-mb10">
+                        <a href="javascript:;" id="activity_login" class="customBtnSmall colourDarkGreen f-mr10">登录</a><a href="<!--{$dodo_url}-->UserSignUp/signUp" target="_self" class="customBtnSmall colourLOrange f-mr10">注册</a><a href="<!--{$dodo_url}-->UserSignUp/recovery"  target="_self"  class="customBtnSmall">找回密码</a>
+                    </li>
+                </ul>
+            </div>
+        {/if}
+
+        <div class="m-newestActive">
+            <h3 class="clearfix">
+                <div class="f-fl f-fs18">最新预告</div>
+                <div class="f-fr">
+                    <a href="<!--{$activity_calender_url}-->" class="icon-calendar" target="_blank">研训日历</a>
+                    <!-- <a href="javascript:;" class="icon-next1" name="toNextA"></a>
+                    <a href="javascript:;" class="icon-pre1" name="toPreA"></a> -->
+                </div>
+            </h3>
+            <div class="ct" name="showDiv">
+                <ul style="width:350px;top:0px;position: relative;" name="conDiv">
+                    {if !empty($later_five_activities_list)}
+                        {loop $later_five_activities_list $key $val}
+                            {if date('Y-m-d', $val['activity_info_start_date']) == $today_zero_time}
+                                <li class="item" name="cellDiv"><dl class="clearfix"><dt class="activeSateDoing f-fl">进行中</dt><dd class="activeName f-fl"><a href="<!--{$activity_info_url}-->?activity_id=<!--{$val['activity_info_id']}-->" title="" target="_blank" class="a-Grayl"><!--{$val['activity_info_title']}--></a></dd></dl></li>
+                            {else}
+                                <li class="item" name="cellDiv"><dl class="clearfix"><dt class="activeSateDone f-fl">{date('m/d', $val['activity_info_start_date'])}</dt><dd class="activeName f-fl"><a href="<!--{$activity_info_url}-->?activity_id=<!--{$val['activity_info_id']}-->" title="" target="_blank" class="a-Grayl"><!--{$val['activity_info_title']}--></a></dd></dl></li>
+                            {/if}
+                        {/loop}
+                    {/if}
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="f-cb"></div>
+
+<!-- 教师研训 -->
+<div class="m-teachStudy s-bsdStyle2 f-mt10">
+    <div class="tt clearfix f-mb10">
+        <h3 class="f-fl f-fs20">教师研训</h3>
+        <ul class="tab4Menu f-fs18 tt f-fl f-ml10">
+            <input type="hidden" name="ajax_activity_list_url" value="<!--{$ajax_activity_list_url}-->" />
+            <li class="menuCell tabMenuCurrent f-fl" current_phase="all"><a href="javascript:;" title="" class="tabLink">全部</a></li>
+            <li class="menuCell f-fl" current_phase="xd001"><a href="javascript:;" title="" class="tabLink">小学</a></li>
+            <li class="menuCell f-fl" current_phase="xd002"><a href="javascript:;" title="" class="tabLink">初中</a></li>
+            <li class="menuCell f-fl" current_phase="xd003"><a href="javascript:;" title="" class="tabLink">高中</a></li>
+            <li class="f-cb"></li>
+        </ul>
+        <a href="<!--{$activity_list_more_url}-->" target="_self" class="f-fr">更多</a>
+    </div>
+    <div class="ct">
+            {if !empty($index_latest_eight_activities_list)}
+                    <!--{eval $list_total =  count($index_latest_eight_activities_list)}-->
+                    {loop $index_latest_eight_activities_list $key $val}
+                        <!--{eval $i = $key%3;}-->
+                        {if $i ===0}
+                             <div class="row f-mt10">
+                        {/if}
+                        {if $i === 2 OR $key+1 ===  $list_total }
+                                 <div class="teachStudySection clearfix  f-fl">
+                                     <div class="studyCover f-fl f-mr10"  name="container">
+                                         <!--<div class="hotest">最新</div>-->
+                                         <a href="<!--{$activity_info_url}-->?activity_id=<!--{$val['activity_info_id']}-->" target="_blank">
+                                            <img origin-src="<!--{$attachment_base_url}{$val['activity_info_icon']}-->"  src="{STATIC_PATH}/static/images/loading_1.gif" alt="" width="130px" height="80px"/>
+                                         </a>
+                                     </div>
+                                     <ul class="studyDesc f-fl">
+                                         <li class="title"><a href="<!--{$activity_info_url}-->?activity_id=<!--{$val['activity_info_id']}-->" target="_blank"><!--{$val['activity_info_title']}--></a></li>
+                                        <!--{eval $host_array = explode(',',$val['activity_info_host'])}-->
+                                         <li class="jioner"><i class="icon-jioner"></i>
+                                         {loop $host_array $host_key $host_val}
+                                         <!--{$host_val}-->
+                                         {/loop}
+                                         </li>
+                                         <li class="intro"><i class="icon-intro"></i><!--{$type_array[$val['activity_info_type']]}--></li>
+                                         <li class="data"><i class="icon-play"></i>已有<!--{$val['member_total']}-->人参与</li>
+                                     </ul>
+                                     <div class="f-cb"></div>
+                                 </div>
+                                 <div class="f-cb"></div>
+                            </div>
+                        {else}
+                            <div class="teachStudySection clearfix  f-fl f-mr10">
+                                <div class="studyCover f-fl f-mr10" name="container">
+                                    <!--<div class="hotest">最新</div>-->
+                                    <a href="<!--{$activity_info_url}-->?activity_id=<!--{$val['activity_info_id']}-->" target="_blank">
+                                        <img origin-src="<!--{$attachment_base_url}{$val['activity_info_icon']}-->"  src="{STATIC_PATH}/static/images/loading_1.gif" alt="" width="130px" height="80px"/>
+                                    </a>
+                                </div>
+                                <ul class="studyDesc f-fl">
+                                    <li class="title"><a href="<!--{$activity_info_url}-->?activity_id=<!--{$val['activity_info_id']}-->" target="_blank"><!--{$val['activity_info_title']}--></a></li>
+                                    <!--{eval $host_array = explode(',',$val['activity_info_host'])}-->
+                                    <li class="jioner"><i class="icon-jioner"></i>
+                                    {loop $host_array $host_key $host_val}
+                                        <!--{$host_val}-->
+                                    {/loop}
+                                    </li>
+                                    <li class="intro"><i class="icon-intro"></i><!--{$type_array[$val['activity_info_type']]}--></li>
+                                    <li class="data"><i class="icon-play"></i>已有<!--{$val['member_total']}-->人参与</li>
+                                </ul>
+                                <div class="f-cb"></div>
+                            </div>
+                        {/if}
+                    {/loop}
+            {/if}
+    </div>
+</div>
+
+<!-- 教研课题 -->
+<div class="m-studyTopic f-mt10 clearfix">
+    <div class="g-mn2 f-fl s-bsdStyle2">
+        <div class="tt clearfix">
+            <h3 class="f-fl f-fs18">教研课题</h3>
+            <div class="f-fr">
+                <a href="javascript:;" class="icon-next2" name="toNextA"></a>
+                <a href="javascript:;" class="icon-pre2" name="toPreA"></a>
+            </div>
+        </div>
+        <div class="ctL" name="showDiv">
+            <div class="rowWarp" style="top:0px;position: relative;height: 800px;" name="conDiv">
+                {if !empty($activity_sites_list)}
+                    <!--{eval $site_total =  count($activity_sites_list);}-->
+                    {loop $activity_sites_list $key $val}
+                        <!--{eval $j =  $key%2;}-->
+                        {if $j ===0}
+                            <div class="row" name="cellDiv">
+                        {/if}
+                                <div class="teachStudySection f-fl clearfix">
+                                    <a class="cover s-imgA f-fl f-mr10" href="<!--{$dodo_url}-->site/<!--{$val['site_id']}-->"   target="_blank">
+                                        <div><img src="<!--{$val['site_logo']}-->" alt="" width="92px"/></div>
+                                    </a>
+                                    <ul class="desc f-fl">
+                                        <li class="title"><a href="<!--{$dodo_url}-->site/<!--{$val['site_id']}-->" target="_blank"><!--{$val['site_name']}--></a></li>
+                                        <li class="intro"><!--{$val['site_describe']}--></li>
+                                        <li class="data"><em>+<!--{$val['site_join']}-->人</em> 已加入</li>
+                                    </ul>
+                                </div>
+                        {if $j===1 OR $key+1 ===$site_total}
+                                <div class="f-cb"></div>
+                            </div>
+                        {/if}
+                    {/loop}
+                {/if}
+            </div>
+        </div>
+    </div>
+    <div class="g-sd2 f-fr s-bsdStyle2">
+        <div class="tt clearfix">
+            <h3 class="f-fl f-fs18">教研课题</h3>
+        </div>
+        <div class="ctR">
+            <ul class="topicList">
+                {if !empty($activity_news_list)}
+                    {loop $activity_news_list $key $val}
+                        <li><dl class="clearfix"><dt class="f-fr s-fcGrayBlue">{date('Y-m-d',$val['blog_time'])}</dt><dd class="f-fl" style="width: 240px;height: 38px;overflow: hidden;"  title="<!--{$val['blog_title']}-->"><a href="<!--{$dodo_url}--><!--{$val['url']}-->" target="_blank"><!--{$val['blog_title']}--></a></dd></dl></li>
+                    {/loop}
+                {/if}
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- 研修小站 -->
+<div class="m-studySite f-mt10 clearfix">
+    <div class="tt clearfix">
+        <h3 class="f-fl f-fs18"><span>研训达人</span></h3>
+        <div class="f-fr">
+            <a href="javascript:;" class="icon-next3" name="toNextA"></a>
+            <a href="javascript:;" class="icon-pre3" name="toPreA"></a>
+        </div>
+    </div>
+
+    <div class="ct f-mt10" name="showDiv">
+        <div class="row-Warp" style="top:0px;position: relative;height: 174px;" name="conDiv">
+            {if !empty($hot_teacher_list)}
+                <!--{eval $teacher_total =  count($hot_teacher_list);}-->
+                {loop $hot_teacher_list $key $val}
+                                <div name="cellDiv" class="siteItem s-bsdStyle2 f-mr10  clearfix">
+                                    <div class="cover f-mr10 f-fl">
+                                        <img src="<!--{$val['activity_member_icon']}-->" alt="" width="50px"/>
+                                    </div>
+                                    <ul class="desc f-fl">
+                                        <li class="title"><!--{$val['activity_member_school_name']}--></li>
+                                        <li class="desc"><a href="<!--{$dodo_url}--><!--{$val['activity_member_uid']}-->/Space" target="_blank"><!--{$val['activity_member_real_name']}--></a></li>
+                                    </ul>
+                                </div>
+                {/loop}
+            {/if}
+            <div class="f-cb"></div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+</div>

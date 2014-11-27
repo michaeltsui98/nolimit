@@ -1,0 +1,72 @@
+<div class="bd">
+    <div class="wk_classList clearfix">
+    <div class="sidebar width252 f-fl">
+        <div class="wk_classType">
+            <div class="wk_title">
+                <em>[<!--{eval echo Models_Stage::$stage_list[$stage]}-->]</em>
+                <!--{eval echo Models_Subject::$subject_list[$xk_code]}-->
+
+                <input type="hidden" name="hdn_xd" id="hdn_xd" value="{$stage}">
+                <input type="hidden" name="hdn_xk" id="hdn_xk" value="{$xk_code}">
+            </div>
+            <div class="otherChoose">
+                <select name="slt_bb" id="slt_bb" class="f-mb20">
+                    <option value="">请选择</option>
+                    {loop $edition_list  $v}
+                    <option id="{$v['id']}" value ="{$v['code']}" {if $edition == $v['code']} selected="selected" {/if} >{$v['name']}</option>
+                    {/loop}
+                </select>
+
+                <select name="slt_nj" id="slt_nj">
+                    <option value="">请选择</option>
+                    {loop $grade_list $v}
+                    <option id="{$v['id']}" value ="{$v['code']}" {if $grade == $v['code']} selected="selected" {/if}>{$v['name']}</option>
+                    {/loop}
+                </select>
+            </div>
+        </div>
+
+        <div class="wk_classCon s-bsdStyle4">
+            <ul class="unitList" style="height: 400px;overflow-x:hidden;overflow-y: auto; position: relative;">
+                {include Node/nodeTree}
+            </ul>
+        </div>
+
+    </div>
+    <div class="main s-bsdStyle4 f-fl" style="width:748px;">
+        <!-- <div class="tab1Menu"> -->
+            <div class="tab1Menu" style="padding-top:39px;">
+                <div>
+                    <div class="leftInfo f-fs14 ">
+                        <strong {if $type == 'all' or !$type}class="cur"{/if}>
+                        <a class="js-ajax" href="{$base_uri}?type=all">全部</a>
+                        </strong>
+                        {loop $resource_type $k $v}
+                        <strong {if $type == $k}class="cur"{/if}>
+                        <a class="js-ajax" href="{$base_uri}?type={$k}">{$v}</a>
+                        </strong>
+                        {/loop}
+                    </div>
+                </div>
+                <div class="f-cb">
+                </div>
+            </div>
+            <div class="con" style="heigh:50%; overflow-y: scroll;">
+                <div class="wk_docCell">
+                    <!-- txt-->
+                    <div class="doclistClassReady">
+                        <ul>
+                        <form id="batch-add-resource-form" action="/{$xk}/lesson/batchAddResource" method="post">
+                        <!--{loop $resources $v}-->
+                            {include Modules/Xl/Views/Lesson/Resource/detailItem}
+                        <!--{/loop}-->
+                        </form>
+                        </ul>
+                        {$page_html}
+                    </div>
+                    <!-- ==txt==-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

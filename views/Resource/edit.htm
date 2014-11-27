@@ -1,0 +1,89 @@
+    <form class="formStyle" name="frm1" method="post" action="/resource/editDo" >
+    <div class="W-form">
+        	<input type="hidden" name="id" value="{$info['doc_id']}" />
+        	
+            <fieldset>
+                <!-- 上传/选择文件 -->
+                <div class="formStyle-item">
+                    <label for="" class="formStyle-label">
+                        <span class="formStyle-required">*</span>标题：
+                    </label>
+                   <input type="text" name="data[doc_title]" value="{$info['doc_title']}"  class="customForm_inputBoxDefault customForm_txtInput width330" />
+                </div>
+                <!-- ==上传/选择文件== -->
+
+                <!-- 选择类型 -->
+               
+                <!-- ==选择类型== -->
+				 <div class="formStyle-item ">
+                    <label for="" class="formStyle-label">
+                        <span class="formStyle-required">*</span>学段选择：
+                    </label>
+                    <select name="data[xd]" id="up_slt_xd">
+                    		<option value="">请选择</option>
+                    		{loop $xd_arr $k $v}
+							 <option id="{$v['id']}" value="{$v['code']}" {if $info['xd']==$v['code']} selected="selected"{/if} >{$v['name']}</option>
+							{/loop}
+                    </select>
+                </div> 
+				 
+                <!-- 选择类型 -->
+                <div class="formStyle-item">
+                    <label for="" class="formStyle-label">
+                        <span class="formStyle-required">*</span>选择分类：
+                    </label>
+				 	 
+					 <input type="hidden" name="data[xk]" id="up_slt_xk"  value="{$info['xk']}">
+                    	<select name="data[bb]" id="up_slt_bb">
+                    		<option value="">请选择</option>
+                    		{loop $bb_arr $k $v}
+							 <option id="{$v['id']}" value="{$v['code']}" {if $info['bb'] == $v['code']} selected="selected" {/if}>{$v['name']}</option>
+							{/loop}
+                    	</select>
+                    	<select name="data[nj]" id="up_slt_nj">
+                    		<option value="">请选择</option>
+                    		{loop $nj_arr $k $v}
+							 <option id="{$v['id']}" value="{$v['code']}" {if $info['nj'] == $v['code']} selected="selected" {/if}>{$v['name']}</option>
+							{/loop}
+                    	</select>
+						
+						<select name="data[zs]" id="up_slt_zs">
+                    		 <option value="">请选择</option>
+							 {loop $zs_arr $k $v}
+							  {$v['option']}
+							 {/loop}
+                    	</select>
+						 
+                </div>
+                
+
+                <!-- 简介 -->
+                <div class="formStyle-item">
+                    <label for="" class="formStyle-label">
+                        <span class="formStyle-required"></span>简介：
+                    </label>
+                    <textarea class="customForm_textarea customForm_inputBoxDefault width330" name="data[doc_summery]" data-default ="非必填项，最多200字。" placeholder="非必填项，最多200字。" maxLength="200">{$info['doc_summery']}</textarea>
+                    <p class="formStyle-explain"></p>
+                </div>
+                <!-- ==简介== -->
+
+                <!-- 标签 -->
+                <div class="formStyle-item">
+                    <label for="" class="formStyle-label">
+                        <span class="formStyle-required"></span>标签：
+                    </label>
+                    
+                         <script type="text/javascript" src="{HTTP_UI}tag/tag.public.js"></script>
+						  <div data-target="doc" name="data[doc_tag]" class='input-tags' data-targetid="{$info['doc_id']}"> </div>
+						  <div name="tag_content"></div>
+                 
+                </div>
+                <!-- ==标签== -->
+
+                <!-- 标签 -->
+ 
+                <!-- ==标签== -->
+            </fieldset>
+        
+    </div>
+  </form>

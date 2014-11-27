@@ -1,0 +1,41 @@
+<div id="ajaxpage" class="easyui-panel" style="padding:5px;" data-options="fit:true">
+	<table id="module-dg" title="<!--{$title}-->" class="easyui-treegrid" 
+	data-options="
+	
+	rownumbers:true,
+	fit:true,
+	fitColumns:true,
+	singleSelect:true,
+	url:'<!--{$getJsonDataUrl}-->',
+	method:'get',
+	idField:'module_id',
+	treeField:'module_title',
+	toolbar:'#module-tb'">
+	  <thead>
+		<tr>
+          <th field='module_title' width='50'>模块名称</th>
+          <th field='module_controller' width='70'>控制器</th>
+          <th field='module_action' width='30'>Action名称</th>
+          <th field="module_node" width="50">节点</th>
+          <th field="module_icon" width="50">图标</th>
+          <th field="module_isok" width="20">状态</th>
+          <th field="module_order" width="30">排序</th>
+          <th field="cz" width="30">操作</th>
+		</tr>
+	  </thead>
+	</table>
+	<div id="module-tb" style="padding:5px;height:auto">
+		<div>
+		 	<a href="javascript:;" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="javascript:ui_dialog( '<!--{$addUrl}-->?',this );">增加</a>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	 
+		$(function(){
+            
+//var id = $('#module-dg').datagrid('getSelected').id;
+//alert(id);
+		});
+		 
+</script>

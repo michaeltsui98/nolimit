@@ -1,0 +1,94 @@
+       <div id="tt" class="easyui-tabs" style="height:560px">
+          <div title="综合测评" style="padding:10px">
+          <div id="ajaxpage" class="easyui-panel" style="padding:5px;" data-options="fit:true">
+    <table id="mm-dg" title="<!--{$title}-->" class="easyui-datagrid" data-options="rownumbers:true,fit:true,fitColumns:true,singleSelect:true,
+    pagination:true,url:'<!--{$com_evalaute}-->?evaluate_classify=1',
+    method:'get',
+    pageSize:20,
+    idField:'id',
+    treeField:'node_title',
+    toolbar:'#mm-tb'
+    ">
+      <thead>
+        <tr>
+         <th field="evaluate_title" width="80">测评标题</th>
+         <th field="evaluate_field" width="30">学段</th>
+         <th field="evaluate_grade" width="30">年级</th>
+         <th field="evaluate_version" width="30">版本</th>
+         <th field="evaluate_end_time" width="30">截止日期</th>
+         <th field="evaluate_classify" width="30">分类</th>
+        <th field="evaluate_operater" width="80">操作</th>
+        </tr>
+      </thead>
+    </table>
+    <div id="mm-tb" style="padding:5px;height:auto">
+        <div>
+         
+            基础节点选择: 
+            <select id="com_list" class="easyui-combotree" style="width:200px;"></select>
+            <a href="javascript:;" class="easyui-linkbutton" iconCls="icon-add" plain="true"  onclick="javascript:ui_dialog( '<!--{$add_com_evalaute}-->?node_id='+$('#com_list').combotree('getValue'),this,800,600 );">添加综合测评</a>
+             {if $xk == 'xl'}
+                <a href="javascript:;" class="easyui-linkbutton" iconCls="icon-add" plain="true"  onclick="javascript:ui_dialog( '<!--{$add_heyi_com_evalaute}-->?node_id='+$('#com_list').combotree('getValue'),this,1000,600 );">添加和易测评</a>
+             {/if}
+        </div>
+    </div>
+</div> 
+</div>
+
+
+<div title="单元测评" style="padding:5px">
+	 <div id="ajaxpage" class="easyui-panel" style="padding:5px;" data-options="fit:true">
+    <table id="aa-dg" title="<!--{$title}-->" class="easyui-treegrid" data-options="rownumbers:true,fit:true,fitColumns:true,singleSelect:true,
+    pagination:true,url:'<!--{$cource_list}-->',
+    method:'get',
+    pageSize:20,
+    idField:'id',
+    treeField:'node_title',
+    toolbar:'#aa-tb'
+    ">
+      <thead>
+        <tr>
+          <th field='node_title' width='50'>教材课程列表</th>
+          <th field="cz" width="50">操作</th>
+        </tr>
+      </thead>
+    </table>
+    <div id="aa-tb" style="padding:5px;height:auto">
+        <div>
+            基础节点选择: 
+            <select id="unit_list" class="easyui-combotree" style="width:200px;"></select>
+        </div>
+    </div>
+</div>
+  </div>
+</div>
+        <script type="text/javascript">
+
+            $('#com_list').combotree({
+            url: "{$nodeList}",
+            method:'get',
+            required: true,
+            onChange:function(){
+              var node_id = $(this).combotree('getValue');
+               com_node(node_id);
+            }
+        });
+
+        function com_node(node_id){
+          gridload('mm',{node_id:node_id});
+        }
+
+         $('#unit_list').combotree({
+            url: "{$nodeList}",
+            method:'get',
+            required: true,
+            onChange:function(){
+                var node_id =  $(this).combotree('getValue');
+                 unit_node(node_id);
+            },
+        });
+
+            function unit_node(node_id){
+            treeload('aa',{node_id:node_id});
+        }       
+     </script>

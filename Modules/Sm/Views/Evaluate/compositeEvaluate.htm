@@ -1,0 +1,22 @@
+{if !empty($data)}
+   {loop $data $k $v}
+    <ul class="item clearfix" style="padding: 10px 30px 10px 16px;">
+       <li class="f-fl share" style="width:20px;text-align: center;font-size:16px"><!--{eval echo $k+=1}--></li>
+       <li  class="name width330 f-fs16 f-fl" name="do_evaluate" evaluate_classify = {$evaluate_classify} course_id = 0 evaluate_id = {$v['evaluate_id']} id={$v['id']} types = {$type} url="{$url}" style="padding-left:10px;cursor: pointer;">{$v['evaluate_title']}</li>
+       <li class="state width120 f-fs12 f-fl s-fcLGray">{$v['evaluate_end_time']}截止</li>
+       <li class="state width80 f-fs14 f-fl s-fcGreen"  style="padding-left:10px;">{$v['evaluate_count']}人参与</li>
+       <li class="f-fs14 f-fr" >
+       	{if $v['evaluate_status'] == 3}
+       	<i class="timeOut">已过期</i>
+       	{elseif $v['evaluate_status'] == 1}
+       	<i class="doing">正在进行</i>
+        {elseif empty($v['evaluate_status'])}
+          <i class="undo">未做测评</i>
+         {else}
+          <i class="done">完成测评</i>
+       	{/if}
+       </li>
+    </ul>
+   {/loop}
+{/if}
+

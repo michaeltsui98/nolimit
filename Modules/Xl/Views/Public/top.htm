@@ -1,0 +1,44 @@
+        <div class="g-hdt">
+            <div class="g-hdc f-fs14">
+                <div class="m-hdl f-fl">
+                    <a href="/{$xk}/index"  class="a-LGrayl f-fl"> <i class="icon-home"></i>
+                        首页 </a>
+                    <a href="http://www.dodoedu.com/SitePublic/98056819/forum/1095284" target="_blank" class="a-LGrayl f-fl">意见反馈</a>
+                    <div class="m-schBox f-fl">
+	                    <div class="customForm_searchTxtInput customForm_searchStyle1 customForm_searchInputBoxGetFocus">
+	                        <form action="/{$xk}/resource/suggest/key/" method="get">
+	                        <input name="key" id="search" type="text" class="txtInput f-fl" value="{$_GET['key']}" data-default="输入关键字搜索" value="输入关键字搜索" />
+	                    <div class="customDropdownWrap customDropdownStyle2 f-fl" name="topDropdown">
+	                        <span class="dropdown_currentValue"><span class="dropdownTxt">{if $user_info['role_code']==2 or Cola_Request::cookie('perview_role_'.$xk) == 2}资源{else}资讯{/if}</span><i class="icon_downArrStyle2"></i></span>
+	                        <div class="dropdownItem width90"  style="visibility:hidden;">
+	                            <ul class="dropdownItemUl f-fs12 width100">
+	                            	{if $user_info['role_code']==2 or Cola_Request::cookie('perview_role_'.$xk) == 2}
+	                                <li class="dropdownCell"><a href="/{$xk}/resource" title="" class="f-db curDefault customDropdown_selectedValue">资源</a></li>
+	                                <li class="dropdownCell"><a href="/{$xk}/activity" title="" class="f-db curDefault">研修</a></li>
+									{/if}
+	                                <li class="dropdownCell"><a href="/{$xk}/info" title="" class="f-db curDefault">资讯</a></li>
+	                                <li class="dropdownCell"><a href="/{$xk}/question" title="" class="f-db curDefault">问答</a></li>
+									
+	                            </ul>
+	                        </div>
+	                    </div>
+	                    <label class="f-fl searchBtn"><input name="" type="submit" value="" class="icon_magnifier" /></label>
+	                        <ul class="associateWrap width154" id="suggest-search" style="display:none;"></ul></form></div>
+                </div>
+				<a href="http://mobile.dodoedu.com/jiaocai/detail_{$xk}.html" target="_blank" class="top-app-demo"></a>
+                <div class="f-cb"></div>
+            </div>
+            <div class="m-hdr f-fr f-tar">
+            	{if $user_info}
+                <a href="javascript:;" title="" target="_blank" class="a-LGrayl f-mr15">欢迎您：{$user_info['user_realname']}</a>
+                <a href="/sign/exit" class="a-LGrayl f-mr15">退出</a>
+				{else}
+                <a href="javascript:;" id="user_login"  target="_blank" class="loginBtn f-mr15">登录</a>
+                <a href="{DOMAIN_NAME}/UserSignUp/signUp" title="" target="_blank" class="a-LGrayl">注册多多社区账号</a>
+				{/if}
+            </div>
+            <div class="f-cb"></div>
+        </div>
+    </div>
+    
+  

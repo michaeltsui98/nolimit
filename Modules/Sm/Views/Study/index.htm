@@ -1,0 +1,31 @@
+<div class="g-bd">
+          <div class="m-nav clearfix f-mb10">
+            <div class="m-breakNav f-fl">
+                <i class="icon_tc1"></i>
+                <span>当前位置</span>：<a href="javascript:;">学生 </a>>首页
+            </div>
+        </div>
+     <!--{eval  echo Cola_Tpl::widget_out("Modules_{$ucxk}_Controllers_Study",'PublicStuInfo')}-->
+     <!--{eval  echo Cola_Tpl::widget_out("Modules_{$ucxk}_Controllers_Study",'leftPublic')}-->
+        </div>
+    	<div class="g-mn f-fr">
+        	<div class="m-spWrap s-bsdStyle1">
+            	<h2 class="tt f-fs18 s-fcGray">快捷面板</h2>
+                <div class="ct">
+                	<div class="noSp s-fcGray f-tac">
+                    	<p class="f-fs18 f-mb10"><a href="{DOMAIN_NAME}/{$user_id}/Space/index" title="" target="_blank"><strong>{$user_realname}</strong></a>同学，系统给你推荐的是
+                            {if !empty($grade)}
+                              <span class="s-fcOrange">{$default_version['name']}{$grade}教材
+                              </span>
+                            {else}
+                                <span class="s-fcOrange">{$default_version['name']}教材</span>
+                            {/if}
+                        </p>
+                        <p class="f-mb30"><a href="javascript:;" name="submitVersion" title="" default_version_id ="{$default_version['code']}" class="customBtnLarge colourDarkGreen f-fs18">点击确认</a></p>
+                        <p class="f-fs14">如果想学习其他版本的课程，<a href="javascript:;" name="banbenSelect" title="" class="a-secl">点此选择</a></p>
+                    </div>
+                </div>
+            </div>
+        <div class="f-cb"></div>
+    </div>
+</div>

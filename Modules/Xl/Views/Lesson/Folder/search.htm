@@ -1,0 +1,26 @@
+<li class="class-sort f-fr">
+    <!--{if $edition_list}-->
+    <form action="/{$xk}/Lesson/{$action}" method="get">
+        <label class="f-fl">
+        版本:
+        </label>
+        <select class="js-select-auto-submit" name="edition">
+            <option value="">全部</option>
+        <!--{loop $edition_list $item}-->
+        <!--{eval $selected = ($item['code'] == $edition) ? 'selected="selected"' : ''}-->
+            <option value="{$item['code']}" {$selected}>{$item['name']}</option>
+        <!--{/loop}-->
+        </select>
+        <label class="f-fl">
+        年级:
+        </label>
+        <select class="js-select-auto-submit" name="grade">
+            <option value="">全部</option>
+            <!--{loop $grade_list $item}-->
+            <!--{eval $selected = ($item['code'] == $grade) ? 'selected="selected"' : ''}-->
+            <option value="{$item['code']}" {$selected}>{$item['name']}</option>
+            <!--{/loop}-->
+        </select>
+    </form>
+    <!--{/if}-->
+</li>

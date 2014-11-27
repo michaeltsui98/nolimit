@@ -1,0 +1,304 @@
+<div>
+    <div style="padding:5px;width: 100%">
+        选择年份：
+        <select name="start_year" id='start_year'>
+            <option value="2014" >2014</option>
+            <option value="2015">2015</option>
+            <option value="2016">2016</option>
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
+            <option value="2019">2019</option>
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
+            <option value="2024">2024</option>
+            <option value="2025">2025</option>
+            <option value="2026">2026</option>
+        </select>
+        &nbsp;&nbsp;
+        月份：
+        <select name="start_month" id='start_month'>
+            <option value="1" >1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+        </select>
+        <a href="javascript:;" class="easyui-linkbutton" iconCls="icon-search" plain="true" onclick="javascript:searchActivityAnalysis();" >搜索</a>
+    </div>
+</div>
+<div>
+    <div style="padding:5px;width: 49%;float: left;">
+        <fieldset>
+            <div>
+                参与研训教师构成 &nbsp;&nbsp;
+            </div>
+            <hr/>
+            <div>
+                <div style="margin: 0 1px">
+                    <style>
+                        canvas{
+                        }
+                    </style>
+                    <canvas id="teacher_phase_chart_canvas" height="300px" width="600px"></canvas>
+                    <script>
+                        var pieData = [
+//                            {
+//                                value: 30,
+//                                color:"#F38630",
+//                                explain:'小学教师'
+//                            },
+//                            {
+//                                value : 50,
+//                                color : "#E0E4CC",
+//                                explain:'初中教师'
+//                            },
+//                            {
+//                                value : 100,
+//                                color : "#69D2E7",
+//                                explain:'高中教师'
+//                            }
+
+                        ];
+                        var myPie = new Chart(document.getElementById("teacher_phase_chart_canvas").getContext("2d")).Pie(pieData);
+                    </script>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    <div style="padding:5px;width: 49%;float: left">
+        <fieldset>
+            <div>
+                教师研训内容分布&nbsp;&nbsp;
+
+            </div>
+            <hr/>
+            <div>
+                <div style="margin: 0 1px">
+                    <canvas id="activity_type_chart_canvas" height="300px" width="600px"></canvas>
+                    <script>
+                        var doughnutData = [
+//                            {
+//                                value: 30,
+//                                color:"#F7464A",
+//                                explain:'基础理论'
+//                            },
+//                            {
+//                                value : 50,
+//                                color : "#46BFBD",
+//                                explain:'专业知识'
+//                            },
+//                            {
+//                                value : 100,
+//                                color : "#FDB45C",
+//                                explain:'教学技能'
+//                            },
+//                            {
+//                                value : 40,
+//                                color : "#949FB1",
+//                                explain:'教学技术'
+//                            },
+//                            {
+//                                value : 120,
+//                                color : "#4D5360",
+//                                explain:'自我学习'
+//                            }
+                        ];
+                        var myDoughnut = new Chart(document.getElementById("activity_type_chart_canvas").getContext("2d")).Doughnut(doughnutData);
+                    </script>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</div>
+<div style="padding:5px;">
+    <fieldset>
+        <div>
+            各地参与情况对比 | 各月参与研训趋势&nbsp;&nbsp;
+        </div>
+        <hr/>
+        <div>
+            <div style="margin: 0 1px">
+                <canvas id="activity_participation_chart_canvas" height="450px" width="1000px"></canvas>
+                <script>
+                    var barChartData = {
+                        labels : [
+//                            "武汉","宜昌","黄石","荆州","仙桃","天门","黄冈"
+                        ],
+                        datasets : [
+//                            {
+//                                fillColor : "rgba(220,220,220,0.5)",
+//                                strokeColor : "rgba(220,220,220,1)",
+//                                data : [65,59,90,81,56,55,40],
+//                                explain:'累积参与的百分比'
+//                            },
+//                            {
+//                                fillColor : "rgba(151,187,205,0.5)",
+//                                strokeColor : "rgba(151,187,205,1)",
+//                                data : [28,48,40,19,96,27,100],
+//                                explain:'当月参与的百分比'
+//                            }
+                        ]
+                    }
+                    var myLine = new Chart(document.getElementById("activity_participation_chart_canvas").getContext("2d")).Bar(barChartData);
+                </script>
+            </div>
+        </div>
+    </fieldset>
+</div>
+<script type="text/javascript">
+    $(function(){
+            $('#start_year').val(<!--{$current_year}-->);
+            $('#start_month').val(<!--{$current_month}-->);
+    });
+    function searchActivityAnalysis(){
+        var selected_year = $('#start_year').find('option:selected').val();
+        var selected_month = $('#start_month').find('option:selected').val();
+        $.post("<!--{$activity_analysis_url}-->",{'selected_year':selected_year,selected_month:selected_month},function(data){
+            var analysis_obj = eval('('+data+')');
+            var teacher_phase_array = analysis_obj.teacher_phase_analysis;
+            var activity_type_array = analysis_obj.activity_type_analysis;
+            var activity_rate_array = analysis_obj.activity_rate_analysis;
+            var is_debug = analysis_obj.debug;
+            pieData = [];
+            doughnutData = [];
+            barChartData.labels = [];
+            barChartData.datasets = [];
+
+            //teacher_phase
+            if(is_debug ==1){
+                pieData.push({
+                    value: 30,
+                    color:"#F38630",
+                    explain:'小学教师'
+                });
+                pieData.push({
+                    value: 30,
+                    color:"#E0E4CC",
+                    explain:'初中老师'
+                });
+                pieData.push({
+                    value: 30,
+                    color:"#69D2E7",
+                    explain:'高中老师'
+                });
+            }else{
+                var teacher_phase_class_obj = {xd001:"#F38630", xd002:"#E0E4CC", xd003:"#69D2E7"};
+                var teacher_phase_label_obj = {xd001:'小学老师',xd002:'初中老师',xd003:'高中老师'};
+                for(var i= 0; i<teacher_phase_array.length;i++){
+                    for(var j in teacher_phase_class_obj){
+                        if(j == teacher_phase_array[i].teacher_phase){
+                            pieData.push({
+                                value:parseInt(teacher_phase_array[i].teacher_number),
+                                color:teacher_phase_class_obj[j],
+                                explain:teacher_phase_label_obj[j]
+                            });
+                        }
+                    }
+                }
+            }
+            myPie = new Chart(document.getElementById("teacher_phase_chart_canvas").getContext("2d")).Pie(pieData);
+        //活动类别分析
+            if(is_debug ==1){
+                doughnutData.push({
+                                value: 30,
+                                color:"#F7464A",
+                                explain:'基础理论'
+                });
+                doughnutData.push({
+                                value : 50,
+                                color : "#46BFBD",
+                                explain:'专业知识'
+                });
+                doughnutData.push({
+                                value : 100,
+                                color : "#FDB45C",
+                                explain:'教学技能'
+                });
+                doughnutData.push({
+                                value : 40,
+                                color : "#949FB1",
+                                explain:'教学技术'
+                });
+                doughnutData.push({
+                                value : 120,
+                                color : "#4D5360",
+                                explain:'自我学习'
+                });
+            }else{
+                var activity_type_color_obj = {1:"#F7464A",2:"#46BFBD",3:"#FDB45C",4:"#949FB1",5:"#4D5360"};
+//                var activity_type_explain_obj = {1:'基础理论',2:'专业知识',3:'教学技能',4:'教学技术',5:'自我学习'};
+                for(var k= 0; k<activity_type_array.length;k++){
+                    for(var l in activity_type_color_obj){
+                        if(l == activity_type_array[k].activity_info_type ){
+                            doughnutData.push({
+                                value : parseInt(activity_type_array[k].activity_info_type_times),
+                                color : activity_type_color_obj[l],
+                                explain:activity_type_array[k].activity_info_type_name
+                            });
+                        }
+                    }
+                }
+            }
+            myDoughnut = new Chart(document.getElementById("activity_type_chart_canvas").getContext("2d")).Doughnut(doughnutData);
+            //率换算
+            if(is_debug ==1){
+//                "武汉","宜昌","黄石","荆州","仙桃","天门","黄冈"
+             barChartData.labels.push("武汉");
+             barChartData.labels.push("宜昌");
+             barChartData.labels.push("黄石");
+             barChartData.labels.push("荆州");
+             barChartData.labels.push("仙桃");
+             barChartData.labels.push("天门");
+             barChartData.labels.push("黄冈");
+
+              barChartData.datasets.push({
+                          fillColor : "rgba(220,220,220,0.5)",
+                          strokeColor : "rgba(220,220,220,1)",
+                          data : [65,59,90,81,56,55,40],
+                          explain:'累积参与的百分比'
+              });
+              barChartData.datasets.push({
+                        fillColor : "rgba(151,187,205,0.5)",
+                        strokeColor : "rgba(151,187,205,1)",
+                        data : [28,48,40,19,96,27,100],
+                        explain:'当月参与的百分比'
+              });
+            }else{
+             var month_rate = activity_rate_array.month;
+             var year_rate = activity_rate_array.year;
+             var month_rate_date_array = [];
+             var year_rate_date_array = [];
+            //先把城市的PUSH进去
+                for(var n=0;n<year_rate.length;n++){
+                    barChartData.labels.push(year_rate[n].city_name);
+                    year_rate_date_array.push(year_rate[n].total_rate);
+                }
+                for(var m=0;m<month_rate.length;m++){
+                    month_rate_date_array.push(month_rate[m].total_rate);
+                }
+                barChartData.datasets.push({
+                    fillColor : "rgba(151,187,205,0.5)",
+                    strokeColor : "rgba(151,187,205,1)",
+                    data :month_rate_date_array,
+                    explain:'当月参与的百分比'
+                });
+                barChartData.datasets.push({
+                    fillColor : "rgba(220,220,220,0.5)",
+                    strokeColor : "rgba(220,220,220,1)",
+                    data : year_rate_date_array,
+                    explain:'累积参与的百分比'
+                });
+            }
+            myLine = new Chart(document.getElementById("activity_participation_chart_canvas").getContext("2d")).Bar(barChartData);
+        });
+    }
+</script>

@@ -1,0 +1,97 @@
+<div class="g-bd">
+   {$breadcrumb}
+
+    <div class="g-sd f-fr">
+        <div class="m-joinSite s-bsdStyle1 f-mb10">
+            <div class="tt clearfix">
+                <h3 class="f-fl f-fs18">资讯小站</h3>
+            </div>
+
+            <div class="ct">
+                <dl class="u-r">
+                    <dt><a href="{DOMAIN_NAME}/site/{$siteId}" target="_blank"><img src="{$siteInfo['logo']}" alt="" width="72px" height="72px"></a></dt>
+                    <dd class="name"><a href="{DOMAIN_NAME}/site/{$siteId}" title="{$siteInfo['name']}" target="_blank">{$siteInfo['name']}</a></dd>
+                    <dd class="count"><em><!--{eval echo count($siteInfo['members'])}-->人</em>已加入</dd>
+                    <!--{if is_array($siteInfo['members']) && in_array($user_info['user_id'], $siteInfo['members'])}-->
+                    <dd class="jioned"><a target="_blank" href="{DOMAIN_NAME}/site/{$siteId}">已经加入</a></dd>
+                    <!--{else}-->
+                    <dd class="btn">
+                        <a target="_blank" href="{DOMAIN_NAME}/site/{$siteId}">还未加入</a>
+                    </dd>
+                    <!--{/if}-->
+                    <!-- 注意状态区分 -->
+                </dl>
+            </div>
+        </div>
+
+        <div class="m-otherNews s-bsdStyle1 f-mt20">
+            <div class="tt">
+                <ul class="tab4Menu f-fs18 clearfix">
+                    <li class="menuCell f-fl" url="/{$xk}/info/ajaxTop?order=new">
+                        <a href="javascript:;" title="" class="tabLink">最新</a>
+                    </li>
+                    <li class="menuCell f-fl" url="/{$xk}/info/ajaxTop?order=hot">
+                        <a href="javascript:;" title="" class="tabLink">热门</a>
+                    </li>
+                    <li class="f-cb"></li>
+                </ul>
+            </div>
+            <div class="ct f-mt10">
+                <ul id="info-top-list">
+                </ul>
+            </div>
+        </div>
+
+        <div class="m-warp">
+            <div class="tt"></div>
+            <div class="ct"></div>
+        </div>
+
+    </div>
+
+    <div class="g-mn f-fl">
+        <div class="m-newsList s-bsdStyle1">
+            <div class="tt">
+                <div class="tab1Menu ">
+                    <div>
+                        <div class="leftInfo f-fs14 f-fl">
+                            <!--{eval $currentClass = ($eid)?'':'class="cur"';}-->
+                            <strong {$currentClass}><a href="/{$xk}/Info/index">全部</a></strong>
+                            <!--{loop $blogElementList $item}-->
+                            <!--{eval $currentClass = ($eid == $item['element_id'])?'class="cur"':'';}-->
+                            <strong {$currentClass}><a href="/{$xk}/Info/index?eid={$item['element_id']}">{$item['element_name']}</a></strong>
+                            <!--{/loop}-->
+                        </div>
+                    </div>
+                    <div class="rightInfo f-fs14 f-fl"></div>
+                    <div class="f-cb">
+                    </div>
+                </div>
+            </div>
+            <div class="ct">
+                <ul>
+                <!--{loop $blogList['data'] $item}-->
+                    <li class="u-r">
+                        <dl>
+                            <dt>
+                                <a href="{DOMAIN_NAME}/SitePublic/{$siteId}/blog/{$item['class_id']}/article/{$item['blog_id']}"><img src="<!--{eval echo Models_Information::getImage($item['blog_content'])}-->" alt="" width="210px" height="140px"></a>
+                            </dt>
+                            <dd class="title">
+                                <a href="{DOMAIN_NAME}/SitePublic/{$siteId}/blog/{$item['class_id']}/article/{$item['blog_id']}" target="_blank">{$item['blog_title']}
+                                </a>
+                            </dd>
+                            <dd class="info">发布日期：{date('Y年m月d日', $item['blog_time'])} | 点击：<a href="">{$item['blog_vnum']}次</a> <!-- | 暂无评论 --></dd>
+                            <!--{if isset($blogElementList[$item['class_id']])}-->
+                            <dd class="owner">所属栏目：<a href="/{$xk}/info/index?eid={$item['class_id']}">$blogElementList[$item['class_id']]['element_name']</a></dd>
+                            <!--{/if}-->
+                            <dd class="desc">{$item['blog_explain']}</dd>
+                        </dl>
+                    </li>
+                <!--{/loop}-->
+                </ul>
+                <!--{eval echo $page->html();}-->
+            </div>
+        </div>
+    </div>
+    <div class="f-cb"></div>
+</div>

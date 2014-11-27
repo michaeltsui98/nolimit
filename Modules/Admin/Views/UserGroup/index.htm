@@ -1,0 +1,30 @@
+<div id="ajaxpage" class="easyui-panel" style="padding:5px;" data-options="fit:true">
+	<table id="usergroup-dg" title="<!--{$title}-->" class="easyui-datagrid" data-options="rownumbers:true,fit:true,fitColumns:true,singleSelect:true,pagination:true,url:'<!--{$getJsonDataUrl}-->',method:'get',pageSize:20,toolbar:'#usergroup-tb'">
+	  <thead>
+		<tr>
+          <th field='group_title' width='50'>用户组</th>
+          <th field='group_description' width='80'>描述</th>
+ 
+          <th field="group_isok" width="50">状态</th>
+          <th field="group_order" width="50">排序</th>
+          <th field="cz" width="50">操作</th>
+		</tr>
+	  </thead>
+	</table>
+	<div id="usergroup-tb" style="padding:5px;height:auto">
+		<div>
+		 
+			<a href="javascript:;" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="javascript:ui_dialog( '<!--{$addUrl}-->',this );">增加</a>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+		$(function(){
+ 
+
+		});
+		function user(){
+			//var obj = document.getElementById("grouplist");
+			//gridload('user',{group_id:obj.options[obj.selectedIndex].value});
+		}
+</script>

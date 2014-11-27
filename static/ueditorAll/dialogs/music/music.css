@@ -1,0 +1,30 @@
+.wrapper{margin: 10px;}
+
+.searchBar{height:30px;padding:7px 0 3px;text-align:center;}
+.searchBtn{font-size:13px;height: 26px;text-align: center;display: inline-block;line-height: 18px;padding: 0 8px;vertical-align: middle;border-radius: 2px;cursor: pointer;border-width: 1px;border-style: solid;color: #fff;background-color: #cc9a67;border-color: #b18456;*padding:0;}
+
+.resultBar{width:544px;margin:0 auto;border: 1px solid #CCC;border-radius: 5px;box-shadow:1px 1px 2px #E6E6E6;overflow: hidden;}
+
+.listPanel{overflow: hidden;}
+.panelon{display:block;}
+.paneloff{display:none}
+
+.searchPage{width:220px;margin:5px auto;overflow: hidden;}
+.pageon{float:right;width:24px;line-height:24px;height:24px;margin-right: 5px;background: none;border: none;color: #000;font-weight: bold;text-align:center}
+.pageoff{float:right;width:24px;line-height:24px;height:24px;cursor:pointer;background-color: #fff;
+   border: 1px solid #E7ECF0;color: #2D64B3;margin-right: 5px;text-decoration: none;text-align:center;}
+
+.m-box{}
+.m-m{float: left;line-height: 21px;height: 21px;}
+.m-h{height:24px;line-height:24px;padding-left: 46px;background-color:#FAFAFA;border-bottom: 1px solid #DAD8D8;font-weight: bold;font-size: 12px;color: #333;margin-bottom: 5px;}
+.m-l{float:left;width:46px;margin-top:3px;*margin-top:0;}
+.m-t{float:left;width:170px;}
+.m-s{float:left;width:130px;}
+.m-z{float:left;width:130px;}
+.m-try-t{float: left;width: 60px;}
+
+.m-try{float:left;width:20px;height:20px;background:url('images/try_music.gif') no-repeat ;}
+.m-trying{float:left;width:20px;height:20px;background:url('images/stop_music.gif') no-repeat ;}
+
+.loading{width:52px;height:52px;font-size:7px;margin:60px auto;background:url(images/loading.gif) no-repeat}
+.empty{width:300px;height:40px;padding:2px;margin:50px auto;line-height:40px; color:#505050;text-align:center;}

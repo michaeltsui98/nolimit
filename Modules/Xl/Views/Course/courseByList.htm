@@ -1,0 +1,63 @@
+<div class="tt clearfix">
+    <div class="m-crtDate f-fl">
+        <a href="javascript:;" title="上月" id='prevmonth' class="u-pre f-tac"><i class="icon-arrL"></i></a><strong class="txt f-ib f-vam f-fs16" id="thismonth" data-month='<!--{eval echo date("Y-m",strtotime($date[5]));}-->'><!--{eval echo date('Y-m',strtotime($date[5]));}--> </strong><a href="javascript:;" title="下月" id='nextmonth' class="u-next f-tac"><i class="icon-arrR"></i></a>
+    </div>
+    <div class="m-crtWeek f-fl">
+        <a href="javascript:;" title="上周" id="prevweek" class="u-pre f-tac">《<i class="icon-arrL"></i></a><strong class="txt f-ib f-vam f-fs16" id="thisweek" data-weekstart="{$date[1]}">第{$theweek}周 <!--{eval if (date('W')==$theweek):}-->(本周)<!--{eval endif;}--></strong><a href="javascript:;" title="下周" id="nextweek" class="u-next f-tac">》<i class="icon-arrR"></i></a>
+    </div>
+    <div class="m-view f-fr" data-start="{$date[1]}" data-end="{$date[5]}" id="courseListSwitch">
+        <a href="javascript:;" title="缩略图模式"  data-format="calendar"  class="u-viewSmall f-ib  courseListSwitch"><i class="icon-viewSmall"></i></a><a href="javascript:;" title="列表模式" data-format="list" class="u-viewLst z-sel f-ib courseListSwitch"><i class="icon-viewLst"></i></a>
+    </div>
+</div>
+<div class="ct">
+       <!--{if !empty($course) }-->
+    <div class="vlWrap">
+        <ul class="vlTt clearfix">
+            <li class="Lessons f-fs16 f-fl">课节</li>
+            <li class="className f-fs16 f-fl">班级</li>
+            <li class="notes f-fs16 f-fl">课程内容</li>
+            <li class="state f-fs16 f-fl">课程状态</li>
+            <li class="operating  f-fs16 f-fl">操作</li>
+        </ul>
+        <!--{loop $course $key $value}-->
+        <dl class="vlItem">
+            <dt class="weekday s-fcGBlue f-tac">星期{$key}($date[$key])</dt>
+            <dd class="courseLst z-overdue">
+                <!--{loop $value $s_key $s_value}-->
+                <!--{eval if(!empty($s_value)):}-->
+                <ul class="item clearfix">
+                    <li class="Lessons f-fs16 f-fl">第{$s_key}节</li>
+                    <li class="className f-fs16 f-fl"><!--{eval echo isset($s_value['class_id'])?$s_value['class_name']:'';}--></li>
+                    <li class="notes f-fs16 f-fl">{$s_value['lesson_folder_title']}</li>
+                    <li class="state f-fs16 f-fl">
+                        <span class="iconWrap f-ib f-mr10 z-finish" title="课程评价">
+                            <!--{eval if($s_value['course_appraise_status']): }-->
+                            <i class="icon-tickOff"></i>
+                            <!--{eval endif;}-->
+                            <i class="icon-prepareLessons"></i>
+                        </span>
+                        <span class="iconWrap f-ib f-mr10 z-finish" title="课程问答">
+                            <!--{eval if($s_value['course_question_status']): }-->
+                            <i class="icon-tickOff"></i>
+                            <!--{eval endif;}-->
+                            <i class="icon-courseDes"></i>
+                        </span>
+                        <span class="iconWrap f-ib f-mr10 z-finish" title="备课夹">
+                            <!--{eval if($s_value['course_lesson_folder_status']): }-->
+                            <i class="icon-tickOff"></i>
+                            <!--{eval endif;}-->
+                            <i class="icon-lessonfolder"></i>
+                        </span>
+                    </li>
+                    <li class="operating  f-fs16 f-fl"><a href="{DODOJC}/{$xk}/course/courseDetail?course_id={$s_value['id']}" title="详情" target="_blank" class="a-secl">详情</a></li>
+                </ul>
+                <!--{eval endif;}-->
+                <!--{/loop}-->
+            </dd>
+        </dl>
+        <!--{/loop}-->
+    </div>
+                        <!--{else}-->
+                <div class="m-emptytips"><p>暂无课程安排</p></div>
+                <!--{/if}-->
+</div>

@@ -1,0 +1,25 @@
+<!--<div id="tab1" class="tabcontent">-->
+    <div class="form">
+       <form action="<!--{$add_node_descript_to}-->" method="post" id="descript_form" name="descript_form" class="ui-form">
+            <div class="form_row">
+                <label><span class="ui-form-required">*</span>描述：</label>
+                <textarea style='width:400px;height:200px;' name='node_descript' datatype="*">{$node_descript}</textarea>
+                <div class="info"><span class="ui-form-other"></span></div>
+            </div>
+            <div class="ui-form-item">
+                <input type='hidden' name='field' value='<!--{$field}-->'>
+                <input type='hidden' name='grade' value='<!--{$grade}-->'>
+                <input type='hidden' name='bb' value='<!--{$bb}-->'>
+                <input type='hidden' name='son_id' value='<!--{$son_id}-->'>
+                <input type="submit" id="btn_submit" value="保存"/>
+            </div> 
+        </form>
+       <script type="text/javascript">
+                $(function(){
+                    syform_val('descript_form');
+                });
+        </script>
+    </div>
+<!--</div>-->
+
+

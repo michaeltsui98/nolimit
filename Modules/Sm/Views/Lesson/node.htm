@@ -1,0 +1,25 @@
+<!--{if $this->subNodeList}-->
+    <!--{loop $this->subNodeList $item}-->
+        <ul class="item clearfix">
+            <li class="name width330 f-fs16 f-fl">{$item['node_title']}</li>
+            <!--{if isset($item['folder'])}-->
+            <li class="state width170 f-fs14 f-fl s-fcGreen">
+            已备课<em class="s-fcLGray">（{date('Y-m-d', $item['folder']['create_time'])}）</em></li>
+            <li class="state f-fs14 f-fl">
+            备课方式：
+            <!--{if $item['folder']['original']}-->
+            原创
+            <!--{else}-->
+            引用
+            <!--{/if}-->
+            </li>
+            <!--{else}-->
+            <li class="state width170 f-fs14 f-fr s-fcRed">未备课</li>
+            <!--{/if}-->
+        </ul>
+    <!--{/loop}-->
+<!--{else}-->
+    <ul class="item clearfix">
+        <li class="name width380 f-fs16 f-fl">子节点为空</li>
+    </ul>
+<!--{/if}-->

@@ -1,0 +1,215 @@
+<div class="g-bd"> 
+           <div class="m-logo-page">
+              <h1><img src="{STATIC_PATH}/Modules/{$ucxk}/static/images/logint-title.gif" alt="湖北省中小学心理健康教育课程网" /></h1>
+              <span><img src="{STATIC_PATH}/Modules/{$ucxk}/static/images/lesson-name.gif" alt="心理健康教育" /></span>
+           </div>
+
+           <div class="m-enterSection clearfix">
+           	 {if !$user_info} 
+              <a href="javascript:;" name="div_login" class="btn-login f-fl"></a>
+             {else}
+			  <a href="javascript:;" name="div_login_out" class="btn-loginOut f-fl"></a>
+			 {/if}
+              <a href="javascript:;" name="div_view" class="btn-view f-fr"></a>
+           </div>
+        </div>
+        
+		{if !$user_info}
+        <!-- 登录 -->
+        <div name="div_login" class="m-popLayer" style="height:394.5px; opacity: 1; overflow: hidden; display:none;">
+          <div class="tt clearfix">
+            <span class="icon-arrowTop" style="margin-left:350px;">&nbsp;</span>
+          </div>
+          <div class="ct clearfix">
+            <div class="ctw">
+              <div class="m-input f-fl">
+                <form action="{DOMAIN_NAME}/DDApi/auth/clientauthorizeinfo" method="post" id="loginFrom"> 
+	    <input type="hidden" name="access_token" id="access_tokens" value="{$access_tokens}">
+		<input type="hidden" name="appKey" id="appKey" value="{$appKey}">
+		<input type="hidden" name="callBackUrl" id="callBackUrl" value="{$callBackUrl}">
+		<input type="hidden" name="responseType" id="responseType" value="code">
+		<input type="hidden" name="state" id="state" value="index">
+                  <h3>使用多多社区帐号登录</h3>
+                  <div class="f-tac">
+                    <span class="login-inp-bg account-pad"> <i class="account-ico"></i>
+                      <input name="userName" class="account" placeholder="输入多多账号名称" type="text"></span>
+                  </div>
+
+                  <div class="f-tac">
+                    <span  class="login-inp-bg password-pad"> <i class="password-ico"></i>
+                      <input name="userPass" class="password" placeholder="输入密码" type="password"></span>
+                  </div>
+
+                  <div class="f-tac">
+                    <input class="login-btn" type="button" value="登录"></div>
+
+                </form>
+
+                <div class="m-input-sign">
+                  <a href="{DOMAIN_NAME}/UserSignUp/recovery" target="_blank" class="a-Grayl f-fr">
+                    <i></i>
+                    找回密码
+                  </a>
+                  <span class="f-fl">
+                    <input type="checkbox" name="" id="" />
+                    记住帐号
+                  </span>
+                  <div class="f-cb"></div>
+                </div>
+
+              </div>
+
+              <div class="m-gotoReg f-fr">
+                <h3>前往多多社区注册</h3>
+                <h6>实名制教育社区</h6>
+                <h6 class="img-dodo"></h6>
+                <p><a href="{DOMAIN_NAME}/UserSignUp/signUp" target="_blank" class="btn-gotoReg"></a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ==登录== -->
+        
+        <!-- 随便看看 -->
+        <div name="div_view" class="m-popLayer" style="height: 394.5px; opacity: 1; overflow: hidden;display:none;">
+          <div class="tt clearfix">
+            <span class="icon-arrowTop" style="margin-left:600px;">&nbsp;</span>
+          </div>
+          <div class="ct clearfix">
+            <div class="ctw">
+              <div class="m-toggle m-toggle-login">
+                <ul>
+                  <li>
+               <a href="/{$xk}/index/perview?role=2&to=/{$xk}/teacher"  class="a-Grayl">
+                <span class="m-toggle-pic">
+                     <i class="teacher"> 
+                     </i>
+                   </span>
+                   <span  class="tex">我是教师</span>
+               </a>
+           </li>
+           <li>
+               <a href="/{$xk}/index/perview?role=1&to=/{$xk}/student"   class="a-Grayl">
+                <span class="m-toggle-pic">
+                   <i  class="student"> 
+                   </i>
+                   </span>
+                   <span class="tex">我是学生</span>
+               </a>
+           </li>
+           <li>
+               <a href="/{$xk}/index/perview?role=3&to=/{$xk}/parent"  class="a-Grayl">
+                   <span class="m-toggle-pic">
+                     <i  class="parents"> 
+                     </i>
+                   </span>
+                   <span  class="tex">我是家长</span>
+               </a>
+           </li>
+           <li class="manager">
+               <a href="/admin/sign/index/xk/{$xk}" target="_blank" class="a-Grayl">
+                   <span class="m-toggle-pic">
+                     <i  class="manager"> 
+                     </i>
+                   </span>
+                   <span  class="tex">我是管理员</span>
+               </a>
+           </li>
+                </ul>
+                <div class="f-cb"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 随便看看 -->
+		{else}
+        <!-- 注销登录 -->
+        <div name="div_login_out" class="m-idInfo m-popLayer" style="height: 394.5px; opacity: 1; overflow: hidden;display:;">
+          <div class="tt clearfix">
+            <span class="icon-arrowTop" style="margin-left:400px;">&nbsp;</span>
+          </div>
+          <div class="ct clearfix">
+            <div class="ctw">
+              <div class="m-info">
+                <div class="m-info-img f-fl">
+                  <img src="{$user_info['user_avatar_160']}"></div>
+                <div class="m-info-tex f-fl">
+                  <h2>
+                    		{$user_info['user_realname']}
+                    <span title="目前等级{$user_info['user_level']}级" class="icon-level"> <i class="num{$user_info['user_level']}"></i>
+                    </span>
+                  </h2>
+                  <ul>
+                    <li>身份：{$user_role[$role_code]}</li>
+					  {if isset($class_list[0]['class_name'])}
+						<li>班级：{$class_list[0]['class_name']}</li>
+						{/if}
+                    <li>学校：{$user_info['school_name']}</li>
+					          <li class="loginOut">
+                      <a href="{$role_url}" class="customBtn colourDarkBlue">返回主页</a>
+                      <a href="/sign/exit?refer=/{$xk}/index" class="customBtn colourLOrange">注销</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="f-cb"></div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+		 <!-- 随便切换身份-->
+        <div name="div_view" class="m-popLayer" style="height: 0px; opacity: 1; overflow: hidden;display:none;">
+          <div class="tt clearfix">
+            <span class="icon-arrowTop" style="margin-left:600px;">&nbsp;</span>
+          </div>
+          <div class="ct clearfix">
+            <div class="ctw">
+              <div class="m-toggle m-toggle-login">
+                <ul>
+                  <li>
+                       <a  {if $role_code==2} href="/{$xk}/teacher" class="a-Grayl select"  {else} href="javascript:;" class="a-Grayl" {/if} >
+                        <span class="m-toggle-pic">
+                             <i class="teacher"> 
+                             </i>
+                           </span>
+                           <span  class="tex">我是教师</span>
+                       </a>
+                   </li>
+                   <li>
+                       <a  {if $role_code==1} href="/{$xk}/student" class="a-Grayl select" {else} href="javascript:;" class="a-Grayl" {/if}  >
+                        <span class="m-toggle-pic">
+                           <i  class="student"> 
+                           </i>
+                           </span>
+                           <span class="tex">我是学生</span>
+                       </a>
+                   </li>
+                   <li>
+                       <a {if $role_code==3} href="/{$xk}/parent" class="a-Grayl select" {else} href="javascript:;" class="a-Grayl" {/if} >
+                           <span class="m-toggle-pic">
+                             <i  class="parents"> 
+                             </i>
+                           </span>
+                           <span  class="tex">我是家长</span>
+                       </a>
+                   </li>
+				  
+                   <li class="manager">
+                       <a href="/admin/sign/index/xk/{$xk}" target="_blank" class="a-Grayl">
+                        <span class="m-toggle-pic">
+                           <i  class="manager"> 
+                           </i>
+                         </span>
+                           <span class="tex">我是管理者</span>
+                       </a>
+                   </li>
+				  
+                </ul>
+                <div class="f-cb"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 随便看看 -->
+		{/if}

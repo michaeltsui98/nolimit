@@ -1,0 +1,131 @@
+<script>
+	var uid = "{$uid}";
+	var id = "{$info['doc_id']}";
+	var file_key = "{$info['file_key']}";
+	var swf_key = "{$info['doc_swf_key']}";
+	var ext = "{$info['doc_ext_name']}";
+	var perview_type = "{$perview_type}";
+</script>
+<script type="text/javascript" src="/static/script/preview.js"></script>
+{if $perview_type=='isTxt' or $perview_type=='isPpt'}
+<!--
+<link rel="stylesheet" type="text/css" href="{STATIC_PATH}/static/flexpaper/flexpaper.css" />
+<script  src="{STATIC_PATH}/static/flexpaper/flexpaper.js"></script>
+<script  src="{STATIC_PATH}/static/flexpaper/flexpaper_handlers.js"></script>
+<script  src="{STATIC_PATH}/static/fpaper/swfobject.js"></script>
+-->
+<link rel="stylesheet" type="text/css" href="/static/flexpaper/flexpaper.css" />
+<script  src="/static/flexpaper/flexpaper.js"></script>
+<script  src="/static/flexpaper/flexpaper_handlers.js"></script>
+<script  src="/static/fpaper/swfobject.js"></script>
+{/if}
+
+{if $perview_type=='isVideo'}
+<script  src="{STATIC_PATH}/static/ckplayer/ckplayer.js"></script>
+<script  src="{STATIC_PATH}/static/ckplayer/offlights.js"></script>
+{/if}
+
+    <div class="g-bd">
+        <div class="m-breakNav">
+            <i class="icon_tc1"></i>
+            <span>您现在所在的位置</span>：<a href="/{$xk}/teacher">教师</a>><a href="/{$xk}/resource">资源中心</a>> 资源详情
+        </div>
+        <div class="wk_docPreview">
+            <div class="main width747 f-fl" style=" margin-left: 5px; ">
+                <h1 class="docTitle" style="height:auto;">
+                    <i class="iconL_{$info['doc_ext_name']}"></i>{$info['doc_title']}
+                </h1>
+                <p class="docTag f-mt10 f-mb10">
+                	{$base_node[$info['xd']]} | {$base_node[$info['xk']]} | {$base_node[$info['bb']]} | {$base_node[$info['nj']]} | {$resource_type[$info['cate_id']]}
+					 
+				</p>
+                <div style="position:relative;top:0px;text-align: center;margin:10px" {if $info['cate_id']==4} class="resource-not-preview" {/if}>
+                    {if $info['cate_id']==4}
+						<div class="flexpaper_viewer"> 
+	                    <div class="tips">
+	                        <p>温馨提示：该资源当前不支持在线预览，请点击下面的下载按钮进行下载</p>
+	                        <a href="javascript:;" data-uid="{$user_info['user_id']}" class="btn3" data-url="{$id}"></a>
+	                    </div>
+	                     
+	               		</div>
+					{else}
+					<div id="documentViewer" class="flexpaper_viewer" style="width:727px;height:700px;background-color:#f2f2f2;">
+                    </div>
+					{/if}
+ 					 
+                </div>
+            </div>
+            <div class="sidebar width200 f-mb10 f-fr">
+                <h1 class="wk_titleIndex">上传者信息</h1>
+                <div class="userInfo">
+                    <img src="{$res_user_info['icon']}" alt="" class="f-fl">
+                    <dl class="f-fr">
+                        <dt class="grayTxt2"> <strong class="font14 f-db"><a href="{DOMAIN_NAME}/{$res_user_info['user_id']}/Space/Index" target="_blank">{$res_user_info['real_name']}</a></strong> 
+                            <i class="icon-level f-mt5 f-mb5" title="目前等级{$res_user_info['level']}级"><i class="num{$res_user_info['level']}"></i></i>
+                        </dt>
+                        <dd>{$res_user_info['role_name']}</dd>
+                        <dd class="greenTxt"></dd>
+                    </dl>
+                    <div class="f-cb "></div>
+                </div>
+                <h1 class="wk_titleIndex">资源信息</h1>
+                <div class="docInfoWrap f-mt10">
+                    <div class="docRate greenTxt">
+                        {$doc_star}
+						<em class="font25">{$info['doc_remarks']}人评价</em>
+                    </div>
+                    <div class="docOperate">
+
+                        <a href="javascript:;" id="fav" data-id="{$id}" data-uid="{$user_info['user_id']}"  class="btn1 f-fl f-mr10"></a>
+
+                        <a href="javascript:;" id="remark" data-id="{$id}" data-uid="{$user_info['user_id']}"  class="btn2 f-fl"></a>
+
+ 
+                        <div class="f-cb "></div>
+                       
+                        
+                         
+
+                        <ul class="docInfo">
+                            <li>资源章节：<strong>{$unit_name}</strong></li>
+                            <li>上传时间：<strong>{date('Y-m-d',$info['on_time'])}</strong></li>
+                            <li>资源大小：<strong><!--{eval echo Models_Resource::init()->bytesToSize($info['file_size'])}--></strong></li>
+                            <li class="downLoadWrap">
+                                <a href="javascript:;" data-uid="{$user_info['user_id']}" class="btn3" data-url="{$id}"></a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                    <h1 class="wk_titleIndex">相关资源推荐</h1>
+					{loop $relate_resource $v}
+	                    <dl class="docRec">
+	                        <dt>
+	                            <i class="icon_{$v['file_type']}"></i>
+	                            <a href="/{$xk}/resource/view/{$v['id']}" target="_blank" title="{$v['title']}" class="font14">{$v['title']}</a>
+	                        </dt>
+	                        <div class="f-cb "></div>
+	                    </dl>
+					{/loop}
+                     
+                     
+                </div>
+ 
+        </div>
+		<div class="wk_docCommet m-videoCommet f-fl">
+            <div class="tt">
+                <ul class="tab3Menu">
+                    <li class="menuCell tabMenuCurrent f-fl">
+                        <a href="javascript:void(0)" title="" class="tabLink">资源评论</a>
+                    </li>
+                    <li class="f-cb"></li>
+                </ul>
+            </div>
+			<div class="ct">
+				<div name="get_comment_list" comment_number = "5" comment_type="resource" comment_type_id="{$info['doc_id']}"></div>
+			</div>
+		</div>
+    </div>
+	
+	<div class="f-cb"></div>
+	</div>
+	

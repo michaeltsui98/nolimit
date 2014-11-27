@@ -1,0 +1,87 @@
+<script type="text/javascript" src="/static/script/preview.js"></script>
+<script type="text/javascript" src="/static/ckplayer/offlights.js"></script>
+<script type="text/javascript" src="/static/ckplayer/ckplayer.js"></script>
+<script type="text/javascript" src="/Modules/Xl/static/script/activity/act_preview.js"></script>
+<h4>{$title}呵呵呵呵呵</h4>
+<div>活动详情
+    <table border="1" cellspacing="0">
+        <tr>
+            <td><!--{$activity_info['activity_info_id']}--></td>
+            <td><!--{$activity_info['activity_info_title']}--></td>
+            <td><!--{$activity_info['activity_info_host']}--></td>
+            <td><!--{$activity_info['activity_info_start_date']}--></td>
+        </tr>
+    </table>
+</div>
+<div>
+    活动平均分：<!--{$activity_avg_evaluate}-->
+    <br/>
+    {if $activity_user_evaluate == -1}
+        用户还么有登录
+    {else}
+        {if empty($activity_user_evaluate)}
+        没参加活动:<a href="<!--{$join_activity_url}-->?activity_id=<!--{$activity_info['activity_info_id']}-->" target="_self">参与研训</a>
+        {else}
+            {if  $activity_user_evaluate[0]['activity_member_evaluate'] == '0'}
+            参加了没打分:
+            <form action="<!--{$activity_evaluate_url}-->" method="post">
+                <input type="text" name="activity_member_evaluate" />
+                <input type="hidden" name="activity_member_pid" value="<!--{$activity_info['activity_info_id']}-->">
+                <input type="hidden" name="activity_member_uid" value="<!--{$user_id}-->">
+
+                <input type="submit" value="打分" />
+            </form>
+            {else}
+            参加了也打分了
+            {/if}
+        {/if}
+    {/if}
+
+
+
+</div>
+
+
+<div>
+    活动附件：
+    <table border="1" cellspacing="0">
+        {loop $activity_attachment_list  $key  $val}
+        <tr>
+            <td><!--{$val['activity_resourse_id']}--></td>
+            <td><a href="<!--{$activity_attachment_down_url}-->?file_name=<!--{$val['activity_resourse_title']}-->&file_path=<!--{$val['activity_resourse_content']}-->"   target="_self"><!--{$val['activity_resourse_title']}--></a></td>
+            <td><!--{$val['activity_resourse_content']}--></td>
+        </tr>
+        {/loop}
+    </table>
+</div>
+
+<div>视频播放
+    <table border="1" cellspacing="0">
+        {loop $activity_resource_list  $key  $val}
+        <tr>
+            <td><!--{$val['activity_resourse_id']}--></td>
+            <td><!--{$val['activity_resourse_icon']}--></td>
+            <td><!--{$val['activity_resourse_title']}--></td>
+            <td><!--{$val['activity_resourse_content']}--></td>
+            <td><!--{$val['activity_resourse_file_type']}--></td>
+        </tr>
+        {/loop}
+    </table>
+</div>
+{if $activity_info['activity_info_status'] == 2  OR ( $activity_info['activity_info_status'] == 1 AND  !empty($activity_user_evaluate))}
+    <script type="text/javascript">
+        var uid = "";
+        var id = "<!--{$val['activity_resourse_content']}-->";
+        var file_key = "<!--{$val['activity_resource_key']}-->";
+        var swf_key = "";
+        var ext = "<!--{$val['activity_resourse_file_type']}-->";
+        var perview_type = "isVideo";
+    </script>
+    <div class="m-bdOlL f-tac" id='documentViewer' style='width:400px;height:300px;'></div>
+{else}
+    研训发布时参与研训或研训公开之后即可观看研训内容
+{/if}
+
+
+ 
+ 

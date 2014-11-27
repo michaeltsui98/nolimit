@@ -1,0 +1,26 @@
+<div id="ajaxpage" class="easyui-panel" style="padding:5px;height:auto" data-options="fit:true">
+    <p>
+        统计各个地区学科教师配备情况   开课率 = 学科教师 / 学校数量
+    </p>
+    <table id="activityStatistics-dg" title="<!--{$title}-->" class="easyui-datagrid" data-options="rownumbers:true,fit:true,fitColumns:true,singleSelect:true,pagination:false,url:'<!--{$stat_ajax}-->',method:'get',toolbar:'#activityStatistics-tb'">
+        <thead>
+            <tr>
+                <th data-options="field:'name',width:20" rowspan="2">市州</th>
+                <th colspan="3">小学</th>
+                <th colspan="3">初中</th>
+                <th colspan="3">高中</th>
+            </tr>
+            <tr>
+                <th data-options="field:'xd001_teacher',width:20,align: 'center'">学科教师</th>
+                <th data-options="field:'xd001_school',width:20,align: 'center'">学校数量</th>
+                <th data-options="field:'xd001_percent',width:20,align: 'center'">开课率</th>
+                <th data-options="field:'xd002_teacher',width:20,align: 'center'">学科教师</th>
+                <th data-options="field:'xd002_school',width:20,align: 'center'">学校数量</th>
+                <th data-options="field:'xd002_percent',width:20,align: 'center'">开课率</th>
+                <th data-options="field:'xd003_teacher',width:20,align: 'center'">学科教师</th>
+                <th data-options="field:'xd003_school',width:20,align: 'center'">学校数量</th>
+                <th data-options="field:'xd003_percent',width:20,align: 'center'">开课率</th>
+            </tr>
+        </thead>
+    </table>
+</div>

@@ -1,0 +1,9 @@
+<div class="m-breakNav f-mb10">
+    <i class="icon_tc1"></i>
+    <span>当前位置</span>：
+    <!--{loop $breadcrumb $item}-->
+        <a href="/{$this->subject}/{$item['uri']}">{$item['title']}</a>
+        &gt;
+    <!--{/loop}-->
+    {$current_item['title']}
+</div>

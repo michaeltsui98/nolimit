@@ -1,0 +1,56 @@
+  <div class="bd f-mt10">
+      <!--{if $type=='all' }-->
+        <div class="courseType s-bgc f-mb10">
+            <dl class="clearfix f-mb10">
+                <dt class="f-fl">课程对象：</dt>
+                <dd class="f-fl customSelectStyle1">
+                    <span><em>年级:</em>
+                     {$grade_select}
+                    </span>
+
+                    <span class="f-ml20"><em>班级:</em>
+                    <select id="class" class="customSelectStyle1">
+                        <!--{loop $class_list $key $value}-->
+                        <option value="{$value['class_id']}">{$value['class_name']}</option>
+                        <!--{/loop}-->
+                    </select>
+                    </span>
+                </dd>
+            </dl>
+
+            <dl class="clearfix">
+                <dt class="f-fl">课程备注：</dt>
+                <dd class="f-fl"><textarea name="remark"  cols="80" rows="1" placeholder="请输入备注" style="width:589px;"></textarea></dd>
+            </dl>
+        </div>
+     <!--{/if}-->
+        <div class="courseTable">
+            <div class="tableInfo clearfix">
+                <div class="f-fl f-fs16">
+                    从我的备课夹中挑选
+                   <select name="edition" id="edition" class="f-ml20">
+                       <!--{loop $version  $value}-->
+                       <option value="{$value['code']}">{$value['name']}</option>
+                       <!--{/loop}-->
+                   </select>
+                </div>
+                <div class="f-fr">
+                    <a href="{DODOJC}/{$xk}/lesson" target="_blank" class="customBtn colourLightGray customBtnNormal">新建备课夹</a>
+                </div>
+            </div>
+            <!--{eval if($type=='lessonFolder'): $element = 'grade="'.$grade.'" stage="'.$stage.'"';else:$element='';endif;  }-->
+            <table class="tableSet" id="lesson_folder" {$element}>
+                <thead>
+                    <tr>
+                        <th style="width:5%" class="order"></th>
+                        <th style="width:40%">标题</th>
+                        <th >课名</th>
+                    </tr>
+                </thead>
+                <!-- 表头可选 -->
+                <tbody>
+                </tbody>
+            </table>
+            <div id='pageNum'></div>
+        </div>
+    </div>

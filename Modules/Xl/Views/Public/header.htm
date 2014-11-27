@@ -1,0 +1,31 @@
+
+ {if isset($css)}
+    {loop $css $cfile}
+    <link rel="stylesheet" type="text/css" href="{STATIC_PATH}/Modules/{$ucxk}/static/css/{$cfile}"/>
+    {/loop}
+    {/if}
+    <div class="g-hd">
+        
+		
+    <!--{eval  echo Cola_Tpl::widget_out("Modules_{$ucxk}_Controllers_Public",'top')}-->   
+	 
+	
+    <div class="g-hdb">
+        <div class="g-hdc">
+            <h1 class="m-logo f-fl">
+                <a href="/{$xk}/index" title="心理健康教育" target="_blank" class="u-logo">心理健康教育</a>
+            </h1>
+            <div class="m-nav f-tar f-fs14 f-fr">
+               {loop $nav $v}
+                <a href="{$v['url']}" title="{$v['name']}" target="" class="item {if $v['c'] == $c }z-crt{/if}">
+                    <i class="{$v['icon']}"></i>
+                    <span class="txt">{$v['name']}</span>
+                </a>
+				{/loop}
+            </div> 
+            <div class="f-cb"></div>
+        </div>
+    </div>
+	
+</div>	
+<div class="g-wrap">	

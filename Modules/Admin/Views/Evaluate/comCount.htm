@@ -1,0 +1,17 @@
+﻿<div id="ajaxpage" class="easyui-panel" style="padding:5px; height:450px;" data-options="fit:true">
+    <table id="evaluate_count-dg" title="<!--{$title}-->" class="easyui-datagrid" data-options="rownumbers:true,fit:true,fitColumns:true,singleSelect:true,pagination:true,url:'<!--{$com_count_ajax}-->?id=<!--{$id}-->',method:'get',pageSize:20,toolbar:'#evaluate_count-tb'">
+        <thead>
+        <tr>
+            <th field='evaluate_title' width='30'>测评标题</th>
+            <th field='evaluate_field' width='10'>学段</th>
+            <th field='evaluate_grade' width='10'>年级</th>
+            <th field='evaluate_version' width='10'>版本</th>
+            <th field='not_finish' width='10'>未完成人数</th>
+            <th field='finish' width='10'>完成人数</th>
+            <th field='due_finish' width='10'>过期人数</th>
+        </tr>
+        </thead>
+    </table>
+        <div id="evaluate_count-tb" style="padding:5px;height:auto">
+    </div>
+</div>

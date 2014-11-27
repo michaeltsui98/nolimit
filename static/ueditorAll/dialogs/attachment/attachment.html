@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="http://dev-images.dodoedu.com/shequPage/common/style/reset.css">
+    <link rel="stylesheet" type="text/css" href="http://dev-images.dodoedu.com/shequPage/common/style/customPublic.css">
+    <link rel="stylesheet" type="text/css" href="http://dev-images.dodoedu.com/shequPage/common/style/dodoPublic.css">
+    <link rel="stylesheet" type="text/css" href="http://dev-images.dodoedu.com/shequPage/common/style/popups.css">
+    <link rel="stylesheet" type="text/css" href="http://dev-images.dodoedu.com/shequPage/shequ/style/SQ.css">
+    <link id="skin" rel="stylesheet" type="text/css" href="">
+    <link rel="stylesheet" type="text/css" href="attachment.css"/>
+
+    <script type="text/javascript" src="http://dev-images.dodoedu.com/shequPage/common/jquery-1.6.min.js"></script>
+    <script type="text/javascript" src="http://dev-images.dodoedu.com/shequPage/common/common.js"></script>
+    <script type="text/javascript" src="http://dev-images.dodoedu.com/shequPage/common/ajaxFileUpload.js"></script>
+    <script type="text/javascript" src="http://dev-images.dodoedu.com/shequPage/common/dialog.js"></script>
+    <script type="text/javascript" src="http://dev-images.dodoedu.com/shequPage/common/script/uploadify/jquery.uploadify.js"></script>
+    <script type="text/javascript">
+        if ($("#skin", window.parent.document).length > 0) {
+            $("#skin").attr("href", $("#skin", window.parent.document).attr("href"));
+        }
+        else if ($("#classSkin", window.parent.document).length > 0) {
+            $("#skin").attr("href", $("#classSkin", window.parent.document).attr("href"));
+        }
+        
+    </script>
+    <script type="text/javascript" src="../internal.js"></script>
+<!--    <script type="text/javascript" src="../../third-party/swfupload/swfupload.js"></script>
+    <script type="text/javascript" src="../../third-party/swfupload/swfupload.queue.js"></script>-->
+    <script type="text/javascript" src="../../third-party/swfupload/fileprogress.js"></script>
+    <script type="text/javascript" src="fileTypeMaps.js"></script>
+    <script type="text/javascript" src="callbacks.js"></script>
+    <script type="text/javascript" src="attachment.js"></script>
+</head>
+<body>
+    <div>
+        <div class="SQdisk_tool">
+            <ul>
+                <li name="uploadFile" disk_id="2"><span ishighlight="true"><em class="uploadIcon" title="上传"></em>上传</span></li>
+            </ul>
+        </div>
+        <div class="SQdisk_filePath">
+            <span name="spanDirNav"></span>
+        </div>
+        <div class="SQdisk_picCon" name="divPic"></div>
+        <div class="page" id="commentPageNum"></div>
+    </div>
+    <script type="text/javascript">
+        //点击OK按钮
+        dialog.onok = function () {
+            var map = fileTypeMaps,
+                str = "";
+            var checkId = $("ul[check='yes']");
+            var checkedFile = $("ul[check='yes']").find("li.fileName").find("a");
+            for (var i = 0; i < checkedFile.length; i++) {
+                if (checkId[i].getAttribute("is_share") > 0) {
+                    var src = editor.options.UEDITOR_HOME_URL + "dialogs/attachment/fileTypeImages/" + (map[getPostfix(checkedFile[i].title)] || "icon_default.png");
+                    str += "<p style='line-height: 16px;'><img src='" + src + "' data_ue_src='" + src + "' />" +
+                           "<a href='" + checkedFile[i].href + "?diskId=" + DiskParams.disk_id + "'>" + checkedFile[i].title + "</a></p>";
+                }
+                else {
+                    setFileShare(checkId[i].getAttribute("file_id"));
+                    var src = editor.options.UEDITOR_HOME_URL + "dialogs/attachment/fileTypeImages/" + (map[getPostfix(checkedFile[i].title)] || "icon_default.png");
+                    str += "<p style='line-height: 16px;'><img src='" + src + "' data_ue_src='" + src + "' />" +
+                           "<a href='" + checkedFile[i].href + "?diskId=" + DiskParams.disk_id + "'>" + checkedFile[i].title + "</a></p>";
+                }
+            }
+            editor.execCommand("insertHTML", str);
+        };
+        //获取文件的后缀名
+        function getPostfix(str) {
+            var imgArr = "";
+            if (str != null && str.indexOf(".") > -1) {
+                imgArr = str.split(".");
+            }
+            return imgArr[imgArr.length - 1];
+        }
+
+        //判断将文件进行分享
+        function setFileShare(fileId) {
+            function shareFile(data) {
+                DiskParams.disk_id = data;
+            }
+            AjaxForJson(editor.options.attachFileShare, "fid=" + fileId + "&disk_id=" + DiskParams.disk_id, shareFile, null);
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<h4>{$title}呵呵呵呵呵</h4>
+<div>
+    研训总次数:<!--{$teacher_total_activity_times}-->
+    <table border="1" cellspacing="0">
+        {loop $teacher_total_activity_type $key  $val}
+            <tr>
+                <td><!--{$val['activity_info_type_label']}--></td>
+                <td><!--{$val['activity_times']}--></td>
+            </tr>
+        {/loop}
+    </table>
+</div>
+<div>
+    研训足迹：
+    {if $teacher_activity_list == false}
+        还没有参加任何活动
+    {else}
+        <table border="1" cellspacing="0">
+            {loop $teacher_activity_list['rows'] $key $val}
+                <tr>
+                    <td><!--{$val['activity_info_id']}--></td>
+                    <td><!--{$val['activity_info_start_date']}--></td>
+                    <td><!--{$val['activity_info_title']}--></td>
+                    {if $val['activity_member_experience_blogid'] == '' OR $val['activity_member_experience_blogid'] == null }
+                        <td><a href="<!--{$post_activity_experience_url}-->?activity_id=<!--{$val['activity_info_id']}-->" target="_blank">发表心得</a></td>
+                    {else}
+                        <td><a href="<!--{$val['blog_url']}-->" target="_blank">查看心得</a></td>
+                    {/if}
+
+                </tr>
+            {/loop}
+        </table>
+    {/if}
+</div>
+
+
+ 
+ 

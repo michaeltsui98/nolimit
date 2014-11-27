@@ -1,0 +1,57 @@
+<!-- 导航 -->
+<link href="{DODOJC}/Modules/Xl/static/css/tec-layout.css" rel="stylesheet" type="text/css" /><div class="g-bd">
+        <!--
+		<div class="m-nav clearfix f-mb10">
+            <div class="m-breakNav f-fl">
+                <i class="icon_tc1"></i>
+                <span>您现在所在的位置</span>：<a href="">问题中心</a>&gt;<a href="">我的问答
+                </a>&gt;{if $type=='Answer'}我的回答{else}我的提问{/if}
+            </div>
+        </div> 
+		-->
+        {$breadcrumb}
+        <div class="g-sd f-fl">
+            <!-- 创建问答 -->
+            {include Modules/Sm/Views/Question/askAndAnswer}
+            <!-- 热门标签排行 -->           
+            {include Modules/Sm/Views/Question/tagQuestion}  
+            <!-- 答题榜 -->
+            {include Modules/Sm/Views/Question/listQuestion}            
+            </div>
+        <div class="g-mn f-fr">
+            <!-- 问答列表 -->
+            <div class="m-askAndAnswerList s-bsdStyle1">
+
+                <div class="tt">
+                    <div class="tab1Menu">
+                        <div class="leftInfo f-fs14 f-fl" name="type">
+                            <strong {if $type=='Question'||empty($type)}  class="cur"  {/if}><a href="#" name="Question" key="type">我的提问</a></strong>
+                            <strong {if $type=='Answer'}  class="cur"  {/if}><a href="#" name="Answer" key="type">我的回答</a></strong>
+                        </div>
+                        <div class="rightInfo f-fr" name="order">
+                            排序：
+                          <strong class="cur"  name="timeOrder"  key="order">最新<i class="icon-orderdown"></i></strong>
+                        | <a href="#" class="whiteA" name="hotOrder" key="order">最热<i class="icon-orderdown-nocur"></i></a>  
+                        </div>
+                        <div class="f-cb">
+                        </div>
+                    </div>
+                </div>
+                <div class="ct" name="myData">
+                    <ul>
+                        <li class="head clearfix">
+                            <span class="f-fl">标题</span>
+                            <div class="f-fr">时间</div>
+                        </li>                        
+                    </ul>
+                </div>
+				<div class="ft">
+                	<div id='pageNum'></div>
+				</div>
+                
+
+            </div>
+
+        </div>
+        <div class="f-cb"></div>
+    </div> 

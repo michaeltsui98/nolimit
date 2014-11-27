@@ -1,0 +1,70 @@
+<script type="text/javascript">
+        $("#publisher_change").die().live("click",function(){
+            chooseVersion();
+        })
+     </script>  
+     <div class="g-sd f-fl">
+            <div class="m-ulWrap s-bsdStyle1 f-mb10">
+            	<div class="m-ui clearfix">
+                	<div class="uf f-fl">
+                        <a href="{DOMAIN_NAME}/{$info['user_id']}/Space/index" target="_blank" title="" target="">
+                            <img src="{$info['image']}" width="72" />
+                        </a>
+                    </div>
+                    <ul class="uilst f-fr">
+                    	<li class="item">
+                            <a href="{DOMAIN_NAME}/{$info['user_id']}/Space/index" title="" target="_blank">
+                                <strong class="f-fs14 f-vam f-mr10">{$info['user_realname']}
+                                </strong>
+                            </a>
+                            <i class="icon-level" title="目前等级{$info['user_level']}级">
+                                <i class="num{$info['user_level']}"></i>
+                            </i>
+                        </li>
+                        {if isset($info['school_class_info']['class_id']) && isset($info['school_class_info']['class_name'])}
+                             <li class="item">
+                                <a href="{DOMAIN_NAME}/class/{$info['school_class_info']['class_id']}" title="" target="_blank" class="a-thil">{$info['school_class_info']['class_name']}
+                                </a>
+                            </li>
+                        {/if}
+                        {if isset($info['school_class_info']['school_id']) && isset($info['school_class_info']['school_name'])}
+                             <li class="item">
+                                <a href="{DOMAIN_NAME}/school/{$info['school_class_info']['school_id']}" title="" target="_blank" class="a-thil">
+                                    <strong>{$info['school_class_info']['school_name']}
+                                    </strong>
+                                </a>
+                            </li>
+                        {/if}
+                    </ul>
+                </div>
+                {if !empty($param)}
+                    <div class="BVer">
+                    <input type="hidden" name="publisher_json" value='<!--{$jc}-->' />
+                    <input type="hidden" name="publisher_selected_code" value='<!--{$default_version}-->' />
+                    <input type="hidden" name="publisher_change_ajax_url" value='<!--{$url}-->' />
+                    我的教材版本：
+                    {if !empty($default_version)}
+                         <strong><!--{$default_version_descript}--></strong>
+                    {else}
+                         <strong>无</strong>
+                    {/if}
+                    『<a href="javascript:;" id='publisher_change'>修改</a>』
+                </div>
+                    {/if}
+                <ul class="m-ullst s-fcGray">
+                	<li class="item">已学习
+                        <strong>{$info['study_video']}个</strong>微视频，
+                        <strong>{$info['study_e_textbook']}个</strong>电子教材 
+                    </li>
+                    <li class="item">参与
+                        <strong>{$info['evaluate_count']}次</strong>评测
+                    </li>
+                    <li class="item">提出
+                        <strong>{$info['question_count']}个</strong>问题和回答
+                        <strong>{$info['answer_count']}个</strong>问题
+                    </li>
+                    <li class="item">本周共有
+                        <strong>{$info['course_count']}个</strong>课程活动
+                    </li>
+                </ul>
+            </div>

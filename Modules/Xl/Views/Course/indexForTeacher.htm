@@ -1,0 +1,111 @@
+<div class="g-wrap">
+    <div class="g-bd">
+        <div class="m-breakNav f-mb10">
+            <i class="icon_tc1"></i>
+            <span>当前位置</span>：
+            <a href="/{$xk}/index">教师</a>
+            &gt; 课程
+        </div>
+        <div class="g-sd width238 f-fl">
+            <div class="m-courseRemind s-bsdStyle2 f-mb20">
+                <h2 class="tt s-fcLGray f-fs20 f-fwn">课程提醒</h2>
+                <div class="ct">
+                    <div class="stat clearfix">
+                        <a href="javascript:;" title="累计课程"  class="item a-Grayl s-bdrcG f-tac f-fl"><span class="data f-fs22 s-fcGreen">{$stat_all}</span><span class="txt">累计课程</span></a>
+                        <a href="javascript:;" title="本周课程"  class="item a-Grayl s-bdrcG f-tac f-fl"><span class="data f-fs22 s-fcGreen">{$stat_week}</span><span class="txt">本周课程</span></a>
+                        <a href="javascript:;" title="今日课程"  class="item a-Grayl f-tac f-fl"><span class="data f-fs22 s-fcOrange">{$stat_day}</span><span class="txt">今日课程</span></a>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="m-myClass s-bsdStyle2">
+                <h2 class="tt s-fcLGray f-fs20 f-fwn">任教班级</h2>
+                <div class="ct">
+                    <!--{loop $class_list $key $value}-->
+                    <div class="classItem clearfix">
+                        <div class="logo f-fl"><a href="{DOMAIN_NAME}/class/{$value['class_id']}" title="" target="_blank"><img src="{$value['class_logo']}" width="40" alt="{$value['class_name']}" /></a></div>
+                        <dl class="info f-fr">
+                            <dt class="className"><a href="{DOMAIN_NAME}/class/{$value['class_id']}" class="f-fs16" title="" target="_blank">{$value['class_name']}</a></dt>
+                            <dd class="schName"><a href="{DOMAIN_NAME}/school/{$value['school_id']}" title="" target="_blank" class="a-Grayl">{$value['school_name']}</a></dd>
+                        </dl>
+                    </div>
+                    <!--{/loop}-->
+
+                </div>
+            </div>
+        </div>
+        <div class="g-mn width738 f-fr" style="position:relative;">
+            <div class="m-courseManage s-bsdStyle2" id="courseManage">
+                <div class="tt clearfix">
+                    <div class="m-crtDate f-fl">
+                        <a href="javascript:;" title="上月" id='prevmonth' class="u-pre f-tac"><i class="icon-arrL"></i></a><strong class="txt f-ib f-vam f-fs16" id="thismonth" data-month='<!--{eval echo date("Y-m",strtotime($date[5]));}-->'><!--{eval echo date('Y-m',strtotime($date[5]));}--></strong><a href="javascript:;" title="下月" id='nextmonth' class="u-next f-tac"><i class="icon-arrR"></i></a>
+                    </div>
+                    <div class="m-crtWeek f-fl">
+                        <a href="javascript:;" title="上周" id="prevweek" class="u-pre f-tac"><i class="icon-arrL"></i></a><strong class="txt f-ib f-vam f-fs16" id="thisweek" data-weekstart="{$date[1]}">第{$thisweek}周(本周)</strong><a href="javascript:;" title="下周" id="nextweek" class="u-next f-tac"><i class="icon-arrR"></i></a>
+                    </div>
+                    <div class="m-view f-fr" data-start="{$date[1]}" data-end="{$date[5]}" id="courseListSwitch">
+                        <a href="javascript:;" title="缩略图模式"  data-format="calendar"  class="u-viewSmall f-ib z-sel courseListSwitch"><i class="icon-viewSmall"></i></a><a href="javascript:;" title="列表模式" data-format="list" class="u-viewLst f-ib courseListSwitch"><i class="icon-viewLst"></i></a>
+                    </div>
+                </div>
+                <div class="ct">
+                    <!--缩略图模式-->
+                    <div class="vsWrap">
+                        <ul class="vsTt clearfix">
+                            <li class="Lessons f-fl f-fs16">课节</li>
+                            <li class="everyday f-fs16 f-fl">周一<span class="s-fcLGray f-ml5">(<!--{eval echo date('m-d',strtotime($date[1]));}-->)</span></li>
+                            <li class="everyday f-fs16 f-fl">周二<span class="s-fcLGray f-ml5">(<!--{eval echo date('m-d',strtotime($date[2]));}-->)</span></li>
+                            <li class="everyday f-fs16 f-fl">周三<span class="s-fcLGray f-ml5">(<!--{eval echo date('m-d',strtotime($date[3]));}-->)</span></li>
+                            <li class="everyday f-fs16 f-fl">周四<span class="s-fcLGray f-ml5">(<!--{eval echo date('m-d',strtotime($date[4]));}-->)</span></li>
+                            <li class="everyday f-fs16 f-fl">周五<span class="s-fcLGray f-ml5">(<!--{eval echo date('m-d',strtotime($date[5]));}-->)</span></li>
+                        </ul>
+                        <!--{loop $course $key $value}-->
+                        <ul class="vsItem clearfix">
+                            <li class="Lessons f-fl f-tac"><strong class="f-fs20">第{$key}节</strong></li>
+                            <!--{loop $value $s_key $s_value}-->
+                            <!--{eval $liStyle= (date('Y-m-d')>$date[$s_key])?"z-overdue":"";}-->
+                            <!--{eval $currentStyle= (date('Y-m-d')==$date[$s_key])?"lesson-bg-today":"";}-->
+                            <li class="item1 {$liStyle} {$currentStyle} f-fl" data-date="{$date[$s_key]}" data-sort="{$key}">
+                                <!--{eval if (!empty($s_value)):}-->
+                                <div class="status-ico">
+                                    <span class="iconWrap f-ib f-mr10 z-finish lessonfolder" title="课程评价">
+                                        <!--{eval if($s_value['course_appraise_status']): }-->
+                                        <i class="icon-tickOff"></i>
+                                        <!--{eval endif;}-->
+                                        <i class="icon-lessonfolder"></i>
+                                    </span>
+                                    <span class="iconWrap f-ib f-mr10 z-finish courseDes" title="课程问答">
+                                        <!--{eval if($s_value['course_question_status']): }-->
+                                        <i class="icon-tickOff"></i>
+                                        <!--{eval endif;}-->
+                                        <i class="icon-courseDes"></i>
+                                    </span>
+                                    <span class="iconWrap f-ib f-mr10 z-finish prepareLessons" title="备课夹">
+                                        <!--{eval if($s_value['course_lesson_folder_status']): }-->
+                                        <i class="icon-tickOff"></i>
+                                        <!--{eval endif;}-->
+                                        <i class="icon-prepareLessons"></i>
+                                    </span>
+                                </div> 
+                                <dl class="classItem  s-bgcPurple">
+                                    <dt class="name f-fs14 ">{$s_value['class_name']}</dt>
+                                    <dt class="name f-fs14"><a href="course/courseDetail?course_id={$s_value['id']}" target="_blank" class="s-fcWhite">详情</a></dt>
+                                </dl>
+                                <!--{eval else:}-->
+                               <dl class="classItem blankDl">
+                                    <dt class="name f-fs14 "></dt>
+                                    <dt class="name f-fs14"></dt>
+                                </dl>
+                                 <!--{eval endif;}-->
+                            </li>
+                            <!--{/loop}-->
+                        </ul>
+                        <!--{/loop}-->
+                        <a href="javascript:;"  class="a-secl f-fs16 f-ib f-mt10">+ 添加课程节次</a>
+                    </div>
+                </div>
+            </div>         
+        </div>
+        <div class="f-cb"></div>
+    </div>
+

@@ -1,0 +1,36 @@
+       <div class="g-bd">
+          <div class="m-nav clearfix f-mb10">
+            <div class="m-breakNav f-fl">
+                <i class="icon_tc1"></i>
+                <span>当前位置</span>：<a href="javascript:;">家长 </a>>学习统计
+            </div>
+        </div>
+        <!--{eval  echo Cola_Tpl::widget_out("Modules_{$ucxk}_Controllers_Parent",'PublicStuInfo')}-->
+        </div>
+    	<div class="g-mn f-fr">
+        	<div class="m-testWrap">
+                    <h2 class="tt f-fwn f-fs14 s-fcGray s-bsdStyle1">
+                      <i class="icon-circle1 f-mr5"></i>
+                      <label class="f-vam f-ml10">当前版本：</label>
+                    <select size="1" class="f-vam f-fs16 f-fwb" name="bb_list">
+                     {loop $bb_list $v}
+                       <option value="{$v['code']}">{$v['name']}</option>
+                     {/loop}
+                   </select>
+                      <label class="f-vam">当前年级：</label>
+                    <select size="1" class="f-vam f-fs16 f-fwb" name="grade_list">
+                    </select>
+            </h2>
+     			   <div class="ct s-bsdStyle1">
+                	<ul class="tab2Menu f-fs18 m-snavT f-mb10">
+                        <li class="menuCell tabMenuCurrent f-fl" name='history'><a href="javascript:;" title="" class="tabLink">历史记录</a></li>
+                        <li class="menuCell f-fl" name='structure'><a href="javascript:;" title="" class="tabLink">知识结构</a></li>
+                        <li class="f-cb"></li>
+                    </ul>
+                   <div name="history_list"></div> 
+                </div>
+            </div>
+        </div>
+        <div class="f-cb"></div>
+    </div>
+    

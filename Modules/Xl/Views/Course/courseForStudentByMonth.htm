@@ -1,0 +1,44 @@
+<div class="tt clearfix">
+    <div class="m-crtDate f-fl">
+        <a href="javascript:;" title="上月" id="prevmonth" class="u-pre f-tac"><i class="icon-arrL"></i></a><strong class="txt f-ib f-vam f-fs16" id="thismonth" data-month="{$themonth}" >{$themonth}<!--{eval if($themonth==date('Y-m')) :}-->(本月)<!--{eval endif ;}--></strong><a href="javascript:;" title="下月" id="nextmonth" class="u-next f-tac"><i class="icon-arrR"></i></a>
+    </div> 
+</div>
+<div class="ct s-bgcWhite">
+    <!-- 正常 -->
+    <div class="unit">
+         <!--{if !empty($course) }-->
+        <div class="lst f-fs16 s-fcGray"> 
+            <ul class="item clearfix item-title">
+                <li class="date f-fl s-fcBlue">时间</li>
+                <li class="name f-fl s-fcBlue">任课老师</li>
+                <li class="con f-fl s-fcBlue">知识点</p></li>
+                <li class="count f-fl s-fcBlue">课程评分</li>
+                <li class="operate f-fr s-fcBlue">操作</li>
+                </ul>
+                <!--{loop $course $key $value}-->
+                <ul class="item clearfix">
+                    <li class="date f-fl"><h4 class="time">12-02-03第{$value['course_sort']}节</h4></li>
+                    <li class="name f-fl">{$value['teacher_user_name']}</li>
+                    <li class="con f-fl">
+                        <h2>{$value['node_title']}&nbsp;&nbsp;
+                            <!--{eval if($role_code==1) : }-->
+                            <a href="course/courseDetail?course_id={$value['id']}" target="_blank" class="s-fcOrange" >查看详情</a></p>
+                            <!--{eval else : }-->
+                            <a href="courseDetail?course_id={$value['id']}" target="_blank" class="s-fcOrange" >查看详情</a></p>
+                            <!--{eval endif;  }-->
+                        </h2>
+                    </li>
+                    <li class="count f-fl"><em>{$value['appraise']['average']}</em></li>
+                    <!--{eval if($value['is_appraise']):;}-->
+                    <li class="operate f-fr"><i class="done">已评价</i></li>
+                    <!--{eval else :;}-->
+                    <li class="operate f-fr"><a class="todo addAppraise" data-course="{$value['id']}" href="javascript:;">去评价</a></li>
+                    <!--{eval endif;}-->
+                </ul>
+                <!--{/loop}-->
+        </div>
+    </div>
+                 <!--{else}-->
+                <div class="m-emptytips"><p>暂无课堂记录</p></div>
+                <!--{/if}-->
+</div>

@@ -1,0 +1,114 @@
+.icon-table {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	vertical-align: top;
+	overflow: hidden
+}
+.icon-blank{
+	background:url('icons/blank.gif') no-repeat center center;
+}
+.icon-add{
+	background:url('icons/edit_add.png') no-repeat center center;
+}
+.icon-edit{
+	background:url('icons/pencil.png') no-repeat center center;
+}
+.icon-remove{
+	background:url('icons/edit_remove.png') no-repeat center center;
+}
+.icon-save{
+	background:url('icons/filesave.png') no-repeat center center;
+}
+.icon-cut{
+	background:url('icons/cut.png') no-repeat center center;
+}
+.icon-ok{
+	background:url('icons/ok.png') no-repeat center center;
+}
+.icon-no{
+	background:url('icons/no.png') no-repeat center center;
+}
+.icon-cancel{
+	background:url('icons/cancel.png') no-repeat center center;
+}
+.icon-reload{
+	background:url('icons/reload.png') no-repeat center center;
+}
+.icon-search{
+	background:url('icons/search.png') no-repeat center center;
+}
+.icon-print{
+	background:url('icons/print.png') no-repeat center center;
+}
+.icon-help{
+	background:url('icons/help.png') no-repeat center center;
+}
+.icon-undo{
+	background:url('icons/undo.png') no-repeat center center;
+}
+.icon-redo{
+	background:url('icons/redo.png') no-repeat center center;
+}
+.icon-back{
+	background:url('icons/back.png') no-repeat center center;
+}
+.icon-sum{
+	background:url('icons/sum.png') no-repeat center center;
+}
+.icon-tip{
+	background:url('icons/tip.png') no-repeat center center;
+}
+.icon-filter{
+	background:url('icons/filter.png') no-repeat center center;
+}
+.icon-up{
+	background:url('icons/edit_up.png') no-repeat center center;
+}
+.icon-down{
+	background:url('icons/edit_down.png') no-repeat center center;
+}
+.icon-isok{
+	background:url('icons/edit_ok.png') no-repeat center center;
+}
+.icon-isjz{
+	background:url('icons/edit_jz.png') no-repeat center center;
+}
+.icon-set{
+	background:url('icons/edit_set.png') no-repeat center center;
+}
+.icon-isedit{
+	background:url('icons/edit_edit.png') no-repeat center center;
+}
+.icon-isdel{
+	background:url('icons/edit_del.png') no-repeat center center;
+}
+
+.icon-mini-add{
+	background:url('icons/mini_add.png') no-repeat center center;
+}
+.icon-mini-edit{
+	background:url('icons/mini_edit.png') no-repeat center center;
+}
+.icon-mini-refresh{
+	background:url('icons/mini_refresh.png') no-repeat center center;
+}
+
+.menu-module{
+	background:url('icons/module.png') no-repeat center center;
+}
+.menu-user{
+	background:url('icons/user.png') no-repeat center center;
+}
+.menu-group{
+	background:url('icons/group.png') no-repeat center center;
+}
+.menu-gp{
+	background:url('icons/gp.png') no-repeat center center;
+}
+.menu-gys{
+	background:url('icons/gys.png') no-repeat center center;
+}
+.menu-psd{
+	background:url('icons/psd.png') no-repeat center center;
+}

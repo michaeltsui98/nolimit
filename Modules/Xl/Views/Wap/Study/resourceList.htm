@@ -1,0 +1,36 @@
+ <div class="tableViewCon">
+            <a class="btn_back" href="javascript:;" onclick="history.back();"></a>
+            <h3>课程资源列表</h3>
+        </div>
+        <!--有资源-->
+        <div class="m-infolist">
+            <ul class="datalist">
+                {if !empty($arr)}
+                <!-- 新鲜事-文字 -->
+                {loop $arr $key $v}
+                <li class="warp-quote">
+                    <div class="hd">
+                        <p class="quote">{$key}</p>
+                    </div>
+                    {loop $v['info'] $value}
+                    <div class="bdc">
+                        <p class="quote">
+                            <a href="/Xl/Wap_Resource/view/id/{$value['study_resource_id']}">{$value['study_resource_title']}</a>
+                        </p>
+                    </div>
+                    {/loop}
+                    <div class="ftc"></div>
+                </li>
+                {/loop}
+            </ul>
+        </div>
+        {else}
+        <!--没资源-->
+        <div class="m-display">
+            <div class="bdd">
+                <p class="quote">
+                    该课程暂时还没有资源！
+                </p>
+            </div>
+        </div>
+        {/if}

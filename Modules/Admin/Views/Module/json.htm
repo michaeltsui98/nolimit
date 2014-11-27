@@ -1,0 +1,29 @@
+<!--{loop $module  $key $value}-->
+	<!--{eval $module [$key]['trindex']=$key;}-->
+	<!--{eval $module [$key]['trid']=$value['module_id'];}-->
+	<!--{eval $module [$key]['parentId']=$value['module_pid'];}-->
+	<!--{eval $module [$key]['id']=$value['module_id'];}-->
+	<!--{eval $module [$key]['text']=$value['module_title'];}-->
+	 {if isset($sub_module[$value['module_id']])}
+	<!--{eval $module [$key]['state']='closed';}-->
+	 {else}
+	<!--{eval $module [$key]['state']='open';}-->
+	 {/if}
+	
+	<!--{if $value['module_isok']==1 }-->
+		<!--{eval $module[$key]['module_isok']="<a href=\"javascript:;\" onclick=\"javascript:ui_ajax('{$isOkUrl}?module_id={$value['module_id']}&ok=0',this);\"><span class=\"icon-table icon-isok\"></span>正常</a>";}-->
+	<!--{else}-->
+		<!--{eval $module[$key]['module_isok']="<a href=\"javascript:;\" onclick=\"javascript:ui_ajax('{$isOkUrl}?module_id={$value['module_id']}&ok=1',this);\"><span class=\"icon-table icon-isjz\"></span>禁用</a>";}-->
+	<!--{/if}-->
+
+<!--{eval $module[$key]['module_order']="<a href=\"javascript:;\" onclick=\"javascript:ui_order('{$orderUrl}?module_id={$value['module_id']}&type=up',this);\"><span class=\"icon-table icon-up\"></span>升</a>";}-->
+<!--{eval $module[$key]['module_order'].=" <a href=\"javascript:;\" onclick=\"javascript:ui_order('{$orderUrl}?module_id={$value['module_id']}&type=down',this);\"><span class=\"icon-table icon-down\"></span>降</a>";}-->
+
+<!--{eval $module[$key]['cz']="<a href=\"javascript:;\"  onclick=\"javascript:ui_dialog('{$editUrl}?module_id={$value['module_id']}',this);\"><span class=\"icon-table icon-isedit\"></span>修改</a>";}-->
+
+{if !isset($sub_module[$value['module_id']])}
+<!--{eval $module[$key]['cz'].=" <a href=\"javascript:;\"  onclick=\"javascript:ui_qr('{$delUrl}?module_id={$value['module_id']}',this);\"><span class=\"icon-table icon-isdel\"></span>删除</a>";}-->
+{/if}	 
+<!--{/loop}-->
+ 
+<!--{eval echo json_encode($module)}-->

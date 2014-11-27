@@ -1,0 +1,21 @@
+<div class="doclist2" name="reslist">
+    <ul>
+    	{loop $resources  $k $v}
+        <li>
+            <div class="doc_shotScreen">
+            	<a href="/{$xk}/resource/view/{$v['id']}" target="_blank"><img src="{HTTP_MFS_WENKU}{$v['page_key']}"></a>
+                <div class="video_time">
+                    <span class="time f-fl"> <i class="icon_{$v['file_type']}"></i><!--{eval echo gmstrftime('%H:%M:%S',$v['pages']);}--></span>
+                    <span class="docRate f-fr" style="line-height:30px;"> <em class="f-fs12 s-fcGray"></em>(播放 {$v['views']})</span>
+                </div>
+            </div>
+            <div class="doc_name"><a href="/{$xk}/resource/view/{$v['id']}" target="_blank">{$v['title']}</a></div>
+            <div class="doc_desc">上传 <a href="{DOMAIN_NAME}/{$v['user_id']}/Space/Index" target="_blank">{$v['user_name']}</a>  |  <!--{eval echo Models_Resource::init()->dateSpan($v['on_time'])}-->上传  |  大小:<!--{eval echo Models_Resource::init()->bytesToSize($v['file_size'])}-->                        
+            </div>
+            <div class="doc_intro"><strong style="font-weight:normal">概要：</strong>
+			{$v['summery']}
+            </div>
+        </li>
+		{/loop}
+    </ul>
+</div>

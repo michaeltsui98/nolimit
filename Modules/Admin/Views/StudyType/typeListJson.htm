@@ -1,0 +1,7 @@
+<!--{if !empty($info['total'])}-->
+<!--{loop $info['rows']  $key $value}-->
+<!--{eval $info['rows'][$key]['cz']=" <a href=\"javascript:;\"  onclick=\"javascript:ui_qr('{$del}?id={$value['id']}',this);\"><span class=\"icon-table icon-isdel\"></span>删除</a>";}-->
+<!--{eval $info['rows'][$key]['cz'].=" <a href=\"javascript:;\"  onclick=\"javascript:ui_dialog('{$edit}?id={$value['id']}',this,1000,500);\"><span class=\"icon-table icon-isdel\"></span>编辑</a>";}-->
+<!--{/loop}-->
+<!--{/if}-->
+<!--{eval echo json_encode($info)}-->

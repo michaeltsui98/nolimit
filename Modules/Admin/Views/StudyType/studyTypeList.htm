@@ -1,0 +1,42 @@
+<div id="ajaxpage" class="easyui-panel" style="padding:5px;" data-options="fit:true">
+	<table id="studyTypeList-dg" title="<!--{$title}-->" class="easyui-datagrid" data-options="rownumbers:true,fit:true,fitColumns:true,singleSelect:true,
+	pagination:true,url:'<!--{$typeListJson}-->',
+	method:'get',
+	pageSize:20,
+	toolbar:'#studyTypeList-tb'
+	">
+	  <thead>
+		<tr>
+          <th field='classify_name' width='30'>资源分类名称</th>
+          <th field="xd" width="20">学段</th>
+          <th field="bb" width="20">版本</th>
+          <th field="nj" width="20">年级</th>
+          <th field="apply_type" width="20">所属分类</th>
+          <th field="cz" width="50">操作</th>
+		</tr>
+	  </thead>
+	</table>
+	<div id="studyTypeList-tb" style="padding:5px;height:auto">
+		<div>
+		 
+			基础节点选择: 
+			<select   id="node_list" class="easyui-combotree" style="width:200px;"></select>
+		 	<a href="javascript:;" class="easyui-linkbutton" iconCls="icon-add" plain="true"  onclick="javascript:ui_dialog( '<!--{$addType}-->?node_id='+$('#node_list').combotree('getValue'),this );">添加资源类型</a>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+			$('#node_list').combotree({
+		    url: "{$nodeList}",
+			method:'get',
+		    required: true,
+			onChange:function(){
+				var node_id =  $(this).combotree('getValue');
+				 get_resource(node_id);
+				
+			},
+		});
+		function get_resource(node_id){
+			gridload('studyTypeList',{node_id:node_id});
+		}
+</script>

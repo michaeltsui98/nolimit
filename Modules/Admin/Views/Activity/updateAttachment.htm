@@ -1,0 +1,31 @@
+<form action="<!--{$close_dialog_url}-->" method="post" id="attachment_form" name="attachment_form" class="ui-form">
+    <div id="ajaxpage" class="easyui-panel" style="padding:5px;height: 300px" data-options="fit:true">
+        <table id="resource-dg" title="<!--{$title}-->" class="easyui-datagrid" data-options="rownumbers:true,fit:true,fitColumns:true,singleSelect:true,pagination:false,url:'<!--{$activity_resource_url}-->',method:'get',toolbar:'#resource-tb'">
+            <thead>
+            <tr>
+                <th field='activity_resourse_id' width='10'>资源id</th>
+                <th field='activity_resourse_title' width='10'>资源名称</th>
+                <th field='activity_resourse_date' width='10'>发布时间</th>
+                <th field='remove_resource_url' width='10'>删除资源</th>
+            </tr>
+            </thead>
+        </table>
+        <div id="resource-tb" style="padding:5px;height:auto">
+            <div>
+                <a href="javascript:;" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="javascript:ui_dialog( '<!--{$add_attachment_url}-->',this,800,500,'dlgtwo' );">添加资源</a>
+            </div>
+        </div>
+    </div>
+    <div class="ui-form-item">
+        <input type="button" id="btn_submit" value="保存"/>
+    </div>
+</form>
+<script type="text/javascript">
+    $(function(){
+        $('#btn_submit').unbind().bind('click',function(){
+            cantForm();
+        });
+    });
+</script>
+
+

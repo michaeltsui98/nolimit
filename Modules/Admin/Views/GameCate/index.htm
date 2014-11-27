@@ -1,0 +1,20 @@
+<div id="ajaxpage" class="easyui-panel" style="padding:5px;" data-options="fit:true">
+	<table id="gamecate-dg" title="<!--{$title}-->" class="easyui-datagrid" data-options="rownumbers:true,fit:true,fitColumns:true,singleSelect:true,pagination:true,url:'<!--{$getJsonDataUrl}-->',method:'get',pageSize:20,toolbar:'#gamecate-tb'">
+	  <thead>
+		<tr>
+          <th field='trindex' width='50'>序号</th>
+          <th field='name' width='80'>分类名称</th>
+          <th field="is_ok" width="50">状态</th>
+          <th field='cate_order' width='80'>排序</th>
+          <th field="cz" width="50">管理</th>
+		</tr>
+	  </thead>
+	</table>
+	<div id="gamecate-tb" style="padding:5px;height:auto">
+		<div>
+		   
+			<a href="javascript:;" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="javascript:ui_dialog( '<!--{$addUrl}-->',this );">增加</a>
+		</div>
+	</div>
+</div>
+ 

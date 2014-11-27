@@ -1,0 +1,47 @@
+﻿/*!
+ * lhgcore Calendar Plugin StyleSheet
+ * Copyright (c) 2009 - 2012 By Li Hui Gang
+ */
+
+.lcui_border{ font-size:12px;background-color:#fff; }
+
+.lcui_lt,.lcui_rt,.lcui_lb,.lcui_rb,.lcui_l,.lcui_r,.cui_py,.cui_ny,.cui_pm,.cui_nm{ width:2px;background-color:#666;}
+
+.lcui_lt,.lcui_rt{ height:2px; }
+.lcui_lb,.lcui_rb{ height:2px; }
+
+.lcui_t,.lcui_b{ background-color:#666;font-size:0; }
+
+.lcui_head{ padding:5px;border-bottom:2px solid #606060;background-color:#6d6d6d;background-image:linear-gradient(to bottom, #737373, #676767);}
+.lcui_body thead{ text-align:center;color:#6c6c6c;font:12px "宋体",Tahoma,Arial,sans-serif; background-color:#ebebeb;}
+.lcui_body thead td { border-bottom:1px solid #b4b4b4;height:18px; line-height:18px;}
+
+.cui_iy{ width:40px;margin:0;padding:0;border:1px solid #5d5d5d;height:20px; line-height:20px;font:12px;cursor:pointer;text-align:center;*vertical-align:middle;margin-right:2px; background-color:#ededed; color:#333;}
+
+.cui_py,.cui_pm,.cui_ny,.cui_nm{ text-align:center;display:block;width:20px;height:20px;border:1px solid #5d5d5d;border-radius:2px;background-color:#6d6d6d;background-image:linear-gradient(to bottom, #717171, #676767); box-shadow:inset 0 1px 2px #838383; margin:0 4px 0 0;}
+.cui_ny { margin:0;}
+a.cui_py:active,a.cui_pm:active,a.cui_ny:active,a.cui_nm:active {box-shadow:inset 0 1px 2px #696969;}
+.cui_py .icon_arrLeft,.cui_ny .icon_arrRight,.cui_pm .icon_arrLeft,.cui_nm .icon_arrRight {display: inline-block;width: 0;height: 0;line-height: 0;font-size: 0;border-top: 5px solid #707070;border-bottom: 5px solid #707070;border-right: 5px solid #ededed;margin: 5px 0 0;}
+.cui_ny .icon_arrRight,.cui_nm .icon_arrRight { border-right:0;border-left: 4px solid #ededed;border-left: 5px solid #ededed\9;}
+a.cui_py:active .icon_arrLeft,a.cui_pm:active .icon_arrLeft,a.cui_ny:active .icon_arrRight,a.cui_nm:active .icon_arrRight { opacity:0.3; filter:alpha(opacity=30);}
+.cui_im{ width:20px;margin:0;padding:0;border:1px solid #5d5d5d;height:20px; line-height:20px;font:12px;cursor:pointer;text-align:center;*vertical-align:middle;margin-right:2px; background-color:#ededed; color:#333;}
+.cui_im:focus { box-shadow:none;}
+
+.cui_db td{ background-color:#fff;color:#b4b4b4;font:11px verdana,arial,sans-serif;cursor:default;height:24px;width:24px; padding:0 0 0 7px}
+.cui_db a{ color:#333;text-decoration:none;display:block;height:18px;line-height:18px;width:18px;cursor:default;border:1px solid #fff; }
+.cui_db a:hover{ color:#6e5f51;font-weight:bold;background-color:#ffcc99; border:1px solid #ffa449; }
+.cui_today a:link,.cui_today a:hover,.cui_today a:visited { font-weight:normal;background-color:#eaeaea; border:1px solid #dadada;}
+
+.cui_foot{ padding:5px;border-top:1px solid #b4b4b4;background-color:#ebebeb; box-shadow:inset 0 1px 0 #f3f3f3;}
+.lcui_today,.lcui_empty{ width:44px; }
+.cui_tbtn,.cui_dbtn,.cui_tbtnB,.cui_closebtn{ font-weight:bold;display:block;border:1px solid #b4b4b4;color:#6c6c6c;text-decoration:none;background-color:#eee;background-image:linear-gradient(to bottom, #f1f1f1, #ebebeb);width:38px;height:18px;line-height:17px; box-shadow:inset 0 1px 0 #f9f9f9; border-radius:2px;}
+.cui_tbtnB {width:100px;}
+.cui_tbtn:hover,.cui_dbtn:hover,.cui_tbtnB:hover,.cui_closebtn:hover{ color:#c9c9c9;box-shadow:inset 0 1px 0 #d9d9d9;}
+.lcui_time input{margin:0 2px;padding:0;border:1px solid #b4b4b4;width:20px;height:18px;font:11px Verdana,Arial;text-align:center;background-color:#fff;line-height:17px;}
+
+.cui_ymlist{ position:absolute;border:1px solid #999;background-color:#fff;width:120px; }
+.cui_lbox a{ display:block;padding:4px 0;background:#fff;text-decoration:none;cursor:default;color:#333;text-align:center;font:11px verdana,arial,sans-serif; }
+.cui_lbox a:hover{ background:#ffa449;color:#fff; }
+
+.cui_ybar{ background-color:#f7f7f7; }
+.cui_ybar a{ display:block;text-decoration:none;text-align:center;color:#000; }

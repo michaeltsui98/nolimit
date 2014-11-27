@@ -1,0 +1,21 @@
+<!--{loop $data['rows'] $key $value}-->
+	<!--{eval $data['rows'][$key]['trindex']=$key+1;}-->
+	<!--{eval $data['rows'][$key]['trid']=$value['game_id'];}-->
+
+<!--{eval $data['rows'][$key]['game_order']="<a href=\"javascript:;\" onclick=\"javascript:ui_order('{$orderUrl}?game_id={$value['game_id']}&type=up',this);\"><span class=\"icon-table icon-up\"></span>升</a>";}-->
+<!--{eval $data['rows'][$key]['game_order'].=" <a href=\"javascript:;\" onclick=\"javascript:ui_order('{$orderUrl}?game_id={$value['game_id']}&type=down',this);\"><span class=\"icon-table icon-down\"></span>降</a>";}-->
+{if $value['target'] ==1}
+<!--{eval $data['rows'][$key]['target']="新窗口打开";}-->
+{elseif $value['target'] ==0}
+<!--{eval $data['rows'][$key]['target']="本地打开";}-->
+{/if}
+<!--{eval $data['rows'][$key]['cz']="<a href=\"javascript:;\"  onclick=\"javascript:ui_dialog('{$editUrl}?game_id={$value['game_id']}',this);\"><span class=\"icon-table icon-isedit\"></span>修改</a>";}-->
+<!--{eval $data['rows'][$key]['cz'].=$data['rows'][$key]['game_order'];}-->
+ 
+<!--{eval $data['rows'][$key]['cz'].=" <a href=\"javascript:;\"  onclick=\"javascript:ui_qr('{$delUrl}?game_id={$value['game_id']}',this);\"><span class=\"icon-table icon-isdel\"></span>删除</a>";}-->
+ 
+	
+	
+<!--{/loop}-->
+ 
+<!--{eval echo json_encode($data)}-->

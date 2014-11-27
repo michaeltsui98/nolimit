@@ -1,0 +1,77 @@
+ <!--内容&底部-->
+        <div class="g-bd">
+            <div class="m-nav clearfix f-mb10">
+            <div class="m-breakNav f-fl">
+                <i class="icon_tc1"></i>
+                <span>当前位置</span>：<a href="javascript:;">学生 </a>>评测记录
+            </div>
+        </div>
+        <!--{eval  echo Cola_Tpl::widget_out("Modules_{$ucxk}_Controllers_Study",'PublicStuInfo')}-->
+        <!--{eval  echo Cola_Tpl::widget_out("Modules_{$ucxk}_Controllers_Study",'leftPublic')}-->
+            </div>
+            <div class="g-mn f-fr">
+                <div class="m-testWrap m-myLearningWrap">
+                    <h2 class="tt f-fs14 s-fcGray f-mb10 s-bsdStyle1">
+                         <label class="f-vam f-ml10">当前版本：</label>
+                        <select size="1" name="bb" class="f-vam f-fs16 f-fwb">
+                       {loop $bb_list $v}
+                       {if $v['code'] == $bb}
+                      <option value="{$v['code']}" selected="selected">{$v['name']}</option>
+                    {else}
+                      <option value="{$v['code']}">{$v['name']}</option>
+                    {/if}
+                  {/loop}  
+                </select>
+                        <label class="f-vam">当前年级：</label>
+                        <select size="1" name="nj" class="f-vam f-fs16 f-fwb">
+                            <option value="{$default_grade_code}">{$default_grade}</option>
+                        </select>
+                    </h2>
+
+                    <div class="ct s-bsdStyle1" style="padding: 0px;">
+                     <div class="tab1Menu">
+                        <div class="leftInfo f-fs14 f-fl">
+                            {loop $evaluate_config $k $value}
+                                {if $k == 'all_evaluate'}
+                                   <strong name="{$k}" style="cursor:pointer;" class="cur">{$value}</strong>  
+                                {else}
+                                    <strong style="cursor:pointer;"  name="{$k}">{$value}</strong>
+                                {/if}
+                            {/loop}
+<!--                            <strong class="cur">所有测评</strong>
+                            <strong><a href="">综合测评</a></strong>
+                            <strong><a href="">作业测评</a></strong>-->
+                        </div>
+
+                        <div class="rightInfo f-lr f-tar" >
+                           状态:
+                            <select class="width100" name="evaluate_record_status">
+                                {loop $evaluate_status $k $v}
+                                    <option  value="{$k}">{$v}</option>
+                                {/loop}
+                            </select>
+                        </div>
+                        <divclass="f-cb"></div>
+                    </div>
+                    
+                    <div class="ct">
+                        <div class="m-sct">
+                            <div class="m-tips f-mb10 clearfix" style="margin-top:10px;">
+                            <div class="tipsL s-fcBlue f-fl">显示我所参加的测评项目与结果
+                            </div>
+                            <div class="tipsR s-fcGBlue f-fr"><label class="f-vam">我知道了 |</label><a href="javascript:;" title="" target="" class="u-closeBtn"></a>
+                            </div>
+                        </div>
+                         <div name="evaluate_history"></div>
+                            <!--     <div class="lst s-fcGray"><ul class="item clearfix f-fs16" style="text-align: center; cursor: pointer;" name="loadMore">
+                                    <!-- <div class="refresh_line">点击加载更多</div>
+                            </div> -->
+                </div>
+                </div>
+               </div>
+            </div>
+        </div>
+        <div class="f-cb"></div>
+  <div>
+            
+  

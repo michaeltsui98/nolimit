@@ -1,0 +1,51 @@
+ 
+	<div class="g-bd">
+		<div class="m-breakNav"> <i class="icon_tc1"></i>
+			<span>当前位置</span>：<a href="javascript:;">学生</a>&nbsp;>&nbsp; <a href="/{$xk}/game">游戏</a>&nbsp; >&nbsp; {$info['name']}
+		</div>
+		<div class="wk_docPreview play_docPreview">
+			<div class="main width762 f-fl" style=" margin-left: 5px; ">
+				<div style="position:relative;top:0px;">
+					<div id="documentViewer" class="flexpaper_viewer">
+						<object width="742" height="432" align="middle" id="flash_play_obj" type="application/x-shockwave-flash" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" ><param name="allowScriptAccess" value="always"><param name="quality" value="high"><param name="wmode" value="opaque"><param name="menu" value="false"><param name="allowNetworking" value="internal"><param name="movie" value="{$info['swf_url']}"><embed width="742" height="432" align="middle" name="flash_play_obj" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" allowscriptaccess="always" quality="high" wmode="opaque" menu="false" internal="allowNetworking" src="{$info['swf_url']}" /></object>
+					</div>
+				</div>
+			</div>
+
+			<div class="sidebar width200 f-mb10 f-fr">
+				<h1 class="wk_titleIndex">游戏信息</h1>
+				<div class="userInfo">
+					<dl>
+						<dt class="grayTxt2"> <strong class="f-fs14"><a href="#" target="_blank">{$info['name']}</a></strong> 
+						</dt>
+					</dl>
+					<div class="docInfoWrap f-mt10">
+						<div class="docRate ">
+							{if $info['remark_num']}
+							<!--{eval echo Models_Resource::init()->
+							getStar($info['remark']/$info['remark_num']);}-->
+						{else}
+							<!--{eval echo Models_Resource::init()->
+							getStar(0);}-->
+						{/if} <em class="font25"><!--{eval echo (int)$info['remark_num']}-->人评价</em>
+						</div>
+						<div class="docOperate">
+
+							<a href="javascript:;" id="remark" data-id="{$info['game_id']}" data-userid="{$user_info['user_id']}"  title="评分" class="btn2 f-fl"></a>
+							<div class="f-cb "></div>
+
+							<h1 class="wk_titleIndex">操作指南</h1>
+							<ul class="play-introduce">
+								<li class="play-introduce-line"><span>游戏介绍</span><p>{$info['js']}</p></li>
+								<li><span>操作方法</span><p>{$info['operation']}</p></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="ct">
+				<div name="get_comment_list" class="get_comment_list" comment_number = "5" comment_type="game_{$xk}" comment_type_id="{$info['game_id']}"></div>
+			</div>
+			<div class="f-cb "></div>
+		</div>
+	</div>

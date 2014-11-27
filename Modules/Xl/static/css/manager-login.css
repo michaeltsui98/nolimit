@@ -1,0 +1,126 @@
+﻿body {
+    background:#D4D0D0 url(../images/manager/manager-bg.jpg) no-repeat center 0;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.g-wrap-top {
+    background: #373737;
+    height: 68px;
+    width: 100%;
+}
+
+.g-hd {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.g-hd .logo {
+    padding-top: 8px;
+}
+.g-hd .logo-sm,.g-hd .logo-xl{
+   padding-top:8px;
+}
+.g-hd .logo-sm a  ,.g-hd .logo-xl a{
+    background: url(../images/manager/logo-smaq.png) no-repeat 0 0;
+    width: 244px;
+    height: 52px;
+    display: inline-block;
+}
+.g-hd .logo-xl a{
+    background: url(../images/manager/logo-xljk.png) no-repeat 0 0;
+}
+
+.g-hd .back a {
+    background: url(../images/manager/manager-login_06.png) no-repeat #373737 center center;
+    width: 124px;
+    height: 68px;
+    display: block;
+    border:solid #2d2d2d;
+    border-width: 0 1px;
+
+}
+.g-hd .back a:hover{
+    background-color: #27ae61;
+    border-color: #27ae61;
+}
+.g-hd .back a:active{
+    box-shadow: inset 0 1px 1px rgba(29,146,79, .075);
+}
+
+html,body,.g-wrap {
+    height: 100%;
+    box-shadow: none;
+    border-top: 0px none;
+}
+
+.g-wrap {
+    position: relative;
+    z-index: 1;
+    background:none;
+}
+
+.g-wrap .m-main {
+    height: 235px;
+    width: 303px;
+    background: url(../images/manager/manager-login_11.png) no-repeat center center;
+    position: absolute;
+    z-index: 5;
+    top: 50%;
+    left: 50%;
+    margin-left: -152px;
+    margin-top: -168px;
+}
+
+.g-wrap .m-main .account,.g-wrap .m-main .password {
+    border: none;
+    height: 34px;
+    line-height: 14px;
+    line-height: 34px\9;
+    font-size: 14px;
+    padding-left: 40px;
+    width: 220px;
+    display: block;
+    margin-left: 20px;
+    background:none;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    border-radius: 2px;
+    vertical-align: middle;
+    color: #4c5664;
+}
+.g-wrap .m-main .account {
+    margin-top: 68px;
+}
+.g-wrap .m-main .password{
+    margin-top: 18px;
+}
+
+.g-wrap .m-main .login-btn {
+    margin-left: 22px;
+    background: none;
+    border: 0px none;
+    display: inline-block;
+    width: 260px;
+    height: 34px;
+    background: url(../images/manager/manager-login.png) no-repeat 0 0;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.g-wrap .m-main .login-btn:hover {
+    background-position: 0 -34px;
+}
+
+.g-ft {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    background-color: #373737;
+    border: 0px none
+}
+
+.g-ft  .g-ftc {
+    color: #fff;
+    border: 0px none
+}
+    }

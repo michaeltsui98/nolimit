@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>{$page_title}</title>
+ 
+    <link href="{STATIC_PATH}/Modules/{$ucxk}/static/css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="{STATIC_PATH}/Modules/{$ucxk}/static/css/public.css" rel="stylesheet" type="text/css" />
+    <link href="{STATIC_PATH}/Modules/{$ucxk}/static/css/component.css" rel="stylesheet" type="text/css" />
+ 
+	{if isset($root_css)}
+    {loop $root_css $cfile}
+    <link rel="stylesheet" type="text/css" href="{STATIC_PATH}/static/css/{$cfile}"/>
+    {/loop}
+    {/if}
+	
+	{if isset($css)}
+    {loop $css $cfile}
+    <link rel="stylesheet" type="text/css" href="{STATIC_PATH}/Modules/{$ucxk}/static/css/{$cfile}"/>
+    {/loop}
+    {/if}
+	<script src="<!--{STATIC_ADMIN_PATH}-->esui/jq1.6.js"></script>
+	<script type="text/javascript">
+		document.domain = "dodoedu.com";
+		var subject = "{$ucxk}";
+		var xk_code = "{$xk_code}";
+	</script>
+	 
+</head>
+<body>
+    
+	<!--{eval  echo Cola_Tpl::readtemplate("/Modules/{$ucxk}/Views/Public/browser.htm");}-->
+	
+    {if !isset($hidden_header)}
+	<!--{eval  echo Cola_Tpl::widget_out("Modules_{$ucxk}_Controllers_Public",'header')}-->
+	{/if}
+			<!--{eval include Cola_Tpl::template($_tpl);}-->
+	{if !isset($hidden_footer)}		
+	<!--{eval  echo Cola_Tpl::widget_out("Modules_{$ucxk}_Controllers_Public",'footer')}-->
+	{/if}
+	 
+	<script type="text/javascript" src="{STATIC_PATH}/static/script/common.js"></script>
+	<script type="text/javascript" src="{STATIC_PATH}/static/script/pinyinEngine.js"></script>
+	<script type="text/javascript" src="{STATIC_PATH}/static/script/search.js"></script>
+	<script type="text/javascript" src="{STATIC_PATH}/Modules/{$ucxk}/static/script/common/dialog.js"></script>
+	 
+    
+	{if isset($js)}
+	{loop $js $jfile}
+	<script type="text/javascript" src="{STATIC_PATH}/Modules/{$ucxk}/static/script/{$jfile}" ></script>
+	{/loop}
+	{/if}
+	
+	{if isset($root_js)}
+	{loop $root_js $jfile}
+	<script type="text/javascript" src="{STATIC_PATH}/static/{$jfile}" ></script>
+	{/loop}
+	{/if}
+	
+	
+</body>
+</html>

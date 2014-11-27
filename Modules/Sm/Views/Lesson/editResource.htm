@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>资源编辑</title>
+</head>
+<body>
+<form action="/Sm/Lesson/editResource/id/{$resource_info['id']}" method="post">
+	<label>标题</label><input type="text" name="title" value="{$resource_info['title']}">
+	<label>描述</label><input type="text" name="description" value="{$resource_info['description']}">
+	<label>排序</label><input type="text" name="sort" value="{$resource_info['sort']}">
+	<input type="submit" name="name" value="提交">
+</form>
+</body>
+</html>

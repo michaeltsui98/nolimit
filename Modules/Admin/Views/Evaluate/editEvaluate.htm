@@ -1,0 +1,24 @@
+<div id="tab1" class="tabcontent">
+    <div class="form">
+        <form action="<!--{$editEvaluateTo}-->" method="post" id="eid_evaluate_form" name="eid_evaluate_form" class="ui-form">
+            <input type="hidden" id="user_id" name="user_id" value="<!--{$user['user_id']}-->" />
+            <div class="form_row">
+                <label><span class="ui-form-required">*</span>结束时间：</label>
+                <input  name="evaluate_end_time" value="{$evaluate_end_time}" required style="width: 200px">
+                <input type="hidden" name="id" value="<!--{$id}-->">
+            </div>
+
+            <div class="ui-form-item">
+                <input type="submit" id="btn_submit" value="保存" />
+            </div>
+        </form>
+        <script type="text/javascript">
+            $(function () {
+                syform_val('eid_evaluate_form');
+                $('[name="evaluate_end_time"]').datebox();
+            });
+        </script>
+    </div>
+</div>
+
+

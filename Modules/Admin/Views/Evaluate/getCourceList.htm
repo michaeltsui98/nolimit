@@ -1,0 +1,14 @@
+<!--{loop $resource['rows']  $key $value}-->
+	 {if !empty($value['have_child'])}
+	<!--{eval $resource['rows'] [$key]['state']='closed';}-->
+	 {else}
+	<!--{eval $resource['rows'] [$key]['state']='open';}-->
+	 {/if}
+         
+ {if empty($value['have_child'])}
+<!--{eval $resource['rows'][$key]['cz']=" <a href=\"javascript:;\"  onclick=\"javascript:ui_dialog('{$add_unit_evaluate}?{$parameter}&son_id={$value['id']}',this,1000,450);\"><span class=\"icon-table icon-isdel\"></span>添加测评</a>";}-->
+<!--{eval $resource['rows'][$key]['cz'].=" <a href=\"javascript:;\"  onclick=\"javascript:ui_dialog('{$unit_evaluate_list}?{$parameter}&son_id={$value['id']}',this,1000,500);\"><span class=\"icon-table icon-isdel\"></span>测评统计</a>";}-->
+  {/if}
+<!--{/loop}-->
+ 
+<!--{eval echo json_encode($resource)}-->

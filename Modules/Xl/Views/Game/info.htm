@@ -1,0 +1,40 @@
+ 
+	<div class="g-bd">
+		<div class="m-breakNav"> <i class="icon_tc1"></i>
+			<span>当前位置</span>：<a href="javascript:;">学生</a>&nbsp;>&nbsp; <a href="/{$xk}/game">游戏</a>&nbsp; >&nbsp; {$info['name']}
+		</div>
+		<div class="wk_docPreview play_docPreview">
+            <div class="main">               
+                <div style="position:relative;top:0px;">
+                    <div id="documentViewer" class="flexpaper_viewer" style="width:100%;height:500px;background-color:#f2f2f2; text-align: center;vertical-align: middle;">
+                        <iframe id="frame" frameborder="no" border="0" scrolling="no" width="100%" height="100%" src="{$info['swf_url']}"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-bottom s-bsdStyle1">
+                <div class="tt">
+                    <h2>游戏评价</h2>
+                </div>
+                <div class="ct">
+                    <div class="docRate ">
+                        {if $info['remark_num']}
+							<!--{eval echo Models_Resource::init()->
+							getStar($info['remark']/$info['remark_num']);}-->
+						{else}
+							<!--{eval echo Models_Resource::init()->
+							getStar(0);}-->
+						{/if} <em class="font25"><!--{eval echo (int)$info['remark_num']}-->人评价</em>
+                    </div>
+					<a href="javascript:;" id="remark" data-id="{$info['game_id']}" data-userid="{$user_info['user_id']}"  title="评分" class="btn2"></a>  
+                </div>
+				<div class="ct">
+					<div name="get_comment_list" class="get_comment_list" comment_number = "5" comment_type="game_{$xk}" comment_type_id="{$info['game_id']}"></div>
+				</div>
+            </div>
+		 
+
+        </div>
+		
+		 
+	</div>

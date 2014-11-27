@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>在线学习</title>
+<link href="{STATIC_PATH}/Modules/{$ucxk}/static/css/stu-layout.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <script>
+    var uid = "{$user_id}";
+    var id = "{$resource_id}";
+    var file_key = "{$source['file_key']}";
+    var swf_key = "{$source['doc_swf_key']}";
+    var ext = "{$source['doc_ext_name']}";
+    var perview_type = "{$perview_type}";
+    </script>
+    {if $perview_type=='isTxt' or $perview_type=='isPpt'}
+      <link rel="stylesheet" type="text/css" href="{STATIC_PATH}/static/flexpaper/flexpaper.css" />
+      <script  src="{STATIC_PATH}/static/flexpaper/flexpaper.js"></script>
+      <script  src="{STATIC_PATH}/static/flexpaper/flexpaper_handlers.js"></script>
+      <script  src="{STATIC_PATH}/static/fpaper/swfobject.js"></script>
+{/if}
+{if $perview_type=='isVideo'}
+     <script  src="{STATIC_PATH}/static/ckplayer/ckplayer.js"></script>
+     <script  src="{STATIC_PATH}/static/ckplayer/offlights.js"></script>
+{/if}
+
+<div class="g-doc clearfix">
+	<div class="g-mnOlL f-fl">
+    	<div class="g-mncOlL">
+        	<div class="m-hdOlL clearfix" id="onlTop">
+            	<div class="ctL f-fl">
+                    <h1 class="m-logoOlL f-fl">
+                      <a href="/{$xk}/Study/studyDetail" title="在线学习"  name='node_title' node_value=' {$study_resource_node_node}' class="u-logo">在线学习
+                      </a>
+                    </h1>
+                    <i class="icon-lst f-fl"></i>
+                    <h2 class="tt f-fs16 f-fl">{$node_title}</h2>
+                </div>
+                <div class="ctR f-fs14 f-fl f-ml10 clearfix">
+                	<div class="m-navOlL f-fl">
+                            {if !empty($study_type)}{$study_type}{/if}
+                  </div>
+                  <!--   <a href="javascript:;" title="" target="_blank" class="f-fl f-fwb u-dlBtn f-ml10">下<sup>载</sup>到<sup>手</sup>机</a> -->
+                    <div name="popUp"></div>
+                    
+                </div>
+            </div>
+            
+            {if isset($study_record_time) && isset($study_record_status) && isset($id)}
+                 <div name="data" study_record_time="{$study_record_time}" study_record_status="{$study_record_status}" ids="{$id}">
+                 </div>
+            {/if}
+            <div style="width: 97%; margin: 20px auto;text-align:center;">
+              <div id="documentDiv" style="position:relative;text-align:center;height:95%;">
+                <div class="m-bdOlL f-tac s-bsdStyle1" id='documentViewer'></div>
+              </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="g-sdOlL f-fr">
+         <!--课程信息-->   
+    {if !empty($node_descript)}
+        <dl class="m-courseInfo">
+        	<dt class="tt"><span class="f-fs18 f-ib" >{$node_title}</span></dt>
+            <dd class="des f-fs14">{$node_descript}
+              <a href="javascript:;" title=""  class="a-secl">更多></a>
+            </dd>
+            {if !empty($user_info)}
+              <dd class="other clearfix">
+                <div class="op f-fr">
+                  <a href="javascript:;" title="推荐"  class="f-mr15 f-ib" name="recommend" request_url="{$request_url}">
+                    <i class="icon-share"></i>
+                  </a>
+                </div>
+            </dd>
+            {/if}
+        </dl>
+    {/if}
+    	
+        
+        <!--课程问答--> 
+         <div class="m-courseFAQs">
+        	<div class="tt f-fs16"><i class="icon-medal f-mr10"></i>课程问答</div>
+            <div class="ct" id="content">
+              {if !empty($question_list['data'])}
+                 {loop $question_list['data'] $key $value}
+                <dl class="itemAQ">
+                	<dt class="ttAQ clearfix">
+                        <strong class="f-fs14" name="qustion_title" question_id={$value['id']}>{$value['FAQ_title']}
+                        </strong>
+                    </dt>
+                    <dd class="des">
+                        {if !empty($value['FAQ_answersList'])}
+                          <ul page="1">
+                           {loop $value['FAQ_answersList'] $k $v}
+                            <li class="answer">{$v['answer_content']}</li>
+                           {/loop}
+                          </ul>
+                            <div class="m-loadMore f-mt10">
+                            <!-- <a href="javascript:;" class="" name="loadContent" style="display: block;">点击加载更多
+                            </a> -->
+                           <a href="javascript:;" class="" name="loadingImg" style="display: none;">
+                            <img src="{DODOJC}/Modules/{$ucxk}/static/images/loading_2.gif" alt="">
+                          </a>
+                        </div>
+                        {/if}
+                    </dd>
+
+                    <dd class="info">
+                        <a name="answer_count" href="javascript:;" title=""  add_answer_url="{$add_answer_url}">
+                            <span>{$value['FAQ_answersCount']}</span> 个回答
+                        </a>
+                    </dd>
+                    {if empty($value['FAQ_answersCount'])}
+                        <dd class="commet" style="display:none;">
+                       <textarea class="customForm_textarea banResize customForm_inputBoxDefault" style="height: 30px;width: 250px;" name="commentText" datavalue="回答问题..." maxht="50px" minht="16px" maxlen="1000" rows="" cols="">回答问题...
+                       </textarea>
+                    <input class="customBtn colourLightGray f-mt10" type="button" value="回答">
+                    </dd>
+                     {else}
+                        <dd class="commet">
+                       <textarea class="customForm_textarea banResize customForm_inputBoxDefault" style="height: 30px;width: 250px;" name="commentText" datavalue="回答问题..." maxht="50px" minht="16px" maxlen="1000" rows="" cols="">回答问题...
+                       </textarea>
+                    <input class="customBtn colourLightGray f-mt10" type="button" value="回答">
+                    </dd>
+                    {/if}
+                </dl>
+                 {/loop}
+             {/if}
+
+              {if $question_list['count'] > $question_list['num']}
+              <div class="m-loadMore" id="questionMore">
+               <a href="javascript:;" class="" id="loadContent" style="display: block;">点击加载更多
+               </a>
+               <a href="javascript:;" class="" id="loadingImg" style="display: none;"><img src="{DODOJC}/Modules/{$ucxk}/static/images/loading_2.gif" alt="">
+               </a>
+              </div>
+              {/if}
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="g-doc g-docFt clearfix">
+    <div class="g-mnOlL f-fl">
+    <!-- 底部切换 -->
+        <div class="m-ftOlL" id="onlBottom">
+            <div class="lesson-warp clearfix">
+                <span class="lesson-prev f-fl f-pr20">
+                    {if !empty($prev_next_node['prev_node_title'])}
+                          <a href="{$prev_next_node['prev_url']}">{$prev_next_node['prev_node_title']}</a>
+                    {else}
+                         <a href="javascript:;">暂时没有了</a>
+                    {/if}
+                </span>
+                <span class="unit-name f-fl">
+                    <p>{$unit_title}</p>
+                </span>
+                <span class="lesson-next f-fr f-pl20">
+                     {if !empty($prev_next_node['next_node_title'])}
+                          <a href="{$prev_next_node['next_url']}">{$prev_next_node['next_node_title']}</a>
+                    {else}
+                         <a href="javascript:;">暂时没有了</a>
+                    {/if}
+                </span>
+            </div>
+
+        </div>
+        <!-- ==底部切换== -->
+    </div>
+
+    <div class="g-sdOlL f-fr">
+        <div class="m-commentWrap clearfix">
+            <form action="" method="post">
+                <textarea name="question_content" cols="" rows="" class="f-fl"></textarea>
+                <a id="sub_question" grade = "{$grade}" href="javascript:;" add_question_url="{$add_question_url}" title=""  class="f-fr customBtnNormal colourOrange">提问
+                </a>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

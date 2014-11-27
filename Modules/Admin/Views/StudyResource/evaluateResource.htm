@@ -1,0 +1,12 @@
+<div id="ajaxpage" class="easyui-panel" style="padding:5px; height:450px;" data-options="fit:true">
+    <table id="evaluate_resource-dg" title="<!--{$title}-->" class="easyui-datagrid" data-options="rownumbers:true,fit:true,fitColumns:true,singleSelect:true,pagination:true,url:'<!--{$evaluate_resource_json}--><!--{$parameter}-->',method:'get',pageSize:20,toolbar:'#evaluate_resource-tb'">
+        <thead>
+        <tr>
+            <th field='evaluate_title' width='10'>测评标题</th>
+            <th field='cz' width='10'>操作</th>
+        </tr>
+        </thead>
+    </table>
+        <div id="evaluate_resource-tb" style="padding:5px;height:auto">
+    </div>
+</div>

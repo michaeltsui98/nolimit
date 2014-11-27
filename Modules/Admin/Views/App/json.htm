@@ -1,0 +1,33 @@
+<!--{loop $data['rows'] $key $value}-->
+	<!--{eval $data['rows'][$key]['trindex']=$key+1;}-->
+	<!--{eval $data['rows'][$key]['trid']=$value['app_id'];}-->
+	<!--{if $value['is_ok']==1 }-->
+		<!--{eval $data['rows'][$key]['is_ok']="<a href=\"javascript:;\" onclick=\"javascript:ui_ajax('{$isOkUrl}?app_id={$value['app_id']}&ok=0',this);\"><span class=\"icon-table icon-isok\"></span>正常</a>";}-->
+	<!--{else}-->
+		<!--{eval $data['rows'][$key]['is_ok']="<a href=\"javascript:;\" onclick=\"javascript:ui_ajax('{$isOkUrl}?app_id={$value['app_id']}&ok=1',this);\"><span class=\"icon-table icon-isjz\"></span>禁用</a>";}-->
+	<!--{/if}-->
+	<!--{if $value['target']=='self' }-->
+		<!--{eval $data['rows'][$key]['target']="本窗口";}-->
+	<!--{else}-->
+		<!--{eval $data['rows'][$key]['target']="新窗口";}-->
+	<!--{/if}-->
+
+{if $value['is_mobile']}
+<!--{eval $data['rows'][$key]['is_mobile']="是";}-->
+{else}
+<!--{eval $data['rows'][$key]['is_mobile']="否";}-->
+{/if}
+
+<!--{eval $data['rows'][$key]['group_order']="<a href=\"javascript:;\" onclick=\"javascript:ui_order('{$orderUrl}?app_id={$value['app_id']}&type=up',this);\"><span class=\"icon-table icon-up\"></span>升</a>";}-->
+<!--{eval $data['rows'][$key]['group_order'].=" <a href=\"javascript:;\" onclick=\"javascript:ui_order('{$orderUrl}?app_id={$value['app_id']}&type=down',this);\"><span class=\"icon-table icon-down\"></span>降</a>";}-->
+
+<!--{eval $data['rows'][$key]['cz']="<a href=\"javascript:;\"  onclick=\"javascript:ui_dialog('{$editUrl}?app_id={$value['app_id']}',this);\"><span class=\"icon-table icon-isedit\"></span>修改</a>";}-->
+<!--{eval $data['rows'][$key]['cz'].=$data['rows'][$key]['group_order'];}-->
+ 
+<!--{eval $data['rows'][$key]['cz'].=" <a href=\"javascript:;\"  onclick=\"javascript:ui_qr('{$delUrl}?app_id={$value['app_id']}',this);\"><span class=\"icon-table icon-isdel\"></span>删除</a>";}-->
+ 
+	
+	
+<!--{/loop}-->
+ 
+<!--{eval echo json_encode($data)}-->

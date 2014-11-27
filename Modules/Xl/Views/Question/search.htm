@@ -1,0 +1,44 @@
+<!-- 导航 -->
+<link href="{DODOJC}/Modules/Xl/static/css/tec-layout.css" rel="stylesheet" type="text/css" /><div class="g-bd">
+<div user_id="{$user_id}" name="isLogin"></div>        
+		{$breadcrumb}       
+        <div class="g-sd f-fl">
+            <!-- 创建问答 -->
+            {include Modules/Xl/Views/Question/askAndAnswer}
+            <!-- 热门标签排行 -->           
+            {include Modules/Xl/Views/Question/tagQuestion}  
+            <!-- 答题榜 -->
+            {include Modules/Xl/Views/Question/listQuestion}            
+            </div>
+        <div class="g-mn f-fr">
+            <!-- 问答列表 -->
+            <div class="m-askAndAnswerList s-bsdStyle1">
+
+                <div class="tt">
+                    <div class="tab1Menu">
+						<!--post数据传参数-->
+					    <div name="searchValue" tag_value="{$tag}"  search_value="{$key}"></div>
+                        <div class="leftInfo f-fs14 f-fl" name="type">
+                            <strong   class="cur"  ><a name="Answer" key="type">{$key}{$tag}相关的问题</a></strong>
+                        </div>   
+						<div class="rightInfo f-fr" name="order" style="border:0px;">
+                        </div>                     
+                        <div class="f-cb">
+                        </div>
+                    </div>
+                </div>
+                <div class="ct" name="myData">
+                    <ul>
+                        <li class="head clearfix">
+                            <span class="f-fl">标题</span>
+                            <div class="f-fr">时间</div>
+                        </li>                        
+                    </ul>
+                </div>
+				<div class="ft">
+                	<div id='pageNum'></div>
+                </div>          
+            </div>
+        </div>
+        <div class="f-cb"></div>
+    </div> 

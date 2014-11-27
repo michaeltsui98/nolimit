@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>{$vars['page_title']}</title>
+ 
+	 
+	<link rel="stylesheet" type="text/css" href="<!--{STATIC_ADMIN_PATH}-->validform/style.css">
+	{if isset($css)}
+    {loop $css $cfile}
+    <link rel="stylesheet" type="text/css" href="<!--{STATIC_ADMIN_PATH}-->{$cfile}"/>
+    {/loop}
+    {/if}
+	
+	<script src="<!--{STATIC_ADMIN_PATH}-->esui/jq1.6.js"></script>
+	<script src="<!--{STATIC_ADMIN_PATH}-->esui/esui.js"></script>
+	<script src="<!--{STATIC_ADMIN_PATH}-->script/app.js"></script>
+</head>
+<body>
+<!--{eval include Cola_Tpl::template($_tpl);}-->
+
+
+	<script type="text/javascript" src="<!--{STATIC_ADMIN_PATH}-->validform/validform.js"></script>
+	<script type="text/javascript" src="<!--{STATIC_ADMIN_PATH}-->syup/syup.js"></script>
+	<script type="text/javascript" src="<!--{STATIC_ADMIN_PATH}-->script/common.js"></script>
+	 
+    
+	{if isset($js)}
+	{loop $js $jfile}
+	<script type="text/javascript" src="<!--{STATIC_ADMIN_PATH}-->{$jfile}" ></script>
+	{/loop}
+	{/if}
+	
+	
+</body>
+</html>

@@ -1,0 +1,35 @@
+        <!--历史记录-->
+                   {if !empty($history)}
+                    <div class="m-sct lHistory">
+                        <div class="unit f-mb5">
+                            <div class="lst f-fs16 s-fcGray">
+                                     {loop $history $key $value}
+                            	        <ul class="item clearfix">
+                                	   <li class="date width100 f-fl">{date('Y-m-d',$value['time'])}</li>
+                                        <!--    <li class="uName width100 f-fl">
+                                            {if isset($value['parent_node_title'])}{$value['parent_node_title']}
+                                            {/if}
+                                           </li> -->
+                                	   <li class="name width330 f-fwb f-fl">
+                                      {if isset($value['son_node_title'])}{$value['son_node_title']}
+                                      {/if}
+                                     </li>
+                                          <li class="uName width100 f-fl" title = "{$value['study_resource_title']}">
+                                            {$value['study_resource_title_small']}
+                                           </li>
+                                           <li class="state f-fr">
+                                               {if ($value['study_record_status'] == 2)}
+                                                  <i class="icon-finish"></i>
+                                               {elseif ($value['study_record_status'] == 1)}
+                                                 <label class="txt f-fs14 f-ib f-mr5">
+                                                  <!-- 上次 {date('Y-m-d',$value['time'])} -->
+                                                 </label>
+                                                 <i class="icon-unfinished"></i>
+                                               {/if}
+                                           </li>
+                                       </ul>
+                                   {/loop}
+                            </div>
+                        </div>
+                    </div>
+                   {/if}

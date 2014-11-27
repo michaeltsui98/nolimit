@@ -1,0 +1,63 @@
+ <form action="<!--{$com_evaluate_to}-->" method="post" id="add_com_form" name="add_com_form" class="ui-form">
+<div id="ajaxpage" class="easyui-panel" style="padding:10px;height:490px;width:500px"  data-options="fit:true">
+    <table id="dg"></table> 
+	<div id="comtest-tb" ></div>
+  
+</div>
+      <div class="ui-form-item">
+          <input type="hidden" name="study_bb" value="<!--{$study_bb}-->">
+          <input type="hidden" name="study_field" value="<!--{$study_field}-->">
+          <input type="hidden" name="study_grade" value="<!--{$study_grade}-->">
+          <input type="submit" id="btn_submit" value="保存"/>
+     </div> 
+     <div name='evaluateUrl' evaluate_val='<!--{$com_evalaute_json}-->'></div>
+ </form>
+<script type="text/javascript">
+    $(function () {
+        syform_val('add_com_form'); 
+        var study_bb = $("input[name='study_bb']").val();
+        var study_field = $("input[name='study_field']").val();
+        var study_grade = $("input[name='study_grade']").val();
+        var initData = function (page,r) {
+            var url = $("div[name='evaluateUrl']").attr('evaluate_val')+'?study_bb='+study_bb+'&study_field='+study_field+'&study_grade='+study_grade+'&page=' + page + '&rows=' + r;
+            $('#dg').datagrid({
+                url: url,
+                columns: [[
+                    { field: 'title', title: '测评试卷标题', width: 400 },
+                    { field: 'time', title: '截止日期', width: 200 },
+                    { field: 'add', title: '添加', width: 100, align: 'right' }
+                ]],
+                rownumbers: true,
+                pagination: true,
+				height:480,
+                onLoadSuccess: function () {
+                    $("input[name='evaluate_end_time']").datebox();
+                }
+            });
+            //设置分页控件  
+            var p = $('#dg').datagrid('getPager');
+            $(p).pagination({
+                total: 100,
+                pageNumber: page,
+                pageSize: r,
+                pageList: [5, 10, 15, 20],
+                onSelectPage: function (pageNumber, pageSize) {
+                   // alert('p:' + pageNumber + 'r:' + pageSize);
+                    initData(pageNumber, pageSize);
+                }
+            });  
+        }
+        initData(1, 10);                 
+    })
+        
+          
+</script>
+
+
+
+
+
+
+
+
+

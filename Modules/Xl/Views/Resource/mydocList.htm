@@ -1,0 +1,46 @@
+<div class="doclist" name="reslist">
+    <ul>
+    	{loop $resources  $k $v}
+        <li>
+            <div class="doc_name"><a href="/{$xk}/resource/view/{$v['id']}" title="{$v['title']}" target="_blank">
+            	{cutstr($v['title'],50)}
+			</a></div>
+            <div class="doc_previewimg">
+            	<a href="/{$xk}/resource/view/{$v['id']}" title="{$v['title']}" target="_blank">
+            	<i class="icon_{$v['file_type']}"></i><img width="76px" height="78px" src="{HTTP_MFS_WENKU}{$v['page_key']}" alt="{$v['title']}" />
+				</a>
+				</div>
+             <div class="doc_intro"><strong>文档概要：</strong>{$v['summery']} </div>
+            <div class="doc_desc">上传 <a href="{DOMAIN_NAME}/{$v['user_id']}/Space/Index" target="_blank">{$v['user_name']}</a>  |  <!--{eval echo Models_Resource::init()->dateSpan($v['on_time'])}-->上传  
+			|  大小:<!--{eval echo Models_Resource::init()->bytesToSize($v['file_size'])}-->  |  页数：{$v['pages']}  
+			{if $s == 'down'}
+			| 下载时间：{date('Y-m-d',$v['down_time'])}
+			{elseif $s=='fav'}
+			| 收藏时间：{date('Y-m-d',$v['fav_time'])}
+			{/if}
+			
+			</div>
+            <div class="doc_commet">
+                <div class="docRate ">
+                    <!--{eval echo Models_Resource::init()->getStar($v['remark']);}-->{$v['remark']} <em class="f-fs12 s-fcGray">
+						{if $s=='down'}
+						(下载量{$v['downs']})
+						{elseif $s=='fav'}
+						(收藏量 {$v['favs']})
+						{else}
+						(阅读 {$v['views']})
+						{/if}
+						</em>
+					{if $s=='up'}
+					<a href="javascript:;" data-url="/resource/del/s/up/uid/{$v['user_id']}/id/{$v['id']}" name="del" >删除</a>
+					&nbsp;<span class="s-fcBlue">|</span>&nbsp;
+						<a href="javascript:;" data-url="/resource/edit/s/up/uid/{$v['user_id']}/id/{$v['id']}" name="edit">编辑</a>
+					{elseif $s == 'fav'}
+						<a href="javascript:;" data-url="/resource/del/s/fav/uid/{$v['uid']}/id/{$v['id']}" name="del" >删除</a>
+					{/if}
+                </div>
+            </div>
+        </li>
+		{/loop}
+    </ul>
+</div> 

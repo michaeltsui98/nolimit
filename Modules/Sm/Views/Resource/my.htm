@@ -1,0 +1,81 @@
+<div class="g-bd">
+        <div class="m-nav clearfix f-mb10">
+            <div class="m-breakNav f-fl">
+                <i class="icon_tc1"></i>
+                <span>当前位置</span>：<a href="/{$xk}/teacher">教师</a>><a href="/{$xk}/resource">资源</a>> 我的资源中心
+            </div>
+        </div>
+        <div class="wk_classList">
+            
+			<div class="g-sd f-fl">
+		    	<div class="m-ulWrap s-bsdStyle1 f-mb10">
+		            <div class="m-ui clearfix">
+		                <div class="uf f-fl"><a href="<!--{$user_dodo_space_url}-->" title="" target="_blank"><img src="<!--{$user_info['user_avatar_160']}-->" width="72" /></a></div>
+		                <ul class="uilst f-fr">
+		                    <li class="item"><a href="<!--{$user_dodo_space_url}-->" title="" target="_blank"><strong class="f-fs14 f-vam f-mr10"><!--{$user_info['user_realname']}--></strong></a><i class="icon-level" title="目前等级<!--{$user_info['user_level']}-->级"><i class="num<!--{$user_info['user_level']}-->"></i></i></li>
+		                    <li class="item"><a href="<!--{$user_dodo_school_url}-->" title="" target="_blank" class="a-thil"><strong><!--{$user_info['school_name']}--></strong></a></li>
+		                </ul>
+		            </div>
+		            <div class="BVer">
+		                
+		                 <strong> </strong> 
+		            </div>
+		            <ul class="m-ullst s-fcGray">
+		                <li class="item"><a class="{if $s=='up'}select{/if}" href="/{$xk}/resource/my/s/up?type={$type}">我上传的资源（{$up_count}）</a></li>
+		                <li class="item"><a class="{if $s=='down'}select{/if}" href="/{$xk}/resource/my/s/down?type={$type}">我下载的资源（{$down_count}）</a></li>
+		                <li class="item"><a class="{if $s=='fav'}select{/if}" href="/{$xk}/resource/my/s/fav?type={$type}">我收藏的资源（{$fav_count}）</a></li>
+		            </ul>
+		        </div>
+		        <div class="m-ulWrap s-bsdStyle1 f-mb10">
+		           <div class="otherChoose resource-search-area">
+		            	<div class="f-fs14">在我的资源中搜索</div>
+                        <input type="text" name="txt_my_search" value="{$key}" class="text" />
+						<input type="button" name="btn_my_search" value="搜索" class="customBtn colourDarkGreen customBtnNormal f-mr10"/>
+                                               
+                    </div>
+		        </div>
+		      
+		    </div>
+			
+			<div class="g-mn f-fr s-bsdStyle1">
+		        <div class="main">
+		                <div class="tab1Menu">
+		                	<div>
+		                    <div class="leftInfo f-fs14 f-fl">
+		                        <strong {if $type == 'all' or !$type}class="cur"{/if}><a href="?type=all">全部</a></strong>
+								{loop $resource_type $k $v}
+		                        <strong {if $type == $k}class="cur"{/if}><a href="?type={$k}"  >{$v}</a></strong>
+								{/loop}
+		                    </div>
+		                    </div>
+		                    <div class="rightInfo f-fr" style="width:188px;">
+							  &nbsp;&nbsp;&nbsp;
+		                    </div>
+		                    
+		                    <div class="f-cb">
+		                    </div>
+		                </div>
+		                <div class="con">
+		                    <div class="wk_docCell">
+		                        {if $resources} 
+								
+								{$list_content}
+		                     	{$page_html}  
+								
+								{else}
+								<div class="ct">
+								    <div class="wk_docCell" id="list_content">
+								    	 <div class="list-empty">暂时没有数据！</div>
+								    </div>
+								</div>
+								{/if}                         
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+			
+		    <div class="f-cb"> </div>
+			
+</div>
+</div>
+ 	

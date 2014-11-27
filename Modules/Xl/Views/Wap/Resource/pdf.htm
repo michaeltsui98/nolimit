@@ -1,0 +1,33 @@
+<div class="tableViewCon">
+        <a class="btn_back" href="javascript:;" onclick="history.back();"></a>
+        <h3>详情页</h3>
+    </div>
+    <div class="m-p">
+        <div class="w-p">
+            <div class="hd">
+                <h1>{$res['doc_title']}</h1>
+                <p>
+                    <span class="time fl">{date('Y-m-d H:i:s',$res['on_time'])}</span>
+                    <span class="author fr">发布人：{$res['user_name']}</span>
+                </p>
+                <div class="cb"></div>
+            </div>
+            <div class="bd">
+                <div style="background: #D6D1C1; color: #333; padding:10px 10px 0 10px;">
+                    <input id="previous" type="button" class="btn_page" value="上一页" onclick="goPrevious();" />
+                    <input id="next" type="button" class="btn_page" value="下一页" onclick="goNext();" />
+                    <input id="page_num" type="number" class="txt_num" value="1" size="4" min="1" tabindex="15" max="14">
+                    <label class="lab_count">/<span id="page_count">14</span></label>
+                    <input id="zoomOut" type="button" class="btn_set" value="-" onclick="setSmall();" />
+                    <input id="zoomIn" type="button" class="btn_set" value="+" onclick="setBig();" />
+                </div>
+                <div style="width:100%; overflow-x:scroll;"><canvas id="the-canvas"></canvas></div>
+                
+            </div>
+
+        </div>
+    </div>
+   
+    <script type="text/javascript">
+        var url = '{$file_path}';
+    </script>

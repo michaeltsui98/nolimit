@@ -1,0 +1,275 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>全局-问答-主页</title>
+<link href="css/reset.css" rel="stylesheet" type="text/css" />
+<link href="css/public.css" rel="stylesheet" type="text/css" />
+<link href="css/component.css" rel="stylesheet" type="text/css" />
+<link href="css/tec-layout.css" rel="stylesheet" type="text/css" />
+<script src="script/common/jquery-1.6.min.js"></script>
+<script src="script/common/common.js"></script>
+<script src="script/common/pinyinEngine.js"></script>
+<script src="script/common/search.js"></script>
+</head>
+<body>
+<!--通用顶部-->
+<div class="g-hd">
+<!--hd info-->
+	<div class="g-hdt">
+    	<div class="g-hdc f-fs14">
+        	<div class="m-hdl f-fl"><a href="" title="" target="_blank" class="a-LGrayl f-fl"><i class="icon-home"></i>首页</a><a href="" title="" target="_blank" class="a-LGrayl f-fl">意见反馈</a>
+            	<div class="m-schBox f-fl">
+                    <div class="customForm_searchTxtInput customForm_searchStyle1 customForm_searchInputBoxGetFocus">
+                        <form action="/Search" method="get">
+                        <input name="keyword" id="search" type="text" class="txtInput f-fl" data-default="输入关键字搜索" value="输入关键字搜索" />
+                    <div class="customDropdownWrap customDropdownStyle2 f-fl">
+                        <span class="dropdown_currentValue"><span class="dropdownTxt">博客</span><i class="icon_downArrStyle2"></i></span>
+                        <div class="dropdownItem width90"  style="visibility:hidden;">
+                            <ul class="dropdownItemUl f-fs12 width100">
+                                <li class="dropdownCell"><a href="#" title="" class="f-db curDefault customDropdown_selectedValue">博客</a></li>
+                                <li class="dropdownCell"><a href="#" title="" class="f-db curDefault">图片</a></li>
+                                <li class="dropdownCell"><a href="#" title="" class="f-db curDefault">小站</a></li>
+                                <li class="dropdownCell"><a href="#" title="" class="f-db curDefault">应用</a></li>
+                                <li class="dropdownCell"><a href="#" title="" class="f-db curDefault">话题</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <label class="f-fl searchBtn"><input name="" type="submit" value="" class="icon_magnifier" /></label>
+                        <ul class="associateWrap width154" id="suggest-search" style="display:none;"></ul></form></div>
+                    <!--<ul class="associateWrap f-fs12">
+                        <li class="associateCell"><a href="" title="">这是一个词</a></li>
+                        <li class="associateCell"><a href="" title="">这是一段话</a></li>
+                        <li class="associateCell"><a href="" title="">这是一个词</a></li>
+                        <li class="associateCell"><a href="" title="">这是一段话</a></li>
+                        <li class="associateCell"><a href="" title="">这是一个词</a></li>
+                        <li class="associateCell"><a href="" title="">这是一段话</a></li>
+                    </ul>-->
+                </div>
+    			<div class="f-cb"></div>
+            </div>
+            <div class="m-hdr f-fr f-tar"><a href="" title="" target="_blank" class="loginBtn f-mr15">登录</a><a href="" title="" target="_blank" class="a-LGrayl">注册多多社区账号</a></div>
+            <div class="f-cb"></div>
+        </div>
+    </div>
+<!--logo&nav-->
+    <div class="g-hdb">
+    	<div class="g-hdc">
+        	<h1 class="m-logo f-fl"><a href="" title="心理健康教育" target="_blank" class="u-logo">心理健康教育</a></h1>
+            <div class="m-nav f-tar f-fs14 f-fr">
+                <a href="" title="教师中心" target="" class="item">
+                    <i class="icon-learnC"></i>
+                    <span class="txt">教师中心</span>
+                </a><a href="" title="资源" target="" class="item">
+                    <i class="icon-resource"></i>
+                    <span class="txt">资源</span>
+                </a><a href="" title="研修" target="" class="item">
+                    <i class="icon-tecStudy"></i>
+                    <span class="txt">研修</span>
+                </a><a href="" title="备课" target="" class="item">
+                    <i class="icon-lessonPrepare"></i>
+                    <span class="txt">备课</span>
+                </a><a href="" title="课堂" target="" class="item">
+                    <i class="icon-lessonLecture"></i>
+                    <span class="txt">课堂</span>
+                </a><a href="" title="问答" target="" class="item z-crt">
+                    <i class="icon-FAQs"></i>
+                    <span class="txt">问答</span>
+                </a><a href="" title="资讯" target="" class="item">
+                    <i class="icon-news"></i>
+                    <span class="txt">资讯</span>
+                </a>
+            </div>
+            <div class="f-cb"></div>
+        </div>
+    </div>
+</div>
+<!--内容&底部-->
+<div class="g-wrap">
+    <div class="g-bd">
+        <!-- 导航 -->
+        <!-- <div class="m-nav clearfix f-mb10">
+            <div class="m-breakNav f-fl">
+                <i class="icon_tc1"></i>
+                <span>您现在所在的位置</span>：<a href="">教师</a>&gt;<a href="">研修
+                </a>&gt;更多研修
+            </div>
+        </div> -->
+        
+        <div class="g-sd f-fl">
+            <!-- 创建问答 -->
+                <div class="m-singleBtn s-bsdStyle1">
+                    <a href="" class="imgBtn askAndAnswer"></a>
+
+                </div>
+
+                <div class="m-snavU s-bsdStyle1 f-mt20 clearfix">
+                <a href="" title="提问列表" target="" class="item a-Grayl s-bdrcG f-tac f-fl"> 
+                    <i class="icon-questionList"></i>
+                    <div class="txt f-tac">提问列表</div>
+                </a>
+                <a href="" title="我的回答" target="" class="item a-Grayl s-bdrcG f-tac f-fl">
+                    <i class="icon-myAsk"></i>
+                    <div class="txt f-tac">我的回答</div>
+                </a>
+                <a href="" title="我要帮忙" target="" class="item a-Grayl f-tac f-fl">
+                    <i class="icon-helpOther"></i>
+                    <div class="txt f-tac">我要帮忙</div>
+                </a>
+                </div>
+
+            <!-- 热门标签排行 -->
+            <div class="m-hotLabel s-bsdStyle1 f-mt20">
+                <div class="tt clearfix">
+                    <h3 class="f-fl f-fs18">热门标签排行</h3>
+                </div>
+                <div class="ct">
+                    <ul>
+                    <li>
+                        <span class="score" style="width: 100%;"><em>189</em></span>
+                        <span class="name">
+                            <a href="" target="_blank" title="热门标签">热门标签</a>
+                        </span>
+                        
+                    </li>
+
+                    <li>
+                        <!-- 此处宽度公式是【（当前数/当前排行榜最高数）*100%】
+                        最小宽度是40%；
+                         -->
+                        <span class="score" style="width: 84.7%;"><em>160</em></span>
+                        <span class="name">
+                            <a href="" target="_blank" title="热门标签">热门标签</a>
+                        </span>
+                    </li>
+
+                    <li><span class="score" style="width: 60%;"><em>160</em></span><span class="name"><a href="" target="_blank" title="热门标签">热门标签</a></span></li>
+                </ul>
+                </div>
+            </div>
+
+            <!-- 答题榜 -->
+            <div class="m-questionsList s-bsdStyle1 f-mt20">
+                <div class="tt">
+                    <ul class="tab4Menu f-fs18 clearfix">
+                        <li class="menuCell tabMenuCurrent f-fl"><a href="" title="" class="tabLink">答题榜</a></li>
+                        <li class="f-fl">|</li>
+                        <li class="menuCell f-fl"><a href="" title="" class="tabLink">提问榜</a></li>
+                        <li class="f-cb"></li>
+                    </ul>
+                </div>
+                <div class="ct">
+                    <ul class="u-r clearfix">
+                        <li>
+                            <span class="score"> <em>132</em>
+                                 条
+                             </span>
+                             <span class="topThree">1</span>
+                            <a href="" target="_blank" title="用户名" class="name">用户名</a>
+                        </li>
+
+                        <li><span class="score"> <em>132</em>条</span><span class="topThree">2</span><a href="" target="_blank" title="用户名" class="name">用户名</a></li>
+                        <li><span class="score"> <em>132</em>条</span><span class="topThree">2</span><a href="" target="_blank" title="用户名" class="name">用户名</a></li>
+
+                        <li><span class="score"> <em>132</em>条</span><span class="topOther">2</span><a href="" target="_blank" title="用户名" class="name">用户名</a></li>
+                        <li><span class="score"> <em>132</em>条</span><span class="topOther">2</span><a href="" target="_blank" title="用户名" class="name">用户名</a></li>
+                    </ul>
+                </div>
+            </div>
+           
+
+
+            </div>
+
+        <div class="g-mn f-fr">
+            <!-- 问答分类 此处样式要排重-->
+            <div class="m-selfStudyCount s-bsdStyle1">
+                <div class="tt clearfix">
+                    <h3 class="f-fl f-fs18"><i class="icon-done"></i>活动分类</h3>
+                </div>
+                <div class="ct">
+                    <div id="select-all">
+                    <dl>
+                        <dt>按学段查找</dt>
+                        <dd>
+                            <div class="sel-list">
+                                <ul>
+                                    <li><a href="" class="selected">全部</a></li>
+                                    <li><a href="">小学</a></li>
+                                    <li><a href="">初中</a></li>
+                                    <li><a href="">高中</a></li>
+                                </ul>
+                            </div>
+                            <a href="" class="see-select-left see-select-left-un" style="display:none;"> <b class="n-left">&lt;</b>
+                            </a>
+                            <a href="" id="see-select-right" class="see-select-right"> <b class="n-right">&gt;</b>
+                            </a>
+                        </dd>
+                    </dl>
+                    </div>
+                </div>
+                <div class="ft clearfix">
+                    <div class="f-fl">
+                        <div class="customForm_searchTxtInput customForm_searchStyle1 customForm_searchInputBoxGetFocus">
+                            <form action="/Search" method="get"><input name="" type="text" class="txtInput f-fl" value="输入关键字查找" />
+                            <label class="f-fl searchBtn"><input name="" type="submit" value="" class="icon_magnifier"></label>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 问答列表 -->
+            <div class="m-askAndAnswerList f-mt20">
+
+                <div class="tt">
+                    <div class="tab1Menu">
+                        <div class="leftInfo f-fs14 f-fl">
+                            <strong class="cur">待解答问题</strong>
+                            <strong><a href="">已解答</a></strong>
+                        </div>
+                        <div class="rightInfo f-fr">
+                            排序：
+                          <strong class="cur">默认<i class="icon-orderdown"></i></strong>
+                        | <a href="#" class="whiteA">最热<i class="icon-orderdown-nocur"></i></a>  | <a href="#" class="whiteA">最热<i class="icon-orderdown-nocur"></i></a> 
+                        </div>
+                        <div class="f-cb">
+                        </div>
+                    </div>
+                </div>
+                <div class="ct">
+                    <ul>
+                        <li class="head clearfix">
+                            <span class="f-fl">标题</span>
+                            <div class="f-fr">时间</div>
+                        </li>
+                        <li class="clearfix">
+                            <a href="" class="f-fl">孩子觉得名字不好听，非要嚷嚷要改怎么办？已经改了两次了</a>
+                            <div class="f-fr time">2014-05-05 17:34</div>
+                        </li>
+                        <li class="clearfix">
+                            <a href="" class="f-fl">孩子觉得名字不好听，非要嚷嚷要改怎么办？已经改了两次了</a>
+                            <div class="f-fr time">2014-05-05 17:34</div>
+                        </li>
+                        <li class="clearfix">
+                            <a href="" class="f-fl">孩子觉得名字不好听，非要嚷嚷要改怎么办？已经改了两次了</a>
+                            <div class="f-fr time">2014-05-05 17:34</div>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="f-cb"></div>
+    </div>
+    <div class="g-ft">
+        <div class="g-ftc">
+            主管：湖北省教育厅　主办：长江出版传媒股份有限公司 湖北省教育信息化发展中心　承办：湖北博盛数字教育服务有限公司<br>服务邮箱：services@dodoedu.com 客服热线：400-8866-561 鄂ICP备13014028号-1
+        </div>
+    </div>
+</div>
+
+    <script src="script/xljyHome.js"></script>
+</body>
+</html>

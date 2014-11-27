@@ -1,0 +1,47 @@
+<div id="ajaxpage" class="easyui-panel" style="padding:5px;" data-options="fit:true">
+	<table id="user-dg" title="<!--{$title}-->" class="easyui-datagrid" data-options="rownumbers:true,fit:true,fitColumns:true,singleSelect:true,pagination:true,url:'<!--{$getJsonDataUrl}-->',method:'get',pageSize:20,toolbar:'#user-tb'">
+	  <thead>
+		<tr>
+          <th field='user_name' width='50'>用户账号</th>
+          <th field='user_realname' width='50'>用户姓名</th>
+          <th field='group_title' width='50'>用户组</th>
+
+          <th field="user_isok" width="20">状态</th>
+          <th field="user_order" width="30">排序</th>
+          <th field="cz" width="30">操作</th>
+		</tr>
+	  </thead>
+	</table>
+	<div id="user-tb" style="padding:5px;height:auto">
+		<div>
+		<div style="float:right;">
+			用户组: 
+			<select panelHeight="auto" style="width:100px" id="grouplist">
+				<option >请选择</option>
+				{loop  $grouplist  $value}
+                        <option value ="<!--{$value['group_id']}-->"><!--{$value['group_title']}--></option>
+          		{/loop}
+			</select>
+			<a href="javascript:void(0);" onclick="javascript:user();" class="easyui-linkbutton" iconCls="icon-search">搜索</a>
+		</div>
+			<a href="javascript:;" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="javascript:ui_dialog( '<!--{$addUrl}-->',this );">增加</a>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+		$(function(){
+			var obj = document.getElementById("grouplist");
+			SetValue(obj,"<!--{$group_id}-->");
+			
+            /*
+$('#user-dg').datagrid({
+				onLoadSuccess:grid_success
+			});
+*/
+
+		});
+		function user(){
+			var obj = document.getElementById("grouplist");
+			gridload('user',{group_id:obj.options[obj.selectedIndex].value});
+		}
+</script>

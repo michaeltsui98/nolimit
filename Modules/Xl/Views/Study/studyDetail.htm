@@ -1,0 +1,44 @@
+<div class="g-bd">
+          <div class="m-nav clearfix f-mb10">
+            <div class="m-breakNav f-fl">
+                <i class="icon_tc1"></i>
+                <span>当前位置</span>：
+        {if !empty($user_info)}
+        <a href="javascript:;">学生 </a>>学习
+            </div>
+        </div>
+        <!--{eval  echo Cola_Tpl::widget_out("Modules_{$ucxk}_Controllers_Study",'PublicStuInfo')}-->
+        <!--{eval  echo Cola_Tpl::widget_out("Modules_{$ucxk}_Controllers_Study",'leftPublic')}-->
+        {else}
+        <a href="javascript:;">推荐学习 </a>>学习
+            </div>
+        </div>
+           <!--{eval  echo Cola_Tpl::widget_out("Modules_{$ucxk}_Controllers_Study",'uLoginLeftPublic')}-->  
+        {/if}
+      
+        </div>
+    	<div class="g-mn f-fr">
+        	<div class="m-myLearningWrap">
+            	<h2 class="tt f-fwn f-fs14 s-fcGray s-bsdStyle1">
+                <i class="icon-circle1 f-mr5"></i>
+                <label class="f-vam f-ml10">当前版本：</label>
+                <select size="1" class="f-vam f-fs16 f-fwb" name="bb_list">
+                 {loop $bb_list $v}
+                    {if $v['code'] == $bb}
+                    <option value="{$v['code']}" selected="selected">{$v['name']}</option>
+                    {else}
+                    <option value="{$v['code']}">{$v['name']}</option>
+                    {/if}
+                {/loop}
+                </select>
+                <label class="f-vam">当前年级：</label>
+                <select size="1" class="f-vam f-fs16 f-fwb" name="grade_list">
+           	  </select>
+            </h2>
+     			 <div class="ctUnit" name="node_list"></div>
+                <div class="ft"><i class="icon-circle2"></i></div>
+          </div>
+        </div>
+        <div class="f-cb"></div>
+    </div>
+    

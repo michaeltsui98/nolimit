@@ -1,0 +1,18 @@
+<!--{loop $resource['rows']  $key $value}-->
+	 {if !empty($value['have_child'])}
+	<!--{eval $resource['rows'] [$key]['state']='closed';}-->
+	 {else}
+	<!--{eval $resource['rows'] [$key]['state']='open';}-->
+	 {/if}
+         {if empty($value['have_child'])}
+<!--{eval $resource['rows'][$key]['cz']=" <a href=\"javascript:;\"  onclick=\"javascript:ui_dialog('{$node_descript}?{$parameter}&son_id={$value['id']}',this,600,500);\"><span class=\"icon-table icon-isdel\"></span>添加课程描述</a>";}-->
+<!--{eval $resource['rows'][$key]['cz'].=" <a href=\"javascript:;\"  onclick=\"javascript:ui_dialog('{$add_resource}?{$parameter}&son_id={$value['id']}',this,1000,500);\"><span class=\"icon-table icon-isdel\"></span>增加课程资源</a>";}-->
+    {if !empty($value['study_resource'])}
+           <!--{loop $value['study_resource'] $k $v}-->
+            <!--{eval $resource['rows'][$key]['cz'].=" <a href=\"javascript:;\"  onclick=\"javascript:ui_dialog('{$all_resource}?{$parameter}&son_id={$value['id']}&type={$k}',this,1000,500);\"><span class=\"icon-table icon-isdel\"></span>{$v}列表</a>";}-->
+           <!--{/loop}-->
+    {/if}
+{/if}	
+<!--{/loop}-->
+ 
+<!--{eval echo json_encode($resource)}-->

@@ -1,0 +1,93 @@
+<div id="tab1" class="tabcontent">
+    <div class="form">
+       <form action="<!--{$addDoUrl}-->" method="post" id="app_form" name="app_form" class="ui-form">
+	 
+            <div class="form_row">
+                <label><span class="ui-form-required">*</span>应用名称：</label>
+                <input type="text" class="form_input_200"  id="name" name="data[name]"  placeholder="用应名称"   datatype="*" />
+				<div class="info"><span class="ui-form-other"></span></div>
+            </div>
+            <div class="form_row">
+                <label><span class="ui-form-required">*</span>应用图标：</label>
+				
+				<input type="hidden"  name="icon" id="icon" />
+				<DIV id="demo2"></DIV><div id="tip2"></div>
+				    <script>
+					    new syup({
+					        path: '/static/',
+					        div_id:'demo2',
+					        form_id:'icon',
+					        //tip_id:'tip2',
+					        up_text: '上传图标',
+					        up_maxsize: 1024*1024*1000,
+					        up_filter: '*.jpg;*.gif;*.png;*.bmp;',//上传类型限制
+					        up_imageWidth: 250,//上传图片宽度
+					        up_imageHeight: 720,//上传图片高度
+					        up_imageMode: 0,
+					        up_imageQuelity:100,
+					        up_url: '{DODOJC}/attachment/flashUpload',//上传保存地址
+					        skin:'{DODOJC}/static/syup/skin/green'
+					    }).show();
+				    </script>
+				 
+				<div class="info"><span class="ui-form-other" id="tip2"></span></div>
+            </div>
+
+            <div class="form_row">
+                <label><span class="ui-form-required">*</span>应用路径：</label>
+                <input type="text" class="form_input_200" id="url" name="data[url]" value="http://"  placeholder="应用路径"  datatype="*"  />
+				<div class="info"><span class="ui-form-other"></span>
+				应用路径命令规范：  
+				1.wap应用，使用wap页面路径，如 http://www.dodoedu.com/wap
+				2.原生应用，使用应用包名:下载路径，如com.dodoedu.community:http://mobile.dodoedu.com/app/android/DuoDuoCommunity_Android.apk
+				</div>
+            </div>
+			
+            <div class="form_row">
+                <label><span class="ui-form-required"></span>应用角色：</label>
+				<select class="easyui-combobox" name="data[role_code]" id="role_code" style="width:200px;">
+					<option value="1">学生应用</option>
+			        <option value="2">教师应用</option>
+			        <option value="3">家长应用</option>
+				</select>
+				<div class="info"><span class="ui-form-other"></span></div>
+            </div>
+			
+            <div class="form_row">
+                <label><span class="ui-form-required"></span>打开方式：</label>
+				<select class="easyui-combobox" name="data[target]" id="target" style="width:200px;">
+					<option value="self">本窗口打开</option>
+			        <option value="new">新窗口打开</option>
+				</select>
+				<div class="info"><span class="ui-form-other"></span></div>
+            </div>
+
+            <div class="form_row">
+                <label>手机应用：</label>
+                <input class="ui-radio" type="radio" name="data[is_mobile]" id="is_mobile" value="1"  datatype="*" />是 
+		 		<input class="ui-radio" type="radio" name="data[is_mobile]" id="is_mobile" value="0"  />否
+				<div class="info"><span class="ui-form-other"></span></div>
+            </div>
+            <div class="form_row">
+                <label>状态：</label>
+                <input class="ui-radio" type="radio" name="data[is_ok]" id="is_ok" value="1"  datatype="*" />正常 
+		 		<input class="ui-radio" type="radio" name="data[is_ok]" id="is_ok" value="0"  />禁用
+				<div class="info"><span class="ui-form-other"></span></div>
+            </div>
+            <div class="ui-form-item">
+                <input type="submit" id="btn_submit" value="保存"/>
+            </div> 
+        </form>
+       <script type="text/javascript">
+				$(function(){
+					syform_val('app_form');
+                    SetValue(app_form["data[is_ok]"],"1");
+                    SetValue(app_form["data[is_mobile]"],"1");
+                    SetValue(app_form["data[target]"],"new");
+
+				});
+		</script>
+    </div>
+</div>
+
+    

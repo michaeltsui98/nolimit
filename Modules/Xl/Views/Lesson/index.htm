@@ -1,0 +1,83 @@
+<div class="g-bd">
+    {$breadcrumb}
+    <div class="g-sd width238 f-fl">
+        <div class="sidebar">
+            <div class="wk_upload s-bsdStyle1">
+                <a style="width:180px;" href="javascript:;" name="newFolder" class="customBtnLarge colourLOrange">新建备课夹</a>
+            </div>
+        </div>
+        <!-- //他们都在备课 -->
+        {include Modules/Xl/Views/Lesson/latestUserList}
+    </div>
+    <div class="g-mn width738 f-fr" style="position:relative;">
+        <!-- 备课夹 -->
+        <div class="m-classReady s-bsdStyle1 f-mb20">
+
+            <div style="width:100%;" class="f-fl clearfix">
+                <div class="main">
+                   <div class="tab1Menu">
+                        <div>
+                            <div class="leftInfo f-fs14 f-fl">
+                                <strong  class="cur" ><a href="javascript:;">公共备课夹</a></strong>
+                                {if $user_info}
+                                <strong ><a href="/{$xk}/Lesson/record">我的备课夹</a></strong>
+                                {/if}
+                                <!--{eval $action='index'}-->
+                            </div>
+                        </div>
+						<div class="rightInfo f-fr" style="list-style:none;font-weight:normal;line-height:35px;width:510px;">
+                            <ul>
+                            {include Modules/Xl/Views/Lesson/Folder/order}
+                            {include Modules/Xl/Views/Lesson/Folder/search}
+                            </ul>
+						</div>
+						<div class="f-cb"> </div>
+					</div>
+                </div>
+            </div>
+            <div class=" f-cb"></div>
+
+            <div class="ct">
+                <div class="wk_docCell">
+                    <div class="doclist1">
+                        <ul>
+                            <!--{loop $list $item}-->
+                            <li>
+                                <div class="doc_typeIcon">
+                                    <a href="{DOMAIN_NAME}/{$item['user_id']}/Space/Index" title="" target="_blank">
+                                    <img src="{$item['user']['icon']}" width="40" alt="{$item['user']['real_name']}"></a>
+                                </div>
+                                <div class="doc_name">
+                                    <a href="/{$xk}/lesson/detail/id/{$item['id']}" target="_blank">{$item['title']}</a>
+                                </div>
+                                <div class="doc_desc">
+                                    <!--{eval echo Models_Stage::$stage_list[$item['stage']]}-->
+                                    |
+                                    <!--{eval echo Models_Grade::$grade_list[$item['stage']][$item['grade']]}-->
+                                    |
+                                    <!--{eval echo Models_Edition::$edition_list[$item['edition']]}-->
+                                    |
+                                    <!--{if isset($item['node_info'])}-->
+                                    <span title="$item['node_info']['data']">{cutstr($item['node_info']['data'], 30)}</span>
+                                    |
+                                    <!--{/if}-->
+                                    {date('Y-m-d', $item['create_time'])}
+                                    |
+                                    阅读：{$item['view_num']}
+                                    <span class="docRate f-fr" style="color:#3598dc;">
+                                    <a class="js-lesson-copy" href="/{$xk}/lesson/copyFolder/id/{$item['id']}">复制</a>&nbsp;|&nbsp;<a target="_blank" href="/{$xk}/Lesson/detail/id/{$item['id']}">预览</a>
+                                    </span>
+                                </div>
+                            </li>
+                            <!--{/loop}-->
+                        </ul>
+                    </div>
+                </div>
+
+                <!--{eval echo $page->html();}-->
+            </div>
+        </div>
+        <!-- 备课夹 -->
+    </div>
+    <div class="f-cb"></div>
+</div>

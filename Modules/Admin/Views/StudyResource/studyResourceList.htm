@@ -1,0 +1,39 @@
+<div id="ajaxpage" class="easyui-panel" style="padding:5px;" data-options="fit:true">
+    <table id="jcUnitList-dg" title="<!--{$title}-->" class="easyui-treegrid" data-options="rownumbers:true,fit:true,fitColumns:true,singleSelect:true,
+    pagination:true,url:'<!--{$course_ajax}-->',
+    method:'get',
+    pageSize:20,
+    idField:'id',
+    treeField:'node_title',
+    toolbar:'#jcUnitList-tb'
+    ">
+      <thead>
+        <tr>
+          <th field='node_title' width='50'>教材课程列表</th>
+          <th field="cz" width="50">操作</th>
+        </tr>
+      </thead>
+    </table>
+    <div id="jcUnitList-tb" style="padding:5px;height:auto">
+        <div>
+         
+            基础节点选择: 
+            <select id="resource_node_list" class="easyui-combotree" style="width:200px;"></select>
+        </div>
+    </div>
+</div>
+        <script type="text/javascript">
+            $('#resource_node_list').combotree({
+            url: "{$nodeList}",
+            method:'get',
+            required: true,
+            onChange:function(){
+                var node_id =  $(this).combotree('getValue');
+                 get_node(node_id);
+            },
+        });
+
+            function get_node(node_id){
+            treeload('jcUnitList',{node_id:node_id});
+        }    
+     </script>

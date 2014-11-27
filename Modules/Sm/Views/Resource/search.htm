@@ -1,0 +1,107 @@
+<div class="g-bd">
+	 <!-- 面包屑导航 -->
+        <div class="m-nav clearfix f-mb10">
+            <div class="m-breakNav f-fl">
+                <i class="icon_tc1"></i>
+                <span>当前位置</span>：<a href="/{$xk}/index">教师</a>&nbsp;&gt;&nbsp;<a href="/{$xk}/resource">资源 </a>&nbsp;&gt;&nbsp;  搜索 “{$key}”  约<em id="em_count"></em>个搜索结果
+            </div>
+            {if isset($user_info['user_id'])}
+	            <div class="m-breakNav f-fr"><a href="/{$xk}/resource/my/s/up" >去我的资源中心</a></div>
+		    {/if}
+        </div>
+		
+
+		<!-- 文库模块 -->
+        <div class="wk_classList f-mt10">
+
+        <div class="g-sd f-fl">
+        <!-- 热门标签排行 -->
+            <div class="m-hotLabel s-bsdStyle1">
+                <input type="hidden" name="hdn_xk" id="hdn_xk" value="{$xk_code}">
+                <input type="hidden" name="hdn_key" id="hdn_key" value="{$key}">
+				<div class="tt clearfix f-mb10">
+                    <h3 class="f-fl f-fs18">在结果中搜索</h3>
+                </div>
+				<div class="otherChoose">
+                        <select name="slt_xd" id="slt_xd" class="f-mb20">
+                            <option value="">请选择</option>
+						    {loop $xd_arr  $v}
+                            <option id="{$v['id']}" value ="{$v['code']}" {if $xd == $v['code']} selected="selected" {/if} >{$v['name']}</option>
+							{/loop}
+                        </select>
+                        <select name="slt_bb" id="slt_bb" class="f-mb20">
+                            <option value="">请选择</option>
+						    {loop $bb  $v}
+                            <option id="{$v['id']}" value ="{$v['code']}" {if $bb_code == $v['code']} selected="selected" {/if} >{$v['name']}</option>
+							{/loop}
+                        </select>
+
+                        <select name="slt_nj" id="slt_nj">
+                            <option value="">请选择</option>
+							{loop $nj $v}
+                            <option id="{$v['id']}" value ="{$v['code']}" {if $nj_code == $v['code']} selected="selected" {/if}>{$v['name']}</option>
+							{/loop}
+                        </select>
+                </div>
+				<div class="tt clearfix f-mt10">
+                    <h3 class="f-fl f-fs18">TA们都在搜索</h3>
+                </div>	
+                <div class="ct">
+                    <ul id="ul_key">
+                    {loop $hot_key $v}
+					<li>
+                        <span style="width: 100%;" class="score"><em></em></span>
+                        <span class="name">
+                            <a title="{$v}" href="/{$xk}/resource/search?key={$v}" >{$v}</a>
+                        </span>
+                    </li>
+					{/loop}
+	                </ul>
+                </div>
+            </div>
+        </div>
+
+    	<div class="g-mn s-bsdStyle1 f-fr">
+            <div class="main">
+            	<div class="tab1Menu">
+                        <div class="leftInfo f-fs14 f-fl">
+                            <strong {if $type == 'all' or !$type}class="cur"{/if}><a href="javascript:;" data-type="all">全部</a></strong>
+							{loop $resource_type $k $v}
+                            <strong {if $type == $k}class="cur"{/if}><a href="javascript:;" data-type="{$k}">{$v}</a></strong>
+							{/loop}
+                        </div>
+                        <div class="rightInfo f-fr" style="width: 188px;text-align: right;">
+						 排序：
+                          {if $order == 1}
+						  <strong class="cur" data-order="1">最新<i class="icon-orderdown"></i></strong>
+						  {else}
+						  <a href="javascript:;" data-order="1" class="whiteA">最新<i class="icon-orderdown-nocur"></i></a>
+						  {/if}|
+						 {if $order == 2}
+						 <strong class="cur" data-order="2">最热<i class="icon-orderdown"></i></strong>
+						 {else}
+                         <a href="javascript:;" data-order="2" class="whiteA">最热<i class="icon-orderdown-nocur"></i></a>
+						 {/if}
+                        </div>
+
+                        <div class="f-cb"> </div>
+                    </div>
+
+                    <div class="ct">
+                        <div class="wk_docCell" id="list_content">
+
+                        	 
+							
+                        </div>
+                    </div>
+                     
+					<div id="pagehtml" class="page"></div> 
+					  
+                </div>
+            </div>
+    </div>
+</div>
+<div class="f-cb"> </div>
+ 
+
+		

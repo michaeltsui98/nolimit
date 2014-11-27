@@ -1,0 +1,130 @@
+<style type="text/css">
+    div.pre-con h1 {
+        font-size: 24px;
+    }
+    div.pre-con p {
+        font-size: 16px;
+    }
+</style>
+<div class="g-bd">
+    <!--{eval echo $breadcrumb->render()}-->
+    <div class="g-sd width238 f-fl sider-nav-lesson">
+    	<div class="m-myFavor s-bsdStyle2">
+            <ul class="nav f-fs16">
+                <li>
+                    <a href="javascript:;" class="clearfix">
+                    <span class="f-fl">从我的上传中选择</span>
+                    <span class="f-fr"><i class="icon-arrowMid"></i></span>
+                    </a>
+                </li>
+            </ul>
+            <div class="ct">
+                <div class="ItemWarp ajax-page" data-url="/{$xk}/lesson/myResource" name="resource-list">
+                    <!--{if $uploadResourceList}-->
+                    <div class="ajax-content">
+                        <!--{loop $uploadResourceList $v}-->
+                        {include Modules/Xl/Views/Lesson/Resource/item}
+                        <!--{/loop}-->
+                    </div>
+                    <div class="refresh_line" ><a href="javascript:;">点击加载更多</a></div>
+                    <!--{else}-->
+                    <div><p>您还没有上传该科目的资源</p></div>
+                    <!--{/if}-->
+                </div>
+            </div>
+        </div>
+        <div class="m-myFavor s-bsdStyle2">
+            <ul class="nav f-fs16">
+                <li>
+                    <a href="javascript:;" class="clearfix">
+                    <span class="f-fl">从我的收藏中选择</span>
+                    <span class="f-fr"><i class="icon-arrowMid"></i></span>
+                    </a>
+                </li>
+            </ul>
+            <div class="ct" style="display:none;">
+                <div class="ItemWarp ajax-page" data-url="/{$xk}/lesson/favResource" name="resource-list">
+                    <!--{if $favResourceList}-->
+                    <div class="ajax-content">
+                    <!--{loop $favResourceList $v}-->
+                        {include Modules/Xl/Views/Lesson/Resource/item}
+                    <!--{/loop}-->
+                    </div>
+                    <div class="refresh_line" ><a href="javascript:;">点击加载更多</a></div>
+                    <!--{else}-->
+                    <div><p>您还没有收藏该科目的资源</p></div>
+                    <!--{/if}-->
+                </div>
+            </div>
+        </div>
+        <div class="m-myFavor s-bsdStyle2">
+            <ul class="nav f-fs16">
+                <li>
+                    <a href="javascript:;" class="clearfix">
+                    <span class="f-fl">从资源中心选择</span>
+                    <span class="f-fr"><i class="icon-arrowMid"></i></span>
+                    </a>
+                </li>
+            </ul>
+            <div class="ct" style="display:none;">
+                <!--{if $matchResourceList}-->
+                <span>你可能需要这些资源</span>
+                <div style="height:320px;" class="ItemWarp" name="resource-list">
+                    {loop $matchResourceList $v}
+                    {include Modules/Xl/Views/Lesson/Resource/item}
+                    {/loop}
+                </div>
+                <!--{else}-->
+                <div style="height:330px;"><p>没有找到匹配的资源</p></div>
+                <!--{/if}-->
+                <a id="searchResource" href="javascript:;">搜索更多平台资源</a>
+            </div>
+        </div>
+    </div>
+	<div class="g-mn width738 f-fr" style="position:relative;">
+        <!-- 备课夹 -->
+    	<div class="m-classReady s-bsdStyle2">
+            <div class="curEditClass f-fwn f-fs16 f-mb10 f-pb10">
+                <h2>
+                    <span class="f-fs18 f-ib f-vam">所属分类：</span>
+                    <span class="s-fcGray f-ib f-vam">
+                        <strong>
+                        <!--{eval echo Models_Edition::$edition_list[$folder_info['edition']]}-->
+                        </strong>
+                        >
+                        <strong>
+                        <!--{eval echo Models_Grade::$stage_grade_list[$folder_info['stage']][$folder_info['grade']]}-->
+                        </strong>
+                        >
+                        <span class="s-fcGreen">
+                        <!--{eval $chapter_info = Models_Resource::init()->getUnitTitleById($folder_info['chapter'])}-->
+                        {$chapter_info['data']}
+                        </span>
+                    </span>
+                    <a target="_blank" class="customBtn colourDarkGreen f-fr" href="/{$xk}/lesson/detail/id/{$folder_info['id']}">预览</a>
+                </h2>
+                <form class="ajax-form" action="/{$xk}/Lesson/edit/id/{$folder_info['id']}" method="post">
+                <h3>
+                    <input style="width:630px;" class="f-fl" type="text" name="folder[title]" value="{$folder_info['title']}" placeholder="备课夹名称">
+                    <a href="javascript:;" style="margin-top:12px;" class="customBtn colourDarkBlue customBtnNormal f-fr js-submit">提交</a>
+                    <div class="clearfix"></div>
+                </h3>
+                <div class="clearfix">
+                    <label>
+                        <!--{eval $statuschecked = ($folder_info['status'])?'checked="checked"':''}-->
+                        <input type="checkbox" name="folder[status]" value="1" {$statuschecked} class="checkbox f-fl"><span class="f-fl" style="line-height:30px;">是否公开</span>
+                    </label>
+                </div>
+                </form>
+            </div>
+
+            <div id="folder-resource-list" folder_id="{$folder_info['id']}" stage="{$user_info['xd']}" class="ct">
+
+                {include Modules/Xl/Views/Lesson/layoutResource}
+                <div class="classAddRow"><a href="javascript:;"> + 添加一行</a></div>
+            </div>
+        </div>
+        <!-- 备课夹 -->
+    </div>
+    <div class="f-cb"></div>
+</div>

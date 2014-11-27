@@ -1,0 +1,94 @@
+<form action="<!--{$editDoUrl}-->" method="post" id="app_form" name="app_form" class="ui-form">
+	 
+		<input type="hidden" id="app_id" name="app_id" value="<!--{$data['app_id']}-->"  />
+		
+	    <div class="form_row">
+                <label><span class="ui-form-required">*</span>应用名称：</label>
+                <input type="text" class="form_input_200"  id="name" name="data[name]"  value="{$data['name']}" placeholder="应用名称"   datatype="*" />
+				<div class="info"><span class="ui-form-other"></span></div>
+            </div>
+
+            <div class="form_row">
+                <label><span class="ui-form-required">*</span>应用图标：</label>
+				<img src="{$base_url}{$data['icon']}" height="20">
+				<input type="hidden"  name="icon" id="icon" />
+				<DIV id="demo2"></DIV><div id="tip2"></div>
+				    <script>
+					    new syup({
+					        path: '/static/',
+					        div_id:'demo2',
+					        form_id:'icon',
+					        //tip_id:'tip2',
+					        up_text: '上传图标',
+					        up_maxsize: 1024*1024*1000,
+					        up_filter: '*.jpg;*.gif;*.png;*.bmp;',//上传类型限制
+					        up_imageWidth: 250,//上传图片宽度
+					        up_imageHeight: 720,//上传图片高度
+					        up_imageMode: 0,
+					        up_imageQuelity:100,
+					        up_url: '{DODOJC}/attachment/flashUpload',//上传保存地址
+					        skin:'{DODOJC}/static/syup/skin/green'
+					    }).show();
+				    </script>
+                 
+				
+				<div class="info"><span class="ui-form-other"></span></div>
+            </div>
+			
+            <div class="form_row">
+                <label><span class="ui-form-required">*</span>应用路径：</label>
+                <input type="text" class="form_input_200" id="url" name="data[url]" value="{$data['url']}"  placeholder="应用路径"  datatype="*"  />
+				<div class="info"><span class="ui-form-other"></span></div>
+            </div>
+			
+            <div class="form_row">
+                <label><span class="ui-form-required"></span>应用角色：</label>
+				<select class="easyui-combobox" name="data[role_code]" id="role_code" style="width:200px;">
+					<option value="1">学生应用</option>
+			        <option value="2">教师应用</option>
+			        <option value="3">家长应用</option>
+				</select>
+				<div class="info"><span class="ui-form-other"></span></div>
+            </div>
+			
+            <div class="form_row">
+                <label><span class="ui-form-required"></span>打开方式：</label>
+				<select class="easyui-combobox" name="data[target]" id="target" style="width:200px;">
+					<option value="self">本窗口打开</option>
+			        <option value="new">新窗口打开</option>
+				</select>
+				<div class="info"><span class="ui-form-other"></span></div>
+            </div>
+			<div class="form_row">
+                <label>手机应用：</label>
+                <input class="ui-radio" type="radio" name="data[is_mobile]" id="is_mobile" value="1"  datatype="*" />是 
+		 		<input class="ui-radio" type="radio" name="data[is_mobile]" id="is_mobile" value="0"  />否
+				<div class="info"><span class="ui-form-other"></span></div>
+            </div>
+            <div class="form_row">
+                <label>状态：</label>
+                <input class="ui-radio" type="radio" name="data[is_ok]" id="is_ok" value="1"  datatype="*" />正常 
+		 		<input class="ui-radio" type="radio" name="data[is_ok]" id="is_ok" value="0"  />禁用
+				<div class="info"><span class="ui-form-other"></span></div>
+            </div>
+	 
+ 
+
+		<div class="ui-form-item">
+		        <input type="submit" id="btn_submit" value="保存"/>
+		</div> 
+</form>
+
+
+<script type="text/javascript">
+	$(function(){
+		syform_val('app_form');
+        SetValue(app_form["data[is_ok]"],"<!--{$data['is_ok']}-->");
+        SetValue(app_form["data[is_mobile]"],"<!--{$data['is_mobile']}-->");
+        SetValue(app_form["data[role_code]"],"<!--{$data['role_code']}-->");
+        SetValue(app_form["data[target]"],"<!--{$data['target']}-->");
+	});
+</script>
+ 
+
+  

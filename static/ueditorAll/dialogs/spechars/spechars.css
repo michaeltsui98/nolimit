@@ -1,0 +1,7 @@
+﻿.ee-menu-palette-item {
+    border-radius: 2px;
+    padding: 2px 0 0;
+    margin: 2px 0 0;
+    border: 1px solid rgba(0,0,0,0);
+    background-image: url(ee-palettes.png);
+}

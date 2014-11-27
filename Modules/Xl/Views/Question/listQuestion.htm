@@ -1,0 +1,21 @@
+<div class="m-questionsList s-bsdStyle1 f-mt20">
+                <div class="tt">
+                    <ul class="tab4Menu f-fs18 clearfix">
+                        <li class="menuCell tabMenuCurrent f-fl" name="qusetionTab"><!--<span class="f-fl">|</span> --><a href="javascript:;" title="提问榜" class="tabLink">提问榜</a></li>                 
+                        <li class="menuCell f-fl" name="answerTab"><a href="javascript:;" title="答题榜" class="tabLink">答题榜</a></li>
+                        <li class="f-cb"></li>
+                    </ul>
+                </div>
+                <div class="ct">
+                    <ul class="u-f clearfix" name="qusetionList">
+						{loop $questionList $k $v}						
+						<li><span class="score"> <em>{$v['num']}</em>条</span><span class="{if $k>2}topOther{else}topThree{/if}"><!--{eval echo $x=$k+1 ;}--></span><a href="{DOMAIN_NAME}/{$v['user_id']}/Space/index" target="_blank" title="{$v['real_name']}" class="name">{$v['real_name']}</a></li>
+						{/loop}                         					
+                    </ul>
+					<ul class="u-f clearfix" name="answerList" style="display:none">
+						{loop $answerList $k $v}						
+						<li><span class="score"> <em>{$v['num']}</em>条</span><span class="{if $k>2}topOther{else}topThree{/if}"><!--{eval echo $x=$k+1 ;}--></span><a href="{DOMAIN_NAME}/{$v['user_id']}/Space/index" target="_blank" title="{$v['real_name']}" class="name">{$v['real_name']}</a></li>
+						{/loop}                         					
+                    </ul>
+                </div>
+</div>

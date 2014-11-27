@@ -1,0 +1,20 @@
+<div class="tableViewCon">
+    <a class="btn_back" href="javascript:;" onclick="history.back();"></a>
+    <h3>资讯详情</h3>
+</div>
+
+<div class="m-p">
+    <div class="w-p">
+        <div class="hd">
+            <h1>{$blogDetail['blog_title']}</h1>
+            <p>
+                <span class="time fl">{date('Y-m-d H:i', $blogDetail['blog_time'])}</span>
+                <span class="author fr">发布人：{$userInfo['real_name']}</span>
+            </p>
+            <div class="cb"></div>
+        </div>
+        <div class="bd">
+            {$blogDetail['blog_content']}
+        </div>
+    </div>
+</div>

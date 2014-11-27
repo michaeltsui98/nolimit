@@ -1,0 +1,79 @@
+<!--<div id="tab1" class="tabcontent"></div>-->
+    <div class="form">
+        <form action="<!--{$resource_to}-->" method="post" id="resource_form" name="resource_form" class="ui-form">
+            <div class="form_row">
+                <span>资源类型：</span>
+                <div json_value="<!--{$resource_json}-->" name="resUrl"></div>
+                <select name="resource_type" class="form_select_100" id="study_field" datatype="*">
+                    {loop $type_list  $key  $value}
+                    <option xk="<!--{$xk}-->" value="<!--{$value['id']}-->">
+                        <!--{$value['classify_name']}-->
+                    </option>
+                    {/loop}
+                </select>
+                <div class="info"><span class="ui-form-other"></span></div>
+                <a name="searchRes" class="easyui-linkbutton l-btn" iconcls="icon-search" href="#">搜索</a>
+            </div>
+             <div class="ui-form-item">
+                <input type="hidden" name="field" value="<!--{$field}-->">
+                <input type="hidden" name="grade" value="<!--{$grade}-->">
+                <input type="hidden" name="bb" value="<!--{$bb}-->">
+                <input type="hidden" name="son_id" value="<!--{$son_id}-->">
+                <input type="submit" id="btn_submit" value="保存" />
+            </div>
+        
+          <table id="resource_list-dg" style="height:350px;width:900px;"></table>
+<!--                <div id="resource_list-tb"></div>-->
+           
+  </form>
+        </div> 
+
+
+<script type="text/javascript">
+    $(function () {
+        syform_val('resource_form');
+        var currentPage = 1;
+        var currentRows = 5;
+        var initData = function (page, r) {
+            var study_type = $("select[name='resource_type']").find("option:selected").val();
+            var field = $("input[name='field']").val();
+            var grade = $("input[name='grade']").val();
+            var bb = $("input[name='bb']").val();
+            var son_id = $("input[name='son_id']").val();
+            var url = $("div[name='resUrl']").attr('json_value') + '?study_type=' + study_type + '&field=' + field + '&grade=' + grade + '&bb=' + bb + '&son_id=' + son_id + '&page=' + page + '&rows=' + r;
+            currentPage = page;
+            currentRows = r;
+            //alert(url)
+            $('#resource_list-dg').datagrid({
+                url: url,
+                columns: [[
+                    { field: 'title', title: 'title', width: 750 },
+                    { field: 'add', title: '添加', width: 100, align: 'right' }
+                ]],
+                rownumbers: true,
+                pagination: true,
+                onLoadSuccess: function () {
+                    $("input[name='evaluate_end_time']").datebox();
+                }
+            });
+            //设置分页控件  
+            var p = $('#resource_list-dg').datagrid('getPager');
+            $(p).pagination({
+                total: 100,
+                pageNumber: page,
+                pageSize: r,
+                pageList: [5, 10, 15, 20],
+                onSelectPage: function (pageNumber, pageSize) {
+                    // alert('p:' + pageNumber + 'r:' + pageSize);
+                    initData(pageNumber, pageSize);
+                }
+            });
+        }
+        initData(currentPage,currentRows);
+        $('[name="searchRes"]').die().live('click', function () {
+            initData(currentPage, currentRows);
+        });
+    })
+    
+</script>
+

@@ -1,0 +1,13 @@
+<li class="f-fl">
+    排序：
+    <!--{eval $params = $_GET}-->
+    <!--{if $order == 'new'}-->
+    <!--{eval $params['order'] = 'hot'}-->
+    <strong class="cur">最新<i class="icon-orderdown"></i></strong>
+    | <a href="/{$xk}/lesson/{$action}?<!--{eval echo http_build_query($params)}-->" class="whiteA">最热<i class="icon-orderdown-nocur"></i></a>
+    <!--{else}-->
+    <!--{eval $params['order'] = 'new'}-->
+    <a href="/{$xk}/lesson/{$action}?<!--{eval echo http_build_query($params)}-->" class="whiteA">最新<i class="icon-orderdown-nocur"></i></a>
+    | <strong class="cur">最热<i class="icon-orderdown"></i></strong>
+    <!--{/if}-->
+</li>

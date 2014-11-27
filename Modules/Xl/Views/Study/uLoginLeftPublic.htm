@@ -1,0 +1,57 @@
+<div class="g-sd f-fl">
+
+            <div class="m-rateWarp s-bsdStyle1">
+                <div class="tt">
+                    <h2 class="s-fcLGray f-fs16 f-fwn">
+                        <i class="icon-peoples"></i>推荐学习资源
+                    </h2>
+                </div>
+                <div class="ct">
+                    <ul class="u-f clearfix">
+                        {if !empty($recommend_study_resource)}
+                            {loop $recommend_study_resource $k $v}
+                        <li>
+                            <span class="topThree"><!--{eval echo $k+=1}--></span>
+                            <a href="{DODOJC}/{$xk}/Study/learin/{$v['study_resource_id']}" target="_blank" title="{$v['study_resource_title']}" class="name">
+                                {$v['study_resource_title']}
+                            </a>
+                        </li>
+                            {/loop}
+                        {else}
+                            <li>暂无资源</li>
+                        {/if}
+                    </ul>
+                </div>
+            </div>
+        
+            <div class="m-theyLearn s-bsdStyle1 f-mt10">
+                <h2 class="tt s-fcLGray f-fs16 f-fwn">
+                    <i class="icon-peoples"></i>他们在学习...
+                </h2>
+                <div class="ct">
+                    {if !empty($study_user)}
+                        {loop $study_user $v}
+                         <div class="Item clearfix">
+                           <div class="avater f-fl">
+                            <a href="{DOMAIN_NAME}/{$v['user_id']}/Space/index" title="" target="_blank">
+                                <img src="{$v['icon']}" width="40" alt="{$v['user_name']}">
+                            </a>
+                           </div>
+                          <dl class="info f-fl">
+                            <dt class="techerName">
+                                <a href="{DOMAIN_NAME}/{$v['user_id']}/Space/index" title="" target="_blank">{$v['user_name']}</a>
+                            </dt>
+                             {if !empty($v['school_id'])}
+                                <dd class="schName">
+                                <a href="{DOMAIN_NAME}/school/{$v['school_id']}" title="" target="_blank" class="a-Grayl">{$v['school_name']}
+                                </a> 
+                            </dd>
+                             {/if}
+                        </dl>
+                    </div>
+                   {/loop}
+                    {else}
+                        <div class="Item clearfix">暂无学生学习</div>
+                    {/if}
+                </div>
+            </div>

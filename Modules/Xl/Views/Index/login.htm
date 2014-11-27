@@ -1,0 +1,46 @@
+<form action="{DOMAIN_NAME}/DDApi/auth/clientauthorizeinfo"" method="post" id="loginFrom"> 
+<input type="hidden" name="access_token" id="access_tokens" value="{$access_tokens}">
+<input type="hidden" name="appKey" id="appKey" value="{$appKey}">
+<input type="hidden" name="callBackUrl" id="callBackUrl" value="{$callBackUrl}">
+<input type="hidden" name="responseType" id="responseType" value="code">
+<input type="hidden" name="state" id="state" value="{$ref}">
+            <div class="m-login clearfix">
+                <div class="leftCon f-fl">
+                    <div class="tt">
+
+                        <p class="tips">请输入您的多多社区帐号</p>
+                    </div>
+                    <div class="ct">
+                        <div class="c-login clearfix f-mb20">
+                            <label class="login-input-label">
+                                <div>
+                                    <span class="icon-id"></span>
+                                </div>
+                                <input type="text" name="userName" placeholder="请输入多多社区帐号" class="inputStyle"></label>
+                        </div>
+                        <div class="c-login clearfix f-mb15">
+                            <label class="login-input-label">
+                                <div>
+                                    <span class="icon-pd"></span>
+                                </div>
+                                <input type="password" name="userPass" placeholder="请输入密码" class="inputStyle"></label>
+                        </div>
+                        <div class="c-login clearfix">
+                            <input type="button" class="customBtnNormal colourDarkGreen btnLogin f-fl" id="btn_login" value=" 确定">    
+                            <a class="f-fr" href="{DOMAIN_NAME}/UserSignUp/recovery" target="_blank">找回密码?</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="rightCon f-fr">
+                    <div class="tt"></div>
+                    <div class="ct">
+                        <h3>立即加入多多社区</h3>
+                        <p>
+                            一个帐号，伴随成长，
+                            <br>    
+                            以时光为轴，
+                            <br>记录教育、生活中发生的点点滴滴...</p>
+                        <input type="button" onclick="window.open('{DOMAIN_NAME}/UserSignUp/signUp')" class="customBtn colourDarkGreen btnLogin" id="btn_register" value="注册帐号"></div>
+                </div>
+            </div>
+</form>

@@ -1,0 +1,75 @@
+<div id="tab1" class="tabcontent">
+    <div class="form">
+       <form action="<!--{$addDoUrl}-->" method="post" id="user_form" name="user_form" class="ui-form">
+	
+            <div class="form_row">
+                <label><span class="ui-form-required">*</span>用户帐号：</label>
+                <input type="text" class="form_input_200"  id="user_name" name="data[user_name]"  placeholder="用户帐号"  ajaxurl="{$check_username_url}" datatype="s3-20" />
+				<div class="info"><span class="ui-form-other"></span></div>
+            </div>
+
+            <div class="form_row">
+                <label><span class="ui-form-required">*</span>用户密码：</label>
+                <input type="password" class="form_input_200" id="user_pass" name="data[user_pass]"  placeholder="用户密码"  datatype="s6-20"  />
+				<div class="info"><span class="ui-form-other"></span></div>
+            </div>
+			
+            <div class="form_row">
+                <label><span class="ui-form-required">*</span>确认密码：</label>
+                <input type="password" class="form_input_200"  id="user_pass_two" name="user_pass_two" placeholder="确认密码"  datatype="*" recheck="data[user_pass]"/>
+				<div class="info"><span class="ui-form-other"></span></div>
+            </div>
+			
+            <div class="form_row">
+                <label><span class="ui-form-required">*</span>用户姓名：</label>
+                <input type="text" class="form_input_200"  id="user_realname" name="data[user_realname]"  placeholder="用户真实姓名"  datatype="*"  />
+				<div class="info"><span class="ui-form-other"></span></div>
+            </div> 
+
+            <div class="form_row">
+                <label><span class="ui-form-required">*</span>学籍ID：</label>
+                <input type="text" class="form_input_200"  id="user_uid" name="data[user_uid]"  placeholder="学籍ID"  datatype="*"  />
+				<div class="info"><span class="ui-form-other"></span></div>
+            </div> 
+
+            <div class="form_row">
+                <label><span class="ui-form-required">*</span>所在学校：</label>
+                <input type="text" class="form_input_200"  id="user_school_name" name="data[user_school_name]"  placeholder="所在学校"  datatype="*"  />
+				<div class="info"><span class="ui-form-other"></span></div>
+            </div> 			
+
+            <div class="form_row">
+                <label>用户组：</label>
+                <select name="data[user_group_id]" class="form_select_200" id="user_group_id" datatype="*">
+ 			        	 
+			          	{loop  $grouplist  $value}
+                        <option value ="<!--{$value['group_id']}-->"><!--{$value['group_title']}--></option>
+          				{/loop}
+        				 
+				</select>
+				<div class="info"><span class="ui-form-other"></span></div>
+            </div>  
+            <div class="form_row">
+                <label>状态：</label>
+
+                <input class="ui-radio" type="radio" name="data[user_isok]" id="user_isok" value="1"  datatype="*" />正常 
+		 <input class="ui-radio" type="radio" name="data[user_isok]" id="user_isok" value="0"  />禁用
+
+				<div class="info"><span class="ui-form-other"></span></div>
+            </div>
+            <div class="ui-form-item">
+                <input type="submit" id="btn_submit" value="保存"/>
+            </div> 
+        </form>
+       <script type="text/javascript">
+				$(function(){
+					syform_val('user_form');
+                    SetValue(user_form["data[user_group_id]"],"1");
+                    SetValue(user_form["data[user_isok]"],"1");
+
+				});
+		</script>
+    </div>
+</div>
+
+    

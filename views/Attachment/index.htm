@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>附件管理</title>
+</head>
+<body>
+<form action="/Attachment/upload" method="post" enctype="multipart/form-data">
+	<input type="file" name="file" value="">
+	<input type="submit" name="name" value="提交">
+</form>
+
+<a href="/Attachment/list">我的附件</a>
+
+<a href="javascript:;" class="flash-upload">flash上传</a>
+<script type="text/javascript" src="http://jc.dodoedu.com/static/script/jquery.js"></script>
+<script type="text/javascript" src="http://jc.dodoedu.com/static/script/common.js"></script>
+<script type="text/javascript">
+    flashUploadDialog(function(){
+
+    }, {});
+</script>
+</body>
+</html>

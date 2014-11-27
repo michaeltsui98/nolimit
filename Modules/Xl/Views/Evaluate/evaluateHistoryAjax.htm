@@ -1,0 +1,21 @@
+{if !empty($data)}
+	{loop $data $k $v}
+		            <div class="unit f-mb5">
+                             <div class="lst s-fcGray">   
+                            <ul class="item clearfix" style="padding: 10px 30px 10px 16px;">
+                                <li class="f-fl width180 f-fs16">{$v['time']}</li>
+                                <li class="name width380 f-fs16 f-fl" style="padding-left:10px;"><strong>{$v['evaluate_title']}</strong></li>
+                                <li class="state width80 f-fs14 f-fr"  style="padding-left:10px;">
+                                	{if $v['evaluate_record_status'] == 1}
+										<span class="s-fcGreen">未完成</span></li>
+                                	{elseif ($v['evaluate_record_status'] == 2)}
+                                  <span class="s-fcGreen">{$v['evaluate_record_score']}</span> 分</li>
+                                    {else}
+                                      <span class="s-fcGreen">已过期</span></li>
+                                	{/if}
+                            </ul>
+                        </div>
+                        </div>
+	{/loop}
+{/if}                       
+                       

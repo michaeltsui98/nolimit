@@ -1,0 +1,22 @@
+<div class="Item clearfix" style="padding:6px 0;"
+resource_id="{$v['id']}"
+resource_title="{$v['title']}"
+resource_description="<!--{eval echo htmlspecialchars($v['summery'])}-->"
+resource-preview="{$v['page_key']}"
+resource_type="<!--{eval echo Models_Lesson_Resource::$ext_type_maps[$v['file_type']]}-->"
+resource_style="<!--{eval echo Models_Lesson_Resource::$type_style_maps[Models_Lesson_Resource::$ext_type_maps[$v['file_type']]]}-->">
+    <div class="fileCover f-fl">
+
+		<i class="iconL_{$v['file_type']}"></i>
+
+    </div>
+    <dl class="info f-fl">
+        <dt class="sourceName">
+            <a href="/{$xk}/resource/view/{$v['id']}" title="{$v['title']}" target="_blank">{cutstr($v['title'], 18)}</a>
+        </dt>
+        <dd class="sourceDesc">
+            大小
+            <!--{eval echo Models_Resource::init()->bytesToSize($v['file_size'])}-->
+        </dd>
+    </dl>
+</div>

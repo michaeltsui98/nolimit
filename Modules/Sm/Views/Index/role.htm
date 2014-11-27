@@ -1,0 +1,89 @@
+<div class="g-bd">
+            <div  style="padding-top:30px;font-size:30px;padding-bottom:30px;width:100%; border-bottom:1px solid #c6c9cb;text-align:center;line-height:30px;">湖北省中小学《生命安全教育》课程管理平台</div>
+            <div class="m-info" style="border-top:1px solid #fff">              
+               <div class="m-info-img f-fl">
+                  <img src="{$user_info['user_avatar_160']}"/>
+               </div>
+               <div class="m-info-tex f-fl">
+                  <h2>{$user_info['user_realname']}
+                    <span title="目前等级{$user_info['user_level']}级"  class="icon-level"> 
+  				               <i class="num{$user_info['user_level']}"></i>  
+  					         </span>
+                   </h2>
+                  <ul>
+                      <li>身份：{$user_role[$role_code]}</li>
+					  {if isset($class_list[0]['class_name'])}
+						<li>班级：{$class_list[0]['class_name']}</li>
+						{/if}
+                      <li>学校：{$user_info['school_name']}</li>
+                  </ul> 
+               </div>
+               <div class="f-cb"></div>
+
+            </div> 
+
+            <div class="m-toggle">
+               <h2>切换身份</h2>
+               <ul>
+                   <li>
+                       <a  {if $role_code==2} href="/{$xk}/teacher" class="a-Grayl select"  {else} href="javascript:;" class="a-Grayl" {/if} >
+                        <span class="m-toggle-pic">
+                             <i class="teacher"> 
+                             </i>
+                           </span>
+                           <span  class="tex">我是教师</span>
+                       </a>
+                   </li>
+                   <li>
+                       <a  {if $role_code==1} href="/{$xk}/student" class="a-Grayl select" {else} href="javascript:;" class="a-Grayl" {/if}  >
+                        <span class="m-toggle-pic">
+                           <i  class="student"> 
+                           </i>
+                           </span>
+                           <span class="tex">我是学生</span>
+                       </a>
+                   </li>
+                   <li>
+                       <a {if $role_code==3} href="/{$xk}/parent" class="a-Grayl select" {else} href="javascript:;" class="a-Grayl" {/if} >
+                           <span class="m-toggle-pic">
+                             <i  class="parents"> 
+                             </i>
+                           </span>
+                           <span  class="tex">我是家长</span>
+                       </a>
+                   </li>
+				  {if $is_admin}
+                   <li class="manager">
+                       <a href="/admin/sign/index/xk/{$xk}" target="_blank" class="a-Grayl">
+                        <span class="m-toggle-pic">
+                           <i  class="manager"> 
+                           </i>
+                         </span>
+                           <span class="tex">我是管理者</span>
+                       </a>
+                   </li>
+				 {/if}
+               </ul>
+                <div class="f-cb"></div>
+            </div> 
+			<div class="m-logout">
+                 <p>
+                     您已经登录了，为了安全起见，如果你想使用其他帐号请<a href="/sign/exit?refer=/{$xk}/index">点此注销</a>
+                 </p> 
+            </div> 
+            
+        </div>
+
+
+
+ 
+	  
+
+
+
+
+
+
+
+ 
+ 

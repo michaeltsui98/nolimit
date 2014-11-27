@@ -1,0 +1,22 @@
+<!--{loop $module['rows']  $key $value}-->
+<!--{eval $module['rows'][$key]['trindex']=$key;}-->
+<!--{eval $module['rows'][$key]['trid']=$value['module_id'];}-->
+<!--{eval $module['rows'][$key]['module_title']=$value['ext'].$value['module_title'];}-->
+
+<!--{if $value['module_isok']==1}-->
+	<!--{eval $module['rows'][$key]['module_isok']="<span class=\"icon-table icon-isok\"></span>正常";}-->
+<!--{else}-->
+	<!--{eval $module['rows'][$key]['module_isok']="<span class=\"icon-table icon-isjz\"></span>禁用";}-->
+<!--{/if}-->
+
+<!--{if isset($purview[$value['module_id']])}-->
+<!--{eval $str = 'checked="checked"';}-->
+<!--{else}-->
+<!--{eval $str = '';}-->
+<!--{/if}-->
+
+<!--{eval $module['rows'][$key]['cz']="<input type=\"checkbox\" name=\"purview[{$value['module_id']}]\"  {$str} />";}-->
+
+<!--{/loop}-->
+
+<!--{eval echo json_encode(array('total'=>$module['total'],'rows'=>$module['rows']));}-->

@@ -1,0 +1,35 @@
+ <form action="<!--{$unit_evaluate_to}-->" method="post" id="add_unit_form" name="add_unit_form" class="ui-form">
+<div id="ajaxpage" class="easyui-panel" style="padding:10px;height:450px;" data-options="fit:true">
+    <table id="unittest-dg"  class="easyui-datagrid" data-options="rownumbers:true,fit:true,fitColumns:true,singleSelect:true,pagination:true,url:'<!--{$unit_evalaute_json}--><!--{$parameter}-->',method:'get',pageSize:20,toolbar:'#unittest-tb'">
+	 <thead>
+            <tr>
+               <th field='title' width=80% height="30">测评试卷标题</th>
+               <th field="add" width=20%   height="30">添加</th>
+          </tr>
+        </thead>
+       </table>
+	<div id="unittest-tb" ></div>
+</div>
+        <div class="ui-form-item">
+            <input type="hidden" name="study_field" value="<!--{$study_field}-->">
+            <input type="hidden" name="study_bb" value="<!--{$study_bb}-->">
+            <input type="hidden" name="study_grade" value="<!--{$study_grade}-->">
+            <input type="hidden" name="son_id" value="<!--{$son_id}-->">
+                <input type="submit" id="btn_submit" value="保存"/>
+            </div> 
+     </form>
+<script type="text/javascript">
+    $(function(){
+          syform_val('add_unit_form'); 
+    })
+</script>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,67 @@
+<div id="tab1" class="tabcontent">
+    <div class="form">
+       <form action="<!--{$addDoUrl}-->" method="post" id="module_form" name="module_form" class="ui-form">
+	
+            <div class="form_row">
+                <label><span class="ui-form-required">*</span>根模块：</label>
+                <input  class="easyui-combotree" data-options="
+	url:'<!--{$jsonTreeUrl}-->',
+	method:'get',
+	valueField:'module_id',
+	textField:'module_title',
+	required:true"  id="module_pid" name="data[module_pid]"  placeholder="模块名称"   />
+				<div class="info"><span class="ui-form-other"></span></div>
+            </div>
+            <div class="form_row">
+                <label><span class="ui-form-required">*</span>模块名称：</label>
+                <input type="text" class="form_input_200"  id="module_title" name="data[module_title]"  placeholder="模块名称"  ajaxurl="{$check_module_url}" datatype="*" />
+				<div class="info"><span class="ui-form-other"></span></div>
+            </div>
+
+            <div class="form_row">
+                <label><span class="ui-form-required">*</span>控制器：</label>
+                <input type="text" class="form_input_200" id="module_controller" name="data[module_controller]"  placeholder="控制器"  datatype="*"  />
+				<div class="info"><span class="ui-form-other"></span></div>
+            </div>
+			
+            <div class="form_row">
+                <label><span class="ui-form-required">*</span>Action名称：</label>
+                <input type="text" class="form_input_200"  id="module_action" name="data[module_action]" placeholder="Action名称"  datatype="*"/>
+				<div class="info"><span class="ui-form-other"></span></div>
+            </div>
+			
+            <div class="form_row">
+                <label><span class="ui-form-required"></span>节点：</label>
+                <input type="text" class="form_input_200"  id="module_node" name="data[module_node]"  placeholder="节点"     />
+				<div class="info"><span class="ui-form-other"></span></div>
+            </div> 
+
+            <div class="form_row">
+                <label><span class="ui-form-required"></span>模块图标：</label>
+                <input type="text" class="form_input_200"  id="module_icon" name="data[module_icon]"  placeholder="模块图标"    />
+				<div class="info"><span class="ui-form-other"></span></div>
+            </div> 
+
+            <div class="form_row">
+                <label>状态：</label>
+
+                <input class="ui-radio" type="radio" name="data[module_isok]" id="module_isok" value="1"  datatype="*" />正常 
+		 <input class="ui-radio" type="radio" name="data[module_isok]" id="module_isok" value="0"  />禁用
+
+				<div class="info"><span class="ui-form-other"></span></div>
+            </div>
+            <div class="ui-form-item">
+                <input type="submit" id="btn_submit" value="保存"/>
+            </div> 
+        </form>
+       <script type="text/javascript">
+				$(function(){
+					syform_val('module_form');
+                    SetValue(module_form["data[module_isok]"],"1");
+
+				});
+		</script>
+    </div>
+</div>
+
+    

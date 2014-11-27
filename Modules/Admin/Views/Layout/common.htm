@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	
+	<title><!--{$title}--></title>
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" /> 
+	<meta name="Keywords" content="<!--{$title}-->" />
+	<meta name="author" content="<!--{$title}-->" />
+	<meta name="Description" content="<!--{$title}-->" />
+	
+
+	<link media="all" href="<!--{STATIC_ADMIN_PATH}-->css/layout.css" rel="stylesheet"/>
+	<link href="<!--{STATIC_ADMIN_PATH}-->esui/themes/default/easyui.css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="<!--{STATIC_ADMIN_PATH}-->esui/themes/icon.css">
+	<link media="all" href="<!--{STATIC_ADMIN_PATH}-->css/style.css" rel="stylesheet"/>
+	<link rel="stylesheet" type="text/css" href="<!--{STATIC_ADMIN_PATH}-->validform/style.css">
+	<link rel="stylesheet" type="text/css" href="<!--{STATIC_ADMIN_PATH}-->ueditorAll/themes/default/css/ueditor.css">
+	{if isset($css)}
+    {loop $css $cfile}
+    <link rel="stylesheet" type="text/css" href="<!--{STATIC_ADMIN_PATH}-->{$cfile}"/>
+    {/loop}
+    {/if}
+	
+	<script src="<!--{STATIC_ADMIN_PATH}-->esui/jq1.6.js"></script>
+	<script src="<!--{STATIC_ADMIN_PATH}-->esui/esui.js"></script>
+	<script src="<!--{STATIC_ADMIN_PATH}-->script/app.js"></script>
+	<script type="text/javascript">
+		var subject = "{$ucxk}";
+		var xk_code = "{$xk_code}";
+		document.domain = "dodoedu.com";
+	</script>
+</head>
+<body>
+<div class="easyui-layout" data-options="fit:true" style="position:relative;">
+	<div data-options="region:'north',border:false" style="height:70px;background:url(<!--{STATIC_ADMIN_PATH}-->images/HeaderBg.jpg);">
+	 {include Modules/Admin/Views/Layout/header}
+	</div>
+	<div data-options="region:'west',split:true,title:'管理导航'" style="width:150px;">
+		<div class="easyui-accordion" data-options="fit:true,border:false">
+		{include Modules/Admin/Views/Layout/menu}
+		</div>
+	</div>
+	
+	<div data-options="region:'center'">
+		<div id="tt" class="easyui-tabs" border="false" fit="true">
+			<div title="<!--{$title}-->">
+			<!--{eval include Cola_Tpl::template($_tpl);}-->
+			</div>
+		</div>
+	</div>
+	<div data-options="region:'south',border:false" style="height:26px;background:url({STATIC_ADMIN_PATH}images/footerBg.jpg);text-align:center;padding-top: 5px;text-decoration:none; color:white;">
+	{include Modules/Admin/Views/Layout/footer}
+	</div>
+</div>
+	<script type="text/javascript" src="<!--{STATIC_ADMIN_PATH}-->script/common.js"></script>
+	<script type="text/javascript" src="<!--{STATIC_ADMIN_PATH}-->validform/validform.js"></script>
+    <script type="text/javascript" src="<!--{STATIC_ADMIN_PATH}-->syup/syup.js"></script>
+    <script type="text/javascript" src="<!--{STATIC_ADMIN_PATH}-->script/Chart.js"></script>
+	<script src='<!--{STATIC_ADMIN_PATH}-->ueditorAll/editor_config.js'></script>
+    <script src='<!--{STATIC_ADMIN_PATH}-->ueditorAll/editor_all.js'></script>
+    {if isset($js)}
+    {loop $js $jfile}
+    <script type="text/javascript" src="<!--{STATIC_ADMIN_PATH}-->{$jfile}" ></script>
+    {/loop}
+    {/if}
+    <div id="dlg" class="easyui-window" title="Window Layout" data-options="modal:true,minimizable:false,maximizable:true" style="width:600px;height:400px;padding:0 5px;">
+        <div class="easyui-layout" data-options="fit:true">
+            <div data-options="region:'center',border:false" style="padding:5px;">
+			<div id="dialog-content">
+			</div>
+            </div>
+            <div data-options="region:'south',border:false" style="text-align:right;height:35px;padding:5px;overflow:hidden;">
+				<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" onclick="javascript:saveForm();">保存</a>
+				<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:cantForm();">取消</a>
+            </div>
+        </div>
+    </div>
+    <div id="dlgtwo" class="easyui-window" title="Window Layout" data-options="modal:true,minimizable:false,maximizable:true" style="width:600px;height:400px;padding:0 5px;">
+        <div class="easyui-layout" data-options="fit:true">
+            <div data-options="region:'center',border:false" style="padding:5px;">
+			<div id="dialog-content">
+			</div>
+            </div>
+            <div data-options="region:'south',border:false" style="text-align:right;height:35px;padding:5px;overflow:hidden;">
+				<a href="javascript:void(0)" class="easyui-linkbutton"  iconCls="icon-ok" onclick="javascript:okForm();">确定</a>
+				<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:cantForm('dlgtwo');">取消</a>
+            </div>
+        </div>
+    </div>
+	<script type="text/javascript">
+		$(function(){
+			cantForm();
+			cantForm("dlgtwo");
+		});
+	</script>
+</body>
+</html>

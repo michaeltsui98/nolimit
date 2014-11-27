@@ -1,0 +1,13 @@
+<li>
+    <div class="doc_typeIcon"><i class="iconL_{$v['file_type']}"></i></div>
+    <div class="doc_name"><a target="_blank" href="/{$xk}/resource/view/{$v['id']}">{$v['title']}</a></div>
+    <div class="doc_desc"><a target="_blank" href="javascript:;">{$v['user_name']}</a><!--{eval echo Models_Resource::init()->dateSpan($v['on_time'])}-->上传  |  大小:<!--{eval echo Models_Resource::init()->bytesToSize($v['file_size'])}-->  |
+        <span class="docRate">
+            <!--{eval echo Models_Resource::init()->getStar($v['remark']);}-->
+            <em class="f-fs12 s-fcGray">(阅读 {$v['views']})</em>
+        </span>
+    </div>
+    <div class="doc_addtoClassReady">
+        <a resource_id="{$v['id']}" href="javascript:;" class="customBtn colourDarkGreen js-addToFolder">添加到备课夹</a>
+    </div>
+</li>

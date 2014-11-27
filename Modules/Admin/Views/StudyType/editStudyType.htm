@@ -1,0 +1,146 @@
+<div id="tab1" class="tabcontent">
+    <div class="form">
+       <form action="<!--{$edit_study_type_to}-->" method="post" id="game_add_form" name="game_add_form" class="ui-form">
+          <div class="form_row">
+          <label><span class="ui-form-required"></span>资源分类名称：</label>
+           <input type="text" class="form_input_200" value="{$info['classify_name']}"  name="classify_name"/>
+          <div class="info"><span class="ui-form-other"></span></div>
+        </div>
+            <div class="form_row">
+                <label><span class="ui-form-required"></span>资源所属应用：</label>
+				  <select name="apply_type" id="cate_id" style="width:200px;">
+			     {loop $apply_type $k $v}
+              {if $k == $info['apply_type']}
+                <option value="{$k}" selected = "selected">{$v}</option>
+              {else}
+               <option value="{$k}">{$v}</option>
+              {/if}
+           {/loop}
+				 </select>
+				<div class="info"><span class="ui-form-other"></span></div>
+            </div>
+            <div name="list">
+                {if $info['apply_type'] == 1}
+                    <div class="form_row" name="study_big_type_div" style="display:block;">
+                {else}
+                    <div class="form_row" name="study_big_type_div" style="display:none;">
+                {/if}
+                  <label><span class="ui-form-required"></span>所属分类：</label>
+                  <select name="study_big_type" id="target" style="width:200px;">
+                    {loop $study_big_type $key $value}
+                      {if $info['study_type_id'] == $key}
+                        <option value="{$key}" selected = "selected">{$value}</option>
+                      {else}
+                       <option value="{$key}">{$value}</option>
+                      {/if}
+                    {/loop}
+                  </select>
+                <div class="info"><span class="ui-form-other"></span></div>
+               </div>
+                
+                   {if $info['apply_type'] == 1 && $info['study_type_id'] == 1}
+                    <div class="form_row" name="study_classify_div" style="display:block;">
+                {else}
+                    <div class="form_row" name="study_classify_div" style="display:none;">
+                {/if}
+                  <label>
+                    <span class="ui-form-required"></span>学习资源分类：
+                  </label>
+                  {loop $inside_apply_type $key $value}
+                    {if !empty($value['status'])}
+                       <input type="checkbox" name="type_classify" checked = 'true' value="{$key}">{$value['title']}
+                    {else}
+                      <input type="checkbox" name="type_classify" value="{$key}">{$value['title']}
+                    {/if}
+                  {/loop}
+                <div class="info"><span class="ui-form-other"></span></div>
+               </div>
+                
+                   {if $info['apply_type'] == 1 && $info['study_type_id'] != 1}
+                    <div class="form_row" name="study_evaluate_div" style="display:block;">
+                {else}
+                    <div class="form_row" name="study_evaluate_div" style="display:none;">
+                {/if}
+                  <label><span class="ui-form-required"></span>学习资源分类：</label>
+                  {if $info['type_id'] == 100}
+                    <input type="checkbox" name= "study_evaluate" checked = 'true' value="100">{$study_evaluate[100]}
+                  {else}
+                    <input type="checkbox" name= "study_evaluate" value="100">{$study_evaluate[100]}
+                  {/if}
+                <div class="info"><span class="ui-form-other"></span></div>
+               </div>
+                
+                {if $info['apply_type'] == 1}
+                  <div class="form_row" name="model_name_div" style="display:block;">
+                {else}
+                  <div class="form_row" name="model_name_div" style="display:none;">
+                {/if}
+                  <label><span class="ui-form-required"></span>model名：</label>
+                 <input type="text" class="form_input_200"   name="model_name"/>
+                 <div class="info"><span class="ui-form-other"></span></div>
+                </div>
+               
+               {if $info['apply_type'] == 1}
+                 <div class="form_row" name="func_name_div" style="display:block;">
+               {else}
+                   <div class="form_row" name="func_name_div" style="display:none;">
+               {/if}   
+                  <label><span class="ui-form-required"></span>方法名：</label>
+                 <input type="text" class="form_input_200"   name="func_name"/>
+                 <div class="info"><span class="ui-form-other"></span></div>
+               </div>
+
+                {if $info['apply_type'] == 1}
+                  <div class="form_row" name="api_url_div" style="display:none;">
+                {else}
+                <div class="form_row" name="api_url_div" style="display:block;">
+                {/if}
+                 <label><span class="ui-form-required"></span>api地址：</label>
+                  <input type="text" class="form_input_200" value="http://" name="api_url"  placeholder="资源分类名称"   datatype="*" />
+                 <div class="info"><span class="ui-form-other"></span></div>
+               </div>
+            </div>
+            <div class="ui-form-item">
+                <input type="hidden" name="id" value="{$info['id']}"/>
+                <input type="hidden" name="node_id" value="{$info['node_id']}"/>
+                <input type="submit" id="btn_submit" value="保存"/>
+            </div> 
+        </form>
+       <script type="text/javascript">
+				$(function(){
+					syform_val('game_add_form');
+          //SetValue(game_add_form["data[is_ok]"],"1");
+          $("select[name='apply_type']").die().live("change",function(){
+             var apply_type = $(this).val();
+             if(apply_type == 1){
+                $("div[name='study_big_type_div']").css("display","block");
+                $("div[name='model_name_div']").css("display","block");
+                $("div[name='func_name_div']").css("display","block");
+                $("div[name='study_evaluate_div']").css("display","none");
+                $("div[name='study_classify_div']").css("display","block");
+                $("div[name='api_url_div']").css("display","none");
+             }else{
+                $("div[name='study_big_type_div']").css("display","none");
+                $("div[name='model_name_div']").css("display","none");
+                $("div[name='func_name_div']").css("display","none");
+                $("div[name='study_evaluate_div']").css("display","none");
+                $("div[name='study_classify_div']").css("display","none");
+                $("div[name='api_url_div']").css("display","block");
+             }
+          }) 
+          $("select[name='study_big_type']").die().live("change",function(){
+              var type_value = $(this).val();
+              if(type_value == '1'){
+                $("div[name='study_evaluate_div']").css("display","none");
+                $("div[name='study_classify_div']").css("display","block");
+              }else{
+                $("div[name='study_evaluate_div']").css("display","block");
+                $("div[name='study_classify_div']").css("display","none");
+              }
+          })           
+				});
+		</script>
+    </div>
+</div>
+
+    

@@ -1,0 +1,201 @@
+<script type="text/javascript" src="{STATIC_PATH}/static/script/preview.js"></script>
+<script type="text/javascript" src="{STATIC_PATH}/static/ckplayer/offlights.js"></script>
+<script type="text/javascript" src="{STATIC_PATH}/static/ckplayer/ckplayer.js"></script>
+<script type="text/javascript" src="{STATIC_PATH}/Modules/{$ucxk}/static/script/activity/act_info.js"></script>
+<script type="text/javascript"  src="{STATIC_PATH}/static/script/comment.js"></script>
+<div class="g-wrap g-bg">
+<div class="g-bd">
+<!-- 导航 -->
+<div class="m-nav clearfix">
+    <div class="m-breakNav f-fl">
+        <i class="icon_tc1"></i>
+        <span>当前位置</span>：<a href="<!--{$teacher_info_url}-->" target="_self">教师</a>&nbsp;&gt;&nbsp;<a href="<!--{$activity_index_url}-->" target="_self">研训
+    </a>&nbsp;&gt;&nbsp;详情
+    </div>
+    <!--<div class="m-breakNav f-fr"><a href="">去我的学习中心</a></div>-->
+</div>
+
+<!-- 顶部视频 -->
+<div class="m-videoInfo s-bsdStyle3">
+    {if   !empty($activity_resource_list)  }
+    <script type="text/javascript">
+            var uid = "";
+            var id = "<!--{$activity_resource_list[0]['activity_resourse_content']}-->";
+            var file_key = "<!--{$activity_resource_list[0]['activity_resource_key']}-->";
+            var swf_key = "";
+            var ext = "<!--{$activity_resource_list[0]['activity_resourse_file_type']}-->";
+            var perview_type = "isVideo";
+            var preview_icon = "<!--{$attachment_base_url}{$activity_info['activity_info_icon']}-->";
+        </script>
+        <div class="f-fl" id="contentViewer">
+            <div id='documentViewer' style='width:682px;height:382px;' >
+            </div>
+        </div>
+    {else}
+    <script type="text/javascript">
+        var perview_type = "";
+    </script>
+        <div class="f-fl">
+            <div  class="videoCover" >
+                <img id='activity_icon_url' src="<!--{$attachment_base_url}{$activity_info['activity_info_icon']}-->" alt=""  >
+            </div>
+        </div>
+    {/if}
+    <div class="f-fr">
+        <div class="tt">
+            <h2><!--{$activity_info['activity_info_title']}--></h2>
+        </div>
+        <div class="ct">
+            <dl>
+                <dt>【主讲老师】</dt>
+                <dd>
+                    <ul>
+                        <!--{eval $host_array = explode(',',$activity_info['activity_info_host'])}-->
+                        {loop $host_array $host_key $host_val}
+                            <li><strong><!--{$host_val}--></strong></li>
+                        {/loop}
+                    </ul>
+                </dd>
+            </dl>
+            <dl>
+                <dt>【时      间】</dt>
+                <dd class="time">{date('Y-m-d H:i:s',$activity_info['activity_info_start_date'])}</dd>
+            </dl>
+            <dl>
+                <dt>【操     作】</dt>
+                <dd class="time">
+                     <span class="docRate ">
+                        <!--{eval echo Models_Resource::init()->getStar($activity_avg_evaluate*2);}--><!--{$activity_avg_evaluate}-->
+                    </span>
+                </dd>
+                {if $activity_user_evaluate == -1}
+                    <dd>
+                        <input type="button" class="customBtn colourDarkGreen customBtnSquare f-mr10 f-mt10 " value="参与研训"  onclick="javascript:(alert('教师用户登录之后即可进行相关操作'));"  />
+                    </dd>
+                {else}
+                    {if empty($activity_user_evaluate)     }
+                        {if $could_join  AND $activity_info['activity_info_status'] ==1 }
+                            <dd>
+                                <input type="button" class="customBtn colourDarkGreen customBtnSquare f-mr10 f-mt10  " value="参与研训"  apply_url="<!--{$join_activity_url}-->" activity_id="<!--{$activity_info['activity_info_id']}-->" id="join_activity" />
+                                <!--<a href="&lt;!&ndash;{$join_activity_url}&ndash;&gt;?activity_id=&lt;!&ndash;{$activity_info['activity_info_id']}&ndash;&gt;" target="_self">参与研训</a>-->
+                            </dd>
+                        {else}
+                        <dd class="time"></dd>
+                        {/if}
+                    {else}
+                        {if  $activity_user_evaluate[0]['activity_member_evaluate'] == '0'}
+                        <!--参加了没打分:-->
+                        <dd>
+                            <a title="评分" class="btn2 f-fl f-mt10" id="remark_activity" href="javascript:;" evaluate_url="<!--{$activity_evaluate_url}-->" activity_member_pid="<!--{$activity_info['activity_info_id']}-->"  activity_member_uid="<!--{$user_id}-->" ></a>
+                        </dd>
+                        {else}
+                        <!--参加了也打分了-->
+                            <dd class="time">已参加活动并且做出评价</dd>
+                        {/if}
+                    {/if}
+                {/if}
+            </dl>
+        </div>
+    </div>
+    <div class="f-cb"></div>
+</div>
+
+<div class="m-videoDetail clearfix">
+    <div class="g-mn f-fl">
+        <div class="m-relatedVideo f-mb30">
+            <div class="ct" style="overflow: hidden;" >
+                <a href="javascript:;" class="left-arrow" name="toNextA"><i class="icon-next4"></i></a>
+                <div style="position:relative;width:600px;overflow:hidden;" name="showDiv">
+                    <ul class="item clearfix" name="conDiv"  style="position: relative;">
+                        {if !empty($activity_resource_list)}
+                            {loop $activity_resource_list $key $val}
+                                <li class="f-fl" name="cellDiv"    video_id="<!--{$val['activity_resourse_content']}-->" video_file_key="<!--{$val['activity_resource_key']}-->"  video_ext="<!--{$val['activity_resourse_file_type']}-->"  >
+                                    <img src="<!--{HTTP_MFS_WENKU}--><!--{$val['activity_resourse_icon']}-->" alt="" width="132px" height="78px" style="cursor: pointer;">
+                                    <h3 style="cursor: pointer;"><!--{$val['activity_resourse_title']}--></h3>
+                                </li>
+                            {/loop}
+                        {/if}
+                    </ul>
+                </div>
+                <a href="javascript:;" class="right-arrow" name="toPreA"><i class="icon-pre4"></i></a>
+            </div>
+        </div>
+        <div class="m-videoDesc">
+            <div class="tt clearfix">
+                <h3 class="f-fl f-fs18">内容简介</h3>
+            </div>
+            <div class="ct">
+                <!--{$activity_info['activity_info_description']}-->
+            </div>
+        </div>
+        <div class="m-videoCommet f-mt10">
+            <div class="tt">
+                <ul class="tab3Menu">
+                    <li class="menuCell tabMenuCurrent f-fl">
+                        <a href="" title="" class="tabLink">研训评论</a>
+                    </li>
+                    <li class="f-cb"></li>
+                </ul>
+            </div>
+            <div name="get_comment_list" comment_type="<!--{$xk}-->_activity_comment" comment_type_id="<!--{$activity_info['activity_info_id']}-->"></div>
+        </div>
+    </div>
+    <div class="g-sd f-fr">
+        <div class="m-studyResorce ">
+            <div class="tt clearfix">
+                <h3 class="f-fl f-fs18">研训资源</h3>
+            </div>
+            <div class="ct f-mt10">
+                <ul class="topicList">
+                    {if !empty($activity_attachment_list)}
+                        {loop $activity_attachment_list $key $val}
+                            <li><dl class="clearfix"><dd class="f-fl" style="width: 270px;height: 20px;display: inline;overflow: hidden;"><i class="new"><!--{eval echo intval($key)+1}--></i><a href="<!--{$val['activity_resourse_content']}-->" target="_self"><!--{$val['activity_resourse_title']}--></a></dd></dl></li>
+                        {/loop}
+                    {/if}
+                </ul>
+            </div>
+        </div>
+        <div class="m-parterNews f-mt10">
+            <div class="tt clearfix">
+                <h3 class="f-fl f-fs18">学员动态</h3>
+            </div>
+            <div class="ct f-mt10" id="content_div">
+                <ul class=""  id="content_ul">
+                    {if !empty($activity_member_evaluate_list)}
+                        {loop $activity_member_evaluate_list $key $val}
+                            <li>
+                                <a href="<!--{$dodo_url}--><!--{$user_id}-->/Space" target="_blank"><!--{$val['activity_member_real_name']}--></a>
+                                发表了<a href="<!--{$dodo_url}--><!--{$val['activity_member_uid']}-->/Blog/view/<!--{$val['activity_member_experience_blogid']}-->" target="_blank"><!--{$val['activity_member_experience_blogtitle']}--></a>。
+                            </li>
+                        {/loop}
+                    {/if}
+                </ul>
+            </div>
+        </div>
+        <div class="m-parterSite f-mt10">
+            <div class="tt clearfix">
+                <h3 class="f-fl f-fs18">研修小站</h3>
+            </div>
+            <div class="ct f-mt10">
+                <ul class="">
+                    {if !empty($activity_sites_list)}
+                        {loop $activity_sites_list $key $val}
+                            <li class="item clearfix">
+                                <div class="cover f-fl f-mr10">
+                                    <img src="<!--{$val['site_logo']}-->" alt="" width="50px"></div>
+                                <ul class="desc f-fl">
+                                    <a href="<!--{$dodo_url}-->site/<!--{$val['site_id']}-->" target="_blank">
+                                        <li class="title" >{cutstr($val['site_name'],33)}</li>
+                                        <li class="desc"  >{cutstr($val['site_describe'],66)}</li>
+                                    </a>
+                                </ul>
+                            </li>
+                        {/loop}
+                    {/if}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>

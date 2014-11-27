@@ -1,0 +1,71 @@
+    <form class="formStyle s-bgc"  method="post" action="<!--{$process_activity_apply_url}-->" id="apply_form">
+        <fieldset>
+            <dl class="clearfix">
+                <dt class="f-fl"><em class="s-fcRed">*</em>活动主题：</dt>
+                <dd class="f-fr"><input type="text" name="data[activity_apply_title]"  placeholder="请输入主题" class="customForm_inputBoxDefault width428"/>
+                </dd>
+            </dl>
+            <dl class="clearfix">
+                <dt class="f-fl"><em class="s-fcRed">*</em>对应教材：</dt>
+                <dd class="f-fr">
+                    版本:
+                    <select size="1" class="f-vam f-fs14 f-fwb width170 f-mr10 customForm_inputBoxDefault"  name="data[activity_apply_publisher]" >
+                        {loop $publisher_list $key $val}
+                        <option value="<!--{$key}-->"><!--{$val}--></option>
+                        {/loop}
+                    </select>
+                </dd>
+            </dl>
+            <dl class="clearfix">
+                <dt class="f-fl"><em class="s-fcRed">*</em>活动分类：</dt>
+                <dd class="f-fr">
+                    <select   name="data[activity_apply_type]"  class="width428 customForm_inputBoxDefault">
+                        {loop $type_array $key $val}
+                            <option value="<!--{$key}-->"><!--{$val}--></option>
+                        {/loop}
+                    </select>
+                </dd>
+            </dl>
+            <dl class="clearfix">
+                <dt class="f-fl"><em class="s-fcRed">*</em>活动形式：</dt>
+                <dd class="f-fr">
+                    <select   class="f-vam f-fs14 width420 customForm_inputBoxDefault" name="data[activity_apply_class]">
+                        {loop $class_array $key $val}
+                            <option value="<!--{$key}-->"><!--{$val}--></option>
+                        {/loop}
+                    </select>
+                </dd>
+            </dl>
+            <dl class="clearfix">
+                <dt class="f-fl"><em class="s-fcRed">*</em>适应学段：</dt>
+                <dd class="f-fr">
+                    <select name="data[activity_apply_phase]"  class="f-vam f-fs14 width428 customForm_inputBoxDefault">
+                        {loop $phase_array $key $val}
+                            <option value="<!--{$key}-->"><!--{$val}--></option>
+                        {/loop}
+                    </select>
+                </dd>
+            </dl>
+            <dl class="clearfix">
+                <dt class="f-fl">活动简介：</dt>
+                <dd class="f-fr">
+                    <textarea name="data[activity_apply_description]" cols="81" rows="4" class="customForm_inputBoxDefault">
+                    </textarea>
+                </dd>
+            </dl>
+            <dl class="clearfix">
+                <dt class="f-fl">申请理由：</dt>
+                <dd class="f-fr">
+                    <textarea name="data[activity_apply_reason]" cols="81" rows="3" class="customForm_inputBoxDefault">
+
+                    </textarea>
+                </dd>
+            </dl>
+            <dl class="clearfix">
+                <dt class="f-fl"><em class="s-fcRed">*</em>手机号码：</dt>
+                <dd class="f-fr">
+                    <input type="text" placeholder="请输入主题" class="customForm_inputBoxDefault width420" name="data[activity_apply_contact]" />
+                </dd>
+            </dl>
+        </fieldset>
+    </form>

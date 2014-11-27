@@ -1,0 +1,105 @@
+<div class="g-bd">
+    {$breadcrumb}
+    <div class="g-sd width238 f-fl">
+        <div class="sidebar">
+            <div class="wk_upload s-bsdStyle1">
+                <a style="width:180px;" href="javascript:;" name="newFolder" class="customBtnLarge colourLOrange">新建备课夹</a>
+            </div>
+        </div>
+        <!-- //他们都在备课 -->
+        {include Modules/Xl/Views/Lesson/latestUserList}
+    </div>
+    <div class="g-mn width738 f-fr" style="position:relative;">
+        <!-- 备课夹 -->
+        <div class="m-classReady s-bsdStyle1 f-mb20">
+
+            <div style="width:100%;" class="f-fl clearfix">
+                <div class="main">
+
+					<div class="tab1Menu">
+                        <div>
+                            <div class="leftInfo f-fs14 f-fl">
+                                <strong   ><a href="/{$xk}/lesson/index">公共备课夹</a></strong>
+                                <strong class="cur"><a href="javascript:;">我的备课夹</a></strong>
+                                <!--{eval $action='record'}-->
+                            </div>
+                        </div>
+						<div class="rightInfo f-fr" style="list-style:none;font-weight:normal;line-height:33px;width:510px;">
+							<strong style="font-weight:normal" class="f-fr">{include Modules/Xl/Views/Lesson/Folder/search}</strong>
+						</div>
+						<div class="f-cb"> </div>
+					</div>
+                </div>
+            </div>
+
+            <div class="ct" style="padding-top:40px;">
+                <ul class="tab2Menu f-fs18 m-snavT f-mb10">
+                    <li class="menuCell tabMenuCurrent f-fl">
+                        <a href="" title="历史记录" class="tabLink">历史记录</a>
+                    </li>
+                    <li class="menuCell f-fl">
+                        <a href="/{$xk}/lesson/chapter" title="知识结构" class="tabLink">知识结构</a>
+                    </li>
+                    <li class="f-cb"></li>
+                </ul>
+
+                <!--历史记录-->
+                <div class="m-sct lHistory">
+                    <div class="unit f-mb5">
+                        <div class="lst f-fs16 s-fcGray">
+                            <table class="tableSet" id="tableTest">
+                            <thead>
+                                <tr>
+                                    <th>备课夹标题</th>
+                                    <th style="width:15%">对应知识点</th>
+                                    <th style="width:15%">年级</th>
+                                    <th style="width:15%">创建时间</th>
+                                    <th style="width:23%">操作</th>
+                                </tr>
+                            </thead>
+                            <!-- 表头可选 -->
+                            <tbody>
+                                <!--{eval $i = 0}-->
+                                <!--{loop $list $item}-->
+                                <!--{eval $style= ($i++ % 2)?'tableSet-split':'';}-->
+                                <tr class="{$style}">
+                                    <td style="color:#888;font-size:12px;">
+                                        <a target="_blank" title="{$item['title']}" href="/{$xk}/Lesson/detail/id/{$item['id']}">{cutstr($item['title'], 30)}</a>
+                                        <!--{if $item['status'] == Models_Lesson_Folder::STATUS_PUBLIC}-->
+                                            <i class="share">公开</i>
+                                        <!--{else}-->
+                                            <i class="notShare">未公开</i>
+                                        <!--{/if}-->
+                                    </td>
+                                    <td>
+                                    <!--{if isset($item['node_info'])}-->
+                                        <span title="{$item['node_info']['data']}">{cutstr($item['node_info']['data'], 14)}</span>
+                                    <!--{/if}-->
+                                    </td>
+                                    <td>
+                                    <!--{eval echo Models_Grade::$stage_grade_list[$item['stage']][$item['grade']]}-->
+                                    </td>
+                                    <td>
+                                    {date('Y-m-d', $item['create_time'])}
+                                    </td>
+                                    <td style="color:#3598dc;font-size:12px">
+                                        <a href="/{$xk}/lesson/addResource/id/{$item['id']}">编辑</a>
+                                        |
+                                        <a class="js-folder-delete" data-confirm="你确定要删除这个备课夹吗?" href="/{$xk}/Lesson/delete/id/$item['id']">删除</a>
+                                        |
+                                        <a folder_id="{$item['id']}" name="addCourse" href="javascript:;">添加到课程</a>
+                                    </td>
+                                </tr>
+                                <!--{/loop}-->
+                            </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!--{eval echo $page->html();}-->
+            </div>
+        </div>
+        <!-- 备课夹 -->
+    </div>
+    <div class="f-cb"></div>
+</div>

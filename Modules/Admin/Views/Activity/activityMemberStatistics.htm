@@ -1,0 +1,71 @@
+<div id="ajaxpage" class="easyui-panel" style="padding:5px;height:auto" data-options="fit:true">
+    <table id="activityMemberStatistics-dg" title="<!--{$title}-->" class="easyui-datagrid" data-options="rownumbers:true,fit:true,fitColumns:true,singleSelect:true,pagination:true,url:'<!--{$json_acitivty_member_statistics_url}-->',method:'get',pageSize:20,toolbar:'#activityMemberStatistics-tb'">
+    <thead>
+        <tr>
+            <th field='activity_member_real_name' width='15'>教师姓名</th>
+            <th field='activity_member_area_name'  width='15'>区县</th>
+            <th field='activity_member_school_name'   width='15'>学校</th>
+            <th field="activity_member_times"  width="15">研训次数</th>
+        </tr>
+        </thead>
+    </table>
+    <div id="activityMemberStatistics-tb" style="padding:5px;height:auto">
+        <div>
+            市州:
+            <select panelHeight="auto" style="width:100px" id="city_list" name="city_list">
+                {loop  $city_array  $key  $value}
+                <option value ="<!--{$key}-->"><!--{$value}--></option>
+                {/loop}
+            </select>
+            区县:
+            <select panelHeight="auto" style="width:100px" id="county_list" name="county_list">
+                <option value ="">请选择区县</option>
+            </select>
+            学段:
+            <select panelHeight="auto" style="width:100px" id="phase_list" name="phase_list">
+                {loop  $phase_array  $key  $value}
+                <option value ="<!--{$key}-->"><!--{$value}--></option>
+                {/loop}
+            </select>
+            &nbsp;
+            从<input class="easyui-datetimebox"      style="width:200px" id="start_date" name="start_date"   />&nbsp;
+            到<input class="easyui-datetimebox"      style="width:200px" id="end_date" name="end_date"   />&nbsp;
+
+
+            <a href="javascript:;" class="easyui-linkbutton" iconCls="icon-search" plain="true" onclick="javascript:searchActivityMemberStatistics();"  >搜索</a>
+        </div>
+    </div>
+
+</div>
+<script type="text/javascript">
+    $(function(){
+        var obj = document.getElementById("city_list");
+        SetValue(obj,"420100");
+        var phase_obj = document.getElementById("phase_list");
+        SetValue(phase_obj,"xd000");
+        $('#city_list').unbind().bind('change',function(){
+            var current_city_code = $(this).find('option:selected').val();
+            $.post("{$activity_county_url}",{'city_code':current_city_code},function(data){
+                var county_obj = eval('('+data+')');
+                var count_select_options = '';
+                for(var key in county_obj){
+                    count_select_options +=  "<option value ='"+key+"'>"+county_obj[key]+"</option>";
+                }
+                $('#county_list').html(count_select_options);
+            });
+        });
+        $('#city_list').trigger('change');
+    });
+
+
+    function searchActivityMemberStatistics(){
+        var city_val = $('#city_list').find('option:selected').val();
+        var county_val = $('#county_list').find('option:selected').val();
+        var phase_val = $('#phase_list').find('option:selected').val();
+        var start_date_val = $("input[name='start_date']").val();
+        var end_date_val = $("input[name='end_date']").val();
+        gridload('activityMemberStatistics',{city_list:city_val,county_list:county_val,phase_list:phase_val,first_load:1,start_date:start_date_val,end_date:end_date_val});
+    }
+
+
+</script>

@@ -1,0 +1,59 @@
+    <div class="g-bd">
+         <div class="m-nav clearfix f-mb10">
+            <div class="m-breakNav f-fl">
+                <i class="icon_tc1"></i>
+                <span>当前位置</span>：<a href="javascript:;">家长 </a>>首页
+            </div>
+        </div>
+        <!--{eval  echo Cola_Tpl::widget_out("Modules_{$ucxk}_Controllers_Parent",'PublicStuInfo')}-->
+        </div>
+        <div class="g-mn f-fr">
+            <div class="m-spWrap s-bsdStyle1">
+                <h2 class="tt f-fs18 s-fcGray">快捷面板</h2>
+                <div class="ct">
+                    <div class="m-spLst" id="app_list">
+                         <input type="hidden" name="sys_app_list_url" value="{$sys_app_list_url}">
+                        <input type="hidden" name="add_app_url" value="{$add_app_url}">
+                        <input type="hidden" name="del_app_url" value="{$del_app_url}">
+                          {loop $default_app $v}
+                            <a href="{$url_prefix}{$v['url']}"  title="" target="_blank" class="item f-tac f-fl">
+                            <i class="{$v['icon']}"></i>
+                            <div class="txt f-tac">{$v['name']}</div>
+                         {/loop}
+                         {if !empty($my_app)}
+                          {loop $my_app $v}
+                             {if  $v['target'] == 'new'}
+                                 <a href="<!--{eval echo strtr($v['url'],array('{$user_id}'=>$user_id));}-->" app_id="{$v['app_id']}" title="" target="_blank" class="item f-tac f-fl">
+                             {else}
+                                 <a href="<!--{eval echo strtr($v['url'],array('{$user_id}'=>$user_id));}-->" app_id="{$v['app_id']}" title="" target="_self" class="item f-tac f-fl">              
+                             {/if}
+                            <i class="icon-{$v['icon']}"></i>
+                            <div class="txt f-tac">{$v['name']}</div>
+                          {/loop}
+                        {/if}
+                        <a href="javascript:;" name="shortcut" class="item addSp f-tac f-fl">
+                            <i class="icon-addSp"></i>
+                            <div class="txt f-tac">快捷方式</div>
+                        </a>
+                        <div class="f-cb"></div>
+                    </div>
+                    <div class="m-spLstOpe clearfix">
+                        <div class="tips s-fcLGray f-fl">提示：试着添加更多好玩的应用吧~一键快速访问哦</div>
+                       <!--  <div class="f-fr">
+                            <label class="s-fcLGray f-fs14 f-ib f-vam pn f-mr5">
+                                <strong class="s-fcGray">1</strong>/5
+                            </label>
+                                <span class="preP" title="上一页"></span>
+                                <span class="nextP" title="上一页"></span>
+                            </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="f-cb"></div>
+    </div>
+      <script type="text/javascript">
+        $("a[name='shortcut']").die().live("click",function(){
+            addAppDialog();
+        })
+    </script>

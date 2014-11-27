@@ -1,0 +1,49 @@
+              <!--添加评论-->
+              <div class="ct">
+                    <textarea name="comment_content"  cols="30" rows="10"></textarea>
+                    <div class="send clearfix">
+                    <p class="f-fl">文明上网，从我做起！请勿发表不良言论</p>
+                    <div class="f-fr" name="add_comment"><a href="javascript:;"></a></div>
+                    </div>
+                </div>
+				<!--评论列表-->
+                <div class="ft" name='all_comment'>
+                    <ul>
+                	{if !empty($comment_list)}
+ 							{loop $comment_list $k $v}
+							<li>
+                              <dt class="avarter"><img src="{$v['icon']}" alt="" width="32px"></dt>
+                              <dl class="name">
+                                <a target="_blank" href= "{DOMAIN_NAME}/{$v['user_id']}/Space/index">{$v['real_name']}</a></dl>
+                              <dl class="con">{$v['comment_content']}</dl>
+                              <dl class="time">{date('Y-m-d H:i',$v['comment_time'])}
+                                {if isset($v['del_status']) && !empty($v['del_status'])}
+                                    <a href="javascript:;" val="{$v['comment_id']}" name="del_comment">删除</a>
+                                {/if}
+                              </dl>
+                            </li>
+ 							{/loop}	
+                	{/if}
+                    </ul>
+                    {if isset($page)}
+						<div class="page" name="page">
+							{$page}
+						</div>	
+                    {/if}  
+                    <!-- <div class="page">
+                    	<div>
+                    		<span class="current">1</span>
+                    		<a href="">2</a>
+                    		<a href="">3</a>
+                    		<a href="">4</a>
+                    		<a href="">5</a>
+                    		<a href="">6</a>
+                    		<a href="">7</a>
+                    		<a href="">8</a>
+                    		<a class="pn" href="">下一页</a>
+                    	</div>
+                    </div> -->
+                </div>
+            
+			
+       

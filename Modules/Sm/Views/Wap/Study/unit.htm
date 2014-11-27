@@ -1,0 +1,24 @@
+<div class="m-infolist">
+        <ul class="datalist">
+            <!-- 新鲜事-文字 -->
+            <li class="warp-quote">
+                <div class="hd">
+                    {if !empty($unit_node_list)}
+                        <p class="quote">{$node_title}</p>
+                    {else}
+                        <p class="quote"><a href="/Sm/Wap_Study/resourceList/id/{$v['id']}">{$node_title}</a></p>
+                    {/if}
+                </div>
+                <div class="bdc">
+                    {if !empty($unit_node_list)}
+                        {loop $unit_node_list $k $v}
+                           <p class="quote">
+                             <a href="/Sm/Wap_Study/resourceList/id/{$v['id']}">{$v['node_title']}</a>
+                           </p>
+                        {/loop}
+                    {/if}
+                </div>
+                <div class="ftc"></div>
+            </li>
+        </ul>
+    </div>

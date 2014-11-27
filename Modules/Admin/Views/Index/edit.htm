@@ -1,0 +1,83 @@
+<div id="tab1" class="tabcontent">
+    <div class="form">
+        <form action="<!--{$moduleEditdo}-->" method="post" id="module_form" name="module_form" class="ui-form">
+            <input name="init_token" type="hidden"  value="<!--{$init_token}-->" />
+            <input type="hidden" name="module_id" value="<!--{$module_id}-->"/>
+
+            <div class="form_row">
+                <label>上级模块：</label>
+                <select name="data[module_pid]" id="module_pid" class="form_select_200"  >
+                    <option value="0">根目录</option>
+                    <!--{if(isset($modulelist['list']))}-->
+                    <!--{foreach($modulelist['list'] as $key=>$value)}-->
+                    <!--{if(($value['module_id']!='')||(($value['module_id']=='')&&$value['have_child']))}-->
+                    <option value ="<!--{$value['module_id']}-->"><!--{$value['ext']}--><!--{$value['module_title']}--></option>
+                    <!--{/if}-->
+                    <!--{/foreach}-->
+                    <!--{/if}-->
+                </select>
+            </div>
+
+            <div class="form_row">
+                <label>模块类型：</label>
+                <input class="ui-radio" type="radio" name="data[module_type]" id="module_type" value="1" datatype="*" />系统 
+                <input class="ui-radio" type="radio" name="data[module_type]" id="module_type" value="0"  />应用 
+
+
+            </div>
+
+            <div class="form_row">
+                <label>模块名称：</label>
+                <input type="text" class="form_input_200" id="module_title" name="data[module_title]" value="<!--{$module['module_title']}-->" placeholder="模块名称"  datatype="*" />
+            </div>                             
+
+            <div class="form_row">
+                <label>控制器：</label>
+                <input type="text" class="form_input_200" id="module_controller" name="data[module_controller]" value="<!--{$module['module_controller']}-->" placeholder="控制器"    />
+            </div>  
+
+            <div class="form_row">
+                <label>操作：</label>
+                <input type="text" class="form_input_200"  id="module_action" name="data[module_action]" value="<!--{$module['module_action']}-->" placeholder="操作"  />
+            </div> 
+
+            <div class="form_row">
+                <label>自定义URL：</label>
+                <input type="text" class="form_input_200"  id="module_url" name="data[module_url]" value="<!--{$module['module_url']}-->" placeholder="自定义URL地址"   />
+            </div>   
+			<div class="form_row">
+                <label>权限节点：</label>
+                <input type="text" class="form_input_200"  id="module_node" name="data[module_node]" value="<!--{$module['module_node']}-->" placeholder="权限节点"      />
+            </div>     
+            <div class="form_row">
+                <label>图标风格：</label>
+                <input type="text" class="form_input_200"  id="module_icon" name="data[module_icon]" value="<!--{$module['module_icon']}-->" placeholder="图标风格"     />
+            </div>    
+            <div class="form_row">
+                <label>状态：</label>
+
+                <input class="ui-radio" type="radio" name="data[module_isok]" id="module_isok" value="1"  />正常
+                <input class="ui-radio" type="radio" name="data[module_isok]" id="module_isok" value="0"  />禁用 
+
+
+            </div>
+
+
+
+            <div class="ui-form-item">
+                <input type="submit" id="btn_submit" value="保存"/>
+            </div> 
+        </form>
+        <script type="text/javascript">
+            $(function() {
+                syform_val('module_form');
+                SetValue(module_form["data[module_pid]"], "<!--{$module['module_pid']}-->");
+                SetValue(module_form["data[module_type]"], "<!--{$module['module_type']}-->");
+                SetValue(module_form["data[module_isok]"], "<!--{$module['module_isok']}-->");
+
+            });
+        </script>
+    </div>
+</div>
+
+

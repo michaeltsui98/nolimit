@@ -1,0 +1,28 @@
+				<!--{if(isset($module['list']))}-->
+				<!--{foreach($module['list'] as $key=>$value)}-->
+				<!--{$module['list'][$key]['trindex']=$key;}-->
+				<!--{$module['list'][$key]['trid']=$value['module_id'];}-->
+				<!--{$module['list'][$key]['module_title']=$value['ext'].$value['module_title'];}-->
+
+				<!--{if($value['module_isok']==1)}-->
+					<!--{$module['list'][$key]['module_isok']="<a href=\"javascript:;\"  onclick=\"javascript:ui_ajax('{$moduleIsok}module_id={$value['module_id']}',this);\"><span class=\"icon-table icon-isok\"></span>正常</a>";}-->
+				<!--{else}-->
+					<!--{$module['list'][$key]['module_isok']="<a href=\"javascript:;\"  onclick=\"javascript:ui_ajax('{$moduleIsok}module_id={$value['module_id']}',this);\"><span class=\"icon-table icon-isjz\"></span>禁用</a>";}-->
+				<!--{/if}-->
+
+				<!--{$module['list'][$key]['module_order']="<a href=\"javascript:;\"  onclick=\"javascript:ui_order('{$moduleOrder}module_id={$value['module_id']}&type=up',this);\"><span class=\"icon-table icon-up\"></span>升</a>";}-->
+				<!--{$module['list'][$key]['module_order'].=" <a href=\"javascript:;\" onclick=\"javascript:ui_order('{$moduleOrder}module_id={$value['module_id']}&type=down',this);\"><span class=\"icon-table icon-down\"></span>降</a>";}-->
+				
+				
+				<!--{$module['list'][$key]['cz']="<a href=\"javascript:;\"  onclick=\"javascript:ui_dialog('{$moduleAdd}module_pid={$value['module_id']}',this);\"><span class=\"icon-table icon-set\"></span>增加子模块</a>";}-->
+				
+				<!--{$module['list'][$key]['cz'].=" <a href=\"javascript:;\" onclick=\"javascript:ui_dialog('{$moduleEdit}module_id={$value['module_id']}',this);\"><span class=\"icon-table icon-isedit\"></span>修改</a>";}-->
+				
+				<!--{if($value['module_type']==0)}-->
+				<!--{$module['list'][$key]['cz'].=" <a href=\"javascript:;\"  onclick=\"javascript:ui_qr('{$moduleDel}module_id={$value['module_id']}',this);\"><span class=\"icon-table icon-isdel\"></span>删除</a>";}-->
+				<!--{/if}-->
+				
+				<!--{/foreach}-->
+				<!--{/if}-->
+				<!--{echo json_encode(array('total'=>$module['count'],'rows'=>$module['list']));}-->
+				

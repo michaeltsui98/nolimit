@@ -1,0 +1,15 @@
+<!--{loop $module  $key $value}-->
+	<!--{eval $module [$key]['id']=$value['module_id'];}-->
+	<!--{eval $module [$key]['text']=$value['module_title'];}-->
+	 {if isset($sub_module[$value['module_id']])}
+	<!--{eval $module [$key]['state']='closed';}-->
+	 {else}
+	<!--{eval $module [$key]['state']='open';}-->
+	 {/if}
+  	 
+<!--{/loop}-->
+{if $id==0}
+<!--{eval echo json_encode(array(0=>array('id'=>0,'text'=>'根模块','children'=>$module)))}-->
+{else}
+<!--{eval echo json_encode($module)}-->
+{/if}

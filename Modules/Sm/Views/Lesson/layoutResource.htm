@@ -1,0 +1,65 @@
+<div class="class-tb">
+<!--{loop $layoutResource $rows}-->
+    <div class="classRow">
+        <!--{loop $rows $key $item}-->
+        <!--{eval $i = $key%3;}-->
+        <div class="classSection a-l{$i}">
+        <!--{if is_array($item)}-->
+            <div class="preview" resource_id="{$item['id']}">
+                <div class="pre-con" style="text-align:center;">
+                    <!--{if $item['resource_type'] == Models_Lesson_Resource::TYPE_TEXT}-->
+                        <div style="height:181px;overflow: hidden;margin-top:57px;_zoom:0.80;transform: scale(0.80);-moz-transform: scale(0.80);-webkit-transform: scale(0.80);">
+                            {$item['description']}
+                        </div>
+                    <!--{else}-->
+                        <img src="{HTTP_MFS_WENKU}{$item['resource_preview']}" alt="" style="margin:0 auto;height:238px;">
+                    <!--{/if}-->
+
+                    <div class="p-topLabel">
+                        <div class="p-num"><!--{eval echo $key+1;}--></div>
+                        <!-- 若无数值  请添加“no-value” class -->
+                        <input title="{$item['title']}" name="title" class="p-title no-value" value="{$item['title']}" />
+                        <div class="p-tIcon">
+                            <i class="<!--{eval echo Models_Lesson_Resource::$type_style_maps[$item['resource_type']]}-->"></i>
+                        </div>
+                    </div>
+
+                    <!-- 该区域是在编辑状况下 才会显示 -->
+                    <div class="p-options clearfix" style="display:none;">
+                        <div class="f-fl">
+                            <a href="javascript:;" title="删除该资源" class="icon-fileDel"></a>
+                            <!--{if $item['resource_type'] == Models_Lesson_Resource::TYPE_TEXT}-->
+                            <a href="javascript:;" title="编辑该资源" class="icon-fileEdit"></a>
+                            <!--{/if}-->
+                        </div>
+                        <div class="f-fr">
+                            <a target="_blank" title="预览该资源" href="/{$xk}/lesson/detail/id/{$folder_info['id']}/resource/{$item['id']}" class="icon-filePreview"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="folder-edit" style="display:none;">
+                <textarea>{$item['description']}</textarea>
+                <a href="javascript:;" title="提交" class="customBtn colourDarkBlue">提交</a>
+            </div>
+        <!--{else}-->
+            <div class="help help-default">
+                <div class="h-desc"><h2><!--{eval echo $key+1}--></h2><p>{$item}</p></div>
+            </div>
+            <div class="help help-hover" style="display:none;">
+                <div class="h-drag"><img src="/Modules/Xl/static/images/lesson-ready-help.gif" alt="" /></div>
+                <div class="h-options">
+                    <button name="addText" title="添加文本">
+                        <i class="icon-editTxt"></i>
+                    </button>
+                    <button name="uploadResource" title="上传资源">
+                        <i class="icon-upload-classready"></i>
+                    </button>
+                </div>
+            </div>
+        <!--{/if}-->
+        </div>
+        <!--{/loop}-->
+    </div>
+<!--{/loop}-->
+</div>

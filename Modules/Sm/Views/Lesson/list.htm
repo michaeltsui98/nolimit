@@ -1,0 +1,10 @@
+<ul>
+<!--{loop $list['rows'] $value}-->
+<li>
+	<a href="/Sm/Lesson/detail/id/{$value['id']}">{$value['title']}</a>
+	<a href="/Sm/Lesson/addResource/id/$value['id']">添加资源</a>
+	<a href="/Sm/Lesson/edit/id/$value['id']">编辑</a>
+	<a href="/Sm/Lesson/delete/id/$value['id']">删除</a>
+</li>
+<!--{/loop}-->
+</ul>

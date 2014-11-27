@@ -1,0 +1,107 @@
+
+
+<div class="g-wrap">
+<div class="g-bd">
+	   {if !$user_info}
+	        <div class="m-input">
+	              	<form action="{DOMAIN_NAME}/DDApi/auth/clientauthorizeinfo" method="post" class="png_bg" id="loginFrom"> 
+					    <input type="hidden" name="access_token" id="access_tokens" value="{$access_tokens}">
+						<input type="hidden" name="appKey" id="appKey" value="{$appKey}">
+						<input type="hidden" name="callBackUrl" id="callBackUrl" value="{$callBackUrl}">
+						<input type="hidden" name="responseType" id="responseType" value="code">
+						<input type="hidden" name="state" id="state" value="index">
+	                  <div class="m-input-text">
+	                        <div class="f-tac f-fl"><input name="userName" autocomplete="off" class="account" placeholder="输入多多账号名称" type="text">
+	                         </div>
+	                        <div class="f-tac fl-fl"><input name="userPass" autocomplete="off" class="password" placeholder="输入密码" type="password">
+	                        </div>
+	                        <div class="f-cb"></div>
+	                  </div>
+	                  <div class="f-tac"><input class="login-btn" type="button" value="登录"></div> 
+	              <div class="m-input-sign"> 
+	                       <a href="{DOMAIN_NAME}/UserSignUp/recovery" target="_blank" class="a-Grayl"><i class="png_bg"></i>找回密码</a>
+	                       <span>还没有多多账号？<a href="{DOMAIN_NAME}/UserSignUp/signUp" target="_blank">立即注册</a></span> 
+	                       <div class="f-cb"></div>
+	              </div>
+	              </form>
+	           </div>
+	        <div class="m-toggle">
+	          <ul>
+	            <li class="teacher">
+	              <a href="/{$xk}/index/perview?role=2&to=/{$xk}/teacher"><i class="png_bg"></i></a>
+	              <p><em>教师角色</em><a href="/{$xk}/index/perview?role=2&to=/{$xk}/teacher">进入浏览 </a></p>
+	            </li>
+	            <li class="student">
+	              <a href="/{$xk}/index/perview?role=1&to=/{$xk}/student"><i class="png_bg"></i></a>
+	               <p><em>学生角色</em><a href="/{$xk}/index/perview?role=1&to=/{$xk}/student">进入浏览 </a></p>
+	            </li>
+	            <li class="parent">
+	             <a href="/{$xk}/index/perview?role=3&to=/{$xk}/parent"> <i class="png_bg"></i></a>
+	             <p><em>家长角色</em><a href="/{$xk}/index/perview?role=3&to=/{$xk}/parent">进入浏览 </a></p>
+	            </li>
+	            <li class="manager">
+	              <a href="/admin/sign/index/xk/{$xk}"><i class="png_bg"></i></a>
+	                <p><em>管理者角色</em><a href="/admin/sign/index/xk/{$xk}">进入管理中心 </a></p>
+	            </li>
+	          </ul>
+	          <div class="f-cb"></div>
+	        </div>
+		{else}
+			 <div class="m-info" >              
+	               <div class="m-info-img f-fl">
+	                  <img src="{$user_info['user_avatar_160']}">
+	               </div>
+	               <div class="m-info-tex f-fl">
+	                  <h2>{$user_info['user_realname']}&nbsp;<span title="目前等级{$user_info['user_level']}级" class="icon-level"> 
+	                         <i class="num{$user_info['user_level']}"></i>  
+	                     </span>
+	                   </h2>
+	                  <ul>
+	                     <li>身份：{$user_role[$role_code]}</li>
+					  {if isset($class_list[0]['class_name'])}
+						<li>班级：{$class_list[0]['class_name']}</li>
+						{/if}
+                      <li>学校：{$user_info['school_name']}</li>
+	                  </ul> 
+	               </div>
+	               <div class="f-cb"></div>
+	
+	            </div>
+	
+	         <div class="f-tac f-tac-logout ">
+	          <input class="goback-index-btn" type="button" onclick="location.href='{$role_url}'" 
+	          value="返 回 主 页">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	               <input class="logout-btn" type="button" onclick="location.href='/sign/exit?refer=/{$xk}/index'" value="注 销 登 录">
+	               <span>
+	                 您已经登录了，浏览其他角色需先注销登录
+	               </span>
+	         </div> 
+	        <div class="m-toggle m-toggle-login">
+	          <ul>
+	            <li class="teacher">
+	              <a {if $role_code==2} href="/{$xk}/teacher" class="select" {/if}><i class="png_bg"></i></a>
+	              <p><em>教师角色</em><a {if $role_code==2} href="/{$xk}/teacher" class="a-Grayl select"  {else} href="javascript:;" class="a-Grayl" {/if}> 进入试用</a></p>
+	            </li>
+	            <li class="student">
+	               <a {if $role_code==1} href="/{$xk}/student" class="select" {/if}><i class="png_bg"></i></a>
+	               <p><em>学生角色</em><a {if $role_code==1} href="/{$xk}/student" class="a-Grayl select" {else} href="javascript:;" class="a-Grayl" {/if}>进入试用 </a></p>
+	            </li>
+	            <li class="parent">
+	               <a {if $role_code==3} href="/{$xk}/parent" class="select" {/if}><i class="png_bg"></i></a>
+	             <p><em>家长角色</em><a {if $role_code==3} href="/{$xk}/parent" class="a-Grayl select" {else} href="javascript:;" class="a-Grayl" {/if}> 进入试用</a></p>
+	            </li>
+	            <li class="manager">
+	              <a   href="/admin/sign/index/xk/{$xk}" ><i class="png_bg"></i></a>
+	                <p><em>管理者角色</em><a href="/admin/sign/index/xk/{$xk}">进入管理中心 </a></p>
+	            </li>
+	          </ul>
+	          <div class="f-cb"></div>
+	        </div>
+		{/if}
+		
+</div>
+        <div class="f-cb"></div>
+
+</div>
+ 
+ 

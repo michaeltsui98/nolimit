@@ -1,0 +1,19 @@
+<script>
+	var subject = 'sm';
+</script>
+<script src="/static/script/gen.js"></script> 
+<form action="/Gen/genUnitWap" method="" accept-charset="utf-8">
+	<select name="xd">
+		<option>请选择</option>
+		{loop $xd $k $v}
+		<option id="{$v['id']}" value="{$v['code']}">{$v['name']}</option>
+		{/loop}
+	</select>
+	<select name="xk"></select>
+	<select name="bb"></select>
+	<select name="nj"></select>
+	
+	<input type="button" id="tj" value="生成wap url" />
+</form>
+<textarea name="wap_url" rows="40" cols="150"></textarea>
+ 

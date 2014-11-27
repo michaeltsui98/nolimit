@@ -1,0 +1,25 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <meta charset="utf-8">
+    <title>{$vars['page_title']}</title>
+    {if isset($css)}
+    {loop $css $cfile}
+    <link rel="stylesheet" type="text/css" href="<!--{STATIC_ADMIN_PATH}-->{$cfile}"/>
+    {/loop}
+    {/if}
+</head>
+<body>
+	
+<!--{eval include Cola_Tpl::template($_tpl);}-->
+
+     
+	{if isset($js)}
+	{loop $js $jfile}
+	<script type="text/javascript" src="<!--{STATIC_ADMIN_PATH}-->{$jfile}" ></script>
+	{/loop}
+	{/if}
+	
+	
+</body>
+</html>

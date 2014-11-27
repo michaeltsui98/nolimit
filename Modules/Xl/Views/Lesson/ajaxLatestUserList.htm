@@ -1,0 +1,17 @@
+<!--{loop $latestUserList $item}-->
+<!--{eval $schoolInfo = Models_Circle::init()->getCurClassSchoolByUserId($item['user_id'])}-->
+<div class="Item clearfix">
+    <div class="logo f-fl">
+        <a href="{DOMAIN_NAME}/{$item['user_id']}/Space/Index" title="" target="_blank">
+            <img src="<!--{eval echo strtr($item['user']['icon'],array('-64'=>'-40'));}-->" width="40" alt="{$item['user']['real_name']}"></a>
+    </div>
+    <dl class="info f-fl" style="margin-left:10px;">
+        <dt class="techerName">
+            <a href="{DOMAIN_NAME}/{$item['user_id']}/Space/Index" title="" target="_blank">{$item['user']['real_name']}</a>
+        </dt>
+        <dd class="schName">
+            <a href="{DOMAIN_NAME}/School_Home/index/school/121502" title="{$schoolInfo['school_name']}" target="_blank" class="a-Grayl">{$schoolInfo['school_name']}</a>
+        </dd>
+    </dl>
+</div>
+<!--{/loop}-->

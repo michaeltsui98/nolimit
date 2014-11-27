@@ -1,0 +1,39 @@
+<!-- js滚动条 内容包含区域 -->
+<div class="jscroll-c">
+    <!-- 标题区域 -->
+    <li class="unitCell">
+        <div class="lesson_name lesson_all">
+                <a class="js-ajax" href="/{$xk}/lesson/resourceSearch/{$edition}-{$grade}-0"><strong>全部课程</strong></a>
+        </div>
+        <div class="f-cb">
+        </div>
+    </li>
+    <!-- ==标题区域== -->
+
+    <!-- 课程列表详情 -->
+    <!--{loop $unit $chapter}-->
+    <li class="unitCell">
+        <a href="/{$xk}/lesson/resourceSearch/{$edition}-{$grade}-{$chapter['id']}" class="lesson_name lesson_point js-ajax" title="{$chapter['node_title']}">
+            <strong>{$chapter['node_title']}</strong>
+        </a>
+        <!--{if isset($chapter['child'])}-->
+        <ul class="lessonList lesson_line">
+            <!--{loop $chapter['child'] $node}-->
+            <li><a class="js-ajax" href="/{$xk}/lesson/resourceSearch/{$edition}-{$grade}-{$node['id']}">{$node['node_title']}</a></li>
+            <!--{/loop}-->
+        </ul>
+        <!--{/if}-->
+    </li>
+    <!--{/loop}-->
+
+    <!-- 课程列表详情 -->
+    <li class="unitCellEnd">
+        <i class="lesson_end"></i>
+    </li>
+</div>
+<!-- ==js滚动条 内容包含区域== -->
+<!-- js滚动条-->
+<div class="jscroll-e" unselectable="on" style="">
+    <div class="jscroll-h" unselectable="on" style=""></div>
+</div>
+<!-- ==js滚动条==-->

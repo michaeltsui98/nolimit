@@ -1,0 +1,74 @@
+<!--内容&底部-->
+<div class="g-wrap" >
+    <div class="g-bd">
+        <div class="m-banner s-bsdStyle1">
+            <ul>
+                <li><img src="{STATIC_PATH}/Modules/{$ucxk}/static/images/class-ready-dev.png" width="1000">
+                    <div>
+                        <h2>登录</h2>
+                        <span>管理学习课程，了解学习记录</span>
+                    </div>
+                    <a href="<!--{$login_url}-->" type="_self">立即登录</a>
+                </li>
+            </ul>
+        </div>
+        <div class="m-logoutlist">
+            <div class="m-recC m-logout-active  s-bsdStyle1 f-fl">
+                <div class="tt clearfix"><h2 class="s-fcGray f-fs18 f-fl">最新研训活动</h2><a href="<!--{$activity_list_more_url}-->" title="" target="_self" class="f-fr">更多</a></div>
+                <div class="ct">
+                    {if !empty($activity_list)}
+                        {loop $activity_list $key $val}
+                            <dl class="item f-fl">
+                                <dt class="stt f-fs14 f-fwb f-fl"><a href="<!--{$activity_info_url}-->?activity_id=<!--{$val['activity_info_id']}-->" title="" target="_blank" class="a-Grayl"><img src="<!--{$attachment_base_url}{$val['activity_info_icon']}-->" alt="" class="f-fl" width="44px" height="42px"></a></dt>
+                                <dd class="stt f-fl item-logout-title"><a href="<!--{$activity_info_url}-->?activity_id=<!--{$val['activity_info_id']}-->" title="" target="_blank" class=" f-fwb f-fs14 a-Grayl"><!--{$val['activity_info_title']}--></a>
+                                    <div class="reads s-fcGray f-fl"><i class="icon_docx f-mr5" title="活动日期"></i>活动日期：{date('Y-m-d' , $val['activity_info_start_date'])}</div>
+                                </dd>
+                                <dd class="stt f-fs14 f-fwb clearfix f-fl btn-logout"><a href="<!--{$activity_info_url}-->?activity_id=<!--{$val['activity_info_id']}-->" title="" target="_blank" class="a-logout-apply"></a></dd>
+                            </dl>
+                        {/loop}
+                    {/if}
+                    <div class="f-cb"></div>
+                </div>
+            </div>
+            <div class="m-recC m-logout-source s-bsdStyle1 f-fl">
+                <div class="tt clearfix"><h2 class="s-fcGray f-fs18 f-fl">课程资源推荐</h2><a href="<!--{$resource_url}-->" title="" target="_self" class="f-fr">更多</a></div>
+                <div class="ct">
+                    {loop  $recommend_resource_list $key $val}
+                        <dl class="item">
+                            <dt class="stt f-fs14 f-fwb"><a href="<!--{$resource_view_url}-->/<!--{$val['id']}-->" title="" target="_blank" class="a-Grayl"><i class="icon_<!--{$val['file_type']}--> f-mr5" title="word文档"></i><!--{$val['title']}--></a></dt>
+                            <dd class="info clearfix"><div class="reads s-fcGray f-fl">阅读：<span><!--{$val['views']}--></span></div><div class="doc_commet">
+                                <div class="docRate ">
+                                    <!--{eval echo Models_Resource::init()->getStar($val['remark']);}--><!--{$val['remark']}-->
+                                </div>
+                            </div></dd>
+                        </dl>
+                    {/loop}
+                </div>
+            </div>
+            <div class="m-recC m-logout-course s-bsdStyle1 f-fr">
+                <div class="tt clearfix"><h2 class="s-fcGray f-fs18 f-fl">课程资讯</h2><a href="<!--{$infomation_url}-->" title="" target="_self" class="f-fr">更多</a></div>
+                <div class="ct">
+                    <dl class="">
+                        <!--<dt class="stt f-fs14"><i class="icon_docx f-mr5" title="word文档"></i>小小同学的《我和小花又成为好朋-->
+                            <!--友了》，被社区设为推荐！-->
+                        <!--</dt>-->
+                        <dd class="info clearfix">
+                            <ul>
+                                {if !empty($blog_list)}
+                                    {loop  $blog_list  $key  $val}
+                                            <li class="clearfix">
+                                                <a href="<!--{$dodo_url}-->SitePublic/<!--{$site_id}-->/blog/<!--{$val['class_id']}-->/article/<!--{$val['blog_id']}-->"  target="_blank" class="f-fl"><!--{$val['blog_title']}--></a>
+                                                <em  class="f-fr">{date('Y-m',$val['blog_time'])}</em>
+                                            </li>
+                                    {/loop}
+                                {/if}
+                            </ul>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+            <div class="f-cb"></div>
+        </div>
+    </div>
+    <div class="f-cb f-mb10"></div>
+</div>

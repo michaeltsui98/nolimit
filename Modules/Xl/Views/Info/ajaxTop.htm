@@ -1,0 +1,6 @@
+<!--{loop $blogList['data'] $item}-->
+    <li class="u-r clearfix">
+        <a class="f-fl" href="{DOMAIN_NAME}/SitePublic/{$siteId}/blog/{$item['class_id']}/article/{$item['blog_id']}" target="_blank" title="{$item['blog_title']}">{cutstr($item['blog_title'], 25)}</a>
+        <span class="time f-fr"> {date('m-d', $item['blog_time'])}</span>
+    </li>
+<!--{/loop}-->

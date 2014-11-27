@@ -1,0 +1,23 @@
+<div id="ajaxpage" class="easyui-panel" style="padding:5px;height:auto" data-options="fit:true">
+    <table id="activityStatistics-dg" title="<!--{$title}-->" class="easyui-datagrid" data-options="rownumbers:true,fit:true,fitColumns:true,singleSelect:true,pagination:false,url:'<!--{$stat_ajax}-->',method:'get',toolbar:'#activityStatistics-tb'">
+        <thead>
+            <tr>
+                <th data-options="field:'name',width:20" rowspan="2">市州</th>
+                <th colspan="3">小学</th>
+                <th colspan="3">初中</th>
+                <th colspan="3">高中</th>
+            </tr>
+            <tr>
+                <th data-options="field:'xd001_total',width:20,align: 'center'">课节数量</th>
+                <th data-options="field:'xd001_lesson_folder',width:20,align: 'center'">备课数量</th>
+                <th data-options="field:'xd001_record',width:20,align: 'center'">课程记录</th>
+                <th data-options="field:'xd002_total',width:20,align: 'center'">课节数量</th>
+                <th data-options="field:'xd002_lesson_folder',width:20,align: 'center'">备课数量</th>
+                <th data-options="field:'xd002_record',width:20,align: 'center'">课程记录</th>
+                <th data-options="field:'xd003_total',width:20,align: 'center'">课节数量</th>
+                <th data-options="field:'xd003_lesson_folder',width:20,align: 'center'">备课数量</th>
+                <th data-options="field:'xd003_record',width:20,align: 'center'">课程记录</th>
+            </tr>
+        </thead>
+    </table>
+</div>

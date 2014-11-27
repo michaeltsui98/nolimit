@@ -1,0 +1,20 @@
+<div class="doclist" name="reslist">
+    <ul>
+    	{loop $resources  $k $v}
+        <li>
+            <div class="doc_name"><a href="/{$xk}/resource/view/{$v['id']}" title="{$v['title']}" target="_blank">{cutstr($v['title'],50)}</a></div>
+            <div class="doc_previewimg"><a href="/{$xk}/resource/view/{$v['id']}" title="{$v['title']}" target="_blank">
+            	<i class="icon_{$v['file_type']}"></i><img width="76px" height="78px" src="{HTTP_MFS_WENKU}{$v['page_key']}" alt="{$v['title']}" />
+				</a>
+			</div>
+             <div class="doc_intro"><strong>文档概要：</strong>{$v['summery']} </div>
+            <div class="doc_desc">上传 <a href="{DOMAIN_NAME}/{$v['user_id']}/Space/Index" target="_blank">{$v['user_name']}</a>  |  <!--{eval echo Models_Resource::init()->dateSpan($v['on_time'])}-->上传  |  大小:<!--{eval echo Models_Resource::init()->bytesToSize($v['file_size'])}-->  |  页数：{$v['pages']}  |</div>
+            <div class="doc_commet">
+                <div class="docRate ">
+                    <!--{eval echo Models_Resource::init()->getStar($v['remark']);}-->{$v['remark']} <em class="f-fs12 s-fcGray">(浏览量 {$v['views']})</em>
+                </div>
+            </div>
+        </li>
+		{/loop}
+    </ul>
+</div>

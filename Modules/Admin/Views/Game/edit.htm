@@ -1,0 +1,95 @@
+<form action="<!--{$editDoUrl}-->" method="post" id="game_edit_form" name="game_edit_form" class="ui-form">
+	 
+		<input type="hidden" id="game_id" name="game_id" value="<!--{$data['game_id']}-->"  />
+		
+	    <div class="form_row">
+                <label><span class="ui-form-required">*</span>游戏名称：</label>
+                <input type="text" class="form_input_200"  id="name" name="data[name]" value="{$data['name']}"  placeholder="游戏名称"   datatype="*" />
+				<div class="info"><span class="ui-form-other"></span></div>
+            </div>
+            <div class="form_row">
+                <label><span class="ui-form-required">*</span>游戏图标：</label>
+				<div id="demo2"></div>
+				<input type="hidden" class="form_input_200" name="img" id="input2" value="{$data['img']}" />
+				
+				 <script>
+                  new syup({
+                       path: '/static/',
+                       div_id:'demo2',
+                       form_id:'input2',
+                       tip_id:'',
+                       up_text: '上传附件',
+                       up_maxsize: 1024*1024*2,
+                       upImageFile: 1,//是否文件方式上传
+                       up_filter: '*.jpg;*.png;*.bmp',
+                       up_url: "<!--{$upload_url}-->",//上传保存地址
+                       skin:'{DODOJC}/static/syup/skin/green',
+                   }).show();
+               </script>
+			   
+				<div class="info"><span class="ui-form-other" id="tip2"></span></div>
+            </div>
+           
+            <div class="form_row">
+                <label><span class="ui-form-required"></span>游戏图片：</label>
+                <a href="{$ats_url}{$data['img']}" target="_blank"> <img src="{$ats_url}{$data['img']}" height="40px"></a>
+				<div class="info"><span class="ui-form-other"></span></div>
+            </div>
+            <div class="form_row">
+                <label><span class="ui-form-required">*</span>游戏路径：</label>
+                <input type="text" class="form_input_200" id="swf_url" name="data[swf_url]" value="{$data['swf_url']}"  placeholder="游戏路径"  datatype="*"  />
+				<div class="info"><span class="ui-form-other"></span></div>
+            </div>
+			
+            <div class="form_row">
+                <label><span class="ui-form-required"></span>游戏分类：</label>
+				<select name="data[cate_id]" id="cate_id" style="width:200px;">
+				{loop $cate_arr $v}
+					<option  value="{$v['cate_id']}" >{$v['name']}</option>
+				{/loop}
+				</select>
+				<div class="info"><span class="ui-form-other"></span></div>
+            </div>
+			 <div class="form_row">
+                <label><span class="ui-form-required"></span>游戏打开方式：</label>
+				<select name="data[target]" id="target" style="width:200px;">
+			 		<option  value="1" >新窗口打开</option>
+			 		<option  value="0" >本地窗口打开</option>
+				</select>
+				<div class="info"><span class="ui-form-other"></span></div>
+            </div>
+            <div class="form_row">
+                <label><span class="ui-form-required"></span>游戏介绍：</label>
+				 <textarea name="data[js]" id="js" placeholder="游戏介绍" datatype="*">{$data['js']}</textarea>
+				<div class="info"><span class="ui-form-other"></span></div>
+            </div>
+            <div class="form_row">
+                <label><span class="ui-form-required"></span>操作说明：</label>
+				 <textarea name="data[operation]" id="operation" placeholder="操作说明">{$data['operation']}</textarea>
+				<div class="info"><span class="ui-form-other"></span></div>
+            </div>
+            <div class="form_row">
+                <label><span class="ui-form-required"></span>排序：</label>
+				 <input type="text" class="form_input_200" name="data[game_order]"  id="game_order" value="{$data['game_order']}" placeholder="排序"></textarea>
+				<div class="info"><span class="ui-form-other"></span></div>
+            </div>
+	 
+ 
+
+		<div class="ui-form-item">
+		        <input type="submit" id="btn_submit" value="保存"/>
+		</div> 
+</form>
+
+
+<script type="text/javascript">
+	$(function(){
+		syform_val('game_edit_form');
+        SetValue(game_edit_form["data[cate_id]"],"<!--{$data['cate_id']}-->");
+        SetValue(game_edit_form["data[target]"],"<!--{$data['target']}-->");
+        
+	});
+</script>
+ 
+
+  

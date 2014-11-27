@@ -1,0 +1,164 @@
+<script type="text/javascript" src="{STATIC_PATH}/Modules/{$ucxk}/static/script/activity/act_list.js" ></script>
+<div class="g-wrap">
+<div class="g-bd">
+    <!-- 导航 -->
+    <div class="m-nav clearfix f-mb10">
+        <div class="m-breakNav f-fl">
+            <i class="icon_tc1"></i>
+            <span>当前位置</span>：<a href="<!--{$teacher_center_url}-->" target="_self">教师</a>&nbsp;&gt;&nbsp;<a href="<!--{$activity_index_url}-->" target="_self">研训
+        </a>&nbsp;&gt;&nbsp;研训列表
+        </div>
+    </div>
+    <div class="g-sd f-fl">
+        <!-- 创建活动 -->
+        {if !empty($user_info)}
+            <div class="m-creatStudy s-bsdStyle1 f-mb20">
+                <a href="javascript:;" target="" class="imgBtn"></a>
+            </div>
+        {/if}
+        <!-- 活动列表 -->
+        <div class="m-studyList s-bsdStyle1 ">
+            <div class="tt clearfix">
+                <ul class="tab4Menu f-fs18  f-fl">
+                    <li class="menuCell  tabMenuCurrent f-fl" name="new_activity"><a href="javascript:;" title="" class="tabLink">最新活动</a></li>
+                    <li class="f-fl">|</li>
+                    <li class="menuCell  f-fl" name="hot_activity"><a href="javascript:;" title="" class="tabLink">热门活动</a></li>
+                    <li class="f-cb"></li>
+                </ul>
+            </div>
+            <div class="ct">
+                <ul name="new_activity" >
+                    {if !empty($latest_activity_list)}
+                        {loop $latest_activity_list $key $val}
+                            <li>
+                                <dt class="avarter"><a href="<!--{$activity_info_url}-->?activity_id=<!--{$val['activity_info_id']}-->" target="_blank"><img src="<!--{$attachment_base_url}{$val['activity_info_icon']}-->" alt="" width="88px" height="58px"></a></dt>
+                                <dl class="con"><a href="<!--{$activity_info_url}-->?activity_id=<!--{$val['activity_info_id']}-->" target="_blank"><!--{$val['activity_info_title']}--></a></dl>
+                                <dl class="desc"><i class="icon-play"></i><!--{$val['member_total']}--></dl>
+                            </li>
+                        {/loop}
+                    {/if}
+                </ul>
+                <ul name="hot_activity"  style="display: none;">
+                    {if !empty($hotest_activity_list)}
+                    {loop $hotest_activity_list $key $val}
+                    <li>
+                        <dt class="avarter"><a href="<!--{$activity_info_url}-->?activity_id=<!--{$val['activity_info_id']}-->" target="_blank"><img src="<!--{$attachment_base_url}{$val['activity_info_icon']}-->" alt="" width="88px" height="58px"></a></dt>
+                        <dl class="con"><a href="<!--{$activity_info_url}-->?activity_id=<!--{$val['activity_info_id']}-->" target="_blank"><!--{$val['activity_info_title']}--></a></dl>
+                        <dl class="desc"><i class="icon-play"></i><!--{$val['member_total']}--></dl>
+                    </li>
+                    {/loop}
+                    {/if}
+                </ul>
+            </div>
+        </div>
+
+
+        <!-- 研修达人 -->
+        <div class="m-bestStudent s-bsdStyle1 f-mt20">
+            <div class="tt">
+                <div class=" clearfix">
+                    <h3 class="f-fl f-fs18">研训达人</h3>
+                </div>
+            </div>
+            <div class="ct">
+                <ul>
+                    {if !empty($hot_teacher_list)}
+                        {loop $hot_teacher_list $key $val}
+                            <li>
+                                <dt class="avarter"><a href="<!--{$dodo_url}--><!--{$val['activity_member_uid']}-->/Space" target="_blank"><img src="<!--{$val['activity_member_icon']}-->" alt="" width="50px" height="50px"></a></dt>
+                                <dl class="name"><a href="<!--{$dodo_url}--><!--{$val['activity_member_uid']}-->/Space" target="_blank"><!--{$val['activity_member_real_name']}--></a></dl>
+                                <dl class="schoolName"><!--{$val['activity_member_school_name']}--></dl>
+                            </li>
+                        {/loop}
+                    {/if}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="g-mn f-fr">
+        <!-- 活动分类 -->
+        <div class="m-selfStudyCount s-bsdStyle1">
+            <div class="tt clearfix">
+                <h3 class="f-fl f-fs18"><i class="icon-wenda"></i>活动分类</h3>
+            </div>
+            <div class="ct">
+                <div id="select-all">
+                    <dl>
+                        <dt>研训内容</dt>
+                        <dd>
+                            <div class="sel-list" name="current_type">
+                                <input type="hidden" name="ajax_activity_url" value="<!--{$ajax_activity_url}-->"/>
+                                <input type="hidden" name="activity_info_url" value="<!--{$activity_info_url}-->"/>
+                                <input type="hidden" name="attachment_url" value="<!--{$attachment_base_url}-->"/>
+                                <ul>
+                                    <li ><a  class="selected"  href="javascript:;"  option_value="all">全部</a></li>
+                                    <li><a href="javascript:;" option_value="1">基础理论</a></li>
+                                    <li><a href="javascript:;" option_value="2">专业知识</a></li>
+                                    <li><a href="javascript:;" option_value="3">教学技能</a></li>
+                                    <li><a href="javascript:;" option_value="4">教育技术</a></li>
+                                    <li><a href="javascript:;" option_value="5">自主学习</a></li>
+                                </ul>
+                            </div>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>研训形式</dt>
+                        <dd><div class="sel-list" name="current_class">
+                            <ul>
+                                <li ><a  class="selected"  href="javascript:;" option_value="all">全部</a></li>
+                                <li><a href="javascript:;" option_value="1">心理沙龙</a></li>
+                                <li><a href="javascript:;" option_value="2">示 范 课</a></li>
+                                <li><a href="javascript:;" option_value="3">视频讨论</a></li>
+                                <li><a href="javascript:;" option_value="4">互动课堂</a></li>
+                                <li><a href="javascript:;" option_value="5">专家讲座</a></li>
+                            </ul>
+                        </div>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>学段</dt>
+                        <dd>
+                            <div class="sel-list" name="current_phase">
+                                <ul>
+                                    <li ><a class="selected"  href="javascript:;" option_value="all">全部</a></li>
+                                    <li><a href="javascript:;" option_value="xd001">小学</a></li>
+                                    <li><a href="javascript:;" option_value="xd002">初中</a></li>
+                                    <li><a href="javascript:;" option_value="xd003">高中</a></li>
+                                </ul>
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+            <div class="ft clearfix">
+                <div class="f-fl" name="current_order">
+                    <em>排序</em>：
+                        <a href="javascript:;" class="cur" option_value="start_date">默认</a>
+                        <a href="javascript:;" option_value="start_date">时间</a>
+                        <!--<a href="javascript:;" option_value="">热度</a>-->
+                        <a href="javascript:;" option_value="hot">评分</a>
+                </div>
+            </div>
+        </div>
+        <!-- 活动列表 -->
+        <div class="m-studyActiveList f-mt20">
+            <div class="ct">
+            </div>
+
+            <div class="row f-mt20">
+                <div class="courseLoadMore">
+                    <a href="javascript:;" class=""  id="loadContent">点击加载更多</a>
+                    <a href="javascript:;" class="" id="loadingImg" style="display: none;"><img src="{STATIC_PATH}/Modules/{$ucxk}/static/images/loading_2.gif" alt="" /></a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="f-cb"></div>
+</div>
+</div>
+
+
+
+ 
+ 

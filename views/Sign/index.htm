@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>用户登录页面</title>
+</head>
+<body>
+	<div style="margin:20px auto">
+		
+	<form action="{DOMAIN_NAME}/DDApi/auth/clientauthorizeinfo" method="post" id="loginFrom">
+	    <div class="userId">账 号：
+	      <input name="userName" id="userName" type="text">
+	    </div>
+	    <div class="PW">密 码：
+	      <input name="userPass" id="userPass" type="password">
+	    </div>
+	    <input type="hidden" name="access_token" id="access_tokens" value="{$access_tokens}">
+	    <input type="hidden" name="appKey" id="appKey" value="{$appKey}">
+	 
+	    <input type="hidden" name="callBackUrl" id="callBackUrl" value="{$callBackUrl}">
+	    <input type="hidden" name="responseType" id="responseType" value="code">
+	    <input type="hidden" name="state" id="state" value="{$xk}">
+	    
+	    <div class="btn"><input name="" type="submit" value="登 录" class="loginBtn"><a href="javascript:;" title="" target="" class="grayA" onclick="history.go(-1)">取消</a></div>
+	  </form>
+	
+	</div>
+</body>
+</html>

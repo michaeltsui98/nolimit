@@ -1,0 +1,151 @@
+<div class="g-bd">
+        <div class="m-nav clearfix f-mb10">
+            
+			<div class="m-breakNav f-fl">
+                <i class="icon_tc1"></i>
+				<!--当前位置： 教师 > 资源-->
+                <span>当前位置</span>：<a href="javascript:;">教师 </a>&nbsp;>&nbsp;资源
+				
+            </div>
+			{if isset($user_info['user_id'])}
+	            <div class="m-breakNav f-fr"><a href="/{$xk}/resource/my/s/up" >去我的资源中心</a></div>
+		    {/if}
+			
+        </div>
+		
+		
+        <div class="wk_classList">
+            <div class="sidebar width252 f-fl" >
+                <div class="wk_upload s-bsdStyle1">
+                    <a href="javascript:;" id="resUpload" class="customBtnLarge colourLOrange">点此上传资源</a>
+					<input type="hidden" name="hdn_xd" id="hdn_xd" value="{$user_xd}">
+					<input type="hidden" name="hdn_xk" id="hdn_xk" value="{$xk_code}">
+                </div>
+                 
+                <div class="wk_classCon f-mt10 s-bsdStyle1" >
+                	  <div class="otherChoose">
+                        <select name="slt_xd" id="slt_xd" class="f-mb20">
+                            
+						    {loop $xd_arr  $v}
+                            <option id="{$v['id']}" value ="{$v['code']}" {if $xd == $v['code']} selected="selected" {/if} >{$v['name']}</option>
+							{/loop}
+                        </select>
+                        <select name="slt_bb" id="slt_bb" class="f-mb20">
+                             
+						    {loop $bb  $v}
+                            <option id="{$v['id']}" value ="{$v['code']}" {if $bb_code == $v['code']} selected="selected" {/if} >{$v['name']}</option>
+							{/loop}
+                        </select>
+
+                        <select name="slt_nj" id="slt_nj">
+                            <option value="0" {if $nj_code === 0} selected="selected" {/if} >全部年级</option>
+							{loop $nj $v}
+                            <option id="{$v['id']}" value ="{$v['code']}" {if $nj_code === $v['code']} selected="selected" {/if}>{$v['name']}</option>
+							{/loop}
+                        </select>
+                    </div>
+					
+                    <ul class="unitList" style=" position: relative;">
+                        <!-- js滚动条 内容包含区域 -->
+                        <div class="jscroll-c">
+                           {if $unit} 
+						   <!-- 标题区域 -->
+                            <li class="unitCell">
+                                <div class="lesson_name lesson_all"  >
+                                    <a href="/{$xk}/resource/{$xd}-{$bb_code}-{$nj_code}-0?type={$type}&order={$order}"><strong>全部课程</strong></a>
+                                </div>
+                                <div class="f-cb">
+                                </div>
+                            </li>
+                            <!-- ==标题区域== -->
+
+                            <!-- 课程列表详情 -->
+							
+                            {loop $unit $k $v}
+								{if $v['node_fid']==0}
+								   {if $k != 0}
+								    	</ul></li>
+								   {/if}
+								   <li class="unitCell">
+	                                <a data-id="{$v['id']}" href="/{$xk}/resource/{$xd}-{$bb_code}-{$nj_code}-{$v['id']}?type={$type}&order={$order}" class="lesson_name lesson_point {if $v['id']==$zs_id} cur {/if}" title="{$v['node_title']}">
+	                                    <strong>{$v['node_title']}</strong></a>
+	                                <ul class="lessonList lesson_line " style=" position: relative;">
+								{else}
+                                        <li><a data-id="{$v['id']}" href="/{$xk}/resource/{$xd}-{$bb_code}-{$nj_code}-{$v['id']}?type={$type}&order={$order}" {if $v['id']==$zs_id} class="cur" {/if} title="{$v['node_title']}">{$v['node_title']}</a></li>
+								{/if}
+                            {/loop}
+							</ul></li>
+							 <!-- 课程列表详情 -->
+                            <li class="unitCellEnd">
+                                <i class="lesson_end"></i>
+                            </li>
+							{else}
+							<ul class="unitList" style=" position: relative;">
+								<li class="list-empty">没有课程目录！请选择教材对应的年级</li>
+							</ul>
+							{/if}
+                           
+                        </div>
+                        <!-- ==js滚动条 内容包含区域== -->
+                        <!-- js滚动条-->
+                        <div class="jscroll-e" unselectable="on" style="">
+                            <div class="jscroll-h" unselectable="on" style=""></div>
+                        </div>
+                        <!-- ==js滚动条==-->
+                </ul>
+                </div>
+            </div>
+			<div class="g-mn f-fr s-bsdStyle1" >
+            <div class="main">
+                <!-- <div class="tab1Menu"> -->
+                    <div class="tab1Menu">
+                    	<div>
+                    		
+                        <div class="leftInfo f-fs14 f-fl">
+                            <strong {if $type == 'all' or !$type}class="cur"{/if}><a href="/{$xk}/resource/{$xd}-{$bb_code}-{$nj_code}-{$zs_id}?type=all">全部</a></strong>
+							{loop $resource_type $k $v}
+                            <strong {if $type == $k}class="cur"{/if}><a href="/{$xk}/resource/{$xd}-{$bb_code}-{$nj_code}-{$zs_id}?type={$k}"  >{$v}</a></strong>
+							{/loop}
+                        </div>
+                    	</div>
+                        <div class="rightInfo f-fr" style="width: 188px;text-align: right;">
+						 排序：
+                          {if $order == 1}
+						  <strong class="cur">最新<i class="icon-orderdown"></i></strong>
+						  {else}
+						  <a href="?type={$type}&order=1" class="whiteA">最新<i class="icon-orderdown-nocur"></i></a>
+						  {/if}|{if $order == 2}
+						 <strong class="cur">最热<i class="icon-orderdown"></i></strong>
+						 {else}
+                         <a href="?type={$type}&order=2" class="whiteA">最热<i class="icon-orderdown-nocur"></i></a>
+						 {/if}
+                        </div>
+
+                        <div class="f-cb"> </div>
+                    </div>
+                    <div class="con">
+                        <div class="wk_docCell">
+                        	
+                            {if $resources} 
+							
+							{$list_content}
+							
+                            {else}
+							<div class="ct">
+							    <div class="wk_docCell" id="list_content">
+							    	 <div class="list-empty">暂时没有数据！</div>
+							    </div>
+							</div>
+							{/if} 
+							
+                        </div>
+                    </div>
+					 {$page_html} 
+                    </div>
+                </div>
+		</div>
+            <div class="f-cb"> </div>
+            </div>
+        </div>
+   
+		

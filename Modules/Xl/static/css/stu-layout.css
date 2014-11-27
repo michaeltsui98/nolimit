@@ -1,0 +1,2066 @@
+﻿
+/*标题前空心圆圈*/
+.icon-circle {
+	display:inline-block;
+	width:9px;
+	height:9px;
+	line-height:0;
+	font-size:0;
+	vertical-align:middle;
+	border-radius:9px;
+	border:3px solid #747474;
+}
+
+.icon-circle1,.icon-circle2,.icon-numberBg {
+	display:inline-block;
+	width:21px;
+	height:50px;
+	line-height:0;
+	font-size:0;
+	vertical-align:middle;
+	background:url(../images/stu-spr.png) no-repeat -64px -300px;
+	_background:url(../images/stu-spr.gif) no-repeat -64px -300px;
+}
+/*灰圆*/
+.icon-circle2 {
+	height:20px;
+	background-position:-68px -360px;
+}
+
+/*实心圆*/
+.icon-numberBg {
+	text-align:center;
+	width:20px;
+	height:22px;
+	line-height:22px;
+	color:#fff;
+	font-size:12px;
+	background-position:-30px -314px;
+}
+
+/*测试评价花*/
+.icon-rate0,.icon-rate1,.icon-rate2,.icon-rate3,.icon-rate4,.icon-rate5 {
+	display:inline-block;
+	width:75px;
+	height:23px;
+	line-height:0;
+	font-size:0;
+	vertical-align:middle;
+	background:url(../images/stu-spr.png) no-repeat 0 -64px;
+	_background:url(../images/stu-spr.gif) no-repeat 0 -64px;
+}
+
+.icon-rate1 {
+	background-position:0 -94px;
+}
+
+.icon-rate2 {
+	background-position:0 -125px;
+}
+
+.icon-rate3 {
+	background-position:0 -153px;
+}
+
+.icon-rate4 {
+	background-position:0 -184px;
+}
+
+.icon-rate5 {
+	background-position:0 -214px;
+}
+
+/*评测完成与未完成*/
+.icon-finish,.icon-unfinished,.icon-lock,.icon-learnF,.icon-learnUnf,.icon-arrLs ,.icon-arrL {
+	display:inline-block;
+	width:24px;
+	height:24px;
+	line-height:0;
+	font-size:0;
+	vertical-align:middle;
+	background:url(../images/stu-spr.png) no-repeat 1px -274px;
+	_background:url(../images/stu-spr.gif) no-repeat 1px -274px;
+}
+
+.icon-unfinished {
+	background-position:-29px -274px;
+}
+
+/*提示中的锁*/
+.icon-lock {
+	background-position:-28px -355px;
+}
+
+/*学习进度图标*/
+.icon-learnF {
+	height:22px;
+	background-position:-60px -275px;
+}
+
+.icon-learnUnf {
+	height:22px;
+	background-position:2px -315px;
+}
+
+/*左箭头*/
+.icon-arrLs {
+	width:10px;
+	background-position:-12px -354px;
+}
+
+.icon-arrL {
+	width:10px;
+	background-position:0px -354px;
+}
+
+/*评价星星*/
+.icon-starOn,.icon-starOff,.icon-starHalf,.icon-share,.icon-like,.icon-medal,.icon-comment {
+	display:inline-block;
+	width:14px;
+	height:18px;
+	line-height:0;
+	font-size:0;
+	vertical-align:middle;
+	background:url(../images/stu-spr.png) no-repeat -64px -387px;
+	_background:url(../images/stu-spr.gif) no-repeat -64px -387px;
+}
+
+.icon-starOff {
+	background-position:-40px -417px;
+}
+
+.icon-starHalf {
+	background-position:-64px -417px;
+}
+
+/*分享&喜欢*/
+.icon-share {
+	width:18px;
+	background-position:-3px -386px;
+}
+
+.icon-like {
+	width:18px;
+	background-position:-31px -386px;
+}
+
+/*奖牌*/
+.icon-medal {
+	width:27px;
+	height:46px;
+	background-position:0 -410px;
+}
+
+/*评论图标*/
+.icon-comment {
+	width:18px;
+	background-position:0 -464px;
+}
+
+/*评测*/
+.m-testWrap .tt {
+	height: 50px;
+	line-height: 50px;
+	padding: 0 15px;
+	_height:33px;
+	_padding: 17px 15px 0 15px;
+	border-radius:4px 4px 0 0;
+	background-color: #fff;
+}
+
+.m-testWrap .ct {
+	padding:10px 20px;
+	border-radius:4px;
+	background-color:#fff;
+}
+
+.m-testWrap .m-sct .ttU {
+	padding:10px 10px 10px 20px;
+	background-color:#f4f6f7;
+	border:1px solid #c8cdd0;
+}
+.m-testWrap .m-sct .txt {
+	line-height: 24px;
+	height: 24px;
+	color: #808b8d;
+	width: 70px;
+	/*display: block;*/
+	/*overflow: hidden;*/
+	/*white-space: nowrap;*/
+}
+
+.u-puBtn,.u-ufBtn {
+	display:inline-block;
+	width:24px;
+	height:24px;
+	line-height:0;
+	font-size:0;
+	opacity:0.7;
+	filter:alpha(opacity=70);
+	background:url(../images/stu-spr.png) no-repeat 4px -243px;
+	_background:url(../images/stu-spr.gif) no-repeat 4px -243px;
+}
+
+.u-ufBtn {
+	background-position:-26px -243px;
+}
+
+.u-puBtn:hover,.u-ufBtn:hover {
+	opacity:1;
+	filter:alpha(opacity=100);
+}
+
+
+.m-testWrap .unit .item {
+	padding:10px 30px 10px 36px;
+	line-height:24px;
+	border-bottom:1px dashed #d8dbdd;
+}
+.m-testWrap .unit .item:hover{
+	background-color: #f2f2f2;
+}
+
+.m-testWrap .lHistory .unit .item {
+	padding:15px 10px 15px 20px;
+}
+
+/*学习*/
+
+/*学习未登录*/
+.m-rateWarp{
+	background: #fff;
+	text-align: left;
+	padding:10px;
+	position: relative;
+}
+.m-rateWarp .ct li{
+	height: 20px;
+	line-height: 20px;
+	padding: 10px 0;
+	border-bottom:1px dotted #c9c9c9;
+}
+.m-rateWarp .ct .score{
+	float: right;
+}
+
+.m-rateWarp .ct .topThree ,.m-rateWarp .ct .topOther,.m-rateWarp .ct .name{
+	float: left;
+}
+.m-rateWarp .ct .name{
+	width:148px;
+	display: block;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow:ellipsis;
+}
+.m-rateWarp .ct .topThree ,.m-rateWarp .ct .topOther{
+	background-color: #f49c14;
+	padding: 1px 6px;
+	color: #fff;
+	margin-right: 10px;
+}
+.m-rateWarp .ct .topOther{
+	background-color: #f1c40f;
+}
+{
+	background: #fff;
+	text-align: left;
+	padding:10px;
+	position: relative;
+}
+.m-.m-questionsList{
+	background: #fff;
+	text-align: left;
+	padding:10px;
+	position: relative;
+}
+.m-questionsList .ct li{
+	height: 20px;
+	line-height: 20px;
+	padding: 10px 0;
+	border-bottom:1px dotted #c9c9c9;
+}
+.m-questionsList .ct .score{
+	float: right;
+}
+
+.m-questionsList .ct .topThree ,.m-questionsList .ct .topOther,.m-questionsList .ct .name{
+	float: left;
+}
+.m-questionsList .ct .name{
+	width:100px;
+}
+.topThree ,.topOther{
+	background-color: #f49c14;
+	padding: 1px 6px;
+	color: #fff;
+	margin-right: 10px;
+}
+.topOther{
+	background-color: #f1c40f;
+}
+ .ct li{
+	height: 20px;
+	line-height: 20px;
+	padding: 10px 0;
+	border-bottom:1px dotted #c9c9c9;
+}
+.m-.m-questionsList{
+	background: #fff;
+	text-align: left;
+	padding:10px;
+	position: relative;
+}
+.m-questionsList .ct li{
+	height: 20px;
+	line-height: 20px;
+	padding: 10px 0;
+	border-bottom:1px dotted #c9c9c9;
+}
+.m-questionsList .ct .score{
+	float: right;
+}
+
+.m-questionsList .ct .topThree ,.m-questionsList .ct .topOther,.m-questionsList .ct .name{
+	float: left;
+}
+.m-questionsList .ct .name{
+	width:100px;
+}
+.topThree ,.topOther{
+	background-color: #f49c14;
+	padding: 1px 6px;
+	color: #fff;
+	margin-right: 10px;
+}
+.topOther{
+	background-color: #f1c40f;
+}
+ .ct .score{
+	float: right;
+}
+
+.m-.m-questionsList{
+	background: #fff;
+	text-align: left;
+	padding:10px;
+	position: relative;
+}
+.m-questionsList .ct li{
+	height: 20px;
+	line-height: 20px;
+	padding: 10px 0;
+	border-bottom:1px dotted #c9c9c9;
+}
+.m-questionsList .ct .score{
+	float: right;
+}
+
+.m-questionsList .ct .topThree ,.m-questionsList .ct .topOther,.m-questionsList .ct .name{
+	float: left;
+}
+.m-questionsList .ct .name{
+	width:100px;
+}
+.topThree ,.topOther{
+	background-color: #f49c14;
+	padding: 1px 6px;
+	color: #fff;
+	margin-right: 10px;
+}
+.topOther{
+	background-color: #f1c40f;
+}
+ .ct .topThree ,.m-.m-questionsList{
+	background: #fff;
+	text-align: left;
+	padding:10px;
+	position: relative;
+}
+.m-questionsList .ct li{
+	height: 20px;
+	line-height: 20px;
+	padding: 10px 0;
+	border-bottom:1px dotted #c9c9c9;
+}
+.m-questionsList .ct .score{
+	float: right;
+}
+
+.m-questionsList .ct .topThree ,.m-questionsList .ct .topOther,.m-questionsList .ct .name{
+	float: left;
+}
+.m-questionsList .ct .name{
+	width:100px;
+}
+.topThree ,.topOther{
+	background-color: #f49c14;
+	padding: 1px 6px;
+	color: #fff;
+	margin-right: 10px;
+}
+.topOther{
+	background-color: #f1c40f;
+}
+ .ct .topOther,.m-.m-questionsList{
+	background: #fff;
+	text-align: left;
+	padding:10px;
+	position: relative;
+}
+.m-questionsList .ct li{
+	height: 20px;
+	line-height: 20px;
+	padding: 10px 0;
+	border-bottom:1px dotted #c9c9c9;
+}
+.m-questionsList .ct .score{
+	float: right;
+}
+
+.m-questionsList .ct .topThree ,.m-questionsList .ct .topOther,.m-questionsList .ct .name{
+	float: left;
+}
+.m-questionsList .ct .name{
+	width:100px;
+}
+.topThree ,.topOther{
+	background-color: #f49c14;
+	padding: 1px 6px;
+	color: #fff;
+	margin-right: 10px;
+}
+.topOther{
+	background-color: #f1c40f;
+}
+ .ct .name{
+	float: left;
+}
+.m-.m-questionsList{
+	background: #fff;
+	text-align: left;
+	padding:10px;
+	position: relative;
+}
+.m-questionsList .ct li{
+	height: 20px;
+	line-height: 20px;
+	padding: 10px 0;
+	border-bottom:1px dotted #c9c9c9;
+}
+.m-questionsList .ct .score{
+	float: right;
+}
+
+.m-questionsList .ct .topThree ,.m-questionsList .ct .topOther,.m-questionsList .ct .name{
+	float: left;
+}
+.m-questionsList .ct .name{
+	width:100px;
+}
+.topThree ,.topOther{
+	background-color: #f49c14;
+	padding: 1px 6px;
+	color: #fff;
+	margin-right: 10px;
+}
+.topOther{
+	background-color: #f1c40f;
+}
+ .ct .name{
+	width:100px;
+}
+.topThree ,.topOther{
+	background-color: #f49c14;
+	padding: 1px 6px;
+	color: #fff;
+	margin-right: 10px;
+}
+.topOther{
+	background-color: #f1c40f;
+}
+
+/*==学习未登录==*/
+.m-myLearningWrap .tt {
+	height: 50px;
+	line-height: 50px;
+	padding: 0 15px;
+	border-radius:4px 4px 0 0;
+	background-color: #fff;
+}
+
+.m-myLearningWrap .tt select {
+	color:#b4b4b4;
+	width:auto;
+	height:24px;
+	line-height:24px;
+	border:1px solid #dedede;
+	border-radius:2px;
+	background-color:#fafbfe;
+	box-shadow:inset 0 1px 2px #edeef1;
+}
+
+.m-myLearningWrap .ctUnit {
+	margin-left:25px;
+	padding-top:15px;
+	border-left:2px solid #c7c7c7;
+}
+
+.m-learningUnit {
+	position:relative;
+	padding-bottom:15px;
+}
+
+
+.m-theyLearn{
+	padding:10px;
+}
+.m-theyLearn .ct{
+	display: block;
+	width: 100%;
+	height: 355px;
+	overflow: hidden;
+}
+.m-theyLearn .tt {
+	border-bottom: 1px dotted #dadada;
+	height: 36px;
+	line-height: 36px;
+}
+.m-theyLearn{
+	color: #666;
+	padding:0px 10px;
+	background-color: #fff;
+}
+.m-theyLearn .m-schBox .txtInput{
+	border: none;
+	width: 160px;
+	height: 20px;
+	line-height: 21px;
+	border: 1px solid #DDD;
+	padding-left: 6px;
+}
+.m-theyLearn .ItemWarp{
+	overflow-y:scroll;
+	width:220px;
+	height:329px;
+}
+.m-theyLearn .Item{
+	padding: 15px 0;
+	border-bottom: 1px dotted #dadada;
+}
+.m-theyLearn .Item .logo {
+	width:40px;
+	overflow:hidden;
+}
+.m-theyLearn .Item .fileCover {
+	width:40px;
+	overflow:hidden;
+	margin-right:4px;
+}
+.m-theyLearn .Item .avater {
+	width:40px;
+	overflow:hidden;
+	margin-right: 10px;
+}
+
+.m-theyLearn .Item .info {
+	width:148px;
+	overflow: hidden;
+}
+.m-theyLearn .Item .techerName {
+	font-size: 16px;
+	line-height: 16px;
+}
+
+.m-theyLearn .Item .sourceName {
+	font-size: 16px;
+	line-height: 20px;
+}
+
+.m-theyLearn .Item .schName {
+	font-size: 14px;
+	line-height: 28px;
+	display: block;
+	text-overflow:ellipsis;
+	height: 28px;
+	overflow: hidden;
+}
+
+.m-testWrap .m-learningUnit .m-LUcell{
+	padding: 0px;
+}
+
+.m-learningUnit .m-LUcell .uTt{
+	box-shadow: none;
+}
+/*==修改为空的提示==*/
+
+.m-learningUnit .icon-numberBg {
+	position:absolute;
+	left:-11px;
+	top:3px;
+	
+}
+
+.m-LUcell {
+	padding-left:22px;
+}
+
+.m-LUcell .uTt {
+	color:#808b8d;
+	font-size:14px;
+}
+
+.m-LUcell .uTt,.m-LUcell .uCt {
+	position:relative;
+	*width:668px;
+	padding:4px 10px;
+	border-radius:2px;
+	border:1px solid #c9c9c9;
+	background-color:#fff;
+	box-shadow:0 2px 2px #dde0e3;
+}
+/*无章节展开的模式*/
+.m-LUcell .uTtSingle{
+	position:relative;
+	*width:668px;
+	border-radius:2px;
+	border:1px solid #c9c9c9;
+	background-color:#fff;
+	box-shadow:0 2px 2px #dde0e3;
+	font-size:14px;
+	line-height: 22px;
+	padding:5px 10px 5px 15px;
+	/*color:#333;*/
+}
+
+.m-LUcell .uTtSingle a .f-vam{
+	color: #333;
+}
+.m-LUcell .uTtSingle a:hover .f-vam{
+	color:#3598dc;	
+}
+
+.m-LUcell .uCt {
+	*width:auto;
+	display:none;
+	line-height:22px;
+	padding:5px 20px;
+}
+
+.m-LUcell .icon-arrLs,.m-LUcell .icon-arrL {
+	position:absolute;
+	left:-10px;
+	top:2px;
+}
+
+.m-LUcell .icon-arrL {
+	top:15px;
+    left:-10px;
+}
+
+.m-LUcell .item {
+	padding:10px 0;
+}
+
+.m-myLearningWrap .ctUnit .z-show .icon-numberBg {
+	top:43px;
+}
+
+.m-myLearningWrap .ctUnit .z-show .uTt {
+	font-size:12px;
+	padding-left:0;
+	background:none;
+	border:none;
+}
+
+.m-myLearningWrap .ctUnit .z-show .icon-arrLs {
+	display:none;
+}
+
+.m-myLearningWrap .ctUnit .z-show .uCt {
+	display:block;
+	*display:inline-block;
+}
+
+.m-myLearningWrap .ft {
+	padding:0 20px;
+}
+
+/*多彩链接色*/
+a.a-mulO,a.a-mulO:visited,a.a-mulG,a.a-mulG:visited,a.a-mulCyan,a.a-mulCyan:visited {
+	display:inline-block;
+	height:22px;
+	line-height:22px;
+	padding:0 6px;
+	color:#e77e23;
+	text-decoration:none;
+	border:1px solid #e77e23;
+	border-radius:2px;
+}
+
+a.a-mulG,a.a-mulG:visited {
+	color:#2fcc71;
+	border-color:#2fcc71;
+}
+
+a.a-mulCyan,a.a-mulCyan:visited {
+	color:#1bbc9d;
+	border-color:#1bbc9d;
+}
+
+a.a-mulO:hover {
+	color: #fff;
+	background-color: #d06b14;
+	border-color:#d06b14;
+}
+
+a.a-mulG:hover {
+	color: #fff;
+	background-color: #1bb65c;
+}
+
+a.a-mulCyan:hover {
+	color: #fff;
+	background-color: #1bb65c;
+}
+
+/*在线学习*/
+.g-docFt{
+	position: fixed;
+	_position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+.g-mnOlL {
+	width:100%;
+}
+
+.g-mncOlL {
+	margin-right:321px;
+}
+
+
+.m-hdOlL .ctL {
+	background-color:#fff;
+	border:1px solid #c8c8c8;
+	border-top:none;
+	border-left:none;
+	border-radius:0 0 4px 0;
+	box-shadow:2px 0 7px #bfbfbf;
+}
+
+.m-hdOlL .m-logoOlL {
+	width:129px;
+	border-right:1px solid #d6d5d2;
+}
+
+.m-logoOlL .lessonItem:hover{
+	background-color: #96a6a6;
+}
+.m-logoOlL .u-logo {
+	display: block;
+	height: 38px;
+	overflow: hidden;
+	text-indent: -200px;
+	background: url(../images/stu-spr.png) no-repeat 10px -516px;
+	_background: url(../images/stu-spr.gif) no-repeat 10px -516px;
+}
+
+.m-logoOlL .u-logo:hover{
+	background: url(../images/stu-spr.png) #f1c40f no-repeat 10px -516px;
+	_background: url(../images/stu-spr.gif) #f1c40f no-repeat 10px -516px;
+}
+
+.m-hdOlL .tt {
+	height:30px;
+	line-height:30px;
+	padding:4px 15px;
+	border-left:1px solid #d6d5d2;
+	border-bottom: 0px;
+}
+
+.m-hdOlL .ctR {
+	width:310px;
+	height:30px;
+	line-height:30px;
+	padding:4px 0;
+	position: relative;
+}
+
+.m-navOlL {
+	color:#96a6a6;
+	background-color:#7c7d7e;
+}
+
+.m-navOlL a,.m-navOlL a:visited,.m-navOlL a:hover {
+	color:#fff;
+}
+
+.m-hdOlL .u-dlBtn sup {
+	font-size:14px;
+	line-height:25px;
+}
+
+.m-hdOlL .u-dlBtn {
+	color:#e84c3d;
+}
+
+.m-bdOlL {
+	padding: 2px 2px;
+	background-color: #fff;
+}
+.m-ftOlL{
+	background-color: #fff;
+	border-top: 1px solid #cecece;
+	/* width: 100%; */
+	height: 38px;
+	/* bottom: 0; */
+	/* left: 0; */
+	line-height: 40px;
+	/* margin-top: 24px; */
+	margin-right: 321px;
+	/* background-color: red; */
+}
+
+.m-ftOlL .lesson-warp{
+	margin:0 auto;
+	width: 600px;
+	font-size:14px;
+	font-weight: bold;
+}
+.m-ftOlL .lesson-warp a{
+	color: #596470;
+}
+.m-ftOlL .lesson-prev{
+	width: 180px;
+	text-align: right;
+}
+.m-ftOlL .lesson-next{
+	width: 180px;
+	text-align:left;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.m-ftOlL .lesson-next a:hover ,.m-ftOlL .lesson-prev a:hover {
+	color: #2fcc71;
+	text-decoration: none;
+}
+.m-ftOlL .unit-name{
+	position: relative;
+	text-align: center;
+	width:136px;
+	display: block;
+	height: 36px;
+}
+.m-ftOlL .unit-name p{
+	position: absolute;
+	top: -5px;
+	left: 0;
+	background-color: #2fcc71;
+	color: #fff;
+	font-weight: bold;
+	font-size: 18px;
+	text-align: center;
+	height: 46px;
+	width: 180px;
+	overflow: hidden;
+	line-height: 42px;
+	white-space: nowrap;
+	padding: 0 10px;
+	text-overflow: ellipsis;
+}
+
+
+/*右侧*/
+.g-sdOlL {
+	position:relative;
+	width:321px;
+	margin-left:-321px;
+}
+
+.m-courseInfo {
+	border-left:1px solid #bfbfbb;
+	border-bottom:1px solid #bfbfbf;
+	background-color:#fff;
+	box-shadow:-1px 0 2px #cbcdcd;
+}
+
+.m-courseInfo .tt {
+	padding:20px 10px 10px;
+	margin:0 10px;
+}
+
+.m-courseInfo .tt span {
+	height:19px;
+	line-height:19px;
+	color:#34495e;
+	padding-left:5px;
+	border-left:10px solid #7e8893;
+}
+
+.m-courseInfo .des {
+	padding:0 10px 15px 10px;
+	margin:0 10px;
+	color:#7e8893;
+	line-height:20px;
+	border-bottom:1px dashed #dcdfe2;
+}
+
+.m-courseInfo .other {
+	padding:9px 12px;
+}
+
+.m-courseFAQs {
+	overflow-y:auto;
+	border-left:1px solid #bfbfbb;
+	border-bottom:1px solid #bfbfbf;
+	background-color:#e4e4e4;
+	box-shadow:-1px 0 2px #cbcdcd;
+}
+
+.m-courseFAQs .tt {
+	color:#c1392b;
+	margin:0 10px;
+	background:url(../images/doubleL.gif) repeat-x left bottom;
+}
+
+.m-courseFAQs .ct {
+	margin:0 10px;
+}
+
+.m-courseFAQs .itemAQ {
+	padding:10px 0 10px 5px;
+	background:url(../images/doubleL.gif) repeat-x left bottom;
+}
+
+.m-courseFAQs .ttAQ {
+	color:#333;
+}
+
+.m-courseFAQs .ttAQ a,.m-courseFAQs .ttAQ .z-top {
+	text-align:center;
+	color:#96a6a6;
+	width:38px;
+	height:19px;
+	line-height:19px;
+	background:url(../images/stu-spr.png) no-repeat -49px -491px;
+}
+
+.m-courseFAQs .ttAQ .z-top {
+	color:#333;
+	background-position:-49px -461px;
+}
+
+.m-courseFAQs .des {
+	padding-top:5px;
+}
+.des .answer{
+	border-bottom: 1px dashed #d1d1d1;
+	padding: 5px 0;
+	color: #34495e;
+}
+.des .m-loadMore a{
+	height: 26px;
+	line-height: 26px;
+	color: #666;
+	background-color: #E9E9E9;
+	border: 1px solid #D6D6D6;
+}
+.des .m-loadMore p{
+	height: 26px;
+	line-height: 26px;
+	background-color: #fff;
+	border: 1px solid #D6D6D6;
+}
+.des .m-loadMore p img{
+	padding-top: 4px;
+}
+.answer .commet-lst{
+	font-size: 12px;
+	color: #333;
+	padding-left: 10px;
+	border-left: 1px solid #333;
+}
+
+.m-courseFAQs .info {
+	padding-top:10px;
+	padding-left: 6px;
+}
+
+.m-courseFAQs .info a {
+	color:#7c8f8f;
+}
+.m-courseFAQs .info a.cur {
+	background-color: #CFCFCF;
+	border: 1px solid #C4C4C4;
+	padding: 2px;
+	border-radius: 2px;
+	color: #4E4E4E;
+}
+.m-courseFAQs .commet{
+	background: url(../images/commet-arrow.gif) repeat-x 27px 2px;
+	padding-top: 12px;
+	padding-left: 10px;
+}
+.commet .txtarea{
+	color: #666;
+	width: 270px;
+	line-height: 20px;
+	font-size: 14px;
+	padding-left: 4px;
+}
+.commet .send{
+	padding:20;
+}
+.m-commentWrap {
+	padding:6px 10px 5px 13px;
+	border-left:1px solid #bfbfbb;
+	background:#fff url(../images/comWrapBg.gif) no-repeat left bottom;
+}
+
+.m-commentWrap textarea {
+	width:190px;
+	height:25px;
+	line-height:25px;
+	padding:2px 2px 0 30px;
+	border:none;
+	background:url(../images/pencil.gif) no-repeat 0 2px;
+}
+
+
+
+
+/*  
+*@Description: 在线学习页面的浮层 新增样式  
+*@Author:      adams sun  
+*@Update:      adams sun(2014-5-10 17:11)  
+*/ 
+/*图文混排样式*/
+.mul-lst{
+	list-style:none;
+}
+.mul-lst .mul-item{
+	padding:10px 10px;
+}
+.mul-lst li{
+	margin:10px; 
+	border: 1px solid #ffffff;
+
+}
+.mul-lst li:hover{
+	background-color: #f4fafd;
+	border-radius: 2px;
+	border: 1px solid #add3f2;
+}
+.mul-lst li a{
+	display: block;
+}
+.mul-item img{
+	padding-right: 10px;
+}
+.mul-item h4{
+	color:#2d3e50;
+	font-size: 14px;
+	line-height: 14px;
+}
+.mul-item h5{
+	color: #cacfd5;
+	font-size: 12px;
+	line-height: 20px;
+}
+
+/*进度结果类 文字标签新增*/
+.done ,.doing ,.undo ,.timeOut{
+	background-color: #2fcc71;
+	color:#fff;
+	font-size: 12px;
+	padding:2px; 
+	margin-left: 2px;
+}
+.doing{
+	background-color: #e84c3d;
+}
+.undo ,.timeOut{
+	background-color: #808b8d;
+}
+
+/*课堂记录*/
+
+.m-courseManage .noSp{
+	padding: 100px 0;
+}
+.m-courseManage .unit{
+	padding: 10px;
+}
+.m-courseManage .unit .item {
+	padding:10px 0;
+	line-height:24px;
+	border-bottom:1px dashed #d8dbdd;
+}
+.m-courseManage .unit .item li{
+	line-height: 40px;
+	height: 40px;
+	font-family:'微软雅黑';
+}
+.m-courseManage .unit .item-title li{
+	line-height: 20px;
+	height: 20px;
+}
+.m-courseManage .unit .date{ 
+	text-align: left;
+	width: 144px; 
+
+}
+.m-courseManage .unit .date h4{
+	font-size: 12px;
+	line-height: 40px;
+	height: 22px;
+	font-size: 16px;
+	font-weight: normal;
+}
+.m-courseManage .unit .date p{
+	font-size: 14px;
+	line-height: 14px; 
+	font-size: 16px;
+}
+.m-courseManage .unit .name{
+	padding: 0 20px;
+	width: 100px;
+}
+.m-courseManage .unit .con{
+	width: 258px;
+	overflow: hidden;
+}
+
+.m-courseManage .unit .con h2{ 
+	color:#333;
+	line-height: 40px;
+	font-size: 16px;
+	font-weight: normal;
+}
+.m-courseManage .unit .con h2 em{
+	color:#666666;
+
+}
+.m-courseManage .unit .con p{
+	line-height: 18px;
+}
+.m-courseManage .unit .con a{
+	font-size: 16px;
+	color: #ECB267;
+	font-weight: normal;
+}
+.m-courseManage .unit .operate{
+	width:75px;
+}
+.operate .todo ,.operate .done{
+	background-color: #66cc00;
+	color:#fff;
+	font-size: 14px;
+	padding:4px 6px; 
+}
+.operate .todo:hover,.operate .done:hover{
+	 text-decoration: none;
+}
+.operate .done{
+	background-color: #96a6a6;
+}
+/*学生课堂*/
+.m-courseManage .tt {
+	padding:10px 20px;
+	border-bottom:1px solid #ecf0f1;
+	background-color:#fafafa;
+}
+
+.m-courseManage .tt .u-pre,.m-courseManage .tt .u-next {
+	display:inline-block;
+	width:22px;
+	height:21px;
+	line-height:0px;
+	font-size:0;
+	padding-top:1px;
+	vertical-align:middle;
+	border:1px solid #dcdcdc;
+	border-radius:2px;
+}
+
+.m-courseManage .tt .u-pre:hover .icon-arrL {
+	background-position:-99px -106px;
+}
+
+.m-courseManage .tt .u-next:hover .icon-arrR {
+	background-position:-125px -106px;
+}
+
+.m-courseManage .tt .txt {
+	height:24px;
+	line-height:24px;
+	padding:0 10px;
+}
+
+.m-courseManage .m-crtWeek .u-pre,.m-courseManage .m-crtWeek .u-next {
+	border-color:#fafafa;
+}
+
+.m-crtDate,.m-crtWeek {
+	padding:3px 0;
+}
+
+.m-crtDate {
+	margin-right:180px;
+}
+
+.icon-arrL,
+.icon-arrR,.icon-viewSmall,.icon-viewLst,.icon-tickOff,.icon-prepareLessons,.icon-courseDes {
+	display:inline-block;
+	width:20px;
+	height:20px;
+	line-height:0;
+	font-size:0;
+	background:url(../images/course-spr.png) no-repeat -99px -56px;
+	_background:url(../images/course-spr.gif) no-repeat -99px -56px;
+}
+
+.icon-arrR {
+	background-position:-125px -56px;
+}
+
+.icon-viewSmall {
+	background-position:-154px -56px;
+}
+
+.icon-viewLst {
+	background-position:-188px -56px;
+}
+
+.icon-tickOff {
+	width:18px;
+	height:18px;
+	background-position:-64px -108px;
+}
+
+/*缩略视图与列表视图*/
+.m-view {
+	overflow:hidden;
+	border:1px solid #e5e7e8;
+	background-color:#fff;
+}
+
+.m-view a {
+	padding:4px 6px;
+}
+
+.u-viewSmall:hover .icon-viewSmall {
+	background-position:-154px -106px;
+}
+
+.u-viewLst:hover .icon-viewLst {
+	background-position:-188px -106px;
+}
+
+.m-view .z-sel {
+	opacity:0.5;
+	filter:alpha(opacity=50);
+	background-color:#ddd;
+}
+
+.m-view .z-sel .icon-viewSmall,.m-view .z-sel:hover .icon-viewSmall {
+	background-position:-154px -56px;
+}
+
+.m-view .z-sel .icon-viewLst,.m-view .z-sel:hover .icon-viewLst {
+	background-position:-188px -56px;
+}
+
+/*添加评价*/
+.m-addAppraisal {
+	padding: 10px;
+}
+.m-addAppraisal .addMarks{
+	padding-bottom: 10px;
+	border-bottom: 1px dashed #DFDFDF;
+}
+.m-addAppraisal .addMarks label{
+	margin-right: 20px;
+}
+
+.m-addAppraisal .addTxt{
+	padding-top: 10px;
+}
+
+.m-addAppraisal .addTxt textarea{
+	padding: 4px;
+}
+/*游戏列表*/
+.m-sidernav ul li{
+    width: 100%;
+    padding:0 0 12px 0; 
+}
+.m-sidernav ul li a{
+    display: block;
+    height: 38px;
+    line-height: 38px; 
+    background-color: #fff;
+    color: #999;
+    font-size: 16px;
+    text-align: center;
+	border: 1px solid #d2d7dd;
+	box-shadow: 0px 1px 2px #e7d2b3;
+    border-radius: 3px;
+}
+.m-sidernav ul li a:hover,.m-sidernav ul li a.sel{ 
+    background-color: #66cc00; 
+    color: #fff; 
+    text-decoration: none;
+    border: 1px solid: #66cc00; 
+}
+.m-playList .ct li { 
+	padding: 0 0 0 190px;
+	height: 140px;
+	float: left;
+	margin-bottom: 10px;
+	margin-left: 10px;
+}
+.m-playList .ct dt { 
+	top: 0px;
+	left: 0px;
+}
+.m-playList .ct dt .cover{
+	width:46px;
+	height: 140px;
+	/*background:url(../images/palyCover.png) no-repeat 0 0;*/
+	position: absolute;
+	right: 0;
+	top:0;
+	z-index: 50
+}
+.m-playList .ct  li dd{
+	width: 150px;
+	padding-right: 10px;
+}
+.m-playList .ct{
+	padding: 10px 10px 10px 0;
+}
+.m-playList .ct li .data span{
+	 font-size: 16px;
+	 color: #74d026;
+}
+.m-playList .ct li .title{
+	height: 32px;
+	display: block;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	 /*padding:8px 0 12px 0;*/
+}
+.m-playList .ct li .intro{
+	height: 72px;
+	overflow: hidden;
+	display: block;
+	margin-top: 4px;
+	font-size: 12px;
+}
+
+
+/*==游戏详情==*/
+.wk_docPreview {
+	padding:8px 15px 8px 0;
+	background:url(../images/previewCon_bg.jpg) repeat-x left top;
+}
+.play_docPreview{
+	border: 2px;
+	box-shadow: none;
+	background:none ;
+	padding:0px 15px 8px 0;
+
+}
+.play_docPreview .main{
+	margin: 10px 0 10px 0;
+	background-color: #fff;
+	border: 1px solid #d2d7dd;
+	border-radius: 3px;
+	box-shadow: 0px 2px 2px #d2d5d7;
+}
+.play_docPreview .main #flash_play_obj{
+	width: 742px;
+	height: 432px;
+	display: block;
+	background-color: #f2f2f2;
+	margin: 10px 10px 6px 10px;
+}
+.wk_docPreview .sidebar {
+	overflow: visible;
+	_overflow: hidden;
+}
+.wk_titleIndex {
+	font-weight: normal;
+	height: 36px;
+	line-height: 30px;
+	color: #333333;
+	font-size: 20px;
+	margin-bottom: 5px;
+	background: url(../images/tec_resource_detail_borderbottom.gif) no-repeat 0 bottom;
+}
+.wk_docPreview .userInfo {
+	padding: 17px 0 12px 0;
+}
+
+.wk_docPreview .userInfo dt a {
+	font-size: 20px;
+	color: #3598dc;
+	font-weight: normal;
+}
+.wk_docPreview .docRate, .wk_corpusPreview .docRate {
+	line-height: 18px;
+	padding: 4px 0 0;
+}
+.wk_docPreview .docRate i, .wk_corpusPreview .docRate i {
+	vertical-align: top;
+}
+.wk_docPreview .docOperate {
+	width: 200px;
+	position: relative;
+	padding: 12px 0 10px 0;
+}
+
+.play_docPreview .main{
+	padding: 5px;
+	border: 0px none;
+	border-radius:0px none;
+	box-shadow: none;
+}
+
+.play_docPreview .main-bottom{
+	background-color: #fff;
+	padding: 10px;
+}
+
+.play_docPreview .main-bottom .tt h2{
+	font-size: 16px;
+	padding-bottom: 5px;
+}
+.play_docPreview .main-bottom .ct{
+	padding-top: 4px;
+}
+
+.play_docPreview .downLoadWrap a{
+	background:url(../images/play_btn.png) no-repeat 0 0;
+}
+.play_docPreview .downLoadWrap a:hover{
+	background-position:0 -40px;
+}
+.play_docPreview  .docOperate .wk_titleIndex{
+	 padding-top: 25px;
+}
+.play_docPreview  .play-introduce{
+	 padding-top: 10px;
+	 color: #333;
+	 font-size: 14px;
+}
+.play_docPreview  .play-introduce span{
+	 height: 26px;
+	 line-height: 26px;
+	 padding-left:18px; 
+	 background:url(../images/play_btn.png) no-repeat 0 -80px;
+     font-size: 16px;
+}
+.play_docPreview  .play-introduce .play-introduce-line{
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+	border-bottom: 1px dotted #b9b9b9;
+}
+
+
+
+
+
+
+
+/*2014-5-29新增加*/
+
+/*课程管理*/
+/*icon*/
+.icon-evaluate,.icon-lessonQuestion,.icon-addCourse,.icon-pre,.icon-next,.icon-FAQs1 {
+	display:inline-block;
+	width:26px;
+	height:30px;
+	line-height:0;
+	font-size:0;
+	vertical-align:middle;
+	background:url(../images/course-spr.png) no-repeat 0 0;
+	_background:url(../images/course-spr.gif) no-repeat 0 0;
+}
+
+/*课程记录*/
+/*.icon-record {
+	background-position:-30px 0;
+}*/
+
+/*老师自评*/
+.icon-evaluate {
+	background-position:-30px 0;
+}
+
+/*添加课程印象*/
+/*.icon-impress {
+	background-position:-60px 0;
+}*/
+
+/*随堂测评*/
+/*.icon-evaluation {
+	background-position:-88px 0;
+}*/
+
+/*课程问答*/
+.icon-lessonQuestion {
+	background-position:-120px 0;
+}
+
+.icon-FAQs1 {
+	width:31px;
+	height:31px;
+	background-position:-150px 0;
+}
+
+/*添加教案*/
+.icon-addCourse {
+	width:48px;
+	height:48px;
+	background-position:0 -42px;
+}
+
+/*翻页*/
+.icon-pre,.icon-next {
+	width:16px;
+	height:41px;
+	background-position:-72px -45px;
+}
+
+.icon-next {
+	background-position:-58px -45px;
+}
+
+/*左右箭头&视图*/
+/*重复样式*/
+/*.icon-arrL,.icon-arrR,.icon-viewSmall,.icon-viewLst,.icon-tickOff,.icon-prepareLessons,.icon-courseDes {
+	display:inline-block;
+	width:20px;
+	height:20px;
+	line-height:0;
+	font-size:0;
+	background:url(../images/course-spr.png) no-repeat -99px -56px;
+	_background:url(../images/course-spr.gif) no-repeat -99px -56px;
+}
+
+.icon-arrR {
+	background-position:-125px -56px;
+}
+
+.icon-viewSmall {
+	background-position:-154px -56px;
+}
+
+.icon-viewLst {
+	background-position:-188px -56px;
+}
+
+.icon-tickOff {
+	width:18px;
+	height:18px;
+	background-position:-64px -108px;
+}
+*/
+.icon-prepareLessons,.icon-courseDes {
+	width:22px;
+	height:22px;
+	background-position:0 -105px;
+}
+
+.icon-courseDes {
+	background-position:-33px -105px;
+}
+
+.m-courseRemind,.m-myClass ,.m-myFavor ,.m-resourceUpload {
+	padding:10px;
+	background-color:#fff;
+	border:1px solid #e5e5e5;
+}
+
+.m-courseRemind .tt,.m-myClass .tt {
+	height:36px;
+	line-height:36px;
+	border-bottom:1px solid #ecf0f1;
+}
+
+.m-myClass{
+	background: #fff url(../images/myclassbg.gif) 0 0 no-repeat;
+}
+.m-myClass .tt {
+	border-bottom:1px dotted #dadada;
+}
+
+.m-courseRemind .stat {
+	padding:15px 0;
+	border-bottom:1px solid #ecf0f1;
+}
+
+.m-courseRemind .stat .item {
+	display:inline-block;
+	width:71px;
+}
+
+.m-courseRemind .stat .item:hover {
+	text-decoration:none;
+}
+
+.m-courseRemind .stat .item span {
+	display:block;
+}
+
+.m-courseRemind .recentDo {
+	padding:10px 0 0;
+	line-height:20px;
+}
+
+.m-myClass .classItem {
+	padding:15px 0;
+	border-bottom:1px dotted #dadada;
+}
+
+.m-myClass .classItem .logo {
+	width:40px;
+	overflow:hidden;
+}
+
+.m-myClass .classItem .info {
+	width:165px;
+}
+
+.m-myClass .classItem .schName ,.m-myClass .classItem .desc{
+	padding-top:2px;
+}
+
+.m-myClass .m-moreWrap {
+	padding-top:10px;
+}
+/*课程详情*/
+.m-lessonInfo{
+	padding:10px;
+	background: #fff url(../images/class.jpg) 0 0 no-repeat;
+}
+.m-lessonInfo .tt{
+	height:36px;
+	line-height:36px;
+	border-bottom:1px solid #ecf0f1;
+}
+.m-lessonInfo .ct{
+	padding: 8px 0 2px 0;
+}
+
+/*快捷导航*/
+/*换成引用public*/
+/*.m-quickNav {
+	position:absolute;
+	top:0;
+	right:-75px;
+	width:60px;
+	border:1px solid #dfe4e8;
+	border-bottom:none;
+	background-color:#f3f5f7;
+}
+
+.m-quickNav .item {
+	text-align:center;
+	display:block;
+	width:60px;
+	padding:5px 0;
+	border-bottom:1px solid #dfe4e8;
+}
+
+.m-quickNav .item i {
+	width:24px;
+}
+
+.m-quickNav .u-FAQs {
+	padding:15px 0;
+	background-color:#fff;
+}
+
+.m-quickNav .u-FAQs i {
+	width:31px;
+}*/
+
+/*备课夹*/
+.m-prepareLessons,.m-recordAevaluate,.m-addCourseImpress,.m-evaluation,.m-FAQs ,.m-addCourseCount{
+	padding:0 20px;
+	background-color:#fff;
+	border:1px solid #dcdcdc;
+}
+
+.m-prepareLessons {
+	width:100%;
+	padding:0;
+}
+
+.m-recordAevaluate .ct,.m-addCourseImpress .ct,.m-evaluation .ct,.m-FAQs .ct {
+	padding-bottom:15px;
+}
+
+.m-prepareLessons .tt,.m-addCourseImpress .tt,.m-evaluation .tt,.m-FAQs .tt {
+	height:30px;
+	line-height:30px;
+	padding:15px 0;
+}
+
+.m-prepareLessons .tt {
+	padding:15px 20px;
+}
+
+.m-evaluation .ct,.m-FAQs .ct {
+	border-top:1px solid #e4e4e4;
+}
+
+.m-prepareLessons .ct {
+	width:100%;
+	padding-top:20px; 
+	background-color:#f7f7f7;
+}
+
+.m-prepareLessons .courseItem {
+	display:inline;
+	width:126px;
+	height:167px;
+	margin:0 0 20px 20px;
+}
+
+.m-prepareLessons .courseItem .pic{
+	position:relative;
+	display:inline-block;
+	width:124px;
+	height:120px;
+	line-height:120px;
+	overflow:hidden;
+	text-align:center;
+	background-color:#fff;
+	border:1px solid #c6c6c6;
+	box-shadow:0 1px 2px #e4e4e4;
+}
+#courseRecord {
+	font-size: 14px;
+	padding: 10px 20px 40px 20px;
+	color: #999;
+}
+.m-prepareLessons .courseLoadMore{
+	padding: 10px;
+}
+
+.m-prepareLessons .courseItem .pic:hover {
+	border-color:#d9d9d9;
+}
+
+.m-prepareLessons .courseItem .pic span {
+	position:static;
+	+position:absolute;
+	top:50%;
+}
+
+.m-prepareLessons .courseItem .u-addCourseBtn span {
+	*top:30%;
+	*left:30%;
+}
+
+.m-prepareLessons .courseItem .pic img {
+	position:static;
+	+position:relative;
+	top:-50%;
+	left:-50%;
+	vertical-align:middle;
+}
+
+.m-prepareLessons .courseItem .pic span:after {
+	content: ".";
+	font-size: 1px;
+	visibility: hidden;
+}
+
+.m-prepareLessons .courseItem .name {
+	height:20px;
+	line-height:20px;
+	overflow:hidden;
+	padding:5px 0 2px 0;
+}
+
+.m-prepareLessons .courseItem .date {
+	padding-left:4px;
+}
+
+.m-prepareLessons .courseItem .u-addCourseBtn:hover {
+	background-color:#fbfbfb;
+}
+
+/*课程记录&老师自评*/
+.m-recordAevaluate .tt {
+	padding:15px 0;
+}
+.m-recordAevaluate textarea {
+	width:682px;
+	height:206px;
+	font-size:14px;
+	line-height:1.5;
+	padding: 10px;
+}
+
+/*添加课程评价*/
+.m-addCourseCount .tt{
+	padding:15px 0;
+}
+.m-addCourseCount .ct{
+	padding-bottom:10px;
+}
+/*添加课程评价 学生角色可见*/
+.m-addCourseCount #appraiseForm{
+	font-size: 16px;
+	line-height: 16px;
+	font-weight: bold;
+	vertical-align: middle;
+	color: #666;
+}
+.m-addCourseCount #appraiseForm .f-fl{
+	line-height: 14px;
+	height: 26px;
+	padding: 10px 0 2px 0;
+}
+
+.m-addCourseCount #appraiseForm .f-fr{
+	width: 330px;
+	padding: 7px  2px 2px 2px;
+}
+.m-addCourseCount #appraiseForm .f-fr input{
+	height: 20px;
+	width: 265px;
+}
+/*==添加课程评价 学生角色可见==*/
+
+/*备课章节选择弹框*/
+
+#select-all {
+	font-size: 14px;
+	border-top: 1px solid #e5e5e5;
+	border-left: 1px solid #e5e5e5;
+	line-height: 40px;
+	position: relative;
+	zoom: 1
+}
+
+#select-all dl {
+	height: 40px;
+	border-bottom: 1px solid #e5e5e5;
+	border-right: 1px solid #e5e5e5;
+	position: relative
+}
+
+#select-all dt {
+	background: #fbfbfb;
+	border-right: 1px solid #e5e5e5;
+	width: 118px;
+	text-align: center;
+	float: left
+}
+
+#select-all dd {
+	padding: 0 40px;
+	overflow: hidden;
+	position: relative;
+	zoom: 1;
+	_margin-left: 118px;
+	_width:360px;
+}
+
+#select-all dd .sel-list {
+	width: 970px;
+	height: 40px;
+	position: relative
+}
+
+#select-all dd .sel-list ul {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 410px;
+}
+
+#select-all dd .sel-list ul li {
+	/*width: 81px;*/
+	float: left;
+}
+
+#select-all dd .className ul li{
+	width: 200px;
+}
+
+#select-all .sel-list li a {
+	padding: 2px 10px;
+	margin-right: 10px;
+	text-decoration: none;
+}
+#select-all .sel-list li a.selected {
+	background: #069d6a;
+	color: #fff;
+}
+
+#select-all .sel-list li a:hover {
+	text-decoration: none;
+}
+
+
+#select-all a.see-select-mini {
+	position: absolute;
+	right: 10px;
+	top: 4px;
+	padding: 10px
+}
+
+#select-all a.see-select-mini:hover .n-mini {
+	background-position: -32px -70px
+}
+
+#select-all dd .see-select-left {
+	position: absolute;
+	left: 10px;
+	_left: 0px;
+	top: 7px;
+	padding: 0px;
+	line-height: 24px;
+}
+
+#select-all dd .see-select-left:hover .n-left {
+	background-position: -8px -80px
+}
+
+#select-all dd a.see-select-left:active .n-left {
+	background-position: -8px -90px
+}
+
+#select-all dd .see-select-right {
+	position: absolute;
+	right: 10px;
+	_right: 0px;
+	top: 7px;
+	line-height: 24px;
+	padding: 0px;
+}
+
+#select-all dd .see-select-right:hover .n-right {
+	background-position: -15px -80px
+}
+
+#select-all dd a.see-select-right:active .n-right {
+	background-position: -15px -90px
+}
+
+#select-all dd .see-select-left-un .n-left {
+	background-position: -8px -100px!important
+}
+
+#select-all dd .see-select-right-un .n-right {
+	background-position: -15px -100px!important
+}
+/*==备课章节选择弹框==*/
+/*历史印象*/
+#impression_praise .awardItem,#impression_criticism .awardItem{
+	border: 1px solid #D6D6D6;	
+	border-bottom-width:0;
+}
+.awardItem li{
+	width: 100%;
+}
+.awardItem li img{
+	width: 20px;
+	height: 20px;
+	margin-right: 5px;
+}
+.awardItem li .f-fl{
+	color: #666;
+	padding: 12px 5px;
+	height: 18px;
+	line-height: 20px;
+	font-size: 12px;
+	background-color: #F2F9FE;
+	border:solid #D6D6D6;
+	border-width: 0 1px 1px 0; 
+	width: 14.6%;
+	font-weight: bold;
+	color: #333;
+	display: block;
+	overflow: hidden;
+}
+.awardItem li .f-fr{
+	color: #666;
+	height: 18px;
+	font-size: 12px;
+	background-color: #FBFBFB;
+	border-bottom: 1px solid #D6D6D6;
+	padding: 12px;
+	width: 80%;
+}
+.awardItem li .f-fr a{
+	margin:0 4px;
+	color: #3598dc;
+}
+#courseImpress {
+	padding: 10px 20px 40px 20px;
+}
+.m-evaluation .item, .m-FAQs .item {
+	line-height: 24px;
+	padding: 4px;
+	border-bottom: 1px solid #e4e4e4;
+}
+/*学习中心 图标*/
+.icon-learnC{
+	background-position: 0 0px;
+}
+/*==学习中心 图标==*/
+/*学生游戏 加评论*/
+.get_comment_list{
+	background-position: 0 0px;
+}
+.get_comment_list .ct {
+padding: 10px 0;
+}
+.get_comment_list .ct textarea {
+width: 96%;
+padding: 8px 12px;
+font-size: 14px;
+height: 60px;
+}
+.get_comment_list .send {
+padding-top: 10px;
+padding-bottom: 10px;
+border-bottom: 1px solid #D6D4D4;
+}
+.get_comment_list  .send a {
+display: block;
+width: 114px;
+height: 38px;
+background: url(../images/selfstudy_spr.png) no-repeat -68px -148px;
+}
+.get_comment_list  .ft li {
+border-bottom: 1px dotted #C5C4C4;
+position: relative;
+padding: 20px 20px 20px 52px;
+}
+.get_comment_list  .ft .avarter {
+position: absolute;
+top: 20px;
+left: 0;
+}
+.get_comment_list  .ft .name a {
+color: #3598DC;
+font-size: 14px;
+}
+.get_comment_list  .ft .con, .get_comment_list   .ft .time {
+color: #777;
+}
+/*==学生游戏 加评论==*/

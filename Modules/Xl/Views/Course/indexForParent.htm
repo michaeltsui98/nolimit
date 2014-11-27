@@ -1,0 +1,60 @@
+<div class="g-wrap">
+    <div class="g-bd">
+        <div class="m-nav clearfix f-mb10">
+        <div class="m-breakNav">
+            <i class="icon_tc1"></i>
+            <span>当前位置</span>：
+            <a href="/{$xk}/index">家长</a>
+            &gt; 课程记录
+        </div>
+        </div>    
+               <!--{eval  echo Cola_Tpl::widget_out("Modules_{$ucxk}_Controllers_Parent",'PublicStuInfo')}-->
+    </div>
+        <div class="g-mn f-fr">
+            <div class="m-courseManage s-bsdStyle1" id="courseList">
+
+                <div class="tt clearfix">
+                    <div class="m-crtDate f-fl">
+                        <a href="javascript:;" title="上月" id="prevmonth" class="u-pre f-tac"><i class="icon-arrL"></i></a><strong class="txt f-ib f-vam f-fs16" id="thismonth" data-month="<!--{eval echo date('Y-m');}-->" ><!--{eval echo date('Y-m');}-->(本月)</strong><a href="javascript:;" title="下月" id="nextmonth" class="u-next f-tac"><i class="icon-arrR"></i></a>
+                    </div> 
+                </div>
+                <div class="ct s-bgcWhite">
+                    <!--{if !empty($course) }-->
+                    <div class="unit f-mb5">
+                        <div class="lst f-fs16 s-fcGray"> 
+                            <ul class="item clearfix item-title">
+                                <li class="date f-fl  s-fcBlue">时间</li>
+                                <li class="name f-fl s-fcBlue">任课老师</li>
+                                <li class="con f-fl s-fcBlue">课名</p></li>
+                                <li class="count f-fl s-fcBlue">课程评分</li>
+                                <li class="operate f-fr s-fcBlue">操作</li>
+                            </ul>
+                                <!--{loop $course $key $value}-->
+                                <ul class="item clearfix">
+                                    <li class="date f-fl"><h4 class="time">{$value['course_date']}第{$value['course_sort']}节</h4></li>
+                                    <li class="name f-fl">{$value['teacher_user_name']}</li>
+                                    <li class="con f-fl">
+                                        <h2>{$value['node_title']}
+                                        <a href="/{$xk}/Parent/courseDetail?course_id={$value['id']}" target="_blank" >详情</a>
+                                        </h2>
+                                    </li>
+                                    <li class="count f-fl"><em>{$value['appraise']['average']}</em></li>
+                                    <!--{eval if($value['is_appraise']):;}-->
+                                    <li class="operate f-fr"><i class="done">已评价</i></li>
+                                    <!--{eval else :;}-->
+                                    <li class="operate f-fr"><a class="todo addAppraise" data-course="{$value['id']}" href="javascript:;">去评价</a></li>
+                                    <!--{eval endif;}-->
+                                </ul>
+                                <!--{/loop}-->
+                        </div>
+                    </div>
+                                    <!--{else}-->
+                <div class="m-emptytips"><p>暂无课堂记录</p></div>
+                <!--{/if}-->
+                </div>
+            </div>
+        </div>
+
+        <div class="f-cb"></div>
+    </div>
+

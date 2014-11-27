@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>教师角色-课程管理</title>
+    <link href="css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="css/public.css" rel="stylesheet" type="text/css" />
+    <link href="css/component.css" rel="stylesheet" type="text/css" />
+    <link href="css/tec-layout.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <!--通用顶部-->
+    <div class="g-hd">
+        <!--hd info-->
+        <div class="g-hdt">
+            <div class="g-hdc f-fs14">
+                <div class="m-hdl f-fl">
+                    <a href="" title="" target="_blank" class="a-LGrayl f-fl"> <i class="icon-home"></i>
+                        首页
+                    </a>
+                    <a href="" title="" target="_blank" class="a-LGrayl f-fl">意见反馈</a>
+                    <div class="m-seaBox f-fl">
+                        <div class="customForm_searchTxtInput customForm_searchStyle1 customForm_searchInputBoxGetFocus">
+                            <form action="/Search" method="get">
+                                <input name="" type="text" class="txtInput f-fl" value="输入关键字搜索" />
+                                <div class="customDropdownWrap customDropdownStyle2 customDropdown1MouseOver f-fl">
+                                    <span class="dropdown_currentValue">
+                                        <span class="dropdownTxt">博客</span> <i class="icon_downArrStyle2"></i>
+                                    </span>
+                                    <div class="dropdownItem width90"></div>
+                                </div>
+                                <label class="f-fl searchBtn">
+                                    <input name="" type="submit" value="" class="icon_magnifier" />
+                                </label>
+                            </form>
+                        </div>
+                        <!--<ul class="associateWrap f-fs12">
+                        <li class="associateCell">
+                            <a href="" title="">这是一个词</a>
+                        </li>
+                        <li class="associateCell">
+                            <a href="" title="">这是一段话</a>
+                        </li>
+                        <li class="associateCell">
+                            <a href="" title="">这是一个词</a>
+                        </li>
+                        <li class="associateCell">
+                            <a href="" title="">这是一段话</a>
+                        </li>
+                        <li class="associateCell">
+                            <a href="" title="">这是一个词</a>
+                        </li>
+                        <li class="associateCell">
+                            <a href="" title="">这是一段话</a>
+                        </li>
+                    </ul>
+                    -->
+                </div>
+                <div class="f-cb"></div>
+            </div>
+            <div class="m-hdr f-fr f-tar">
+                <a href="" title="" target="_blank" class="loginBtn f-mr15">登录</a>
+                <a href="" title="" target="_blank" class="a-LGrayl">注册多多社区账号</a>
+            </div>
+            <div class="f-cb"></div>
+        </div>
+    </div>
+    <!--logo&nav-->
+    <div class="g-hdb">
+        <div class="g-hdc">
+            <h1 class="m-logo f-fl">
+                <a href="" title="心理健康教育" target="_blank" class="u-logo">心理健康教育</a>
+            </h1>
+            <div class="m-nav f-tar f-fs14 f-fr">
+                <a href="" title="学习中心" target="" class="item">
+                    <i class="icon-learnC"></i>
+                    <span class="txt">教师中心</span>
+                </a>
+                <a href="" title="学习中心" target="" class="item z-crt">
+                    <i class="icon-resource"></i>
+                    <span class="txt">资源</span>
+                </a>
+                <a href="" title="学习中心" target="" class="item">
+                    <i class="icon-tecStudy"></i>
+                    <span class="txt">研修</span>
+                </a>
+                <a href="" title="学习中心" target="" class="item">
+                    <i class="icon-lessonPrepare"></i>
+                    <span class="txt">备课</span>
+                </a>
+                <a href="" title="学习中心" target="" class="item">
+                    <i class="icon-lessonLecture"></i>
+                    <span class="txt">课堂</span>
+                </a>
+                <a href="" title="问答" target="" class="item">
+                    <i class="icon-FAQs"></i>
+                    <span class="txt">问答</span>
+                </a>
+                <a href="" title="资讯" target="" class="item">
+                    <i class="icon-news"></i>
+                    <span class="txt">资讯</span>
+                </a>
+            </div>
+            <div class="f-cb"></div>
+        </div>
+    </div>
+</div>
+
+<!-- 弹框加载 -->
+<div class="m-upload width600" style="display: block; top: 200px; left: 500px;">
+    <h5 class="hd">
+        <a class="icon-close f-fr upload-close" href="javascript:;" title="关闭"></a> <strong>创建课程安排</strong>
+    </h5>
+
+    <div class="bd f-mt10">
+        <div class="courseType s-bgc f-mb10">
+            <dl class="clearfix f-mb10">
+                <dt class="f-fl">课程对象：</dt>
+                <dd class="f-fl">
+                    <span><em>年级:</em>
+                    <select id="province" name="province">
+                        <option value="">一年级</option><option value="MP3">一年级</option><option value="MP3">一年级</option><option value="MP3">一年级</option>
+                    </select>
+                    </span>
+
+                    <span class="f-ml20"><em>班级:</em>
+                    <select id="province" name="province"><option value="">1班</option><option value="MP3">1班</option><option value="MP3">1班</option><option value="MP3">1班</option></select>
+                    </span>
+                </dd>
+            </dl>
+
+            <dl class="clearfix">
+                <dt class="f-fl">课程备注：</dt>
+                <dd class="f-fr"><textarea name="" id="" cols="80" rows="1" placeholder="请输入备注"></textarea></dd>
+            </dl>
+        </div>
+
+        <div class="courseTable f-mb10">
+            <div class="tableInfo clearfix">
+                <div class="f-fl f-fs16">
+                    从我的备课夹中挑选
+                    <select id="province" name="province" class="f-ml20">
+                        <option value="">鄂科版</option></select>
+                </div>
+                <div class="f-fr">
+                    <a href="" class="customBtn colourLightGray customBtnNormal">新建备课夹</a>
+                </div>
+            </div>
+            <table class="tableSet" id="tableTest">
+                <thead>
+                    <tr>
+                        <th style="width:5%" class="order"><input type="radio" name="" id="" /></th>
+                        <th style="width:40%">备课标题</th>
+                        <th style="width:20%">章节</th>
+                        <th style="width:35%">操作</th>
+                    </tr>
+                </thead>
+                <!-- 表头可选 -->
+                <tbody>
+                    <tr class="">
+                        <td><input type="radio" name="" id="" /></td>
+                        <td>第1课 我是小小理财师</td>
+                        <td>一单元第一章</td>
+                        <td style="font-size:12px"><a href="">编辑</a>|<a href="">复制</a>|<a href="">删除</a>|<a href="">添加到课程</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="m-ftc">
+        <div class="w-btn">
+            <input type="submit" class="customBtn colourDarkGreen customBtnNormal f-mr10 " value="确定">    
+            <input type="button" class="customBtn colourLightGray customBtnNormal" value="取消">
+        </div>
+    </div>
+</div> 
+<div class="pageBg"></div>
+</body>
+</html>
