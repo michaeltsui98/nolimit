@@ -25,15 +25,41 @@ class Controllers_Index extends Controllers_Base
           
     }
     
+    /**
+     * 测试集成orm组件到Cola 中来
+     */
     function resAction(){
-        
-        //$ar = array('a','b','c');
-        //$this->abort($ar);die;
-        //phpinfo();die;
-        $id = $this->getVar('id',945);
-    	$res = Helper_Search::inits()->indexQuery(" id:{$id}" );
-    	print_r($res['data']);
+       
+        $log =  new Orm_SysLog;
+        $log->uid = 'aaaaa';
+        $log->cost = 111;
+        $log->save();
+        $ids = $log->id;
+         
+        var_dump($ids);
+        die;
     }
+    function delAction(){
+        $id = $this->getVar('id',45);
+        $res= Orm_SysLog::find($id)->delete();
+        var_dump($res);
+    }
+    
+    function desAction(){
+        $id = $this->getVar('id',46);
+        $res= Orm_SysLog::destroy(array(51,52));
+        var_dump($res);
+    }
+    function fisAction(){
+      
+        $l= new Orm_SysLog;
+        $res = $l->newQuery()->where('id','=','50')->get()->toArray();
+        
+       // $res= Orm_SysLog::where('id','=','50')->update(array('uid'=>'bbbbbb'));
+        var_dump($res);
+    }
+    
+    
     
     function testAction(){
         

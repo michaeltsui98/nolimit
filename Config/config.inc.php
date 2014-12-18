@@ -8,6 +8,7 @@ include 'fs.inc.php';
 include 'webservices.inc.php';
 include 'xhprof.inc.php';
 include 'node.inc.php';
+include 'database.php';
 $config = array(
 
     '_search' => array(
@@ -28,4 +29,4 @@ $config = array(
     '_viewsHome'       => 'views',
     '_widgetsHome'     => 'widgets'
 );
-$config = array_merge($config, $constConfig, $urlConfig, $cacheConfig, $dbConfig, $fsConfig, $queueConfig, $webServicesConfig, $xhprofConfig,$nodeConfig);
+$config = array_merge($config, $constConfig, $urlConfig, $cacheConfig, $dbConfig, $fsConfig, $queueConfig, $webServicesConfig, $xhprofConfig,$nodeConfig,$ormdbConfig);

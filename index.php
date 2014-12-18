@@ -7,26 +7,34 @@ header ( "Content-Type:text/html;charset=utf-8" );
 define('S_ROOT', __DIR__.DIRECTORY_SEPARATOR);
 define('BASE_PATH', '/');
 
-define('XHPROF', TRUE);
+define('XHPROF', false);
 
 if (XHPROF) {
-    xhprof_enable();
+    //xhprof_enable();
 }
 
 
 require 'Cola/Cola.php';
 $cola = Cola::getInstance ();
-$xh = new Cola_Com_Xhprof ();
+//$xh = new Cola_Com_Xhprof ();
 //$benchmark = new Cola_Com_Benchmark ();
 
  
  
+    //die('wwewe');
 $cola->boot ();
 
+ 
+
+
+
+
+
+
 $cfg = $cola->getConfig('_sessionCache');
-ini_set('session.cookie_domain', '.dodoedu.com');
-ini_set("session.save_handler", 'memcache');
-ini_set("session.save_path", $cfg['host']); 
+//ini_set('session.cookie_domain', '.dodoedu.com');
+//ini_set("session.save_handler", 'memcache');
+//ini_set("session.save_path", $cfg['host']); 
 session_start();
 
 Cola_Response::charset();
@@ -43,7 +51,7 @@ try {
         if (isset($controllerConfig['xhprofStat']) && 'on' === $controllerConfig['xhprofStat'] && isset($controllerConfig['rate']) && 1 == mt_rand(1, $controllerConfig['rate'])) {
             echo   $xh->save ();
         } else {
-            xhprof_disable();
+           // xhprof_disable();
         }
     }
     

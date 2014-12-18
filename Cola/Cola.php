@@ -78,6 +78,7 @@ class Cola
         ));
 
         Cola::registerAutoload();
+        Cola::registerAutoload('Cola::loadNameSapce');
     }
 
     /**
@@ -193,7 +194,10 @@ class Cola
         $class = $type . '_' . ucfirst($adapter);
         return new $class($config);
     }
-
+    public  static function loadNameSapce($classNmae){
+       // var_dump(COLA_DIR.DIRECTORY_SEPARATOR.$classNmae);die;
+        require COLA_DIR.DIRECTORY_SEPARATOR.$classNmae . '.php';
+    }
     /**
      * Load class
      *

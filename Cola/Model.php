@@ -3,7 +3,7 @@
 /**
  *
  */
-class Cola_Model
+class Cola_Model extends  Cola_Orm
 {
 
     /**
@@ -610,4 +610,6 @@ class Cola_Model
         }
         return $key = md5($cls . $func . serialize($args));
     }
+    
+   
 }
