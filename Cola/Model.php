@@ -3,7 +3,7 @@
 /**
  *
  */
-class Cola_Model extends  Cola_Orm
+class Cola_Model
 {
 
     /**

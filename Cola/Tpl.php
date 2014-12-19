@@ -65,31 +65,42 @@ class Cola_Tpl {
 	public static function parse_rule($template, $tpl = null) {
 		global $_K;
 		 
-		$template = preg_replace ( "/{include\s+([a-z0-9_\/]+)\}/ie", "Cola_Tpl::readtemplate('\\1')", $template );
+		//$template = preg_replace ( "/{include\s+([a-z0-9_\/]+)\}/ie", "Cola_Tpl::readtemplate('\\1')", $template );
+		$template = preg_replace_callback( "/{include\s+([a-z0-9_\/]+)\}/i", function($p){return Cola_Tpl::readtemplate($p[1]);}, $template );
+		
 		//处理子页面中的代码
-		$template = preg_replace ( "/{include\s+([a-z0-9_\/]+)\}/ie", "Cola_Tpl::readtemplate('\\1')", $template );
-		
-		//标签调用
-		//$template = preg_replace ( '/\{tag\((.+?)\)\}/ie', "Cola_Tpl::readtag(\"'\\1'\")", $template );
-		
-		//广告调用
-		//$template = preg_replace ( '/\{ad_tag\((.+?)\)\}/ie', "Cola_Tpl::ad_tag('\\1')", $template );
+		$template = preg_replace_callback("/{include\s+([a-z0-9_\/]+)\}/i", function($p){return Cola_Tpl::readtemplate($p[1]);}, $template );
 		
 		//时间处理
-		$template = preg_replace ( '/\{date\((.+?),(.+?)\)\}/ie', "Cola_Tpl::datetags('\\1','\\2')", $template );
+		$template = preg_replace_callback ( '/\{date\((.+?),(.+?)\)\}/i', function($m){
+		    return Cola_Tpl::datetags($m[1],$m[2]);}, $template 
+		);
 		//货币显示
 		//$template = preg_replace ( '/{c\:(.+?)(,?)(\d?)\}/ie', "Curren::currtags('\\1','\\3')", $template );
 		////头像处理
 		//$template = preg_replace ( '/\{avatar\((.+?),(.+?)\)\}/ie', "Cola_Tpl::avatar('\\1','\\2')", $template );
 		//widget 处理
-		$template = preg_replace ( '/\{widget\((.+?),(.+?)\)\}/ie', "Cola_Tpl::widget('\\1','\\2')", $template );
+		$template = preg_replace_callback ( '/\{widget\((.+?),(.+?)\)\}/i', 
+		        function($m){
+		           return  Cola_Tpl::widget($m[1],$m[2]);
+		        } ,
+		        $template );
 		//widget 可以带参数的
-		$template = preg_replace ( '/\{widgetp\((.+?),(.+?),(.+?)\)\}/ie', "Cola_Tpl::widgetp('\\1','\\2','\\3')", $template );
+		$template = preg_replace_callback ( '/\{widgetp\((.+?),(.+?),(.+?)\)\}/i', 
+		        function ($m){
+		              return Cola_Tpl::widgetp($m[1],$m[2],$m[3]);
+		        }, $template );
+		
 		//文字裁剪
-		$template = preg_replace ( '/\{cutstr\((.+?),(.+?)\)\}/ie', "Cola_Tpl::cutstrtags('\\1','\\2')", $template );
+		$template = preg_replace_callback ( '/\{cutstr\((.+?),(.+?)\)\}/i', 
+		        function($m){return Cola_Tpl::cutstrtags($m[1],$m[2]);}, $template 
+		        );
 		
 		//PHP代码
-		$template = preg_replace ( "/\<\!\-\-\{eval\s+(.+?)\s*\}\-\-\>/ies", "Cola_Tpl::evaltags('\\1')", $template );
+		$template = preg_replace_callback ( "/\<\!\-\-\{eval\s+(.+?)\s*\}\-\-\>/is",
+                function ($p){
+		          return Cola_Tpl::evaltags($p[1]);
+                }, $template );
 				
 		//开始处理
 		//变量
@@ -103,23 +114,39 @@ class Cola_Tpl {
 		$template = preg_replace('/\{\$this-\>(.*)\}/Uis', '<?php echo -this->\\1 ;?>', $template);
 		
 		$template = preg_replace ( "/\{(\\\$[a-zA-Z0-9_\[\]\'\"\$\.\x7f-\xff]+)\}/s", "<?=\\1?>", $template );
-		$template = preg_replace ( "/$var_regexp/es", "Cola_Tpl::addquote('<?=\\1?>')", $template );
-		$template = preg_replace ( "/\<\?\=\<\?\=$var_regexp\?\>\?\>/es", "Cola_Tpl::addquote('<?php echo \\1;?>')", $template );
 		
 		
-		 
-		
+		$template = preg_replace_callback ( "/\<\?\=\<\?\=$var_regexp\?\>\?\>/s", 
+		        function($m){
+		          return Cola_Tpl::addquote("<?php echo $m[1];?>");
+		        }, $template );
 		//逻辑
-		$template = preg_replace ( "/\{elseif\s+(.+?)\}/ies", "Cola_Tpl::stripvtags('<?php } elseif(\\1) { ?>','')", $template );
+		$template = preg_replace_callback ( "/\{elseif\s+(.+?)\}/is",function ($p1){ 
+		    return Cola_Tpl::stripvtags("<?php } elseif($p[1]) { ?>",'');
+		}, $template );
 		$template = preg_replace ( "/\{else\}/is", "<?php } else { ?>", $template );
+		
 		//循环
 		for($i = 0; $i < 6; $i ++) {
-			$template = preg_replace ( "/\{loop\s+(\S+)\s+(\S+)\}(.+?)\{\/loop\}/ies", "Cola_Tpl::stripvtags('<?php if(is_array(\\1)) { foreach(\\1 as \\2) { ?>','\\3<?php } } ?>')", $template );
-			$template = preg_replace ( "/\{loop\s+(\S+)\s+(\S+)\s+(\S+)\}(.+?)\{\/loop\}/ies", "Cola_Tpl::stripvtags('<?php if(is_array(\\1)) { foreach(\\1 as \\2 => \\3) { ?>','\\4<?php } } ?>')", $template );
-			$template = preg_replace ( "/\{if\s+(.+?)\}(.+?)\{\/if\}/ies", "Cola_Tpl::stripvtags('<?php if(\\1) { ?>','\\2<?php } ?>')", $template );
+			$template = preg_replace_callback ( "/\{loop\s+(\S+)\s+(\S+)\}(.+?)\{\/loop\}/is", 
+			        function($m){
+			         return Cola_Tpl::stripvtags("<?php  foreach($m[1] as $m[2]) { ?>","$m[3]<?php } ?>");}, 
+			        $template );
+			$template = preg_replace_callback ( "/\{loop\s+(\S+)\s+(\S+)\s+(\S+)\}(.+?)\{\/loop\}/is", 
+			        function($m){
+			        return Cola_Tpl::stripvtags("<?php  foreach($m[1] as $m[2] => $m[3]) { ?>","$m[4]<?php } ?>"); 
+			        },
+			        $template );
+			$template = preg_replace_callback ( "/\{if\s+(.+?)\}(.+?)\{\/if\}/is", 
+			        function($m){
+			        return Cola_Tpl::stripvtags("<?php if($m[1]) { ?>","$m[2]<?php } ?>");
+			        }, $template );
 		}
 		//常量
-		$template = preg_replace ( "/\{([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)\}/s", "<?php echo \\1;?>", $template );
+		$template = preg_replace_callback ( "/\{([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)\}/s",
+                function($m){
+		        return "<?php echo $m[1];?>";
+                }, $template );
 		//换行
 		$template = preg_replace ( "/ \?\>[\n\r]*\<\? /s", " ", $template );
 		
@@ -136,6 +163,7 @@ class Cola_Tpl {
 		
 
 		$template = strtr($template, array('<?='=>'<?php echo '));
+		//var_dump($template);die;
 		
 		$template = preg_replace('/-this-\>(.*)/Uis', '$this->\\1', $template);
 		
