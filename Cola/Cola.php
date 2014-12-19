@@ -8,43 +8,59 @@ require COLA_DIR . '/Config.php';
 
 class Cola
 {
+
     /**
      * Singleton instance
      *
      * Marked only as protected to allow extension of the class. To extend,
      * simply override {@link getInstance()}.
      *
-     * @var Cola
+     * @var Cola_Dispatcher
      */
     protected static $_instance = null;
-
-    /**
-     * Object register
-     *
-     * @var array
-     */
-    public $reg = array();
 
     /**
      * Run time config
      *
      * @var Cola_Config
      */
+    public static $_config;
+    
     public $config;
+
+    /**
+     * Object register
+     *
+     * @var array
+     */
+    protected static $_reg = array();
 
     /**
      * Router
      *
      * @var Cola_Router
      */
-    public $router;
+    protected $_router;
 
     /**
      * Path info
      *
      * @var string
      */
-    public $pathInfo;
+    protected $_pathInfo = null;
+
+    /**
+     * Dispathc info
+     *
+     * @var array
+     */
+    protected $_dispatchInfo = null;
+    
+    protected static $_cacheClass = TRUE;
+    
+    protected static $_loadedClass = array();
+    
+    protected static $_cacheClassChanged = FALSE;
 
     /**
      * Dispathc info
@@ -52,32 +68,27 @@ class Cola
      * @var array
      */
     public $dispatchInfo;
-
     /**
      * Constructor
      *
      */
     protected function __construct()
     {
-        $this->config = new Cola_Config(array(
-            '_class' => array(
-                'Cola_Model'               => COLA_DIR . '/Model.php',
-                //'Orm_Database'               => COLA_DIR . '/Orm/Database.php',
-                'Cola_View'                => COLA_DIR . '/View.php',
-                'Cola_Controller'          => COLA_DIR . '/Controller.php',
-                'Cola_Router'              => COLA_DIR . '/Router.php',
-                'Cola_Request'             => COLA_DIR . '/Request.php',
-                'Cola_Response'            => COLA_DIR . '/Response.php',
-                'Cola_Ext_Validate'        => COLA_DIR . '/Ext/Validate.php',
-                'Cola_Exception'           => COLA_DIR . '/Exception.php',
-                'Cola_Exception_Dispatch'  => COLA_DIR . '/Exception/Dispatch.php',
-                'Cola_Com'                 => COLA_DIR . '/Com.php',
-                'Cola_Com_Widget'          => COLA_DIR . '/Com/Widget.php',
-                'Cola_Exception'           => COLA_DIR . '/Exception.php'
-            ),
-        ));
+        $config['_class'] = array(
+            'Cola_Router' => COLA_DIR . '/Router.php',
+            'Cola_Request' => COLA_DIR . '/Request.php',
+            'Cola_Model' => COLA_DIR . '/Model.php',
+            'Cola_View' => COLA_DIR . '/View.php',
+            'Cola_Controller' => COLA_DIR . '/Controller.php',
+            'Cola_Com' => COLA_DIR . '/Com.php',
+            'Cola_Com_Widget' => COLA_DIR . '/Com/Widget.php',
+            'Cola_Exception' => COLA_DIR . '/Exception.php'
+        );
+
+        $this->config = self::$_config = new Cola_Config($config);
 
         Cola::registerAutoload();
+        
         Cola::registerAutoload('Cola::loadNameSapce');
     }
 
@@ -89,22 +100,47 @@ class Cola
      */
     public static function boot($config = 'config.inc.php')
     {
-        
-        set_error_handler(array('Cola','error_handler'));
-        
+         
         $config_file =  dirname(COLA_DIR).'/Config/'.$config;
         if (is_string($config) && file_exists($config_file)) {
-            require $config_file;
+            include $config_file;
+        }
+        
+        if (!is_array($config)) {
+            throw new Exception('Boot config must be an array, if you use config file, the variable should be named $config');
         }
 
-        if (!is_array($config)) {
-            throw new Exception('Boot config must be an array or a php config file with variable $config');
-        }
-         
-        self::getInstance()->config->merge($config);
+        self::$_config->merge($config);
+        
+         if(defined('DEBUG')===TRUE and DEBUG === true){
+            set_exception_handler(array('Cola_Exception', 'handler'));
+            set_error_handler ( array ('Cola','error_handler' ) );
+        } 
+       
         return self::$_instance;
     }
-
+     
+    public static function cache($name, $data = NULL, $lifetime = NULL) {
+        static $cache = null;
+        $regName = "_cache";
+        if (!$cache = Cola::getReg($regName)) {
+            $config = (array) Cola::$_config->get('_routecache');
+            $cache = Cola_Com_Cache::factory($config);
+            Cola::setReg($regName, $cache);
+        }
+        if($data===NULL){
+            return $cache->get($name);
+        }
+        return (bool) $cache->set($name, $data, $lifetime);
+    }
+    public static function error_handler($code, $error, $file = NULL, $line = NULL) {
+    
+        if ($code != 8 ) {
+            ob_get_level () and ob_clean ();
+            Cola_Exception::handler ( new ErrorException ( $error, $code, 0, $file, $line ) );
+        }
+        return TRUE;
+    }
     /**
      * Singleton instance
      *
@@ -118,27 +154,15 @@ class Cola
 
         return self::$_instance;
     }
-    
-    public static function error_handler($code, $error, $file = NULL, $line = NULL) {
-    
-        if ($code != 8 ) {
-            ob_get_level () and ob_clean ();
-            Cola_Exception::handler ( new ErrorException ( $error, $code, 0, $file, $line ) );
-        }
-        return TRUE;
-    }
+
     /**
-     * Set Config
+     * Get Config
      *
-     * @param string $name
-     * @param mixed $value
-     * @param string $delimiter
-     * @return Cola
+     * @return Cola_Config
      */
-    public static function setConfig($name, $value, $delimiter = '.')
+    public static function Config()
     {
-        self::getInstance()->config->set($name, $value, $delimiter);
-        return self::$_instance;
+        return self::$_config;
     }
 
     /**
@@ -148,23 +172,32 @@ class Cola
      */
     public static function getConfig($name, $default = null, $delimiter = '.')
     {
-        return self::getInstance()->config->get($name, $default, $delimiter);
+        return self::$_config->get($name, $default, $delimiter);
     }
-    
-    public static function config(){
-        return self::getInstance()->config;
+
+    /**
+     * Set Config
+     *
+     * @param string $name
+     * @param mixed $value
+     * @param string $delimiter
+     * @return Cola_Config
+     */
+    public static function setConfig($name, $value, $delimiter = '.')
+    {
+        return self::$_config->set($name, $value, $delimiter);
     }
 
     /**
      * Set Registry
      *
      * @param string $name
-     * @param mixed $obj
+     * @param mixed $res
      * @return Cola
      */
-    public static function setReg($name, $obj)
+    public static function setReg($name, $res)
     {
-        self::getInstance()->reg[$name] = $obj;
+        self::$_reg[$name] = $res;
         return self::$_instance;
     }
 
@@ -175,78 +208,80 @@ class Cola
      * @param mixed $default
      * @return mixed
      */
-    public static function getReg($name, $default = null)
+    public static function getReg($name = null, $default = null)
     {
-        $instance = self::getInstance();
-        return isset($instance->reg[$name]) ? $instance->reg[$name] : $default;
+        if (null === $name) {
+            return self::$_reg;
+        }
+
+        return isset(self::$_reg[$name]) ? self::$_reg[$name] : $default;
     }
 
-    /**
-     * Common factory pattern constructor
-     *
-     * @param string $type
-     * @param array $config
-     * @return Object
-     */
-    public static function factory($type, $config)
-    {
-        $adapter = $config['adapter'];
-        $class = $type . '_' . ucfirst($adapter);
-        return new $class($config);
-    }
-    public  static function loadNameSapce($classNmae){
-       // var_dump(COLA_DIR.DIRECTORY_SEPARATOR.$classNmae);die;
-        require COLA_DIR.DIRECTORY_SEPARATOR.$classNmae . '.php';
-    }
     /**
      * Load class
      *
      * @param string $className
-     * @param string $classFile
+     * @param string $dir
      * @return boolean
      */
-    public static function loadClass($className, $classFile = '')
+     public static function loadClass($className, $dir = NULL)
     {
-        if (class_exists($className, false) || interface_exists($className, false)) {
+         if (class_exists($className, false) || interface_exists($className, false)) {
+            return true;
+        }  
+        
+        $key = "_class.{$className}";
+        if (null !== self::$_config->get($key)) {
+            include self::$_config->get($key);
             return true;
         }
-
-        if ((!$classFile)) {
-            $key = "_class.{$className}";
-            $classFile = self::getConfig($key);
+       
+        if ($dir===NULL) {
+            if ('Cola' == substr($className, 0, 4)) {
+                $dir =  substr(COLA_DIR, 0, -4);
+            }else{
+                $dir = '';
+            }
+            
+        } else {
+            $dir = rtrim($dir, '\\/') . DIRECTORY_SEPARATOR;
         }
-
-        /**
-         * auto load Cola class
-         */
-       /*  if ((!$classFile) && ('Cola' === substr($className, 0, 4))) {
-            $classFile = dirname(COLA_DIR) . DIRECTORY_SEPARATOR
-                       . str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';
-        }
- */
-        /**
-         * auto load controller class
-         */
-        /* if ((!$classFile) && ('Controller' === substr($className, -10))) {
-            $classFile = self::getConfig('_controllersHome') . "/{$className}.php";
-        } */
-
-        /**
-         * auto load model class
-         */
-        /* if ((!$classFile) && ('Model' === substr($className, -5))) {
-            $classFile = self::getConfig('_modelsHome') . "/{$className}.php";
-        } */
+        if(strpos($className, 'Tables') !== FALSE){ 
+            self::loadTableClass($className);
+            return TRUE;
+        } 
+        $file = strtr($className,array('_'=>DIRECTORY_SEPARATOR)) . '.php';
+         
         
-        //var_dump($className);
-        $classFile = strtr($className,array('_'=>DIRECTORY_SEPARATOR)) . '.php';
-        //var_dump($classFile,get_included_files());
+        $classFile = $dir . $file;
+        
+         
         if (file_exists($classFile)) {
-            include $classFile;
+            include($classFile);
         }
-        return true;
-        //return (class_exists($className, false) || interface_exists($className, false));
+        return TRUE;
+         
+        
+         
+       // return (class_exists($className, false) || interface_exists($className, false));
     }
+    
+    public  static function loadNameSapce($classNmae){
+        require COLA_DIR.DIRECTORY_SEPARATOR.$classNmae . '.php';
+    }
+    
+    public static function loadTableClass ($className)
+    {
+       // if (strpos($className, 'Tables') !== FALSE) {
+            $class = substr($className, 7);
+            $classFile = 'Tables' . DIRECTORY_SEPARATOR . $class . '.php';
+            include ($classFile);
+            return TRUE;
+       // }
+       // return FALSE;
+    }
+    
+    
 
     /**
      * User define class path
@@ -260,7 +295,7 @@ class Cola
             $class = array($class => $path);
         }
 
-        self::getInstance()->config->merge(array('_class' => $class));
+        self::$_config->merge(array('_class' => $class));
 
         return self::$_instance;
     }
@@ -270,36 +305,112 @@ class Cola
      *
      * @param string $func
      * @param boolean $enable
-     * @return Cola
      */
     public static function registerAutoload($func = 'Cola::loadClass', $enable = true)
     {
         $enable ? spl_autoload_register($func) : spl_autoload_unregister($func);
-        return self::$_instance;
+    }
+
+    /**
+     * Set router
+     *
+     * @param Cola_Router $router
+     * @return Cola
+     */
+    public function setRouter($router = null)
+    {
+        if (null === $router) {
+            $router = Cola_Router::getInstance();
+        }
+
+        $this->_router = $router;
+
+        return $this;
+    }
+
+    /**
+     * Get router
+     *
+     * @return Cola_Router
+     */
+    public function getRouter()
+    {
+        if (null === $this->_router) {
+            $this->setRouter();
+        }
+
+        return $this->_router;
+    }
+
+    /**
+     * Set path info
+     *
+     * @param string $pathinfo
+     * @return Cola
+     */
+    public function setPathInfo($pathinfo = null)
+    {
+        if (null === $pathinfo) {
+            $pathinfo = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
+        }
+
+        $this->_pathInfo = $pathinfo;
+
+        return $this;
+    }
+
+    /**
+     * Get path info
+     *
+     * @return string
+     */
+    public function getPathInfo()
+    {
+        if (null === $this->_pathInfo) {
+            $this->setPathInfo();
+        }
+
+        return $this->_pathInfo;
+    }
+
+    /**
+     * Set dispatch info
+     *
+     * @param array $dispatchInfo
+     * @return Cola
+     */
+    public function setDispatchInfo($dispatchInfo = null)
+    {
+        if (null === $dispatchInfo) {
+            $router = $this->getRouter();
+            // add urls to router from config
+            $urls = self::$_config->get('_urls');
+            if ($urls) {
+                $router->add($urls, false);
+            }
+            $pathInfo = $this->getPathInfo();
+            $dispatchInfo = $router->match($pathInfo);
+            //var_dump($dispatchInfo);die;
+        }
+
+        $this->dispatchInfo = $this->_dispatchInfo = $dispatchInfo;
+
+        return $this;
     }
 
     /**
      * Get dispatch info
      *
-     * @param boolean $init
      * @return array
      */
-    public function getDispatchInfo($init = false)
+    public function getDispatchInfo()
     {
-        if ((null === $this->dispatchInfo) && $init) {
-            $this->router || ($this->router = new Cola_Router());
-            $urls = self::getConfig('_urls');
-            if ($urls) {
-                $this->router->_rules += $urls;
-            }
-
-           // var_dump($this->router->_rules);
-            $this->pathInfo || $this->pathInfo = (isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '');
-
-            $this->dispatchInfo = $this->router->match($this->pathInfo);
+        //var_dump($this->_dispatchInfo);die;
+        if (null === $this->_dispatchInfo) {
+            $this->setDispatchInfo();
         }
 
-        return $this->dispatchInfo;
+        return $this->_dispatchInfo;
     }
 
     /**
@@ -308,39 +419,39 @@ class Cola
      */
     public function dispatch()
     {
-        if (!$dispatchInfo = $this->getDispatchInfo(true)) {
+        if (!$this->getDispatchInfo()) {
             throw new Cola_Exception_Dispatch('No dispatch info found');
         }
-        
-        if (isset($dispatchInfo['file'])) {
-            if (!file_exists($dispatchInfo['file'])) {
-                throw new Cola_Exception_Dispatch("Can't find dispatch file:{$dispatchInfo['file']}");
+
+        if (isset($this->_dispatchInfo['file'])) {
+            if (!file_exists($this->_dispatchInfo['file'])) {
+                throw new Cola_Exception_Dispatch("Can't find dispatch file:{$this->_dispatchInfo['file']}");
             }
-            require  $dispatchInfo['file'];
+            require $this->_dispatchInfo['file'];
         }
 
-        if (isset($dispatchInfo['controller']) ) {
-           // $classFile = self::getConfig('_controllersHome') . "/{$dispatchInfo['controller']}.php";
-          
-            /* if (!self::loadClass($dispatchInfo['controller'], $classFile)) {
-                throw new Cola_Exception_Dispatch("Can't load controller:{$dispatchInfo['controller']}");
+        if (isset($this->_dispatchInfo['controller'])) {
+           // var_dump($this->_dispatchInfo);die;
+            /* if (!self::loadClass($this->_dispatchInfo['controller'], self::$_config->get('_controllersHome'))) {
+                
+                throw new Cola_Exception_Dispatch("Can't load controller:{$this->_dispatchInfo['controller']}");
             } */
-            //var_dump( $dispatchInfo['controller']);
-            
-                $controller = new $dispatchInfo['controller']();
-             
-            //var_dump($controller);die;
-        }
-
-        if (isset($dispatchInfo['action'])) {
-            $func = isset($controller) ? array($controller, $dispatchInfo['action']) : $dispatchInfo['action'];
-            if (!is_callable($func, true)) {
-                throw new Cola_Exception_Dispatch("Can't dispatch action:{$dispatchInfo['action']}");
+            $cls = new $this->_dispatchInfo['controller']();
+        } 
+        
+        if (isset($this->_dispatchInfo['action'])) {
+           // $func = isset($cls) ? array($cls, $this->_dispatchInfo['action']) : $this->_dispatchInfo['action'];
+            if(isset($cls)){
+                $func = array($cls,$this->_dispatchInfo['action']);
+            }else{
+                $func = $this->_dispatchInfo['action'];
             }
-            //var_dump($func);
+            
+            /* if (!is_callable($func, true)) {
+                throw new Cola_Exception_Dispatch("Can't dispatch action:{$this->_dispatchInfo['action']}");
+            } */
             call_user_func($func);
         }
     }
-}
 
- 
+}
