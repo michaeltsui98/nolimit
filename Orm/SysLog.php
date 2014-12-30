@@ -25,9 +25,11 @@ class Orm_SysLog extends  Cola_Orm  {
     public $timestamps = false;  
     
     public function getLog($id=1){
-        
         return $this->whereRaw("id = ?",array($id))->get()->toArray();
     }
+    
+    
+    
     
      
 

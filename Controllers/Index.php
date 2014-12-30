@@ -63,10 +63,11 @@ class Controllers_Index extends Controllers_Base
     
     function testAction(){
         
+        phpinfo();
        //$query = " (多多教育)  AND node_id:xd001 AND node_id:GS0024 AND node_id:v11 NOT resource_type:4 NOT resource_type:8";
        //$data  = Helper_Search::inits()->getSearch()->setQuery($query)->search();
        //var_dump($data);
-       $this->tpl();
+       //$this->tpl();
        
     }
     
