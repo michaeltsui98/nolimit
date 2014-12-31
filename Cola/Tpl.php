@@ -362,9 +362,7 @@ class Cola_Tpl {
 	    return Cola_View::truncate($string, $length);
 	}
 	static function stripvtags($expr, $statement = '') {
-		$res = preg_replace ( "/\<\?\=(\\\$.+?)\?\>/s", "\\1", $expr );
-		$expr = strtr($res.$statement,array("\\\""=>"\""));
-		return $expr ;
+		return $expr.$statement ; 
 	}
 	
 	static function readtemplate($name) {
