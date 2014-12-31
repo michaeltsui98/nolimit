@@ -266,8 +266,16 @@ class Cola
        // return (class_exists($className, false) || interface_exists($className, false));
     }
     
-    public  static function loadNameSapce($classNmae){
-        require COLA_DIR.DIRECTORY_SEPARATOR.$classNmae . '.php';
+    public  static function loadNameSapce($className){
+        if (class_exists($className, false) || interface_exists($className, false)) {
+            return true;
+        }
+        $classFile = COLA_DIR.DIRECTORY_SEPARATOR.$className . '.php';
+        if (file_exists($classFile)) {
+            include($classFile);
+        }
+        return TRUE;
+       // require COLA_DIR.DIRECTORY_SEPARATOR.$classNmae . '.php';
     }
     
     public static function loadTableClass ($className)
