@@ -121,7 +121,7 @@ class Cola_Tpl {
 		          return Cola_Tpl::addquote("<?php echo $m[1];?>");
 		        }, $template );
 		//逻辑
-		$template = preg_replace_callback ( "/\{elseif\s+(.+?)\}/is",function ($p1){ 
+		$template = preg_replace_callback ( "/\{elseif\s+(.+?)\}/",function ($p){ 
 		    return Cola_Tpl::stripvtags("<?php } elseif($p[1]) { ?>",'');
 		}, $template );
 		$template = preg_replace ( "/\{else\}/is", "<?php } else { ?>", $template );
@@ -130,7 +130,7 @@ class Cola_Tpl {
 		for($i = 0; $i < 6; $i ++) {
 			$template = preg_replace_callback ( "/\{loop\s+(\S+)\s+(\S+)\}(.+?)\{\/loop\}/is", 
 			        function($m){
-			         return Cola_Tpl::stripvtags("<?php  foreach($m[1] as $m[2]) { ?>","$m[3]<?php } ?>");}, 
+			         return Cola_Tpl::stripvtags("<?php if(!empty($m[1])){ foreach($m[1] as $m[2]) { ?>","$m[3]<?php } }?> ");}, 
 			        $template );
 			$template = preg_replace_callback ( "/\{loop\s+(\S+)\s+(\S+)\s+(\S+)\}(.+?)\{\/loop\}/is", 
 			        function($m){
@@ -362,7 +362,9 @@ class Cola_Tpl {
 	    return Cola_View::truncate($string, $length);
 	}
 	static function stripvtags($expr, $statement = '') {
+	   
 		return $expr.$statement ; 
+	   
 	}
 	
 	static function readtemplate($name) {
