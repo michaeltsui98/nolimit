@@ -10,8 +10,8 @@ class Controllers_Index extends Controllers_Base
     	 $page_title = '学科选择';
     	  
          $layout = 'Layout/index';
-         //$this->setLayout($layout);
-         
+         $this->setLayout($layout);
+         Cola::getConfig('_db');
          $this->view->vars = get_defined_vars();
          $this->view->user = $this->user_info;
           
