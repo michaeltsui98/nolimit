@@ -11,7 +11,7 @@ class Controllers_Index extends Controllers_Base
     	  
          $layout = 'Layout/index';
          $this->setLayout($layout);
-         Cola::getConfig('_db');
+        // Cola::getConfig('_db');
          $this->view->vars = get_defined_vars();
          $this->view->user = $this->user_info;
           
