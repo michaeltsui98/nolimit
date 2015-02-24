@@ -1,7 +1,7 @@
 <?php namespace Illuminate\Contracts\Validation;
 
-use RuntimeException;
 use Illuminate\Contracts\Support\MessageProvider;
+use RuntimeException;
 
 class ValidationException extends RuntimeException {
 

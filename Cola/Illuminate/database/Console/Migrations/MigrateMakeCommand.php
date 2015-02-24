@@ -1,9 +1,9 @@
 <?php namespace Illuminate\Database\Console\Migrations;
 
-use Illuminate\Foundation\Composer;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Input\InputArgument;
 use Illuminate\Database\Migrations\MigrationCreator;
+use Illuminate\Foundation\Composer;
+use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputOption;
 
 class MigrateMakeCommand extends BaseCommand {
 

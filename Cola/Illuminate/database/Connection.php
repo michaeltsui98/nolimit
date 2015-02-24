@@ -1,11 +1,11 @@
 <?php namespace Illuminate\Database;
 
-use PDO;
 use Closure;
 use DateTime;
+use Doctrine\DBAL\Connection as DoctrineConnection;
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Database\Query\Processors\Processor;
-use Doctrine\DBAL\Connection as DoctrineConnection;
+use PDO;
 
 class Connection implements ConnectionInterface {
 

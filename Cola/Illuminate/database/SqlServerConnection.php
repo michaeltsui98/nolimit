@@ -2,8 +2,8 @@
 
 use Closure;
 use Doctrine\DBAL\Driver\PDOSqlsrv\Driver as DoctrineDriver;
-use Illuminate\Database\Query\Processors\SqlServerProcessor;
 use Illuminate\Database\Query\Grammars\SqlServerGrammar as QueryGrammar;
+use Illuminate\Database\Query\Processors\SqlServerProcessor;
 use Illuminate\Database\Schema\Grammars\SqlServerGrammar as SchemaGrammar;
 
 class SqlServerConnection extends Connection {

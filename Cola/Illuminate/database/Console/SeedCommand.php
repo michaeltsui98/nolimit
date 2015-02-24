@@ -2,8 +2,8 @@
 
 use Illuminate\Console\Command;
 use Illuminate\Console\ConfirmableTrait;
-use Symfony\Component\Console\Input\InputOption;
 use Illuminate\Database\ConnectionResolverInterface as Resolver;
+use Symfony\Component\Console\Input\InputOption;
 
 class SeedCommand extends Command {
 

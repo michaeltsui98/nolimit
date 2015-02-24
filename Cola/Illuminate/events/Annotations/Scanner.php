@@ -1,9 +1,9 @@
 <?php namespace Illuminate\Events\Annotations;
 
-use ReflectionClass;
-use Symfony\Component\Finder\Finder;
 use Doctrine\Common\Annotations\AnnotationRegistry;
 use Doctrine\Common\Annotations\SimpleAnnotationReader;
+use ReflectionClass;
+use Symfony\Component\Finder\Finder;
 
 class Scanner {
 

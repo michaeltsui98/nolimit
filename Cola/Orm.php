@@ -1,11 +1,9 @@
 <?php
  //orm init
-use  Illuminate\Database\Eloquent\Model  as Eloquent;
-use Illuminate\Database\Capsule\Manager as Capsule;
-use Illuminate\Events\Dispatcher;
 use Illuminate\Container\Container;
-
-use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Capsule\Manager as Capsule;
+use Illuminate\Database\Eloquent\Model as Eloquent;
+use Illuminate\Events\Dispatcher;
 
 
 require COLA_DIR.DIRECTORY_SEPARATOR.'Illuminate/support/helpers.php';

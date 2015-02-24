@@ -1,7 +1,7 @@
 <?php namespace Illuminate\Support;
 
-use Patchwork\Utf8;
 use Illuminate\Support\Traits\MacroableTrait;
+use Patchwork\Utf8;
 
 class Str {
 

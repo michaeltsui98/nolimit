@@ -1,9 +1,9 @@
 <?php namespace Illuminate\Events;
 
-use ReflectionClass;
 use Illuminate\Container\Container;
-use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Contracts\Container\Container as ContainerContract;
+use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
+use ReflectionClass;
 
 class Dispatcher implements DispatcherContract {
 

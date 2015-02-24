@@ -1,12 +1,12 @@
 <?php namespace Illuminate\Database\Query;
 
 use Closure;
-use Illuminate\Support\Collection;
-use Illuminate\Pagination\Paginator;
 use Illuminate\Database\ConnectionInterface;
 use Illuminate\Database\Query\Grammars\Grammar;
-use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Query\Processors\Processor;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Collection;
 
 class Builder {
 

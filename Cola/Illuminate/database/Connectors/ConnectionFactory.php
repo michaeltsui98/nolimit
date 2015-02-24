@@ -1,11 +1,11 @@
 <?php namespace Illuminate\Database\Connectors;
 
-use PDO;
-use Illuminate\Database\MySqlConnection;
-use Illuminate\Database\SQLiteConnection;
-use Illuminate\Database\PostgresConnection;
-use Illuminate\Database\SqlServerConnection;
 use Illuminate\Contracts\Container\Container;
+use Illuminate\Database\MySqlConnection;
+use Illuminate\Database\PostgresConnection;
+use Illuminate\Database\SQLiteConnection;
+use Illuminate\Database\SqlServerConnection;
+use PDO;
 
 class ConnectionFactory {
 

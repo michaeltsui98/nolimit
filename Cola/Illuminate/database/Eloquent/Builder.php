@@ -1,11 +1,11 @@
 <?php namespace Illuminate\Database\Eloquent;
 
 use Closure;
-use Illuminate\Pagination\Paginator;
-use Illuminate\Database\Query\Expression;
-use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Database\Query\Builder as QueryBuilder;
+use Illuminate\Database\Query\Expression;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
 
 class Builder {
 

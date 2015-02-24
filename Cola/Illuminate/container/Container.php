@@ -1,12 +1,12 @@
 <?php namespace Illuminate\Container;
 
-use Closure;
 use ArrayAccess;
-use ReflectionClass;
-use ReflectionMethod;
-use ReflectionFunction;
-use ReflectionParameter;
+use Closure;
 use Illuminate\Contracts\Container\Container as ContainerContract;
+use ReflectionClass;
+use ReflectionFunction;
+use ReflectionMethod;
+use ReflectionParameter;
 
 class Container implements ArrayAccess, ContainerContract {
 

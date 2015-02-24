@@ -4,7 +4,10 @@ class Controllers_Index extends Controllers_Base
 {
  
    protected static  $_model = NULL;
-    
+
+    function testAction(){
+        ;
+    }
     function indexAction(){
             
     	 $page_title = '学科选择';
@@ -42,6 +45,7 @@ class Controllers_Index extends Controllers_Base
     function delAction(){
         $id = $this->getVar('id',45);
         $res= Orm_SysLog::find($id)->delete();
+
         var_dump($res);
     }
     

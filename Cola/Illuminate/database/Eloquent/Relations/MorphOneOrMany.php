@@ -1,7 +1,7 @@
 <?php namespace Illuminate\Database\Eloquent\Relations;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 
 abstract class MorphOneOrMany extends HasOneOrMany {
 

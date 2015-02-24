@@ -1,9 +1,9 @@
 <?php namespace Illuminate\Database\Schema;
 
 use Closure;
-use Illuminate\Support\Fluent;
 use Illuminate\Database\Connection;
 use Illuminate\Database\Schema\Grammars\Grammar;
+use Illuminate\Support\Fluent;
 
 class Blueprint {
 

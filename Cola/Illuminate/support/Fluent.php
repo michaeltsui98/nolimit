@@ -1,9 +1,9 @@
 <?php namespace Illuminate\Support;
 
 use ArrayAccess;
-use JsonSerializable;
-use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Contracts\Support\Jsonable;
+use JsonSerializable;
 
 
 class Fluent implements ArrayAccess, Arrayable, Jsonable, JsonSerializable {

@@ -1,7 +1,7 @@
 <?php namespace Illuminate\Database\Migrations;
 
-use Illuminate\Filesystem\Filesystem;
 use Illuminate\Database\ConnectionResolverInterface as Resolver;
+use Illuminate\Filesystem\Filesystem;
 
 class Migrator {
 

@@ -1,14 +1,14 @@
 <?php namespace Illuminate\Support;
 
-use Closure;
-use Countable;
 use ArrayAccess;
 use ArrayIterator;
 use CachingIterator;
-use JsonSerializable;
-use IteratorAggregate;
-use Illuminate\Contracts\Support\Jsonable;
+use Closure;
+use Countable;
 use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Contracts\Support\Jsonable;
+use IteratorAggregate;
+use JsonSerializable;
 
 class Collection implements ArrayAccess, Arrayable, Countable, IteratorAggregate, Jsonable, JsonSerializable {
 
